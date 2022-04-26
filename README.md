@@ -285,7 +285,7 @@
     
     输入保证火车的座位数大于0,站的数量不少于2不多于100，且如果火车只有两站 `-o`后的参数用下划线代替（见举例2）,且火车不会经过同一个站两次。
     如果`<trainID>`已经存在则添加失败。
-    
+
   - 返回值
   
     添加成功：`0`
@@ -531,9 +531,9 @@
     `-1`
     
   - 样例3:
-    
+
     输入：
-    
+
     ```
     [5] add_user -c cur -u I_am_the_admin -p qwqq -n RainyMemory -m memo@rainymemory.net -g 10
     [10] login -u I_am_the_admin -p qwqq
@@ -549,9 +549,9 @@
     [60] query_profile -c I_am_the_admin -u Texas
     [65] exit
     ```
-    
+
     输出：
-    
+
     ```
     0
     0
