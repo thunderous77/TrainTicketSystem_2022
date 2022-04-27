@@ -1,0 +1,7 @@
+[1] add_user -u zhongzero -p 123456 -n zlh -m zhong__zero@163.com
+[3] add_user -c zhongzero -u User1 -p 666666 -n UU -m UU@163.com -g 5
+[2] login -u zhongzero -p 123456
+[2] login -u User1 -p 666666
+[2] logout -u zhongzero
+[2] logout -u User1
+[4] clean

@@ -36,32 +36,42 @@ private:
 		file2.close();
 		return index;
     }
-	void initialise2(const string &FN){
+	void initialise2(const string FN,bool ReMake=0){
 		file_name2=FN;
 		file2.open(file_name2);
-		if(!file2){
+		if(!file2||ReMake==1){
+			file2.close();
+			// std::cout<<"ReMake"<<" "<<file_name2<<" "<<info_len<<std::endl;
 			file2.open(file_name2,std::ios::out);//若文件不存在自动创建
 			num2=0;
 			file2.write(reinterpret_cast<char*>(&num2),sizeof(int));
+			file2.close();
 		}
-		file2.read(reinterpret_cast<char*>(&num2),sizeof(int));
-		file2.close();
+		else {
+			file2.read(reinterpret_cast<char*>(&num2),sizeof(int));
+			file2.close();
+		}
 	}
 public:
-	void initialise(const string &FN) {
+	void initialise(const string FN,bool ReMake=0) {
 		file_name = FN;
 		file.open(file_name);
-		if(!file){
-			file.open(file_name, std::ios::out);//若文件不存在自动创建
+		if(!file||ReMake==1){
+			file.close();
+			// std::cout<<"ReMake"<<" "<<file_name<<" "<<info_len<<std::endl;
+			file.open(file_name, std::ios::out);//若文件不存在自动创建，且会清空文件
 			int tmp = 0;
 			for (int i = 0; i < info_len; ++i)file.write(reinterpret_cast<char *>(&tmp), sizeof(int));
+			file.close();
 		}
-		file.seekp(0);
-		file.read(reinterpret_cast<char*>(&num),sizeof(int));
-        file.close();
-		initialise2(FN+"_memory_recycling");
+		else {
+			file.seekp(0);
+			file.read(reinterpret_cast<char*>(&num),sizeof(int));
+			file.close();
+		}
+		initialise2(FN+"_memory_recycling",ReMake);
     }
-    MemoryRiver(const string& FN=""){
+    MemoryRiver(const string FN=""){
 		if(FN!="")initialise(FN);
 	}
 
@@ -130,6 +140,11 @@ public:
     void Delete(int index) {
 		write2(index);
     }
+	
+	//清空文件
+	void clean(){
+		initialise(file_name,1);
+	}
 };
 
 #endif

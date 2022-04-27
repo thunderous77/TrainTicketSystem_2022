@@ -1,10 +1,25 @@
 #ifndef USER_H
 #define USER_H
 
+#include "MemoryRiver.hpp"
+#include "BlockList.hpp"
 using namespace std;
 class User_System{
-	// Data_
 public:
+	class User{
+	public:
+		char username[22];
+		char password[32];
+		char name[12];
+		char mailAddr[32];
+		int privilege;
+	};
+private:
+	User GetUserFromData(const string &username);
+public:
+	MemoryRiver<User> UserData;
+	Key_value_database<int> UserIndex;
+	User_System();
 	void add_user();
 	void login();
 	void logout();

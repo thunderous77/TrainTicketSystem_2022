@@ -1,7 +1,8 @@
 #ifndef BLOCKLISTHPP
 #define BLOCKLISTHPP
-#include<bits/stdc++.h>
+#include<cstring>
 #include "MemoryRiver.hpp"
+#include<vector>//最后用手写的vector换掉
 using namespace std;
 template<class T>class Key_value_database{//块状链表实现
 private:
@@ -136,6 +137,8 @@ public:
 			Blocks_info.update(tmp,tmp.info_id);
 			Blocks_data.update(tmp2,tmp.data_id);
 			Blocks_info.write_info(1,2);
+			int blocknum;
+			Blocks_info.read_info(blocknum,2);
 			Blocks_info.write_info(tmp.info_id,3);
 			return;
 		}
@@ -189,10 +192,11 @@ public:
 			return 1;
 		}
 	}
-	void FindAll(const string key){
+	vector<int> FindAll(const string key){
+		vector<int>ans;
 		int blocknum;
 		Blocks_info.read_info(blocknum,2);
-		if(!blocknum)printf("null\n");
+		if(!blocknum)return ans;
 		else {
 			Block_info Now;
 			int id;
@@ -208,13 +212,42 @@ public:
 				Blocks_info.read(Now,id);
 				Blocks_data.read(Now2,Now.data_id);
 				int size=Now.size;
-				for(int i=0;i<size;i++)if(Now2.data[i].Key==key){cout<<Now2.data[i].val<<" ";Is_Find=1;}
+				for(int i=0;i<size;i++)if(Now2.data[i].Key==key){ans.push_back(Now2.data[i].val);Is_Find=1;}
 				if(Now2.data[Now.size-1].Key!=key)break;
 				id=Now.next_id;
 			}
-			if(!Is_Find)printf("null\n");
-			else printf("\n");
 		}
+		return ans;
+	}
+	bool Find(const string key){
+		int blocknum;
+		Blocks_info.read_info(blocknum,2);
+		if(!blocknum)return 0;
+		else {
+			Block_info Now;
+			int id;
+			Blocks_info.read_info(id,3);
+			Blocks_info.read(Now,id);
+			while(key>Now.Las.Key&&Now.next_id!=-1){
+				id=Now.next_id;
+				Blocks_info.read(Now,id);
+			}
+			Block_data Now2;
+			bool Is_Find=0;
+			while(id!=-1){
+				Blocks_info.read(Now,id);
+				Blocks_data.read(Now2,Now.data_id);
+				int size=Now.size;
+				for(int i=0;i<size;i++)if(Now2.data[i].Key==key)return 1;
+				if(Now2.data[Now.size-1].Key!=key)break;
+				id=Now.next_id;
+			}
+		}
+		return 0;
+	}
+	void clean(){
+		Blocks_info.clean();
+		Blocks_data.clean();
 	}
 };
 
