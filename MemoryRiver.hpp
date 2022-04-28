@@ -62,6 +62,7 @@ public:
 			file.open(file_name, std::ios::out);//若文件不存在自动创建，且会清空文件
 			int tmp = 0;
 			for (int i = 0; i < info_len; ++i)file.write(reinterpret_cast<char *>(&tmp), sizeof(int));
+			num=0;
 			file.close();
 		}
 		else {
