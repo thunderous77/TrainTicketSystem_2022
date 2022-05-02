@@ -23,14 +23,16 @@ public:
 	};
 	class Order{
 	public:
-		int status;
-		int trainID,Date,num;
-		char startStation[22],EndStation[22];
+		int status;//1:buy,0:queue,-1:refund
+		char trainID[MaxName];
+		int firday,seatNum;
+		char startStation[MaxName],endStation[MaxName];
 		int timestamp;
 	};
 private:
 	Train GetTrainFromData(const string &trainID);
 	void queueUpdate(const string &trainID);
+	void DelSeatNum(Train &train,const string &startStation,const string &endStation,const int &num,const int &firday);
 public:
 	MemoryRiver<Train> TrainData;
 	MemoryRiver<Order> OrderData;

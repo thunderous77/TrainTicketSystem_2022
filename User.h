@@ -3,6 +3,7 @@
 
 #include "MemoryRiver.hpp"
 #include "BlockList.hpp"
+#include<map>//最后用手写的map换掉
 using namespace std;
 class User_System{
 public:

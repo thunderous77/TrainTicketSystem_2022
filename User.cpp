@@ -8,9 +8,9 @@
 #include<fstream>
 #include "Exceptions.hpp"
 #include "User.h"
-#include<map>//最后用手写的map换掉
 using namespace std;
 
+map<string,int>Is_login;
 static int string_to_int(const string &str){
 	int x=0;
 	for(int i=0;i<(int)str.size();i++)x=x*10+str[i]-'0';
@@ -22,7 +22,6 @@ static void Output(User_System::User G){
 
 extern string d_order[30];
 extern int dcnt;
-map<string,int>Is_login;
 
 User_System::User User_System::GetUserFromData(const string &username){
 	vector<int> G=UserIndex.FindAll(username);
