@@ -32,7 +32,6 @@ public:
 private:
 	Train GetTrainFromData(const string &trainID);
 	void queueUpdate(const string &trainID);
-	void DelSeatNum(Train &train,const string &startStation,const string &endStation,const int &num,const int &firday);
 public:
 	MemoryRiver<Train> TrainData;
 	MemoryRiver<Order> OrderData;

@@ -10,6 +10,8 @@
 #include "User.h"
 using namespace std;
 
+extern string d_order[30];
+extern int dcnt;
 map<string,int>Is_login;
 static int string_to_int(const string &str){
 	int x=0;
@@ -20,8 +22,6 @@ static void Output(User_System::User G){
 	cout<<"!!! "<<G.username<<" "<<G.password<<" "<<G.name<<" "<<G.mailAddr<<" "<<G.privilege<<endl;
 }
 
-extern string d_order[30];
-extern int dcnt;
 
 User_System::User User_System::GetUserFromData(const string &username){
 	vector<int> G=UserIndex.FindAll(username);
