@@ -1,0 +1,13 @@
+[1] add_user -u zhongzero -p 123456 -n 小明 -m zhong__zero@163.com
+[1] add_user -c zhongzero -u User1 -p 666666 -n 小蓝 -m UU@163.com -g 5
+[2] login -u zhongzero -p 123456
+[2] login -u User1 -p 666666
+[2] logout -u zhongzero
+[2] logout -u User1
+[3] query_profile -c zhongzero -u zhongzero
+[3] query_profile -c zhongzero -u User1
+[3] query_profile -c User1 -u zhongzero
+[3] query_profile -c User1 -u User1
+[3] modify_profile -c zhongzero -u zhongzero -n 小明 -p 123456 -m zhong__zero@163.com -g 10
+[3] modify_profile -c zhongzero -u User1 -n 小蓝 -p 111 -m UUU@163.com -g 5
+[4] clean
