@@ -22,7 +22,7 @@ cstdio
 fstream
 -
 
-/mnt/e/TrainTicketSystem_2022/Trainticket.cpp
+/mnt/e/TrainTicketSystem_2022/Order.cpp
 iostream
 -
 cstring
@@ -35,14 +35,20 @@ fstream
 -
 Exceptions.hpp
 /mnt/e/TrainTicketSystem_2022/Exceptions.hpp
+Order.h
+/mnt/e/TrainTicketSystem_2022/Order.h
 User.h
 /mnt/e/TrainTicketSystem_2022/User.h
 Trainticket.h
 /mnt/e/TrainTicketSystem_2022/Trainticket.h
-vector
+
+/mnt/e/TrainTicketSystem_2022/Order.h
+cstring
 -
-algorithm
--
+User.h
+/mnt/e/TrainTicketSystem_2022/User.h
+Trainticket.h
+/mnt/e/TrainTicketSystem_2022/Trainticket.h
 
 /mnt/e/TrainTicketSystem_2022/Trainticket.h
 MemoryRiver.hpp
