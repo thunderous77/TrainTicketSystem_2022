@@ -51,6 +51,6 @@ void Order_System::AnalysisOrder(string order){
 	if(d_order[2]=="refund_ticket")TrainSystem.refund_ticket();
 	if(d_order[2]=="rollback")UserSystem.rollback(),TrainSystem.rollback();
 	if(d_order[2]=="clean")UserSystem.clean(),TrainSystem.clean();
-	if(d_order[2]=="exit")exit(0);
+	if(d_order[2]=="exit"){cout<<"bye"<<endl;exit(0);}
 }
 #endif
