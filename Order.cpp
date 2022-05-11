@@ -34,7 +34,7 @@ void Order_System::AnalysisOrder(string order){
 	/*得到时间轴*/
 	int Time=0;
 	for(int i=1;i<=d_order[1].size()-2;i++)Time=Time*10+d_order[1][i]-'0';
-	// cout<<"Time="<<Time<<endl;
+	// cout<<"Time="<<Time<<" ";
 	/*判断为哪种指令*/
 	if(d_order[2]=="add_user")UserSystem.add_user();
 	if(d_order[2]=="login")UserSystem.login();
@@ -44,6 +44,7 @@ void Order_System::AnalysisOrder(string order){
 	if(d_order[2]=="add_train")TrainSystem.add_train();
 	if(d_order[2]=="release_train")TrainSystem.release_train();
 	if(d_order[2]=="query_train")TrainSystem.query_train();
+	if(d_order[2]=="delete_train")TrainSystem.delete_train();
 	if(d_order[2]=="query_ticket")TrainSystem.query_ticket();
 	if(d_order[2]=="query_transfer")TrainSystem.query_transfer();
 	if(d_order[2]=="buy_ticket")TrainSystem.buy_ticket();

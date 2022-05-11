@@ -8,7 +8,7 @@ using namespace std;
 class Train_System{
 	#define MaxStation 103
 	#define MaxDay 95
-	#define MaxName 22
+	#define MaxName 35
 public:
 	class Train{
 	public:
@@ -40,6 +40,7 @@ public:
 	void add_train();
 	void release_train();
 	void query_train();
+	void delete_train();
 	void query_ticket();
 	void query_transfer();
 	void buy_ticket();

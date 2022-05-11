@@ -11,7 +11,7 @@ public:
 	public:
 		char username[22];
 		char password[32];
-		char name[12];
+		char name[17];
 		char mailAddr[32];
 		int privilege;
 	};

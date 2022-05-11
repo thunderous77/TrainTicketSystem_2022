@@ -19,18 +19,18 @@ private:
 	int num,num2;
 
 	void read2_las(int &t){
-		file2.open(file_name2);
 		int index=num2*sizeof(int);
+		file2.open(file_name2);
 		file2.seekp(index);
 		file2.read(reinterpret_cast<char*>(&t),sizeof(int));
 		file2.close();
 	}
 	int write2(int &t) {
-		file2.open(file_name2);
 		int index=(num2+1)*sizeof(int);
+		num2++;
+		file2.open(file_name2);
 		file2.seekp(index);
 		file2.write(reinterpret_cast<char*>(&t),sizeof(int));
-		num2++;
 		file2.seekp(0);
 		file2.write(reinterpret_cast<char*>(&num2),sizeof(int));
 		file2.close();
@@ -48,6 +48,7 @@ private:
 			file2.close();
 		}
 		else {
+			file2.seekg(0);
 			file2.read(reinterpret_cast<char*>(&num2),sizeof(int));
 			file2.close();
 		}
@@ -104,8 +105,10 @@ public:
 		if(num2){
 			read2_las(index);
 			num2--;
+			file2.open(file_name2);
 			file2.seekp(0);
 			file2.write(reinterpret_cast<char*>(&num2),sizeof(int));
+			file2.close();
 		}
 		else {
 			index=info_len*sizeof(int)+num*sizeofT;

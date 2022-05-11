@@ -43,8 +43,10 @@ void User_System::add_user(){
 		if(d_order[i]=="-g")NewUser.privilege=string_to_int(d_order[i+1]);
 	}
 	if(UserIndex.Find(NewUser.username)){printf("-1\n");return;}
-	if(cur_username==""|| (Is_login[cur_username]&&UserIndex.Find(cur_username)&&GetUserFromData(cur_username).privilege>NewUser.privilege) ){
-		if(cur_username=="")NewUser.privilege=10;
+	int Usernum;
+	UserData.read_info(Usernum,1);
+	if(Usernum==0|| (Is_login[cur_username]&&UserIndex.Find(cur_username)&&GetUserFromData(cur_username).privilege>NewUser.privilege) ){
+		if(Usernum==0)NewUser.privilege=10;
 		int pos=UserData.write(NewUser);
 		// Output(NewUser);
 		// cout<<"!!!"<<NewUser.username<<" "<<pos<<endl;
