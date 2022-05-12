@@ -533,7 +533,12 @@ void Train_System::query_transfer(){
 				int firday2=GetTransferStartDay(Alltrain2[j],transferStation,ArrivingDateTime);
 				if(firday2==-1)continue;
 				int MaxSeatNum2=GetMaxSeatNum(Alltrain2[j],transferStation,endStation,firday2);
-				if(!MaxSeatNum2)continue;
+				while(!MaxSeatNum2){
+					firday2++;
+					if(firday2>Alltrain2[j].saleDateR)break;
+					MaxSeatNum2=GetMaxSeatNum(Alltrain2[j],transferStation,endStation,firday2);
+				}
+				if(firday2>Alltrain2[j].saleDateR)continue;
 				if(sortType=="time"){
 					int Time1=GetTime(Alltrain1[i],startStation,transferStation);
 					string DateTimeBegin=GetLeavingTime(Alltrain1[i],startStation,firday1);
