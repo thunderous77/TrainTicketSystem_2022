@@ -1,1 +1,14 @@
-[111884] query_transfer -d 07-11 -s 福建省龙岩市 -t 广东省南海市 -p cost
+[1] clean
+[4] add_user -n 奥斯卡 -p awsl -c cur -g 10 -u I_am_the_admin -m foo@bar.com
+[14] login -u I_am_the_admin -p awsl
+[22] add_user -c I_am_the_admin -m MANIFESTO.OF@THE.COMMUNIST -p bSVa$5h0Iaq_3- -u Meteor -g 8 -n 流星
+[29] login -p bSVa$5h0Iaq_3- -u Meteor
+[40] add_user -g 8 -m PARTY.A.spectre@is.haunting -u Reed -c I_am_the_admin -p IRNA0YNy8SPdjs6b!I -n 苇草
+[76] modify_profile -c I_am_the_admin -u Meteor -n 刘星星星星
+[100] query_profile -c I_am_the_admin -u Meteor -p
+
+[867] add_train -s 北京市|天津市|山东省兖州市|湖北省荆州市|浙江省海宁市|吉林省松原市|安徽省宿州市 -d 06-17|08-31 -x 14:47 -m 66757 -p 153|326|121|375|337|438 -i LeavesofGrass -o 7|9|6|9|7 -t 49|31|291|295|258|95 -y L -n 7
+[867] add_train -s 北京市|天津市|山东省兖州市|湖北省荆州市|浙江省海宁市|吉林省松原市|安徽省宿州市 -d 06-17|08-31 -x 14:47 -m 66757 -p 153|326|121|375|337|438 -i LeavesofGrass2 -o 7|9|6|9|7 -t 49|31|291|295|258|95 -y L -n 7
+[1288] delete_train -i LeavesofGrass
+[1288] delete_train -i LeavesofGrass2
+[20000000] rollback -t 240118
