@@ -249,6 +249,11 @@ public:
 		Blocks_info.clean();
 		Blocks_data.clean();
 	}
+	bool empty(){
+		int x;
+		Blocks_info.read_info(x,2);
+		return x==0;
+	}
 };
 
 #endif

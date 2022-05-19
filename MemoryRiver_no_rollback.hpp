@@ -12,15 +12,11 @@ template<class T,int info_len = 1>
 class MemoryRiver {
 private:
     /* your code here */
-    fstream file,file2,file3;
+    fstream file,file2;
     string file_name;
-	string file_name2;// _recycling
-	string file_name3;// _rollback    (type,pos,data,type2,pos2,data2)  (int,int,T,int,int,int) 
-	// type: delete -1;add 1;update 0
+	string file_name2;
     int sizeofT = sizeof(T);
-	int sizeofT3 = sizeofT+sizeof(int)*5;
-	int num,num2,num3;
-	bool IsRollback;
+	int num,num2;
 
 	void read2_las(int &t){
 		int index=num2*sizeof(int);
@@ -57,41 +53,6 @@ private:
 			file2.close();
 		}
 	}
-	void initialise3(const string FN,bool ReMake=0){
-		file_name3=FN;
-		file3.open(file_name3);
-		if(!file3||ReMake==1){
-			file3.close();
-			// std::cout<<"ReMake"<<" "<<file_name2<<" "<<info_len<<std::endl;
-			file3.open(file_name3,std::ios::out);//若文件不存在自动创建
-			num3=0;
-			file3.write(reinterpret_cast<char*>(&num3),sizeof(int));
-			file3.close();
-		}
-		else {
-			file3.seekg(0);
-			file3.read(reinterpret_cast<char*>(&num3),sizeof(int));
-			file3.close();
-		}
-	}
-	void file3_update(int type,int pos,T data,int type2,int pos2,int data2){
-		file3.open(file_name3);
-		int index=sizeof(int)+num3*sizeofT3;
-		// cout<<"index: "<<index<<endl;
-		// cout<<"file3_update "<<type<<" "<<pos<<" "<<type2<<" "<<pos2<<" "<<data2<<endl;
-		file3.seekp(index);
-		file3.write(reinterpret_cast<char*>(&type),sizeof(int));
-		file3.write(reinterpret_cast<char*>(&pos),sizeof(int));
-		file3.write(reinterpret_cast<char*>(&data),sizeofT);
-		file3.write(reinterpret_cast<char*>(&type2),sizeof(int));
-		file3.write(reinterpret_cast<char*>(&pos2),sizeof(int));
-		file3.write(reinterpret_cast<char*>(&data2),sizeof(int));
-
-		num3++;
-		file3.seekp(0);
-		file3.write(reinterpret_cast<char*>(&num3),sizeof(int));
-		file3.close();
-	}
 public:
 	void initialise(const string FN,bool ReMake=0) {
 		file_name = FN;
@@ -100,8 +61,9 @@ public:
 			file.close();
 			// std::cout<<"ReMake"<<" "<<file_name<<" "<<info_len<<std::endl;
 			file.open(file_name,std::ios::out);//若文件不存在自动创建，且会清空文件
-			num = 0;
-			for (int i = 0; i < info_len; ++i)file.write(reinterpret_cast<char *>(&num), sizeof(int));
+			int tmp = 0;
+			for (int i = 0; i < info_len; ++i)file.write(reinterpret_cast<char *>(&tmp), sizeof(int));
+			num=0;
 			file.close();
 		}
 		else {
@@ -110,10 +72,8 @@ public:
 			file.close();
 		}
 		initialise2(FN+"_memory_recycling",ReMake);
-		if(IsRollback)initialise3(FN+"_inside_rollback",ReMake);
     }
-    MemoryRiver(const string FN="",bool _IsRollback=0){
-		IsRollback=_IsRollback;
+    MemoryRiver(const string FN=""){
 		if(FN!="")initialise(FN);
 	}
 
@@ -144,28 +104,18 @@ public:
 		int index;
 		if(num2){
 			read2_las(index);
-			
-			int pos2=num2*sizeof(int),data2;
-			file2.seekp(pos2);
-			file2.read(reinterpret_cast<char*>(&data2),sizeof(int));
-
 			num2--;
 			file2.open(file_name2);
 			file2.seekp(0);
 			file2.write(reinterpret_cast<char*>(&num2),sizeof(int));
 			file2.close();
-
-			if(IsRollback)file3_update(1,index,T(),-1,pos2,data2);
 		}
 		else {
 			index=info_len*sizeof(int)+num*sizeofT;
-
-			if(IsRollback)file3_update(1,index,T(),0,-1,0);
+			num++;
+			file.seekp(0);
+			file.write(reinterpret_cast<char*>(&num),sizeof(int));
 		}
-		num++;
-		file.seekp(0);
-		file.write(reinterpret_cast<char*>(&num),sizeof(int));
-
 		file.seekp(index);
 		file.write(reinterpret_cast<char*>(&t),sizeofT);
 		file.close();
@@ -175,15 +125,10 @@ public:
     //用t的值更新位置索引index对应的对象，保证调用的index都是由write函数产生
     void update(T &t, const int index) {
 		file.open(file_name);
-		T data;
-		file.seekp(index);
-		file.read(reinterpret_cast<char*>(&data),sizeofT);
-
 		file.seekp(index);
 		file.write(reinterpret_cast<char*>(&t),sizeofT);
 		file.close();
-
-		if(IsRollback)file3_update(0,index,data,0,-1,0);
+        /* your code here */
     }
 
     //读出位置索引index对应的T对象的值并赋值给t，保证调用的index都是由write函数产生
@@ -196,28 +141,12 @@ public:
     }
 
     //删除位置索引index对应的对象(不涉及空间回收时，可忽略此函数)，保证调用的index都是由write函数产生
-    void Delete(int index,bool type=0) {//type=1时不回收空间,保证删除的是最后一个(同时保证IsRollback=0)
-		if(!type){
-			T data;
-			file.open(file_name);
-			file.seekg(index);
-			file.read(reinterpret_cast<char*>(&data),sizeofT);
-			num--;
-			file.seekp(0);
-			file.write(reinterpret_cast<char*>(&num),sizeof(int));
-			file.close();
-			int pos2=(num2+1)*sizeof(int);
-
-			write2(index);
-			
-			if(IsRollback)file3_update(-1,index,data,1,pos2,0);
-		}
+    void Delete(int index,bool type=0) {//type=1时不回收空间,保证删除的是最后一个
+		if(!type)write2(index);
 		else {
 			num--;
-			file.open(file_name);
 			file.seekp(0);
 			file.write(reinterpret_cast<char*>(&num),sizeof(int));
-			file.close();
 		}
     }
 	
@@ -230,51 +159,6 @@ public:
 	int Maxpos(){
 		if(!num)return -1;
 		return info_len*sizeof(int)+(num-1)*sizeofT;
-	}
-
-	void rollback(){//回滚一次操作(write/delete/update)
-		if(!num3)return;
-		file3.open(file_name3);
-		int index=sizeof(int)+(num3-1)*sizeofT3;
-		// (type,pos,data,type2,pos2,data2)  (int,int,T,int,int,int) 
-		// type: delete -1;add 1;update 0
-		// cout<<"num3,index: "<<num3<<" "<<index<<endl;
-		int type,type2,pos,pos2,data2;
-		T data;
-		file3.seekg(index);
-		file3.read(reinterpret_cast<char*>(&type),sizeof(int));
-		file3.read(reinterpret_cast<char*>(&pos),sizeof(int));
-		file3.read(reinterpret_cast<char*>(&data),sizeofT);
-		file3.read(reinterpret_cast<char*>(&type2),sizeof(int));
-		file3.read(reinterpret_cast<char*>(&pos2),sizeof(int));
-		file3.read(reinterpret_cast<char*>(&data2),sizeof(int));
-
-		// cout<<"@@@ "<<type<<" "<<pos<<" "<<type2<<" "<<pos2<<endl;
-
-		file.open(file_name);
-		num+=(-type);
-		file.seekp(0);
-		file.write(reinterpret_cast<char*>(&num),sizeof(int));
-		if(pos!=-1){
-			file.seekp(pos);
-			file.write(reinterpret_cast<char*>(&data),sizeofT);
-		}
-		file.close();
-		
-		file2.open(file_name2);
-		num2+=(-type2);
-		file2.seekp(0);
-		file2.write(reinterpret_cast<char*>(&num2),sizeof(int));
-		if(pos2!=-1){
-			file2.seekp(pos2);
-			file2.write(reinterpret_cast<char*>(&data2),sizeof(int));
-		}
-		file2.close();
-		
-		num3--;
-		file3.seekp(0);
-		file3.write(reinterpret_cast<char*>(&num3),sizeof(int));
-		file3.close();
 	}
 };
 
