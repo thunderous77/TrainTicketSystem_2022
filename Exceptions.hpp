@@ -5,6 +5,7 @@
 #include<cstring>
 using namespace std;
 extern string OutputData;
+extern string d_order[30];
 // class Username_Is_Exist{public:void Output(){printf("用户名已存在\n");OutputData+="用户名已存在<br>";}};
 // class Username_Not_Exist{public:void Output(){printf("用户不存在\n");OutputData+="用户不存在<br>";}};
 // class User_Not_Login{public:void Output(){printf("当前用户未登录\n");OutputData+="当前用户未登录<br>";}};
@@ -21,20 +22,20 @@ extern string OutputData;
 // class Already_Refund{public:void Output(){printf("该订单已经退票过，无需重复退票\n");OutputData+="该订单已经退票过，无需重复退票<br>";}};
 // class Rollback_Timestamp_Error{public:void Output(){printf("回滚的时间戳不合法\n");OutputData+="回滚的时间戳不合法<br>";}};
 
-class Username_Is_Exist{public:void Output(){printf("-1\n");}};
-class Username_Not_Exist{public:void Output(){printf("-1\n");}};
-class User_Not_Login{public:void Output(){printf("-1\n");}};
-class Invalid_Privilege{public:void Output(){printf("-1\n");}};
-class Already_Login{public:void Output(){printf("-1\n");}};
-class Wrong_User_Or_Password{public:void Output(){printf("-1\n");}};
-class Train_Is_Exist{public:void Output(){printf("-1\n");}};
-class Train_Not_Exist{public:void Output(){printf("-1\n");}};
-class Train_Is_Release{public:void Output(){printf("-1\n");}};
-class Train_Not_Release{public:void Output(){printf("-1\n");}};
-class Not_In_SaleDate{public:void Output(){printf("-1\n");}};
-class Lack_Seat{public:void Output(){printf("-1\n");}};
-class Order_Kth_Invalid{public:void Output(){printf("-1\n");}};
-class Already_Refund{public:void Output(){printf("-1\n");}};
-class Rollback_Timestamp_Error{public:void Output(){printf("-1\n");}};
+class Username_Is_Exist{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Username_Not_Exist{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class User_Not_Login{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Invalid_Privilege{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Already_Login{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Wrong_User_Or_Password{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Train_Is_Exist{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Train_Not_Exist{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Train_Is_Release{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Train_Not_Release{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Not_In_SaleDate{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Lack_Seat{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Order_Kth_Invalid{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Already_Refund{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Rollback_Timestamp_Error{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
 
 #endif
