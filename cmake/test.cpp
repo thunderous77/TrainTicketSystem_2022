@@ -33,5 +33,8 @@ int main(){
 	system("./code<10.in>10.ans");
 	if(system("diff 10.out 10.ans -b")){printf("WA 10\n");return 0;}
 	printf("AC 10\n");
+	system("./code<11.in>11.ans");
+	if(system("diff 11.out 11.ans -b")){printf("WA 11\n");return 0;}
+	printf("AC 11\n");
 	return 0;
 }

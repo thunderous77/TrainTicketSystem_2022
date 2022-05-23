@@ -74,6 +74,7 @@ private:
 			file3.close();
 		}
 	}
+	//要是不要rollback主要注释掉这一块
 	void file3_update(int type,int pos,T data,int type2,int pos2,int data2){
 		file3.open(file_name3);
 		int index=sizeof(int)+num3*sizeofT3;
@@ -113,7 +114,7 @@ public:
 		if(IsRollback)initialise3(FN+"_inside_rollback",ReMake);
     }
     MemoryRiver(const string FN="",bool _IsRollback=0){
-		_IsRollback=0;//关闭rollback指令
+		// _IsRollback=0;//关闭rollback指令
 		IsRollback=_IsRollback;
 		if(FN!="")initialise(FN);
 	}
@@ -147,11 +148,11 @@ public:
 			read2_las(index);
 			
 			int pos2=num2*sizeof(int),data2;
+			file2.open(file_name2);
 			file2.seekp(pos2);
 			file2.read(reinterpret_cast<char*>(&data2),sizeof(int));
 
 			num2--;
-			file2.open(file_name2);
 			file2.seekp(0);
 			file2.write(reinterpret_cast<char*>(&num2),sizeof(int));
 			file2.close();
@@ -226,7 +227,6 @@ public:
 	void clean(){
 		initialise(file_name,1);
 	}
-
 	//找到最后一个数据的位置
 	int Maxpos(){
 		if(!num)return -1;
@@ -239,7 +239,7 @@ public:
 		int index=sizeof(int)+(num3-1)*sizeofT3;
 		// (type,pos,data,type2,pos2,data2)  (int,int,T,int,int,int) 
 		// type: delete -1;add 1;update 0
-		// cout<<"num3,index: "<<num3<<" "<<index<<endl;
+		// if(file_name=="TrainData")cout<<"num3,index: "<<num3<<" "<<index<<endl;
 		int type,type2,pos,pos2,data2;
 		T data;
 		file3.seekg(index);
@@ -250,7 +250,8 @@ public:
 		file3.read(reinterpret_cast<char*>(&pos2),sizeof(int));
 		file3.read(reinterpret_cast<char*>(&data2),sizeof(int));
 
-		// cout<<"@@@ "<<type<<" "<<pos<<" "<<type2<<" "<<pos2<<endl;
+		// if(file_name=="TrainData")cout<<"@@@ "<<type<<" "<<pos<<" "<<type2<<" "<<pos2<<endl;
+		// if(file_name=="TrainData")cout<<"num="<<num<<",num2="<<num2<<endl;
 
 		file.open(file_name);
 		num+=(-type);

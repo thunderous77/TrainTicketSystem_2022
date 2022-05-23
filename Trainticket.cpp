@@ -379,11 +379,12 @@ void Train_System::add_train(){
 	}
 	NewTrain.isRelease=0;
 	for(int i=1;i<=NewTrain.saleDateR-NewTrain.saleDateL+1;i++)for(int j=1;j<NewTrain.stationNum;j++)NewTrain.seatNum[i][j]=seatNum;
-	// Output(NewTrain);
 	//已经存在该动车 不合法
 	if(TrainIndex.Find(NewTrain.trainID))throw Train_Is_Exist();
+	// Output(NewTrain);
 	//添加train
 	int pos=TrainData.write(NewTrain);
+	// cout<<"@@@@@@@"<<pos<<endl;
 
 	int tmp_rollback2=string_to_int2(d_order[1]);
 	TrainData_rollback.write(tmp_rollback2);
@@ -441,7 +442,6 @@ void Train_System::query_train(){
 	//读取数据
 	Train train=GetTrainFromData(trainID);
 	// Output(train);
-	// cout<<"#####"<<train.saleDateL<<" "<<train.saleDateR<<" "<<day<<endl;
 	if(day<train.saleDateL||day>train.saleDateR)throw Not_In_SaleDate();
 	//输出动车信息
 	cout<<d_order[1]<<" ";
@@ -809,6 +809,7 @@ void Train_System::query_order(){
 	for(int i=0;i<Num;i++){
 		// cout<<AllOrder[i].timestamp<<" ";
 		Train train=GetTrainFromData(AllOrder[i].trainID);
+		// Output(train);
 		if(AllOrder[i].status==1)cout<<"[success] ";
 		if(AllOrder[i].status==0)cout<<"[pending] ";
 		if(AllOrder[i].status==-1)cout<<"[refunded] ";

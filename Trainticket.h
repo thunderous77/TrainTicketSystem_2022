@@ -6,9 +6,9 @@
 #include "User.h"
 using namespace std;
 class Train_System{
-	#define MaxStation 103
-	#define MaxDay 95
-	#define MaxName 35
+	#define MaxStation 104
+	#define MaxDay 96
+	#define MaxName 44
 public:
 	class Train{
 	public:
@@ -18,8 +18,8 @@ public:
 		int seatNum[MaxDay][MaxStation],prices[MaxStation];
 		int startTime,travelTimes[MaxStation],stopoverTimes[MaxStation];
 		int saleDateL,saleDateR;
-		char type;
 		bool isRelease=0;
+		char type;
 	};
 	class Order{
 	public:
