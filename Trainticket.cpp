@@ -400,6 +400,7 @@ void Train_System::add_train(){
 		for_rollback<int> tmp_rollback(string_to_int2(d_order[1]),1,NewTrain.stations[i],pos);
 		StationIndex_rollback.write(tmp_rollback);
 	}
+	cout<<d_order[1]<<" ";
 	printf("0\n");OutputData+="添加成功<br>";
 
 	// Train Newtrain2=GetTrainFromData(NewTrain.trainID);
@@ -424,6 +425,7 @@ void Train_System::release_train(){
 
 	//queueUpdate
 	queueUpdate(trainID);
+	cout<<d_order[1]<<" ";
 	printf("0\n");OutputData+="发布成功<br>";
 }
 void Train_System::query_train(){
@@ -442,6 +444,7 @@ void Train_System::query_train(){
 	// cout<<"#####"<<train.saleDateL<<" "<<train.saleDateR<<" "<<day<<endl;
 	if(day<train.saleDateL||day>train.saleDateR)throw Not_In_SaleDate();
 	//输出动车信息
+	cout<<d_order[1]<<" ";
 	cout<<train.trainID<<" "<<train.type<<endl;
 	OutputData+="查询成功<br>";
 	OutputData+="列车ID："+string(train.trainID)+"<br>";
@@ -508,6 +511,7 @@ void Train_System::delete_train(){
 		for_rollback<int> tmp_rollback(string_to_int2(d_order[1]),-1,train.stations[i],pos);
 		StationIndex_rollback.write(tmp_rollback);
 	}
+	cout<<d_order[1]<<" ";
 	printf("0\n");OutputData+="删除成功<br>";
 }
 void Train_System::query_ticket(){
@@ -543,6 +547,7 @@ void Train_System::query_ticket(){
 	if(sortType=="time")tmp1=OKtrain,tmp2=Time,SortTrainTime(OKtrain,Time,0,Num-1);
 	if(sortType=="cost")tmp1=OKtrain,tmp2=Cost,SortTrainCost(OKtrain,Cost,0,Num-1);
 	//输出动车信息
+	cout<<d_order[1]<<" ";
 	cout<<Num<<endl;
 	OutputData+="查询成功<br>";
 	OutputData+="合法列车数："+int_to_string(Num)+"<br>";
@@ -599,7 +604,7 @@ void Train_System::query_transfer(){
 	//寻找最优解
 	Train ans1,ans2;
 	string ansTransferStation="";
-	int ansTime,ansCost,ansTime1;
+	int ansTime,ansCost;
 	int ansFirday1,ansFirday2;
 	for(int i=0;i<(int)Alltrain1.size();i++){
 		if(!Alltrain1[i].isRelease)continue;
@@ -630,29 +635,27 @@ void Train_System::query_transfer(){
 					MaxSeatNum2=GetMaxSeatNum(Alltrain2[j],transferStation,endStation,firday2);
 				}
 				if(firday2>Alltrain2[j].saleDateR)continue;
+				string DateTimeBegin=GetLeavingTime(Alltrain1[i],startStation,firday1);
+				string DateTimeEnd=GetArrivingTime(Alltrain2[j],endStation,firday2);
+				int Time=DateTime_to_minute(DateTimeEnd)-DateTime_to_minute(DateTimeBegin);
+				int Cost1=GetCost(Alltrain1[i],startStation,transferStation);
+				int Cost2=GetCost(Alltrain2[j],transferStation,endStation);
+				int Cost=Cost1+Cost2;
+				// cout<<"!!!!"<<endl;
+				// cout<<Alltrain1[i].trainID<<" "<<transferStation<<" "<<Alltrain2[j].trainID<<" "<<Cost<<" "<<Time<<endl;
 				if(sortType=="time"){
-					int Time1=GetTime(Alltrain1[i],startStation,transferStation);
-					string DateTimeBegin=GetLeavingTime(Alltrain1[i],startStation,firday1);
-					string DateTimeEnd=GetArrivingTime(Alltrain2[j],endStation,firday2);
-					int Time=DateTime_to_minute(DateTimeEnd)-DateTime_to_minute(DateTimeBegin);
-					if(ansTransferStation==""||Time<ansTime||(Time==ansTime&&Time1<ansTime1)){
+					if(ansTransferStation==""||Time<ansTime||(Time==ansTime && (Cost<ansCost||(Cost==ansCost&& (Alltrain1[i].trainID<ans1.trainID || (Alltrain1[i].trainID==ans1.trainID&&Alltrain2[j].trainID<ans2.trainID) ) ) ) )){
 						ans1=Alltrain1[i],ans2=Alltrain2[j];
 						ansTransferStation=transferStation;
-						ansTime=Time,ansTime1=Time1;
+						ansTime=Time,ansCost=Cost;
 						ansFirday1=firday1,ansFirday2=firday2;
 					}
 				}
 				if(sortType=="cost"){
-					int Cost1=GetCost(Alltrain1[i],startStation,transferStation);
-					int Cost2=GetCost(Alltrain2[j],transferStation,endStation);
-					int Cost=Cost1+Cost2;
-					int Time1=GetTime(Alltrain1[i],startStation,transferStation);
-					// cout<<"!!!!"<<endl;
-					// cout<<Alltrain1[i].trainID<<" "<<transferStation<<" "<<Alltrain2[j].trainID<<" "<<Cost<<" "<<Time1<<" "<<Cost1<<endl;
-					if(ansTransferStation==""||Cost<ansCost||(Cost==ansCost&&Time1<ansTime1)){
+					if(ansTransferStation==""||Cost<ansCost||(Cost==ansCost && (Time<ansTime||(Time==ansTime&& (Alltrain1[i].trainID<ans1.trainID || (Alltrain1[i].trainID==ans1.trainID&&Alltrain2[j].trainID<ans2.trainID) ) ) ) )){
 						ans1=Alltrain1[i],ans2=Alltrain2[j];
 						ansTransferStation=transferStation;
-						ansCost=Cost,ansTime1=Time1;
+						ansTime=Time,ansCost=Cost;
 						ansFirday1=firday1,ansFirday2=firday2;
 					}
 				}
@@ -662,10 +665,11 @@ void Train_System::query_transfer(){
 	// cout<<"!!!!!"<<day_to_date(ansFirday1)<<endl;
 	// cout<<"!!!!!"<<day_to_date(ansFirday2)<<endl;
 	//未找到方案
-	if(ansTransferStation==""){printf("0\n");OutputData+="查询成功<br>未找到方案<br>";return;}
+	if(ansTransferStation==""){cout<<d_order[1]<<" ";printf("0\n");OutputData+="查询成功<br>未找到方案<br>";return;}
 
-	OutputData+="查询成功<br>";
 	//输出最优方案
+	OutputData+="查询成功<br>";
+	cout<<d_order[1]<<" ";
 	cout<<ans1.trainID<<" ";
 	cout<<startStation<<" ";
 	cout<<GetLeavingTime(ans1,startStation,ansFirday1)<<" ";
@@ -746,6 +750,7 @@ void Train_System::buy_ticket(){
 			for_rollback<int> tmp_rollback_(string_to_int2(d_order[1]),1,order.trainID,pos);
 			QueueIndex_rollback.write(tmp_rollback_);
 
+			cout<<d_order[1]<<" ";
 			printf("queue\n");
 			OutputData+="购票失败<br>";
 			OutputData+="已加入等待序列<br>";
@@ -772,6 +777,7 @@ void Train_System::buy_ticket(){
 		tmp_rollback2=string_to_int2(d_order[1]);
 		TrainData_rollback.write(tmp_rollback2);
 
+		cout<<d_order[1]<<" ";
 		printf("%lld\n",(long long)order.seatNum*GetCost(train,order.startStation,order.endStation));
 		OutputData+="购票成功<br>";
 		OutputData+="总价格："+longlong_to_string((long long)order.seatNum*GetCost(train,order.startStation,order.endStation))+"<br>";
@@ -796,6 +802,7 @@ void Train_System::query_order(){
 	}
 	tmp3=AllOrder,tmp4=G,SortOrderTime(AllOrder,G,0,Num-1,1);
 	//输出各个订单信息
+	cout<<d_order[1]<<" ";
 	cout<<Num<<endl;
 	OutputData+="查询成功<br>";
 	OutputData+="订单数："+int_to_string(Num)+"<br>";
@@ -878,6 +885,7 @@ void Train_System::refund_ticket(){
 	int tmp_rollback2=string_to_int2(d_order[1]);
 	OrderData_rollback.write(tmp_rollback2);
 
+	cout<<d_order[1]<<" ";
 	printf("0\n");
 	OutputData+="退票成功<br>";
 }
@@ -890,6 +898,10 @@ void Train_System::clean(){
 	QueueIndex.clean();
 	TrainData_rollback.clean();
 	OrderData_rollback.clean();
+	TrainIndex_rollback.clean();
+	StationIndex_rollback.clean();
+	OrderIndex_rollback.clean();
+	QueueIndex_rollback.clean();
 	OutputData+="车票系统数据清除成功<br>";
 }
 void Train_System::rollback(){

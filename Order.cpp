@@ -50,8 +50,8 @@ void Order_System::AnalysisOrder(string order){
 	if(d_order[2]=="buy_ticket")TrainSystem.buy_ticket();
 	if(d_order[2]=="query_order")TrainSystem.query_order();
 	if(d_order[2]=="refund_ticket")TrainSystem.refund_ticket();
-	if(d_order[2]=="rollback")UserSystem.rollback(),TrainSystem.rollback();
-	if(d_order[2]=="clean")UserSystem.clean(),TrainSystem.clean();
-	if(d_order[2]=="exit"){cout<<"bye"<<endl;exit(0);}
+	if(d_order[2]=="rollback"){UserSystem.rollback(),TrainSystem.rollback();cout<<d_order[1]<<" ";cout<<0<<endl;}
+	if(d_order[2]=="clean"){UserSystem.clean(),TrainSystem.clean();cout<<d_order[1]<<" ";cout<<0<<endl;}
+	if(d_order[2]=="exit"){cout<<d_order[1]<<" ";cout<<"bye"<<endl;exit(0);}
 }
 #endif

@@ -76,6 +76,7 @@ void User_System::add_user(){
 	for_rollback<int> tmp_rollback(string_to_int2(d_order[1]),1,NewUser.username,pos);
 	UserIndex_rollback.write(tmp_rollback);
 	
+	cout<<d_order[1]<<" ";
 	printf("0\n");OutputData+="添加成功<br>";return;
 }
 void User_System::login(){
@@ -90,6 +91,7 @@ void User_System::login(){
 	// cout<<GetUserFromData(username).password<<" "<<password<<endl;
 	if(GetUserFromData(username).password==password){
 		Is_login[username]=1;
+		cout<<d_order[1]<<" ";
 		printf("0\n");OutputData+="登录成功<br>";return;
 	}
 	else throw Wrong_User_Or_Password();
@@ -101,6 +103,7 @@ void User_System::logout(){
 	}
 	if(!Is_login[username])throw User_Not_Login();
 	Is_login[username]=0;
+	cout<<d_order[1]<<" ";
 	printf("0\n");OutputData+="登出成功<br>";
 }
 void User_System::query_profile(){
@@ -113,6 +116,7 @@ void User_System::query_profile(){
 	if(!UserIndex.Find(username))throw Username_Not_Exist();
 	User cur_user=GetUserFromData(cur_username),user=GetUserFromData(username);
 	if(cur_username!=username&&cur_user.privilege<=user.privilege)throw Invalid_Privilege();
+	cout<<d_order[1]<<" ";
 	cout<<user.username<<" "<<user.name<<" "<<user.mailAddr<<" "<<user.privilege<<endl;
 	OutputData+="查询成功<br>";
 	OutputData+="用户名："+string(user.username)+"<br>";
@@ -143,6 +147,7 @@ void User_System::modify_profile(){
 	int tmp_rollback2=string_to_int2(d_order[1]);
 	UserData_rollback.write(tmp_rollback2);
 
+	cout<<d_order[1]<<" ";
 	cout<<user.username<<" "<<user.name<<" "<<user.mailAddr<<" "<<user.privilege<<endl;
 	OutputData+="更改成功<br>";
 	OutputData+="用户名："+string(user.username)+"<br>";
