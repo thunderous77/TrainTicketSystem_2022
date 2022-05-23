@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/code.dir/main.cpp.o CMakeFiles/code.dir/Order.cpp.o CMakeFiles/code.dir/User.cpp.o CMakeFiles/code.dir/Trainticket.cpp.o  -o code 
