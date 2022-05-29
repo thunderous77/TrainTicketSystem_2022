@@ -160,6 +160,7 @@ void User_System::clean(){
 	UserIndex.clean();
 	UserIndex_rollback.clean();
 	UserData_rollback.clean();
+	Is_login.clear();
 	OutputData+="用户系统数据清空成功<br>";
 }
 void User_System::rollback(){

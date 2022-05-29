@@ -424,8 +424,6 @@ void Train_System::release_train(){
 	int tmp_rollback2=string_to_int2(d_order[1]);
 	TrainData_rollback.write(tmp_rollback2);
 
-	//queueUpdate
-	queueUpdate(trainID);
 	cout<<d_order[1]<<" ";
 	printf("0\n");OutputData+="发布成功<br>";
 }
