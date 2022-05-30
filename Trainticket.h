@@ -15,7 +15,7 @@ public:
 		char trainID[MaxName];
 		int stationNum;
 		char stations[MaxStation][MaxName];
-		int seatNum[MaxDay][MaxStation],prices[MaxStation];
+		int MaxseatNum,seatNum[MaxDay][MaxStation],prices[MaxStation];
 		int startTime,travelTimes[MaxStation],stopoverTimes[MaxStation];
 		int saleDateL,saleDateR;
 		bool isRelease=0;

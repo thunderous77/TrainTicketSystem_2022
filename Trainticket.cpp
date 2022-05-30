@@ -248,7 +248,7 @@ static int GetTransferStartDay(const Train_System::Train &train,const string &St
 		}
 		if(string(train.stations[i])==Station){
 			int startday=L_ArrivingDay-LeavingDay;
-			if(L_ArrivingMinute>=LeavingMinute)startday++;
+			if(L_ArrivingMinute>LeavingMinute)startday++;
 			if(startday>train.saleDateR)return -1;
 			if(startday<train.saleDateL)return train.saleDateL;
 			return startday;
@@ -378,6 +378,7 @@ void Train_System::add_train(){
 		if(d_order[i]=="-y")NewTrain.type=d_order[i+1][0];
 	}
 	NewTrain.isRelease=0;
+	NewTrain.MaxseatNum=seatNum;
 	for(int i=1;i<=NewTrain.saleDateR-NewTrain.saleDateL+1;i++)for(int j=1;j<NewTrain.stationNum;j++)NewTrain.seatNum[i][j]=seatNum;
 	//已经存在该动车 不合法
 	if(TrainIndex.Find(NewTrain.trainID))throw Train_Is_Exist();
@@ -734,6 +735,8 @@ void Train_System::buy_ticket(){
 		if(AllowQueue=="false")throw Lack_Seat();
 		//加入queue序列
 		else {
+			//购买票数大于总票数,购买失败
+			if(train.MaxseatNum<order.seatNum)throw Lack_Seat();
 			order.status=0;//queue
 			int pos=OrderData.write(order);
 

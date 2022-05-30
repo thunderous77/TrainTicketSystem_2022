@@ -8,3 +8,9 @@
 [8367] release_train -i LeavesofGrass
 [19295] delete_train -i LeavesofGrass
 [21343] rollback -t 18951
+
+505305
+750566
+801319
+
+[750566] buy_ticket -f 北京市 -u xPEryrOxae -d 06-29 -t 辽宁省沈阳市 -n 21746 -i AndIwillmakeaso -q true
