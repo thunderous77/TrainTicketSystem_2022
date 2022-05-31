@@ -207,12 +207,11 @@ public:
 				Blocks_info.read(Now,id);
 			}
 			Block_data Now2;
-			bool Is_Find=0;
 			while(id!=-1){
 				Blocks_info.read(Now,id);
 				Blocks_data.read(Now2,Now.data_id);
 				int size=Now.size;
-				for(int i=0;i<size;i++)if(Now2.data[i].Key==key){ans.push_back(Now2.data[i].val);Is_Find=1;}
+				for(int i=0;i<size;i++)if(Now2.data[i].Key==key){ans.push_back(Now2.data[i].val);}
 				if(Now2.data[Now.size-1].Key!=key)break;
 				id=Now.next_id;
 			}
@@ -233,7 +232,6 @@ public:
 				Blocks_info.read(Now,id);
 			}
 			Block_data Now2;
-			bool Is_Find=0;
 			while(id!=-1){
 				Blocks_info.read(Now,id);
 				Blocks_data.read(Now2,Now.data_id);

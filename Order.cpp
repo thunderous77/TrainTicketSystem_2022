@@ -33,7 +33,7 @@ void Order_System::AnalysisOrder(string order){
 	// cout<<endl;
 	/*得到时间轴*/
 	int Time=0;
-	for(int i=1;i<=d_order[1].size()-2;i++)Time=Time*10+d_order[1][i]-'0';
+	for(int i=1;i<=(int)d_order[1].size()-2;i++)Time=Time*10+d_order[1][i]-'0';
 	// cout<<"Time="<<Time<<" ";
 	/*判断为哪种指令*/
 	if(d_order[2]=="add_user")UserSystem.add_user();

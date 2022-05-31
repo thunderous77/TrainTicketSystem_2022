@@ -1,1 +1,1 @@
-/usr/bin/c++    -rdynamic CMakeFiles/code.dir/main.cpp.o CMakeFiles/code.dir/Order.cpp.o CMakeFiles/code.dir/User.cpp.o CMakeFiles/code.dir/Trainticket.cpp.o  -o code 
+/usr/bin/c++  -ftrapv -fsanitize=address -fsanitize=undefined  -rdynamic CMakeFiles/code.dir/main.cpp.o CMakeFiles/code.dir/Order.cpp.o CMakeFiles/code.dir/User.cpp.o CMakeFiles/code.dir/Trainticket.cpp.o  -o code 

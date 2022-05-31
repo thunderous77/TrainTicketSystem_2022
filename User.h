@@ -8,7 +8,7 @@ using namespace std;
 template<class T>class for_rollback{
 public:
 	int timestamp,type;// type=1,insert(key,data);type=-1,Delete(key,data)
-	char key[30];
+	char key[46];
 	T val;
 	for_rollback(){}
 	for_rollback(int _timestamp,int _type,string _key,T _val){
@@ -34,8 +34,8 @@ private:
 public:
 	MemoryRiver<User> UserData;
 	Key_value_database<int> UserIndex;
-	MemoryRiver< for_rollback<int> > UserIndex_rollback;
-	MemoryRiver<int> UserData_rollback;
+	// MemoryRiver< for_rollback<int> > UserIndex_rollback;
+	// MemoryRiver<int> UserData_rollback;
 	User_System();
 	void add_user();
 	void login();

@@ -42,7 +42,9 @@ User_System::User User_System::GetUserFromData(const string &username){
 	UserData.read(tmp_user,G[0]);
 	return tmp_user;
 }
-User_System::User_System():UserData("UserData",true),UserIndex("UserIndex"),UserData_rollback("UserData_rollback"),UserIndex_rollback("UserIndex_rollback"){}
+User_System::User_System():UserData("UserData",true),UserIndex("UserIndex")
+							// ,UserIndex_rollback("UserIndex_rollback"),UserData_rollback("UserData_rollback")
+							{}
 void User_System::add_user(){
 	//将输入转成User类型
 	User NewUser;
@@ -56,7 +58,6 @@ void User_System::add_user(){
 		if(d_order[i]=="-g")NewUser.privilege=string_to_int(d_order[i+1]);
 	}
 	if(UserIndex.Find(NewUser.username))throw Username_Is_Exist();
-	bool Empty=UserIndex.empty();
 	int Usernum;
 	UserData.read_info(Usernum,1);
 	// cout<<Usernum<<endl;
@@ -67,14 +68,14 @@ void User_System::add_user(){
 	// Output(NewUser);
 	// cout<<"!!!"<<NewUser.username<<" "<<pos<<endl;
 
-	int tmp_rollback2=string_to_int2(d_order[1]);
-	UserData_rollback.write(tmp_rollback2);
+	// int tmp_rollback2=string_to_int2(d_order[1]);
+	// UserData_rollback.write(tmp_rollback2);
 
 	
 	UserIndex.insert(NewUser.username,pos);
 	
-	for_rollback<int> tmp_rollback(string_to_int2(d_order[1]),1,NewUser.username,pos);
-	UserIndex_rollback.write(tmp_rollback);
+	// for_rollback<int> tmp_rollback(string_to_int2(d_order[1]),1,NewUser.username,pos);
+	// UserIndex_rollback.write(tmp_rollback);
 	
 	cout<<d_order[1]<<" ";
 	printf("0\n");OutputData+="添加成功<br>";return;
@@ -126,6 +127,7 @@ void User_System::query_profile(){
 }
 void User_System::modify_profile(){
 	string cur_username,username;
+	int privilege=-1;
 	for(int i=3;i<=dcnt;i+=2){
 		if(d_order[i]=="-c")cur_username=d_order[i+1];
 		if(d_order[i]=="-u")username=d_order[i+1];
@@ -138,14 +140,14 @@ void User_System::modify_profile(){
 		if(d_order[i]=="-p")strcpy(user.password,d_order[i+1].c_str());
 		if(d_order[i]=="-n")strcpy(user.name,d_order[i+1].c_str());
 		if(d_order[i]=="-m")strcpy(user.mailAddr,d_order[i+1].c_str());
-		if(d_order[i]=="-g")user.privilege=string_to_int(d_order[i+1]);
+		if(d_order[i]=="-g")privilege=string_to_int(d_order[i+1]);
 	}
-	if(cur_username!=username&&user.privilege>=cur_user.privilege)throw Invalid_Privilege();
-	if(cur_username==username&&user.privilege>cur_user.privilege)throw Invalid_Privilege();
+	if(privilege!=-1&&privilege>=cur_user.privilege)throw Invalid_Privilege();
+	if(privilege!=-1)user.privilege=privilege;
 	int pos=UserIndex.FindAll(username)[0];
 	UserData.update(user,pos);
-	int tmp_rollback2=string_to_int2(d_order[1]);
-	UserData_rollback.write(tmp_rollback2);
+	// int tmp_rollback2=string_to_int2(d_order[1]);
+	// UserData_rollback.write(tmp_rollback2);
 
 	cout<<d_order[1]<<" ";
 	cout<<user.username<<" "<<user.name<<" "<<user.mailAddr<<" "<<user.privilege<<endl;
@@ -158,43 +160,43 @@ void User_System::modify_profile(){
 void User_System::clean(){
 	UserData.clean();
 	UserIndex.clean();
-	UserIndex_rollback.clean();
-	UserData_rollback.clean();
+	// UserIndex_rollback.clean();
+	// UserData_rollback.clean();
 	Is_login.clear();
 	OutputData+="用户系统数据清空成功<br>";
 }
 void User_System::rollback(){
-	int Backtimestmp=string_to_int(d_order[4]);
-	int timestamp=string_to_int2(d_order[1]);
-	if(Backtimestmp>timestamp)throw Rollback_Timestamp_Error();
-	// cout<<"!!!!!"<<Backtimestmp<<endl;
-	for_rollback<int> tmp;
-	int tmp2;
+	// int Backtimestmp=string_to_int(d_order[4]);
+	// int timestamp=string_to_int2(d_order[1]);
+	// if(Backtimestmp>timestamp)throw Rollback_Timestamp_Error();
+	// // cout<<"!!!!!"<<Backtimestmp<<endl;
+	// for_rollback<int> tmp;
+	// int tmp2;
 
-	//回滚UserIndex
-	int pos=UserIndex_rollback.Maxpos();
-	while(pos!=-1){
-		UserIndex_rollback.read(tmp,pos);
-		if(tmp.timestamp<Backtimestmp)break;
-		// cout<<(tmp.type==1?"insert":"Delete")<<" "<<tmp.key<<" "<<tmp.val<<endl;
-		if(tmp.type==1)UserIndex.Delete(tmp.key,tmp.val);//在原来该时间戳insert(key,val)
-		if(tmp.type==-1)UserIndex.insert(tmp.key,tmp.val);//在原来该时间戳Delete(key,val)
-		UserIndex_rollback.Delete(pos,1);
-		pos=UserIndex_rollback.Maxpos();
-	}
+	// //回滚UserIndex
+	// int pos=UserIndex_rollback.Maxpos();
+	// while(pos!=-1){
+	// 	UserIndex_rollback.read(tmp,pos);
+	// 	if(tmp.timestamp<Backtimestmp)break;
+	// 	// cout<<(tmp.type==1?"insert":"Delete")<<" "<<tmp.key<<" "<<tmp.val<<endl;
+	// 	if(tmp.type==1)UserIndex.Delete(tmp.key,tmp.val);//在原来该时间戳insert(key,val)
+	// 	if(tmp.type==-1)UserIndex.insert(tmp.key,tmp.val);//在原来该时间戳Delete(key,val)
+	// 	UserIndex_rollback.Delete(pos,1);
+	// 	pos=UserIndex_rollback.Maxpos();
+	// }
 
-	//回滚UserData
-	pos=UserData_rollback.Maxpos();
-	while(pos!=-1){
-		UserData_rollback.read(tmp2,pos);
-		if(tmp2<Backtimestmp)break;
-		// cout<<"@@@ UserData "<<tmp2<<endl;
-		UserData.rollback();
-		UserData_rollback.Delete(pos,1);
-		pos=UserData_rollback.Maxpos();
-	}
+	// //回滚UserData
+	// pos=UserData_rollback.Maxpos();
+	// while(pos!=-1){
+	// 	UserData_rollback.read(tmp2,pos);
+	// 	if(tmp2<Backtimestmp)break;
+	// 	// cout<<"@@@ UserData "<<tmp2<<endl;
+	// 	UserData.rollback();
+	// 	UserData_rollback.Delete(pos,1);
+	// 	pos=UserData_rollback.Maxpos();
+	// }
 
 
-	Is_login.clear();
+	// Is_login.clear();
 }
 #endif

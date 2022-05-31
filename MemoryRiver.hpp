@@ -116,7 +116,7 @@ public:
 		if(IsRollback)initialise3(FN+"_inside_rollback",ReMake);
     }
     MemoryRiver(string _FN="",bool _IsRollback=0){
-		// _IsRollback=0;//关闭rollback指令
+		_IsRollback=0;//关闭rollback指令
 		IsRollback=_IsRollback;
 		string FN="./Data/"+_FN;
 		if(_FN!="")initialise(FN);
