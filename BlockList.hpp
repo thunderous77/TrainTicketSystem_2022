@@ -185,7 +185,8 @@ public:
 			if(pos<Now.size&&Now2.data[pos]!=value)return 0;
 			for(int i=pos;i<=size-2;i++)Now2.data[i]=Now2.data[i+1];
 			Now.size--;
-			Now.Fir=Now2.data[0],Now.Las=Now2.data[Now.size-1];
+			if(!Now.size)Now.Fir=node(),Now.Las=node();
+			else Now.Fir=Now2.data[0],Now.Las=Now2.data[Now.size-1];
 			Blocks_info.update(Now,Now.info_id);
 			Blocks_data.update(Now2,Now.data_id);
 			CheckMerge(Now,Now2);

@@ -26,7 +26,7 @@ fstream
 unistd.h
 -
 
-/mnt/e/TrainTicketSystem_2022/User.cpp
+/mnt/e/TrainTicketSystem_2022/Trainticket.cpp
 iostream
 -
 cstring
@@ -39,6 +39,20 @@ fstream
 -
 Exceptions.hpp
 /mnt/e/TrainTicketSystem_2022/Exceptions.hpp
+User.h
+/mnt/e/TrainTicketSystem_2022/User.h
+Trainticket.h
+/mnt/e/TrainTicketSystem_2022/Trainticket.h
+vector
+-
+algorithm
+-
+
+/mnt/e/TrainTicketSystem_2022/Trainticket.h
+MemoryRiver.hpp
+/mnt/e/TrainTicketSystem_2022/MemoryRiver.hpp
+BlockList.hpp
+/mnt/e/TrainTicketSystem_2022/BlockList.hpp
 User.h
 /mnt/e/TrainTicketSystem_2022/User.h
 

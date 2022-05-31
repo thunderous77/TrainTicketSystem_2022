@@ -504,6 +504,7 @@ void Train_System::delete_train(){
 
 	//在TrainIndex中删除
 	TrainIndex.Delete(trainID,pos);
+
 	// for_rollback<int> tmp_rollback(string_to_int2(d_order[1]),-1,trainID,pos);
 	// TrainIndex_rollback.write(tmp_rollback);
 	//在StationIndex中删除
