@@ -5,32 +5,33 @@
 #include<vector>//最后用手写的vector换掉
 using namespace std;
 template<class T>class Key_value_database{//块状链表实现
+	#define MaxKeyLen 32
 private:
 	struct node{
-		char Key[32];
+		char Key[MaxKeyLen];
 		T val;
-		node(){fill(Key,Key+65,'\0');}
+		node(){fill(Key,Key+MaxKeyLen,'\0');}
 		node(string _Key,T _val){
-			fill(Key,Key+65,'\0');
+			fill(Key,Key+MaxKeyLen,'\0');
 			for(int i=0;i<(int)_Key.size();i++)Key[i]=_Key[i];
 			val=_val;
 		}
 		node& operator =(const node &other){
 			if(this==&other)return *this;
-			for(int i=0;i<65;i++)Key[i]=other.Key[i];
+			for(int i=0;i<MaxKeyLen;i++)Key[i]=other.Key[i];
 			val=other.val;
 			return *this;
 		}
 		bool operator <(const node &other)const{
-			for(int i=0;i<64;i++)if(Key[i]!=other.Key[i])return Key[i]<other.Key[i];
+			for(int i=0;i<MaxKeyLen;i++)if(Key[i]!=other.Key[i])return Key[i]<other.Key[i];
 			return val<other.val;
 		}
 		bool operator >(const node &other)const{
-			for(int i=0;i<64;i++)if(Key[i]!=other.Key[i])return Key[i]>other.Key[i];
+			for(int i=0;i<MaxKeyLen;i++)if(Key[i]!=other.Key[i])return Key[i]>other.Key[i];
 			return val>other.val;
 		}
 		bool operator ==(const node &other)const{
-			for(int i=0;i<64;i++)if(Key[i]!=other.Key[i])return 0;
+			for(int i=0;i<MaxKeyLen;i++)if(Key[i]!=other.Key[i])return 0;
 			if(val!=other.val)return 0;
 			return 1;
 		}
