@@ -9,7 +9,7 @@ class Train_System{
 	#define MaxStation 102
 	#define MaxDay 96
 	#define MaxTrainName 22
-	#define MaxStationName 32
+	#define MaxStationName 46
 public:
 	class Train{
 	public:
