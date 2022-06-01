@@ -78,7 +78,7 @@ private:
 	//要是不要rollback主要注释掉这一块
 	void file3_update(int type,int pos,T data,int type2,int pos2,int data2){
 		file3.open(file_name3);
-		int index=sizeof(int)+num3*sizeofT3;
+		long long index=sizeof(int)+(long long)num3*sizeofT3;
 		// cout<<"index: "<<index<<endl;
 		// cout<<"file3_update "<<type<<" "<<pos<<" "<<type2<<" "<<pos2<<" "<<data2<<endl;
 		file3.seekp(index);
@@ -239,7 +239,7 @@ public:
 	void rollback(){//回滚一次操作(write/delete/update)
 		if(!num3)return;
 		file3.open(file_name3);
-		int index=sizeof(int)+(num3-1)*sizeofT3;
+		long long index=sizeof(int)+(long long)(num3-1)*sizeofT3;
 		// (type,pos,data,type2,pos2,data2)  (int,int,T,int,int,int) 
 		// type: delete -1;add 1;update 0
 		// if(file_name=="TrainData")cout<<"num3,index: "<<num3<<" "<<index<<endl;
