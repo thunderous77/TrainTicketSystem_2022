@@ -36,8 +36,8 @@ public:
 	MemoryRiver<Train> TrainData;
 	MemoryRiver<Order> OrderData;
 	Key_value_database<int> TrainIndex,StationIndex,OrderIndex,QueueIndex;
-	// MemoryRiver< for_rollback<int> > TrainIndex_rollback,StationIndex_rollback,OrderIndex_rollback,QueueIndex_rollback;
-	// MemoryRiver<int> TrainData_rollback,OrderData_rollback;
+	MemoryRiver< for_rollback<int> > TrainIndex_rollback,StationIndex_rollback,OrderIndex_rollback,QueueIndex_rollback;
+	MemoryRiver<int> TrainData_rollback,OrderData_rollback;
 	Train_System();
 	void add_train();
 	void release_train();

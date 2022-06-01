@@ -34,8 +34,8 @@ private:
 public:
 	MemoryRiver<User> UserData;
 	Key_value_database<int> UserIndex;
-	// MemoryRiver< for_rollback<int> > UserIndex_rollback;
-	// MemoryRiver<int> UserData_rollback;
+	MemoryRiver< for_rollback<int> > UserIndex_rollback;
+	MemoryRiver<int> UserData_rollback;
 	User_System();
 	void add_user();
 	void login();

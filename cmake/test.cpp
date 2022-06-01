@@ -33,8 +33,35 @@ int main(){
 	system("./code<10.in>10.ans");
 	if(system("diff 10.out 10.ans -b")){printf("WA 10\n");return 0;}
 	printf("AC 10\n");
-	// system("./code<11.in>11.ans");
-	// if(system("diff 11.out 11.ans -b")){printf("WA 11\n");return 0;}
-	// printf("AC 11\n");
+	system("./code<11.in>11.ans");
+	if(system("diff 11.out 11.ans -b")){printf("WA 11\n");return 0;}
+	printf("AC 11\n");
+	system("./code<12.in>12.ans");
+	if(system("diff 12.out 12.ans -b")){printf("WA 12\n");return 0;}
+	printf("AC 12\n");
+	system("./code<13.in>13.ans");
+	if(system("diff 13.out 13.ans -b")){printf("WA 13\n");return 0;}
+	printf("AC 13\n");
+	system("./code<14.in>14.ans");
+	if(system("diff 14.out 14.ans -b")){printf("WA 14\n");return 0;}
+	printf("AC 14\n");
+	system("./code<15.in>15.ans");
+	if(system("diff 15.out 15.ans -b")){printf("WA 15\n");return 0;}
+	printf("AC 15\n");
+	system("./code<16.in>16.ans");
+	if(system("diff 16.out 16.ans -b")){printf("WA 16\n");return 0;}
+	printf("AC 16\n");
+	system("./code<17.in>17.ans");
+	if(system("diff 17.out 17.ans -b")){printf("WA 17\n");return 0;}
+	printf("AC 17\n");
+	system("./code<18.in>18.ans");
+	if(system("diff 18.out 18.ans -b")){printf("WA 18\n");return 0;}
+	printf("AC 18\n");
+	system("./code<19.in>19.ans");
+	if(system("diff 19.out 19.ans -b")){printf("WA 19\n");return 0;}
+	printf("AC 19\n");
+	system("./code<20.in>20.ans");
+	if(system("diff 20.out 20.ans -b")){printf("WA 20\n");return 0;}
+	printf("AC 20\n");
 	return 0;
 }
