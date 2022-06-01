@@ -256,50 +256,50 @@ static int GetTransferStartDay(const Train_System::Train &train,const string &St
 	}
 	return -1;
 }
-static vector<Train_System::Train> tmp1;
-static vector<int> tmp2;
-static void SortTrainTime(vector<Train_System::Train> &Alltrain,vector<int> &Time,int l,int r){
+static vector<string> tmp1;
+static vector<int> tmp2,tmp3;
+static void SortTrainTime(vector<string> &AlltrainID,vector<int> &Time,vector<int> &G,int l,int r){
 	if(l>=r)return;
 	int mid=(l+r)>>1;
-	SortTrainTime(Alltrain,Time,l,mid),SortTrainTime(Alltrain,Time,mid+1,r);
+	SortTrainTime(AlltrainID,Time,G,l,mid),SortTrainTime(AlltrainID,Time,G,mid+1,r);
 	int g1=l,g2=mid+1,g=l;
 	while(g1<=mid&&g2<=r){
-		if(Time[g1]<Time[g2]||(Time[g1]==Time[g2]&&string(Alltrain[g1].trainID)<string(Alltrain[g2].trainID)))tmp1[g]=Alltrain[g1],tmp2[g]=Time[g1],g++,g1++;
-		else tmp1[g]=Alltrain[g2],tmp2[g]=Time[g2],g++,g2++;
+		if(Time[g1]<Time[g2]||(Time[g1]==Time[g2]&&AlltrainID[g1]<AlltrainID[g2]))tmp1[g]=AlltrainID[g1],tmp2[g]=Time[g1],tmp3[g]=G[g1],g++,g1++;
+		else tmp1[g]=AlltrainID[g2],tmp2[g]=Time[g2],tmp3[g]=G[g2],g++,g2++;
 	}
-	while(g1<=mid)tmp1[g]=Alltrain[g1],tmp2[g]=Time[g1],g++,g1++;
-	while(g2<=r)tmp1[g]=Alltrain[g2],tmp2[g]=Time[g2],g++,g2++;
-	for(int i=l;i<=r;i++)Alltrain[i]=tmp1[i],Time[i]=tmp2[i];
+	while(g1<=mid)tmp1[g]=AlltrainID[g1],tmp2[g]=Time[g1],tmp3[g]=G[g1],g++,g1++;
+	while(g2<=r)tmp1[g]=AlltrainID[g2],tmp2[g]=Time[g2],tmp3[g]=G[g2],g++,g2++;
+	for(int i=l;i<=r;i++)AlltrainID[i]=tmp1[i],Time[i]=tmp2[i],G[i]=tmp3[i];
 	return;
 }
-static void SortTrainCost(vector<Train_System::Train> &Alltrain,vector<int> &Cost,int l,int r){
+static void SortTrainCost(vector<string> &AlltrainID,vector<int> &Cost,vector<int> &G,int l,int r){
 	if(l>=r)return;
 	int mid=(l+r)>>1;
-	SortTrainCost(Alltrain,Cost,l,mid),SortTrainCost(Alltrain,Cost,mid+1,r);
+	SortTrainCost(AlltrainID,Cost,G,l,mid),SortTrainCost(AlltrainID,Cost,G,mid+1,r);
 	int g1=l,g2=mid+1,g=l;
 	while(g1<=mid&&g2<=r){
-		if(Cost[g1]<Cost[g2]||(Cost[g1]==Cost[g2]&&string(Alltrain[g1].trainID)<string(Alltrain[g2].trainID)))tmp1[g]=Alltrain[g1],tmp2[g]=Cost[g1],g++,g1++;
-		else tmp1[g]=Alltrain[g2],tmp2[g]=Cost[g2],g++,g2++;
+		if(Cost[g1]<Cost[g2]||(Cost[g1]==Cost[g2]&&AlltrainID[g1]<AlltrainID[g2]))tmp1[g]=AlltrainID[g1],tmp2[g]=Cost[g1],tmp3[g]=G[g1],g++,g1++;
+		else tmp1[g]=AlltrainID[g2],tmp2[g]=Cost[g2],tmp3[g]=G[g2],g++,g2++;
 	}
-	while(g1<=mid)tmp1[g]=Alltrain[g1],tmp2[g]=Cost[g1],g++,g1++;
-	while(g2<=r)tmp1[g]=Alltrain[g2],tmp2[g]=Cost[g2],g++,g2++;
-	for(int i=l;i<=r;i++)Alltrain[i]=tmp1[i],Cost[i]=tmp2[i];
+	while(g1<=mid)tmp1[g]=AlltrainID[g1],tmp2[g]=Cost[g1],tmp3[g]=G[g1],g++,g1++;
+	while(g2<=r)tmp1[g]=AlltrainID[g2],tmp2[g]=Cost[g2],tmp3[g]=G[g2],g++,g2++;
+	for(int i=l;i<=r;i++)AlltrainID[i]=tmp1[i],Cost[i]=tmp2[i],G[i]=tmp3[i];
 	return;
 }
-static vector<Train_System::Order> tmp3;
-static vector<int> tmp4;
+static vector<Train_System::Order> tmp4;
+static vector<int> tmp5;
 static void SortOrderTime(vector<Train_System::Order> &AllOrder,vector<int> &Pos,int l,int r,int tp){//tp=0 timestamp从小到大 tp=1 timestamp从大到小
 	if(l>=r)return;
 	int mid=(l+r)>>1;
 	SortOrderTime(AllOrder,Pos,l,mid,tp),SortOrderTime(AllOrder,Pos,mid+1,r,tp);
 	int g1=l,g2=mid+1,g=l;
 	while(g1<=mid&&g2<=r){
-		if((tp==0&&AllOrder[g1].timestamp<AllOrder[g2].timestamp)||(tp==1&&AllOrder[g1].timestamp>AllOrder[g2].timestamp))tmp3[g]=AllOrder[g1],tmp4[g]=Pos[g1],g++,g1++;
-		else tmp3[g]=AllOrder[g2],tmp4[g]=Pos[g2],g++,g2++;
+		if((tp==0&&AllOrder[g1].timestamp<AllOrder[g2].timestamp)||(tp==1&&AllOrder[g1].timestamp>AllOrder[g2].timestamp))tmp4[g]=AllOrder[g1],tmp5[g]=Pos[g1],g++,g1++;
+		else tmp4[g]=AllOrder[g2],tmp5[g]=Pos[g2],g++,g2++;
 	}
-	while(g1<=mid)tmp3[g]=AllOrder[g1],tmp4[g]=Pos[g1],g++,g1++;
-	while(g2<=r)tmp3[g]=AllOrder[g2],tmp4[g]=Pos[g2],g++,g2++;
-	for(int i=l;i<=r;i++)AllOrder[i]=tmp3[i],Pos[i]=tmp4[i];
+	while(g1<=mid)tmp4[g]=AllOrder[g1],tmp5[g]=Pos[g1],g++,g1++;
+	while(g2<=r)tmp4[g]=AllOrder[g2],tmp5[g]=Pos[g2],g++,g2++;
+	for(int i=l;i<=r;i++)AllOrder[i]=tmp4[i],Pos[i]=tmp5[i];
 	return;
 }
 void Train_System::queueUpdate(const string &trainID){
@@ -312,7 +312,7 @@ void Train_System::queueUpdate(const string &trainID){
 		OrderData.read(tmpOrder,G[i]);
 		AllOrder.push_back(tmpOrder);
 	}
-	tmp3=AllOrder,tmp4=G,SortOrderTime(AllOrder,G,0,Num-1,0);
+	tmp4=AllOrder,tmp5=G,SortOrderTime(AllOrder,G,0,Num-1,0);
 	for(int i=0;i<Num;i++){
 		Train train=GetTrainFromData(AllOrder[i].trainID);
 		// cout<<"!!!!!!!"<<AllOrder[i].timestamp<<" "<<AllOrder[i].seatNum<<" "<<GetMaxSeatNum(train,AllOrder[i].startStation,AllOrder[i].endStation,AllOrder[i].firday)<<endl;
@@ -526,54 +526,48 @@ void Train_System::query_ticket(){
 		if(d_order[i]=="-d")startday=date_to_day(d_order[i+1]);
 		if(d_order[i]=="-p")sortType=d_order[i+1];
 	}
-	//读取数据
+	//读取并选出选出合法数据，并按照要求排序
 	vector<int> G=StationIndex.FindAll(startStation);
-	vector<Train> Alltrain;
 	Train tmptrain;
+	vector<int> Time,Cost;
+	vector<string> AlltrainID;
+	int Num=0;
 	for(int i=0;i<(int)G.size();i++){
 		TrainData.read(tmptrain,G[i]);
-		Alltrain.push_back(tmptrain);
+		if(!Is_exist(tmptrain,startStation,endStation,startday))continue;
+		if(!tmptrain.isRelease)continue;
+		AlltrainID.push_back(string(tmptrain.trainID));
+		Time.push_back(GetTime(tmptrain,startStation,endStation));
+		Cost.push_back(GetCost(tmptrain,startStation,endStation));
+		G[Num++]=G[i];
 	}
-	//选出合法数据并按照要求排序
-	vector<Train> OKtrain;
-	vector<int> Time,Cost;
-	for(int i=0;i<(int)Alltrain.size();i++){
-		// cout<<Alltrain[i].trainID<<endl;
-		if(!Is_exist(Alltrain[i],startStation,endStation,startday))continue;
-		if(!Alltrain[i].isRelease)continue;
-		OKtrain.push_back(Alltrain[i]);
-		Time.push_back(GetTime(Alltrain[i],startStation,endStation));
-		Cost.push_back(GetCost(Alltrain[i],startStation,endStation));
-	}
-	int Num=(int)OKtrain.size();
-	if(sortType=="time")tmp1=OKtrain,tmp2=Time,SortTrainTime(OKtrain,Time,0,Num-1);
-	if(sortType=="cost")tmp1=OKtrain,tmp2=Cost,SortTrainCost(OKtrain,Cost,0,Num-1);
+	if(sortType=="time")tmp1=AlltrainID,tmp2=Time,tmp3=G,SortTrainTime(AlltrainID,Time,G,0,Num-1);
+	if(sortType=="cost")tmp1=AlltrainID,tmp2=Cost,tmp3=G,SortTrainCost(AlltrainID,Cost,G,0,Num-1);
 	//输出动车信息
 	cout<<d_order[1]<<" ";
 	cout<<Num<<endl;
 	OutputData+="查询成功<br>";
 	OutputData+="合法列车数："+int_to_string(Num)+"<br>";
 	for(int i=0;i<Num;i++){
-		// if(sortType=="time")cout<<"time="<<GetTime(OKtrain[i],startStation,endStation)<<" ";
-		// if(sortType=="cost")cout<<"cost="<<GetCost(OKtrain[i],startStation,endStation)<<" ";
-		int firday=GetTrainStartDay(OKtrain[i],startStation,startday);
-		cout<<OKtrain[i].trainID<<" ";
+		TrainData.read(tmptrain,G[i]);
+		int firday=GetTrainStartDay(tmptrain,startStation,startday);
+		cout<<tmptrain.trainID<<" ";
 		cout<<startStation<<" ";
-		cout<<GetLeavingTime(OKtrain[i],startStation,firday)<<" ";
+		cout<<GetLeavingTime(tmptrain,startStation,firday)<<" ";
 		cout<<"-> ";
 		cout<<endStation<<" ";
-		cout<<GetArrivingTime(OKtrain[i],endStation,firday)<<" ";
-		cout<<GetCost(OKtrain[i],startStation,endStation)<<" ";
-		cout<<GetMaxSeatNum(OKtrain[i],startStation,endStation,firday)<<endl;
+		cout<<GetArrivingTime(tmptrain,endStation,firday)<<" ";
+		cout<<GetCost(tmptrain,startStation,endStation)<<" ";
+		cout<<GetMaxSeatNum(tmptrain,startStation,endStation,firday)<<endl;
 		
-		OutputData+=string(OKtrain[i].trainID)+" ";
+		OutputData+=string(tmptrain.trainID)+" ";
 		OutputData+=string(startStation)+" ";
-		OutputData+=string(GetLeavingTime(OKtrain[i],startStation,firday))+" ";
+		OutputData+=string(GetLeavingTime(tmptrain,startStation,firday))+" ";
 		OutputData+="-> ";
 		OutputData+=string(endStation)+" ";
-		OutputData+=string(GetArrivingTime(OKtrain[i],endStation,firday))+" ";
-		OutputData+="价格："+int_to_string(GetCost(OKtrain[i],startStation,endStation))+" ";
-		OutputData+="剩余座位数："+int_to_string(GetMaxSeatNum(OKtrain[i],startStation,endStation,firday))+"<br>";
+		OutputData+=string(GetArrivingTime(tmptrain,endStation,firday))+" ";
+		OutputData+="价格："+int_to_string(GetCost(tmptrain,startStation,endStation))+" ";
+		OutputData+="剩余座位数："+int_to_string(GetMaxSeatNum(tmptrain,startStation,endStation,firday))+"<br>";
 		
 	}
 }
@@ -588,74 +582,65 @@ void Train_System::query_transfer(){
 		if(d_order[i]=="-p")sortType=d_order[i+1];
 	}
 	//读取数据
-	vector<int> G;
-	Train tmptrain;
-	vector<Train> Alltrain1,Alltrain2;
-	G=StationIndex.FindAll(startStation);
-	for(int i=0;i<(int)G.size();i++){
-		TrainData.read(tmptrain,G[i]);
-		Alltrain1.push_back(tmptrain);
-		// cout<<"!!!"<<tmptrain.trainID<<endl;
-	}
-	G=StationIndex.FindAll(endStation);
-	for(int i=0;i<(int)G.size();i++){
-		TrainData.read(tmptrain,G[i]);
-		Alltrain2.push_back(tmptrain);
-		// cout<<"@@@"<<tmptrain.trainID<<endl;
-	}
+	vector<int> G1,G2;
+	Train tmptrain1,tmptrain2;
+	G1=StationIndex.FindAll(startStation);
+	G2=StationIndex.FindAll(endStation);
 	//寻找最优解
 	Train ans1,ans2;
 	string ansTransferStation="";
 	int ansTime,ansCost;
 	int ansFirday1,ansFirday2;
-	for(int i=0;i<(int)Alltrain1.size();i++){
-		if(!Alltrain1[i].isRelease)continue;
+	for(int i=0;i<(int)G1.size();i++){
+		TrainData.read(tmptrain1,G1[i]);
+		if(!tmptrain1.isRelease)continue;
 		int count=0;
-		for(int k=1;k<=Alltrain1[i].stationNum;k++){
-			if(string(Alltrain1[i].stations[k])==startStation){
-				if(!Is_exist(Alltrain1[i],startStation,Alltrain1[i].stations[Alltrain1[i].stationNum],startday))break;
+		for(int k=1;k<=tmptrain1.stationNum;k++){
+			if(string(tmptrain1.stations[k])==startStation){
+				if(!Is_exist(tmptrain1,startStation,tmptrain1.stations[tmptrain1.stationNum],startday))break;
 				count=1;
 				continue;
 			}
 			if(!count)continue;
-			string transferStation=Alltrain1[i].stations[k];
-			int firday1=GetTrainStartDay(Alltrain1[i],startStation,startday);
-			string ArrivingDateTime=GetArrivingTime(Alltrain1[i],transferStation,firday1);
-			int MaxSeatNum1=GetMaxSeatNum(Alltrain1[i],startStation,transferStation,firday1);
+			string transferStation=tmptrain1.stations[k];
+			int firday1=GetTrainStartDay(tmptrain1,startStation,startday);
+			string ArrivingDateTime=GetArrivingTime(tmptrain1,transferStation,firday1);
+			int MaxSeatNum1=GetMaxSeatNum(tmptrain1,startStation,transferStation,firday1);
 			if(!MaxSeatNum1)continue;
 			// cout<<"!!!"<<i<<" "<<k<<endl;
-			for(int j=0;j<(int)Alltrain2.size();j++){
-				if(string(Alltrain1[i].trainID)==string(Alltrain2[j].trainID))continue;
-				if(!Is_exist(Alltrain2[j],transferStation,endStation))continue;
-				if(!Alltrain2[j].isRelease)continue;
-				int firday2=GetTransferStartDay(Alltrain2[j],transferStation,ArrivingDateTime);
+			for(int j=0;j<(int)G2.size();j++){
+				TrainData.read(tmptrain2,G2[j]);
+				if(string(tmptrain1.trainID)==string(tmptrain2.trainID))continue;
+				if(!Is_exist(tmptrain2,transferStation,endStation))continue;
+				if(!tmptrain2.isRelease)continue;
+				int firday2=GetTransferStartDay(tmptrain2,transferStation,ArrivingDateTime);
 				if(firday2==-1)continue;
-				int MaxSeatNum2=GetMaxSeatNum(Alltrain2[j],transferStation,endStation,firday2);
+				int MaxSeatNum2=GetMaxSeatNum(tmptrain2,transferStation,endStation,firday2);
 				while(!MaxSeatNum2){
 					firday2++;
-					if(firday2>Alltrain2[j].saleDateR)break;
-					MaxSeatNum2=GetMaxSeatNum(Alltrain2[j],transferStation,endStation,firday2);
+					if(firday2>tmptrain2.saleDateR)break;
+					MaxSeatNum2=GetMaxSeatNum(tmptrain2,transferStation,endStation,firday2);
 				}
-				if(firday2>Alltrain2[j].saleDateR)continue;
-				string DateTimeBegin=GetLeavingTime(Alltrain1[i],startStation,firday1);
-				string DateTimeEnd=GetArrivingTime(Alltrain2[j],endStation,firday2);
+				if(firday2>tmptrain2.saleDateR)continue;
+				string DateTimeBegin=GetLeavingTime(tmptrain1,startStation,firday1);
+				string DateTimeEnd=GetArrivingTime(tmptrain2,endStation,firday2);
 				int Time=DateTime_to_minute(DateTimeEnd)-DateTime_to_minute(DateTimeBegin);
-				int Cost1=GetCost(Alltrain1[i],startStation,transferStation);
-				int Cost2=GetCost(Alltrain2[j],transferStation,endStation);
+				int Cost1=GetCost(tmptrain1,startStation,transferStation);
+				int Cost2=GetCost(tmptrain2,transferStation,endStation);
 				int Cost=Cost1+Cost2;
 				// cout<<"!!!!"<<endl;
-				// cout<<Alltrain1[i].trainID<<" "<<transferStation<<" "<<Alltrain2[j].trainID<<" "<<Cost<<" "<<Time<<endl;
+				// cout<<tmptrain1.trainID<<" "<<transferStation<<" "<<tmptrain2.trainID<<" "<<Cost<<" "<<Time<<endl;
 				if(sortType=="time"){
-					if(ansTransferStation==""||Time<ansTime||(Time==ansTime && (Cost<ansCost||(Cost==ansCost&& (Alltrain1[i].trainID<ans1.trainID || (Alltrain1[i].trainID==ans1.trainID&&Alltrain2[j].trainID<ans2.trainID) ) ) ) )){
-						ans1=Alltrain1[i],ans2=Alltrain2[j];
+					if(ansTransferStation==""||Time<ansTime||(Time==ansTime && (Cost<ansCost||(Cost==ansCost&& (tmptrain1.trainID<ans1.trainID || (tmptrain1.trainID==ans1.trainID&&tmptrain2.trainID<ans2.trainID) ) ) ) )){
+						ans1=tmptrain1,ans2=tmptrain2;
 						ansTransferStation=transferStation;
 						ansTime=Time,ansCost=Cost;
 						ansFirday1=firday1,ansFirday2=firday2;
 					}
 				}
 				if(sortType=="cost"){
-					if(ansTransferStation==""||Cost<ansCost||(Cost==ansCost && (Time<ansTime||(Time==ansTime&& (Alltrain1[i].trainID<ans1.trainID || (Alltrain1[i].trainID==ans1.trainID&&Alltrain2[j].trainID<ans2.trainID) ) ) ) )){
-						ans1=Alltrain1[i],ans2=Alltrain2[j];
+					if(ansTransferStation==""||Cost<ansCost||(Cost==ansCost && (Time<ansTime||(Time==ansTime&& (tmptrain1.trainID<ans1.trainID || (tmptrain1.trainID==ans1.trainID&&tmptrain2.trainID<ans2.trainID) ) ) ) )){
+						ans1=tmptrain1,ans2=tmptrain2;
 						ansTransferStation=transferStation;
 						ansTime=Time,ansCost=Cost;
 						ansFirday1=firday1,ansFirday2=firday2;
@@ -804,7 +789,7 @@ void Train_System::query_order(){
 		OrderData.read(tmpOrder,G[i]);
 		AllOrder.push_back(tmpOrder);
 	}
-	tmp3=AllOrder,tmp4=G,SortOrderTime(AllOrder,G,0,Num-1,1);
+	tmp4=AllOrder,tmp5=G,SortOrderTime(AllOrder,G,0,Num-1,1);
 	//输出各个订单信息
 	cout<<d_order[1]<<" ";
 	cout<<Num<<endl;
@@ -857,7 +842,7 @@ void Train_System::refund_ticket(){
 		OrderData.read(tmpOrder,G[i]);
 		AllOrder.push_back(tmpOrder);
 	}
-	tmp3=AllOrder,tmp4=G,SortOrderTime(AllOrder,G,0,Num-1,1);
+	tmp4=AllOrder,tmp5=G,SortOrderTime(AllOrder,G,0,Num-1,1);
 	//订单数<k 不合法
 	if(K>Num)throw Order_Kth_Invalid();
 	Order order=AllOrder[K-1];

@@ -18,20 +18,20 @@ private:
 		}
 		node& operator =(const node &other){
 			if(this==&other)return *this;
-			for(int i=0;i<MaxKeyLen;i++)Key[i]=other.Key[i];
+			for(int i=0;i<MaxKeyLen-1;i++)Key[i]=other.Key[i];
 			val=other.val;
 			return *this;
 		}
 		bool operator <(const node &other)const{
-			for(int i=0;i<MaxKeyLen;i++)if(Key[i]!=other.Key[i])return Key[i]<other.Key[i];
+			for(int i=0;i<MaxKeyLen-1;i++)if(Key[i]!=other.Key[i])return Key[i]<other.Key[i];
 			return val<other.val;
 		}
 		bool operator >(const node &other)const{
-			for(int i=0;i<MaxKeyLen;i++)if(Key[i]!=other.Key[i])return Key[i]>other.Key[i];
+			for(int i=0;i<MaxKeyLen-1;i++)if(Key[i]!=other.Key[i])return Key[i]>other.Key[i];
 			return val>other.val;
 		}
 		bool operator ==(const node &other)const{
-			for(int i=0;i<MaxKeyLen;i++)if(Key[i]!=other.Key[i])return 0;
+			for(int i=0;i<MaxKeyLen-1;i++)if(Key[i]!=other.Key[i])return 0;
 			if(val!=other.val)return 0;
 			return 1;
 		}
