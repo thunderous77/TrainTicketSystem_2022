@@ -7,7 +7,7 @@ using namespace std;
 template<class T>class Key_value_database{//块状链表实现
 private:
 	struct node{
-		char Key[65];
+		char Key[32];
 		T val;
 		node(){fill(Key,Key+65,'\0');}
 		node(string _Key,T _val){
@@ -36,7 +36,7 @@ private:
 		}
 		bool operator !=(const node &other)const{return !((*this)==other);}
 	};
-	const static int BlockMaxn=1200;
+	const static int BlockMaxn=500;
 	const static int MergeSize=BlockMaxn*0.4;
 	struct Block_info{//表头文件
 		int size=0,pre_id=-1,next_id=-1;

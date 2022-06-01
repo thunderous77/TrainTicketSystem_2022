@@ -6,15 +6,16 @@
 #include "User.h"
 using namespace std;
 class Train_System{
-	#define MaxStation 104
+	#define MaxStation 102
 	#define MaxDay 96
-	#define MaxName 46
+	#define MaxTrainName 22
+	#define MaxStationName 32
 public:
 	class Train{
 	public:
-		char trainID[MaxName];
+		char trainID[MaxTrainName];
 		int stationNum;
-		char stations[MaxStation][MaxName];
+		char stations[MaxStation][MaxStationName];
 		int MaxseatNum,seatNum[MaxDay][MaxStation],prices[MaxStation];
 		int startTime,travelTimes[MaxStation],stopoverTimes[MaxStation];
 		int saleDateL,saleDateR;
@@ -24,9 +25,9 @@ public:
 	class Order{
 	public:
 		int status;//1:buy,0:queue,-1:refund
-		char trainID[MaxName];
+		char trainID[MaxTrainName];
 		int firday,seatNum;
-		char startStation[MaxName],endStation[MaxName];
+		char startStation[MaxStationName],endStation[MaxStationName];
 		int timestamp;
 	};
 private:

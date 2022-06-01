@@ -10,6 +10,18 @@
 		"type_traits": "cpp",
 		"valarray": "cpp",
 		"iosfwd": "cpp",
-		"fstream": "cpp"
+		"fstream": "cpp",
+		"array": "cpp",
+		"bitset": "cpp",
+		"string": "cpp",
+		"vector": "cpp",
+		"exception": "cpp",
+		"functional": "cpp",
+		"istream": "cpp",
+		"ratio": "cpp",
+		"sstream": "cpp",
+		"streambuf": "cpp",
+		"thread": "cpp",
+		"regex": "cpp"
 	}
 }

@@ -8,7 +8,7 @@ using namespace std;
 template<class T>class for_rollback{
 public:
 	int timestamp,type;// type=1,insert(key,data);type=-1,Delete(key,data)
-	char key[46];
+	char key[32];
 	T val;
 	for_rollback(){}
 	for_rollback(int _timestamp,int _type,string _key,T _val){

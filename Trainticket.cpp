@@ -908,6 +908,8 @@ void Train_System::clean(){
 	OrderIndex_rollback.clean();
 	QueueIndex_rollback.clean();
 	OutputData+="车票系统数据清除成功<br>";
+	// cout<<sizeof(Train)/1024.0<<"kb"<<endl;
+	// cout<<sizeof(Order)/1024.0<<"kb"<<endl;
 }
 void Train_System::rollback(){
 	int Backtimestmp=string_to_int(d_order[4]);
