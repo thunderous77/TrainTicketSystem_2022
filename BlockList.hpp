@@ -37,7 +37,7 @@ private:
 		}
 		bool operator !=(const node &other)const{return !((*this)==other);}
 	};
-	const static int BlockMaxn=500;
+	const static int BlockMaxn=1200;
 	const static int MergeSize=BlockMaxn*0.4;
 	struct Block_info{//表头文件
 		int size=0,pre_id=-1,next_id=-1;
