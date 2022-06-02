@@ -13,7 +13,7 @@ private:
 		node(){fill(Key,Key+MaxKeyLen,'\0');}
 		node(string _Key,T _val){
 			fill(Key,Key+MaxKeyLen,'\0');
-			for(int i=0;i<(int)_Key.size();i++)Key[i]=_Key[i];
+			strcpy(Key,_Key.c_str());
 			val=_val;
 		}
 		node& operator =(const node &other){
@@ -23,15 +23,17 @@ private:
 			return *this;
 		}
 		bool operator <(const node &other)const{
-			for(int i=0;i<MaxKeyLen;i++)if(Key[i]!=other.Key[i])return Key[i]<other.Key[i];
+			if(string(Key)<string(other.Key))return 1;
+			if(string(Key)>string(other.Key))return 0;
 			return val<other.val;
 		}
 		bool operator >(const node &other)const{
-			for(int i=0;i<MaxKeyLen;i++)if(Key[i]!=other.Key[i])return Key[i]>other.Key[i];
+			if(string(Key)>string(other.Key))return 1;
+			if(string(Key)<string(other.Key))return 0;
 			return val>other.val;
 		}
 		bool operator ==(const node &other)const{
-			for(int i=0;i<MaxKeyLen;i++)if(Key[i]!=other.Key[i])return 0;
+			if(string(Key)!=string(other.Key))return 0;
 			if(val!=other.val)return 0;
 			return 1;
 		}
@@ -122,8 +124,8 @@ public:
 			Blocks_info.write_info(0,3);
 		}
 	}
-
 	void insert(const string key,T val){
+		// cerr<<"insert"<<" "<<key<<" "<<val<<endl;
 		node value=node(key,val);
 		int blocknum;
 		Blocks_info.read_info(blocknum,2);
@@ -138,8 +140,6 @@ public:
 			Blocks_info.update(tmp,tmp.info_id);
 			Blocks_data.update(tmp2,tmp.data_id);
 			Blocks_info.write_info(1,2);
-			int blocknum;
-			Blocks_info.read_info(blocknum,2);
 			Blocks_info.write_info(tmp.info_id,3);
 			return;
 		}
@@ -183,6 +183,7 @@ public:
 			Blocks_data.read(Now2,Now.data_id);
 			int size=Now.size;
 			int pos=lower_bound(Now2.data,Now2.data+Now.size,value)-Now2.data;
+			if(pos==Now.size)return 0;
 			if(pos<Now.size&&Now2.data[pos]!=value)return 0;
 			for(int i=pos;i<=size-2;i++)Now2.data[i]=Now2.data[i+1];
 			Now.size--;
@@ -221,6 +222,7 @@ public:
 		return ans;
 	}
 	bool Find(const string key){
+		// cerr<<"find"<<" "<<key<<endl;
 		int blocknum;
 		Blocks_info.read_info(blocknum,2);
 		if(!blocknum)return 0;
@@ -250,9 +252,9 @@ public:
 		Blocks_data.clean();
 	}
 	bool empty(){
-		int x;
-		Blocks_info.read_info(x,2);
-		return x==0;
+		int blocknum;
+		Blocks_info.read_info(blocknum,2);
+		return blocknum==0;
 	}
 };
 

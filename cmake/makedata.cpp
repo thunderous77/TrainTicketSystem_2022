@@ -360,7 +360,7 @@ int main() {
     }
     int sum = 0;
     for (int i = 0; i <= 15; ++i) sum += fre[i];
-    for (int i = 1; i <= 300000; ++i) {
+    for (int i = 1; i <= 600000; ++i) {
         int x = rand() % sum + 1;
         for (int j = 0; j <= 15; ++j) {
             x -= fre[j];
