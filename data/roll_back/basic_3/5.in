@@ -1,52 +1,52 @@
 [61119] query_profile -c Nightingale -u Shining
-[61129] buy_ticket -u Orchid -i kcPbhRScWV -d 07-26 -n 4396 -f 辽宁省盖州市 -t 四川省彭州市
-[61134] buy_ticket -u NoirCorne -i IHEARDthatyouask -d 08-20 -n 2740 -f 江苏省扬州市 -t 河南省登封市
+[61129] buy_ticket -u Orchid -i jDFgmWnwFqk -d 07-26 -n 4396 -f 新疆奎屯市 -t 四川省华蓥市
+[61134] buy_ticket -u NoirCorne -i zhgKvfNawcQsl -d 08-20 -n 2740 -f 云南省安宁市 -t 浙江省平湖市
 [61143] login -u Purestream -p AVOuSHZgHYAsAstIBDbzt
-[61144] query_profile -c W -u Elysium -p vaFXgwSeGrKfbafGKxvHYNczENHWb -g 0
-[61151] query_transfer -s 湖北省利川市 -t 安徽省阜阳市 -d 08-22 -p cost
+[61144] modify_profile -c W -u Elysium -p vaFXgwSeGrKfbafGKxvHYNczENHWb -g 0
+[61151] query_transfer -s 湖南省衡阳市 -t 山东省高密市 -d 08-22 -p cost
 [61155] logout -u Vulcan
 [61165] logout -u Ceobe
 [61172] login -u Glaucus -p !wfHJRcX4zNv
 [61174] refund_ticket -u Astesia -n 3
-[61184] buy_ticket -u Savage -i LeavesofGrass -d 07-08 -n 4448 -f 广东省高明市 -t 江西省南康市
+[61184] buy_ticket -u Savage -i LeavesofGrass -d 07-08 -n 4448 -f 新疆博乐市 -t 浙江省杭州市
 [61193] query_profile -c Rope -u Manticore
-[61200] query_ticket -s 广东省高州市 -t 湖南省常宁市 -d 08-22 -p time
+[61200] query_ticket -s 吉林省四平市 -t 新疆喀什市 -d 08-22 -p time
 [61203] query_order -u Phantom
-[61208] buy_ticket -u Beehunter -i jDFgmWnwFqk -d 07-03 -n 818 -f 辽宁省辽阳市 -t 河北省唐山市
+[61208] buy_ticket -u Beehunter -i IHEARDthatyouask -d 07-03 -n 818 -f 山东省乳山市 -t 福建省建阳市
 [61215] refund_ticket -u Mousse -n 5
 [61216] query_profile -c Mostima -u Lappland
 [61224] logout -u Pramanix
 [61227] query_profile -c Blaze -u Elysium
 [61235] add_user -c Nian -u zseGMSVYv -p UcDCkgydTHU -n 蝑够箇 -m tEdmSceBoNCMcRHACV -g 9
 [61237] add_user -c Catapult -u fTFVALlSfpIuX -p TMcDfhHkouYftcKpIghrVRR -n 損隕竐 -m uxjPlzLPvQ -g 9
-[61242] buy_ticket -u Orchid -i INSCRIPTIONS -d 08-01 -n 3160 -f 四川省绵竹市 -t 福建省建阳市
+[61242] buy_ticket -u Orchid -i ThereforeIsendyou -d 08-01 -n 3160 -f 山西省榆次市 -t 吉林省图们市
 [61248] query_profile -c Rope -u Lappland
 [61257] query_profile -c Spot -u Cutter
-[61262] buy_ticket -u Courier -i TOTHEEOLDCAUSE -d 08-30 -n 605 -f 新疆奎屯市 -t 浙江省慈溪市
-[61269] query_ticket -s 广东省湛江市 -t 山东省莱州市 -d 06-02 -p cost
-[61270] buy_ticket -u Istina -i whatyouwanted -d 06-05 -n 35 -f 浙江省慈溪市 -t 贵州省清镇市
-[61272] query_ticket -s 甘肃省敦煌市 -t 贵州省清镇市 -d 06-14 -p cost
-[61279] query_profile -c Rangers -u Provence -p MKGDJQVfgmwmHBulmQFbPyz -g 2
-[61283] buy_ticket -u Shamare -i ThereforeIsendyou -d 08-16 -n 2920 -f 山东省胶州市 -t 黑龙江省海林市
+[61262] buy_ticket -u Courier -i QwCPpTudWWtzKdj -d 08-30 -n 605 -f 江苏省淮安市 -t 河南省登封市
+[61269] query_ticket -s 宁夏银川市 -t 江西省鹰潭市 -d 06-02 -p cost
+[61270] buy_ticket -u Istina -i kcPbhRScWV -d 06-05 -n 35 -f 河南省登封市 -t 河南省驻马店市
+[61272] query_ticket -s 广东省高明市 -t 河南省驻马店市 -d 06-14 -p cost
+[61279] modify_profile -c Rangers -u Provence -p MKGDJQVfgmwmHBulmQFbPyz -g 2
+[61283] buy_ticket -u Shamare -i puzzletheNewWorld -d 08-16 -n 2920 -f 山东省聊城市 -t 新疆库尔勒市
 [61285] refund_ticket -u ProjeKTRed -n 2
 [61293] add_user -c Mayer -u zSRBbCavkSwWh -p nDUcIvoDRNdhmlA -n 硋薰獼 -m PrZmFZiMrAsEsqEcurkK -g 2
-[61296] buy_ticket -u BluePoison -i kcPbhRScWV -d 07-13 -n 644 -f 江苏省吴江市 -t 湖北省黄冈市
-[61305] query_ticket -s 天津市 -t 湖南省常宁市 -d 07-02 -p cost
+[61296] buy_ticket -u BluePoison -i jDFgmWnwFqk -d 07-13 -n 644 -f 山东省乐陵市 -t 辽宁省盖州市
+[61305] query_ticket -s 广东省揭阳市 -t 新疆喀什市 -d 07-02 -p cost
 [61313] query_profile -c Manticore -u I_am_the_admin
-[61317] query_profile -c Liskarm -u Cliffheart -p wpRGJTjwYfslrdILiDhXCqBxbDas -g 7
+[61317] modify_profile -c Liskarm -u Cliffheart -p wpRGJTjwYfslrdILiDhXCqBxbDas -g 7
 [61319] logout -u Elysium
 [61320] add_user -c Mousse -u yLwcXWmdeSecBAvH -p hweMMFPlxZOEvD -n 渢确像 -m p -g 6
-[61329] query_profile -c Jessica -u Warfarin -p BlEUbolsIzNekJthxlR -g 10
-[61339] release_train -i jDFgmWnwFqk
+[61329] modify_profile -c Jessica -u Warfarin -p BlEUbolsIzNekJthxlR -g 10
+[61339] release_train -i IHEARDthatyouask
 [61348] add_user -c Zima -u sswWnwGTxKCzNcewPQKC -p QYkRWIj -n 両捳鉼 -m ygmqu -g 6
-[61357] query_ticket -s 内蒙东胜市 -t 广东省湛江市 -d 07-27 -p cost
-[61366] query_ticket -s 山东省胶南市 -t 河南省登封市 -d 06-19 -p time
-[61376] query_ticket -s 河南省洛阳市 -t 新疆吐鲁番市 -d 06-01 -p cost
-[61380] query_ticket -s 江西省鹰潭市 -t 山东省乳山市 -d 08-04 -p cost
-[61383] buy_ticket -u Gravel -i INSCRIPTIONS -d 08-08 -n 3589 -f 新疆阿克苏市 -t 黑龙江省五大连池市
-[61388] buy_ticket -u Orchid -i TOFOREIGNLANDS -d 08-29 -n 2227 -f 新疆米泉市 -t 江苏省扬州市
+[61357] query_ticket -s 江西省高安市 -t 宁夏银川市 -d 07-27 -p cost
+[61366] query_ticket -s 广东省湛江市 -t 浙江省平湖市 -d 06-19 -p time
+[61376] query_ticket -s 海南省通什市 -t 陕西省安康市 -d 06-01 -p cost
+[61380] query_ticket -s 浙江省慈溪市 -t 湖北省利川市 -d 08-04 -p cost
+[61383] buy_ticket -u Gravel -i ThereforeIsendyou -d 08-08 -n 3589 -f 湖北省洪湖市 -t 辽宁省抚顺市
+[61388] buy_ticket -u Orchid -i TOTHEEOLDCAUSE -d 08-29 -n 2227 -f 黑龙江省海林市 -t 云南省安宁市
 [61390] query_profile -c Franka -u Rope
-[61394] query_ticket -s 湖北省枣阳市 -t 辽宁省抚顺市 -d 06-25 -p cost
+[61394] query_ticket -s 广东省花都市 -t 河南省洛阳市 -d 06-25 -p cost
 [61395] query_order -u Deepcolor
 [61400] query_profile -c BluePoison -u Orchid
 [61408] refund_ticket -u Sideroca -n 5
@@ -54,125 +54,125 @@
 [61419] query_profile -c Hibiscus -u Glaucus
 [61428] query_order -u Executor
 [61436] query_profile -c Angelina -u Lappland
-[61441] buy_ticket -u Saria -i ocXEuytxLvHZ -d 08-19 -n 3532 -f 福建省建阳市 -t 河南省灵宝市
-[61450] query_train -i TOTHEEOLDCAUSE -d 06-28
-[61451] buy_ticket -u Skadi -i TOTHEEOLDCAUSE -d 06-17 -n 4356 -f 湖北省黄冈市 -t 湖南省汩罗市
-[61458] release_train -i IHEARDthatyouask
+[61441] buy_ticket -u Saria -i ocXEuytxLvHZ -d 08-19 -n 3532 -f 吉林省图们市 -t 新疆吐鲁番市
+[61450] query_train -i QwCPpTudWWtzKdj -d 06-28
+[61451] buy_ticket -u Skadi -i QwCPpTudWWtzKdj -d 06-17 -n 4356 -f 辽宁省盖州市 -t 湖北省枣阳市
+[61458] release_train -i zhgKvfNawcQsl
 [61468] query_profile -c Meteor -u Warfarin
 [61474] add_user -c Magallan -u oFLGW -p RVVMlzCivxjRl -n 皑縟訬 -m RnzBoGYLxgjaWPKHnJK -g 7
-[61478] query_ticket -s 宁夏石嘴山市 -t 安徽省宁国市 -d 06-23 -p cost
+[61478] query_ticket -s 江西省南康市 -t 浙江省临安市 -d 06-23 -p cost
 [61486] query_profile -c TfJPfADOfENubQrv -u Utage
 [61487] release_train -i ocXEuytxLvHZ
-[61493] query_ticket -s 甘肃省敦煌市 -t 河南省灵宝市 -d 06-16 -p time
+[61493] query_ticket -s 广东省高明市 -t 新疆吐鲁番市 -d 06-16 -p time
 [61497] login -u Istina -p AqpVRCn8BfrKDTKU
 [61498] query_profile -c Leizi -u Breeze
 [61499] query_profile -c Liskarm -u Silence
 [61504] logout -u Rangers
-[61513] query_ticket -s 河北省河间市 -t 河南省驻马店市 -d 07-26 -p cost
+[61513] query_ticket -s 甘肃省敦煌市 -t 新疆塔城市 -d 07-26 -p cost
 [61516] logout -u Sora
 [61521] release_train -i ocXEuytxLvHZ
 [61523] logout -u Silence
 [61524] login -u Broca -p 3Hg7ECLDWxCGnQF
-[61534] query_transfer -s 湖北省黄冈市 -t 河南省灵宝市 -d 06-28 -p time
+[61534] query_transfer -s 辽宁省盖州市 -t 新疆吐鲁番市 -d 06-28 -p time
 [61535] query_profile -c TfJPfADOfENubQrv -u Utage
 [61540] query_profile -c Siege -u Croissant
 [61541] login -u Popukar -p jCjiiBIC
-[61551] query_ticket -s 黑龙江省五大连池市 -t 河北省张家口市 -d 06-24 -p time
-[61552] query_ticket -s 吉林省双辽市 -t 河北省唐山市 -d 07-05 -p time
+[61551] query_ticket -s 辽宁省抚顺市 -t 四川省绵阳市 -d 06-24 -p time
+[61552] query_ticket -s 河北省河间市 -t 福建省建阳市 -d 07-05 -p time
 [61554] login -u Durin -p psJdAebBnYbnCIdoNJyFp
-[61562] buy_ticket -u Ceobe -i IHEARDthatyouask -d 07-02 -n 1757 -f 陕西省安康市 -t 山东省胶南市
-[61570] query_ticket -s 河南省驻马店市 -t 新疆喀什市 -d 08-20 -p cost
+[61562] buy_ticket -u Ceobe -i zhgKvfNawcQsl -d 07-02 -n 1757 -f 辽宁省朝阳市 -t 广东省湛江市
+[61570] query_ticket -s 新疆塔城市 -t 河南省周口市 -d 08-20 -p cost
 [61573] add_user -c Shamare -u GYf -p pWzSXxVTpViZUHnwpcwzfZDcFhbaML -n 鸴脷鋷 -m AmZmRpaVvABiZwtySuWDfQ -g 10
 [61579] login -u Courier -p 1NZwyUbFFlnQ
-[61586] query_profile -c Scavenger -u Meteor -p EXXcRFAQtcuIJRIwgyrnsDSwOwjxy -g 7
-[61596] query_ticket -s 新疆塔城市 -t 黑龙江省尚志市 -d 08-02 -p cost
+[61586] modify_profile -c Scavenger -u Meteor -p EXXcRFAQtcuIJRIwgyrnsDSwOwjxy -g 7
+[61596] query_ticket -s 天津市 -t 湖南省吉首市 -d 08-02 -p cost
 [61602] query_profile -c Weedy -u Matoimaru
 [61610] query_order -u Astesia
 [61611] query_order -u Rangers
-[61620] buy_ticket -u Vulcan -i zhgKvfNawcQsl -d 08-16 -n 1875 -f 江西省高安市 -t 四川省绵阳市
-[61628] buy_ticket -u Specter -i puzzletheNewWorld -d 07-22 -n 2754 -f 河北省张家口市 -t 广东省惠阳市
+[61620] buy_ticket -u Vulcan -i TOFOREIGNLANDS -d 08-16 -n 1875 -f 广东省高州市 -t 云南省保山市
+[61628] buy_ticket -u Specter -i whatyouwanted -d 07-22 -n 2754 -f 四川省绵阳市 -t 湖南省常宁市
 [61636] query_profile -c Vermeil -u Broca
 [61644] query_profile -c Sora -u Mostima
-[61646] buy_ticket -u Hibiscus -i IHEARDthatyouask -d 06-24 -n 597 -f 新疆米泉市 -t 湖北省利川市
+[61646] buy_ticket -u Hibiscus -i zhgKvfNawcQsl -d 06-24 -n 597 -f 黑龙江省海林市 -t 湖南省衡阳市
 [61648] refund_ticket -u Ansel -n 1
 [61657] query_profile -c Myrrh -u Broca
 [61661] logout -u Hellagur
-[61663] query_ticket -s 重庆市江津市 -t 广东省湛江市 -d 06-27 -p time
+[61663] query_ticket -s 河南省灵宝市 -t 宁夏银川市 -d 06-27 -p time
 [61669] query_profile -c Jessica -u Midnight
-[61676] query_transfer -s 云南省安宁市 -t 北京市 -d 07-01 -p time
-[61680] query_ticket -s 湖北省孝感市 -t 内蒙东胜市 -d 08-28 -p cost
+[61676] query_transfer -s 宁夏石嘴山市 -t 新疆伊宁市 -d 07-01 -p time
+[61680] query_ticket -s 吉林省双辽市 -t 江西省高安市 -d 08-28 -p cost
 [61683] query_profile -c Ceylon -u Vulcan
-[61685] buy_ticket -u Glaucus -i IHEARDthatyouask -d 08-11 -n 2762 -f 天津市 -t 四川省绵竹市
-[61687] query_profile -c Beagle -u Liskarm -p yJbZeCLFYQxWlMvnXfcyAjSRRhE -g 1
-[61689] query_profile -c Ceobe -u Skyfire -p jwqpooVKAGwIeFogHehx -g 3
-[61698] query_profile -c Reed -u Vermeil -p sTlBbCjUisNWIg -g 3
-[61702] query_transfer -s 广东省花都市 -t 广东省揭阳市 -d 07-26 -p cost
-[61709] buy_ticket -u GreyThroat -i LeavesofGrass -d 07-14 -n 1411 -f 贵州省清镇市 -t 江西省鹰潭市
-[61712] query_ticket -s 宁夏石嘴山市 -t 新疆奎屯市 -d 07-27 -p time
+[61685] buy_ticket -u Glaucus -i zhgKvfNawcQsl -d 08-11 -n 2762 -f 广东省揭阳市 -t 山西省榆次市
+[61687] modify_profile -c Beagle -u Liskarm -p yJbZeCLFYQxWlMvnXfcyAjSRRhE -g 1
+[61689] modify_profile -c Ceobe -u Skyfire -p jwqpooVKAGwIeFogHehx -g 3
+[61698] modify_profile -c Reed -u Vermeil -p sTlBbCjUisNWIg -g 3
+[61702] query_transfer -s 辽宁省辽阳市 -t 湖南省汩罗市 -d 07-26 -p cost
+[61709] buy_ticket -u GreyThroat -i LeavesofGrass -d 07-14 -n 1411 -f 河南省驻马店市 -t 浙江省慈溪市
+[61712] query_ticket -s 江西省南康市 -t 江苏省淮安市 -d 07-27 -p time
 [61718] query_order -u Nearl
 [61723] add_user -c FEater -u w -p wMoRuRWZ -n 萷搠柙 -m FOdBpjpCnARjbceNkOpHiPzJa -g 7
 [61725] release_train -i LeavesofGrass
 [61730] query_order -u Matoimaru
 [61738] query_profile -c Indra -u Flamebringer
 [61747] query_profile -c Shining -u Exusiai
-[61754] query_ticket -s 新疆阿克苏市 -t 黑龙江省尚志市 -d 07-19 -p time
-[61756] query_profile -c Chen -u Platinum -p XeGvbMciJyEzTfzB -g 3
+[61754] query_ticket -s 湖北省洪湖市 -t 湖南省吉首市 -d 07-19 -p time
+[61756] modify_profile -c Chen -u Platinum -p XeGvbMciJyEzTfzB -g 3
 [61763] query_profile -c Orchid -u Spot
-[61771] buy_ticket -u Texas -i ocXEuytxLvHZ -d 07-04 -n 1531 -f 湖北省洪湖市 -t 浙江省舟山市
-[61777] query_profile -c Beagle -u Weedy -p kcIoiQDdgRbwzXOQFFPWqUCfNFub -g 10
-[61782] query_profile -c Chen -u Saria -p gTEaAXfmngzRROx -g 1
+[61771] buy_ticket -u Texas -i ocXEuytxLvHZ -d 07-04 -n 1531 -f 黑龙江省五大连池市 -t 辽宁省铁岭市
+[61777] modify_profile -c Beagle -u Weedy -p kcIoiQDdgRbwzXOQFFPWqUCfNFub -g 10
+[61782] modify_profile -c Chen -u Saria -p gTEaAXfmngzRROx -g 1
 [61788] query_profile -c Angelina -u Utage
 [61795] add_user -c Saria -u ikCx -p PeycNyWhqReRkAyhwIkLcyRBnHQXZb -n 葍隡羰 -m HDMxiCakF -g 1
-[61800] add_train -i aURqcX -n 9 -m 1175 -s 河南省偃师市|山西省榆次市|吉林省图们市|贵州省清镇市|甘肃省兰州市|山东省滕州市|江西省鹰潭市|浙江省平湖市|山东省聊城市 -p 31739|99875|75188|47091|10035|20811|47084|27907 -x 18:24 -t 8|9|10|5|11|12|10|10 -o 7|13|9|7|7|14|10 -d 07-27|08-07 -y h
-[61807] buy_ticket -u Weedy -i IHEARDthatyouask -d 06-22 -n 4031 -f 四川省绵阳市 -t 河南省登封市
+[61800] add_train -i aURqcX -n 9 -m 1175 -s 贵州省清镇市|河北省唐山市|新疆米泉市|河南省驻马店市|山东省胶州市|山东省莱州市|浙江省慈溪市|吉林省榆树市|广东省惠阳市 -p 31739|99875|75188|47091|10035|20811|47084|27907 -x 18:24 -t 8|9|10|5|11|12|10|10 -o 7|13|9|7|7|14|10 -d 07-27|08-07 -y h
+[61807] buy_ticket -u Weedy -i zhgKvfNawcQsl -d 06-22 -n 4031 -f 云南省保山市 -t 浙江省平湖市
 [61817] add_user -c Catapult -u xDdFROImVhsXD -p unMOHleHbxe -n 糦嶑貹 -m GPwDfeoSNYgOCafSHWXgRJTFSfsyZF -g 9
-[61822] buy_ticket -u Sesa -i INSCRIPTIONS -d 08-20 -n 336 -f 云南省安宁市 -t 吉林省四平市
+[61822] buy_ticket -u Sesa -i ThereforeIsendyou -d 08-20 -n 336 -f 宁夏石嘴山市 -t 重庆市江津市
 [61832] login -u Ceylon -p OQCQffvjBJWvXuBvjXbj
 [61835] query_profile -c Myrrh -u Midnight
-[61837] buy_ticket -u Franka -i INSCRIPTIONS -d 08-02 -n 2128 -f 贵州省清镇市 -t 天津市
+[61837] buy_ticket -u Franka -i ThereforeIsendyou -d 08-02 -n 2128 -f 河南省驻马店市 -t 广东省揭阳市
 [61844] refund_ticket -u Sora -n 3
 [61851] logout -u Mostima
-[61853] buy_ticket -u Ceobe -i TOFOREIGNLANDS -d 07-13 -n 3387 -f 江西省高安市 -t 山东省乳山市
-[61859] query_ticket -s 广东省高明市 -t 江苏省淮安市 -d 08-02 -p time
-[61869] buy_ticket -u ShiraYuki -i kcPbhRScWV -d 08-24 -n 3125 -f 广东省花都市 -t 河南省灵宝市
-[61873] query_profile -c Meteor -u I_am_the_admin -p IoMcJ -g 10
+[61853] buy_ticket -u Ceobe -i TOTHEEOLDCAUSE -d 07-13 -n 3387 -f 广东省高州市 -t 湖北省利川市
+[61859] query_ticket -s 新疆博乐市 -t 广东省云浮市 -d 08-02 -p time
+[61869] buy_ticket -u ShiraYuki -i jDFgmWnwFqk -d 08-24 -n 3125 -f 辽宁省辽阳市 -t 新疆吐鲁番市
+[61873] modify_profile -c Meteor -u I_am_the_admin -p IoMcJ -g 10
 [61881] login -u Cardigan -p fv9!Ts-YMmxuSiB
-[61885] buy_ticket -u Jessica -i ThereforeIsendyou -d 08-21 -n 2363 -f 四川省绵阳市 -t 海南省通什市
+[61885] buy_ticket -u Jessica -i puzzletheNewWorld -d 08-21 -n 2363 -f 云南省保山市 -t 湖北省黄冈市
 [61890] query_order -u Fang
 [61894] query_profile -c Melantha -u Liskarm
 [61902] login -u Kroos -p hKZjVicLKcK
-[61906] buy_ticket -u Platinum -i aURqcX -d 06-01 -n 754 -f 宁夏银川市 -t 广东省揭阳市
-[61912] query_transfer -s 四川省华蓥市 -t 广西凭祥市 -d 08-07 -p cost
-[61920] query_transfer -s 江苏省吴江市 -t 吉林省双辽市 -d 08-05 -p time
+[61906] buy_ticket -u Platinum -i kcPbhRScWV -d 06-01 -n 754 -f 四川省绵竹市 -t 湖南省汩罗市
+[61912] query_transfer -s 四川省彭州市 -t 广西凭祥市 -d 08-07 -p cost
+[61920] query_transfer -s 山东省乐陵市 -t 河北省河间市 -d 08-05 -p time
 [61921] rollback -t 58716
 [61923] query_order -u Broca
 [61928] query_profile -c Beagle -u Matoimaru
-[61933] query_train -i TOFOREIGNLANDS -d 06-30
+[61933] query_train -i TOTHEEOLDCAUSE -d 06-30
 [61939] query_profile -c Hibiscus -u Executor
 [61946] query_order -u Aak
-[61956] query_train -i jDFgmWnwFqk -d 06-10
-[61965] query_train -i TOTHEEOLDCAUSE -d 06-23
+[61956] query_train -i IHEARDthatyouask -d 06-10
+[61965] query_train -i QwCPpTudWWtzKdj -d 06-23
 [61967] query_profile -c Texas -u Skyfire
-[61972] query_train -i TOTHEEOLDCAUSE -d 06-03
-[61982] query_transfer -s 广东省云浮市 -t 四川省华蓥市 -d 08-29 -p cost
-[61983] query_ticket -s 山东省乳山市 -t 四川省华蓥市 -d 06-07 -p cost
-[61985] query_train -i puzzletheNewWorld -d 08-01
+[61972] query_train -i QwCPpTudWWtzKdj -d 06-03
+[61982] query_transfer -s 浙江省舟山市 -t 四川省彭州市 -d 08-29 -p cost
+[61983] query_ticket -s 湖北省利川市 -t 四川省彭州市 -d 06-07 -p cost
+[61985] query_train -i whatyouwanted -d 08-01
 [61990] query_profile -c Cliffheart -u Saria
 [61997] query_order -u Provence
-[62003] query_train -i puzzletheNewWorld -d 08-08
+[62003] query_train -i whatyouwanted -d 08-08
 [62011] query_order -u Hibiscus
 [62013] query_order -u Franka
 [62019] query_profile -c Ambriel -u Croissant
 [62023] query_profile -c Durin -u Vigna
 [62032] query_profile -c Ansel -u Bagpipe
-[62039] query_ticket -s 新疆库尔勒市 -t 甘肃省敦煌市 -d 07-12 -p cost
-[62044] query_transfer -s 山东省乐陵市 -t 四川省华蓥市 -d 06-06 -p time
+[62039] query_ticket -s 山东省滕州市 -t 广东省高明市 -d 07-12 -p cost
+[62044] query_transfer -s 内蒙东胜市 -t 四川省彭州市 -d 06-06 -p time
 [62049] query_profile -c GreyThroat -u Nightmare
-[62056] query_train -i QwCPpTudWWtzKdj -d 08-26
+[62056] query_train -i INSCRIPTIONS -d 08-26
 [62066] query_order -u Bibeak
-[62069] query_train -i zhgKvfNawcQsl -d 07-23
+[62069] query_train -i TOFOREIGNLANDS -d 07-23
 [62078] query_order -u Specter
-[62080] query_train -i jDFgmWnwFqk -d 06-05
+[62080] query_train -i IHEARDthatyouask -d 06-05
 [62089] login -u Vanilla -p ycW5p8Sabj8nIL473P
 [62092] login -u Rangers -p VOiSsXy55aK2h
 [62096] login -u Jessica -p 0hk8bRhDG7_VNBe6oAvr
@@ -299,14 +299,14 @@
 [62764] buy_ticket -f 浙江省杭州市 -t 黑龙江省海林市 -u Matoimaru -n 8048 -d 07-07 -i LeavesofGrass -q true
 [62768] query_ticket -d 07-11 -p time -t 广东省惠阳市 -s 云南省安宁市
 [62776] buy_ticket -i LeavesofGrass -f 浙江省平湖市 -u Indra -q false -d 07-12 -n 12220 -t 浙江省杭州市
-[62777] query_profile -c Gitano -u Vulcan -p SQgBbKKkIKYRZCmuHdLWjnXJTEsU -g 3
+[62777] modify_profile -c Gitano -u Vulcan -p SQgBbKKkIKYRZCmuHdLWjnXJTEsU -g 3
 [62778] query_ticket -d 07-10 -p cost -t 河南省登封市 -s 湖南省岳阳市
 [62782] query_profile -u Hellagur -c Manticore
 [62791] login -p EkWcp7WM1GaRc3 -u Conviction
 [62792] query_ticket -p cost -t 广东省花都市 -s 陕西省安康市 -d 07-13
 [62795] buy_ticket -t 黑龙江省五大连池市 -i INSCRIPTIONS -d 07-11 -n 13754 -f 贵州省清镇市 -u Hellagur -q false
 [62796] query_ticket -s 天津市 -t 四川省彭州市 -d 07-26 -p cost
-[62804] query_transfer -s 山东省乐陵市 -t 云南省保山市 -d 07-15 -p time
+[62804] query_transfer -s 内蒙东胜市 -t 河南省偃师市 -d 07-15 -p time
 [62806] buy_ticket -t 新疆博乐市 -u Nian -f 广东省四会市 -n 10001 -d 07-19 -q true -i LeavesofGrass
 [62816] buy_ticket -q true -t 河南省偃师市 -d 07-02 -u Adnachiel -i LeavesofGrass -f 新疆塔城市 -n 16214
 [62825] buy_ticket -i LeavesofGrass -d 06-30 -u Firewatch -q false -n 11982 -f 黑龙江省海林市 -t 河南省灵宝市

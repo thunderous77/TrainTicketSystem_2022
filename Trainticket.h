@@ -16,11 +16,17 @@ public:
 		char trainID[MaxTrainName];
 		int stationNum;
 		char stations[MaxStation][MaxStationName];
-		int MaxseatNum,seatNum[MaxDay][MaxStation],prices[MaxStation];
+		int MaxseatNum;
+		int DayseatPos[MaxDay];
+		int prices[MaxStation];
 		int startTime,travelTimes[MaxStation],stopoverTimes[MaxStation];
 		int saleDateL,saleDateR;
 		bool isRelease=0;
 		char type;
+	};
+	class DayTrain{
+	public:
+		int seatNum[MaxStation];
 	};
 	class Order{
 	public:
@@ -33,12 +39,15 @@ public:
 private:
 	Train GetTrainFromData(const string &trainID);
 	void queueUpdate(const string &trainID);
+	int GetMaxSeatNum(const Train_System::Train &train,const string &startStation,const string &endStation,const int &firday);
+	void updateSeatNum(Train_System::Train &train,const string &startStation,const string &endStation,const int &num,const int &firday);
 public:
 	MemoryRiver<Train> TrainData;
+	MemoryRiver<DayTrain> DayTrainData;
 	MemoryRiver<Order> OrderData;
 	Key_value_database<int> TrainIndex,StationIndex,OrderIndex,QueueIndex;
 	MemoryRiver< for_rollback<int> > TrainIndex_rollback,StationIndex_rollback,OrderIndex_rollback,QueueIndex_rollback;
-	MemoryRiver<int> TrainData_rollback,OrderData_rollback;
+	MemoryRiver<int> TrainData_rollback,DayTrainData_rollback,OrderData_rollback;
 	Train_System();
 	void add_train();
 	void release_train();

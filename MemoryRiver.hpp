@@ -21,6 +21,7 @@ private:
     int sizeofT = sizeof(T);
 	int sizeofT3 = sizeofT+sizeof(int)*5;
 	int num,num2,num3;
+	bool Ismemoryrecycling;
 	bool IsRollback;
 
 	void read2_las(int &t){
@@ -112,11 +113,12 @@ public:
 			file.read(reinterpret_cast<char*>(&num),sizeof(int));
 			file.close();
 		}
-		initialise2(FN+"_memory_recycling",ReMake);
+		if(Ismemoryrecycling)initialise2(FN+"_memory_recycling",ReMake);
 		if(IsRollback)initialise3(FN+"_inside_rollback",ReMake);
     }
-    MemoryRiver(string _FN="",bool _IsRollback=0){
+    MemoryRiver(string _FN="",bool _Ismemoryrecycling=0,bool _IsRollback=0){
 		// _IsRollback=0;//关闭rollback指令
+		Ismemoryrecycling=_Ismemoryrecycling;
 		IsRollback=_IsRollback;
 		string FN="./Data/"+_FN;
 		if(_FN!="")initialise(FN);
@@ -147,7 +149,7 @@ public:
     int write(T &t) {
 		file.open(file_name);
 		int index;
-		if(num2){
+		if(Ismemoryrecycling&&num2){
 			read2_las(index);
 			
 			int pos2=num2*sizeof(int),data2;
@@ -213,9 +215,12 @@ public:
 			file.close();
 			int pos2=(num2+1)*sizeof(int);
 
-			write2(index);
+			if(Ismemoryrecycling)write2(index);
 			
-			if(IsRollback)file3_update(-1,index,data,1,pos2,0);
+			if(IsRollback){
+				if(Ismemoryrecycling)file3_update(-1,index,data,1,pos2,0);
+				else file3_update(-1,index,data,0,-1,0);
+			}
 		}
 		else {
 			num--;
@@ -266,15 +271,17 @@ public:
 		}
 		file.close();
 		
-		file2.open(file_name2);
-		num2+=(-type2);
-		file2.seekp(0);
-		file2.write(reinterpret_cast<char*>(&num2),sizeof(int));
-		if(pos2!=-1){
-			file2.seekp(pos2);
-			file2.write(reinterpret_cast<char*>(&data2),sizeof(int));
+		if(Ismemoryrecycling){
+			file2.open(file_name2);
+			num2+=(-type2);
+			file2.seekp(0);
+			file2.write(reinterpret_cast<char*>(&num2),sizeof(int));
+			if(pos2!=-1){
+				file2.seekp(pos2);
+				file2.write(reinterpret_cast<char*>(&data2),sizeof(int));
+			}
+			file2.close();
 		}
-		file2.close();
 		
 		num3--;
 		file3.seekp(0);

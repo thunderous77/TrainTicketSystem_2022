@@ -42,8 +42,8 @@ User_System::User User_System::GetUserFromData(const string &username){
 	UserData.read(tmp_user,G[0]);
 	return tmp_user;
 }
-User_System::User_System():UserData("UserData",true),UserIndex("UserIndex")
-							,UserIndex_rollback("UserIndex_rollback"),UserData_rollback("UserData_rollback")
+User_System::User_System():UserData("UserData",true,true),UserIndex("UserIndex")
+							,UserIndex_rollback("UserIndex_rollback",false,false),UserData_rollback("UserData_rollback",false,false)
 							{}
 void User_System::add_user(){
 	//将输入转成User类型

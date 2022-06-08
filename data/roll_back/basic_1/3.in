@@ -1,147 +1,147 @@
-[8288] query_ticket -s 北京 -t 浙江大学 -d 08-21 -p cost
+[8288] query_ticket -s 上海 -t 温州 -d 08-21 -p cost
 [8295] query_order -u Cutter
-[8304] query_profile -c Courier -u Grani -p GeujyVuIkXyFrpkupzA -g 2
-[8313] query_profile -c Elysium -u May -p aexdsuYSwtRqxUuN -g 10
+[8304] modify_profile -c Courier -u Grani -p GeujyVuIkXyFrpkupzA -g 2
+[8313] modify_profile -c Elysium -u May -p aexdsuYSwtRqxUuN -g 10
 [8318] login -u Cardigan -p 6$1zDKbiYng0H
 [8320] query_order -u I_am_the_admin
-[8328] query_profile -c NoirCorne -u Rangers -p fjGNzrlSMHSixxEdJwMnzs -g 9
+[8328] modify_profile -c NoirCorne -u Rangers -p fjGNzrlSMHSixxEdJwMnzs -g 9
 [8333] query_profile -c Greyy -u NoirCorne
 [8337] query_profile -c Phantom -u Gravel
 [8342] query_order -u Chen
 [8345] query_profile -c Ansel -u Gravel
-[8353] query_ticket -s 浙江 -t 北京 -d 08-19 -p time
+[8353] query_ticket -s 北京 -t 上海 -d 08-19 -p time
 [8358] refund_ticket -u Gummy -n 2
 [8361] login -u BluePoison -p dJvEfGRZjnPBVY
 [8363] logout -u ShiraYuki
-[8365] query_ticket -s 温州 -t 浙江大学 -d 06-22 -p time
-[8373] query_profile -c goPhtzWCqpaGJxItn -u Skadi -p SpmYZBndYSbkGurGVfDreHXKvzJIKN -g 4
+[8365] query_ticket -s 浙江大学 -t 温州 -d 06-22 -p time
+[8373] modify_profile -c goPhtzWCqpaGJxItn -u Skadi -p SpmYZBndYSbkGurGVfDreHXKvzJIKN -g 4
 [8377] add_user -c Perfumer -u zIGRsOYN -p fDd -n 毋撿贂 -m yQePLfHVliCLNORwP -g 7
 [8382] query_profile -c Rope -u Scavenger
-[8389] buy_ticket -u Texas -i TvdYtAX -d 08-14 -n 1650 -f 浙江 -t 温州
-[8399] buy_ticket -u Skyfire -i TvdYtAX -d 08-21 -n 356 -f 上海交通大学 -t 北京
-[8400] query_transfer -s 北京 -t 浙江 -d 06-10 -p time
+[8389] buy_ticket -u Texas -i TvdYtAX -d 08-14 -n 1650 -f 北京 -t 浙江大学
+[8399] buy_ticket -u Skyfire -i TvdYtAX -d 08-21 -n 356 -f 浙江 -t 上海
+[8400] query_transfer -s 上海 -t 北京 -d 06-10 -p time
 [8409] logout -u Vanilla
 [8415] query_order -u Hibiscus
-[8423] query_ticket -s 浙江 -t 温州 -d 06-15 -p time
-[8431] query_transfer -s 浙江大学 -t 上海 -d 07-02 -p time
-[8435] query_ticket -s 浙江大学 -t 上海交通大学 -d 08-11 -p time
-[8437] query_ticket -s 温州 -t 上海交通大学 -d 07-07 -p time
+[8423] query_ticket -s 北京 -t 浙江大学 -d 06-15 -p time
+[8431] query_transfer -s 温州 -t 上海交通大学 -d 07-02 -p time
+[8435] query_ticket -s 温州 -t 浙江 -d 08-11 -p time
+[8437] query_ticket -s 浙江大学 -t 浙江 -d 07-07 -p time
 [8447] query_profile -c Skadi -u Nian
-[8451] query_ticket -s 上海交通大学 -t 浙江大学 -d 08-27 -p time
+[8451] query_ticket -s 浙江 -t 温州 -d 08-27 -p time
 [8461] query_order -u Purestream
 [8467] logout -u Mostima
 [8476] query_profile -c Lava -u Blaze
 [8479] query_profile -c Glaucus -u Zima
-[8485] query_ticket -s 上海 -t 浙江大学 -d 07-10 -p time
-[8488] buy_ticket -u Orchid -i TvdYtAX -d 07-04 -n 2929 -f 上海 -t 温州
+[8485] query_ticket -s 上海交通大学 -t 温州 -d 07-10 -p time
+[8488] buy_ticket -u Orchid -i TvdYtAX -d 07-04 -n 2929 -f 上海交通大学 -t 浙江大学
 [8496] logout -u Nightmare
 [8502] query_profile -c Myrtle -u Vanilla
 [8505] release_train -i TvdYtAX
 [8507] logout -u Rope
-[8517] query_transfer -s 浙江 -t 上海交通大学 -d 07-16 -p time
-[8526] query_ticket -s 温州 -t 浙江大学 -d 07-19 -p time
-[8527] query_ticket -s 上海交通大学 -t 浙江 -d 08-23 -p cost
+[8517] query_transfer -s 北京 -t 浙江 -d 07-16 -p time
+[8526] query_ticket -s 浙江大学 -t 温州 -d 07-19 -p time
+[8527] query_ticket -s 浙江 -t 北京 -d 08-23 -p cost
 [8531] query_profile -c Mayer -u Estelle
-[8539] buy_ticket -u Gravel -i TvdYtAX -d 07-09 -n 4188 -f 上海 -t 北京
-[8546] query_ticket -s 浙江 -t 上海 -d 07-29 -p time
+[8539] buy_ticket -u Gravel -i TvdYtAX -d 07-09 -n 4188 -f 上海交通大学 -t 上海
+[8546] query_ticket -s 北京 -t 上海交通大学 -d 07-29 -p time
 [8555] query_profile -c Blaze -u Popukar
 [8563] refund_ticket -u Myrrh -n 1
-[8566] buy_ticket -u Vanilla -i TvdYtAX -d 07-23 -n 2360 -f 北京 -t 温州
+[8566] buy_ticket -u Vanilla -i TvdYtAX -d 07-23 -n 2360 -f 上海 -t 浙江大学
 [8576] query_train -i TvdYtAX -d 06-05
 [8577] login -u Magallan -p DcYDkxNvDKOnYXYgGZwNNnhc
 [8584] refund_ticket -u Bibeak -n 4
 [8588] query_profile -c Sesa -u Vigna
-[8598] buy_ticket -u Texas -i TvdYtAX -d 08-16 -n 2368 -f 浙江大学 -t 温州
-[8602] buy_ticket -u Courier -i TvdYtAX -d 07-25 -n 1150 -f 温州 -t 上海交通大学
-[8608] query_ticket -s 浙江大学 -t 浙江 -d 08-18 -p cost
-[8616] query_profile -c Zima -u Durin -p lAurblQI -g 9
+[8598] buy_ticket -u Texas -i TvdYtAX -d 08-16 -n 2368 -f 温州 -t 浙江大学
+[8602] buy_ticket -u Courier -i TvdYtAX -d 07-25 -n 1150 -f 浙江大学 -t 浙江
+[8608] query_ticket -s 温州 -t 北京 -d 08-18 -p cost
+[8616] modify_profile -c Zima -u Durin -p lAurblQI -g 9
 [8621] query_profile -c Meteorite -u Cutter
-[8630] buy_ticket -u WaaiFu -i TvdYtAX -d 08-01 -n 3296 -f 上海交通大学 -t 上海
+[8630] buy_ticket -u WaaiFu -i TvdYtAX -d 08-01 -n 3296 -f 浙江 -t 上海交通大学
 [8635] login -u Courier -p rTo
-[8639] query_ticket -s 温州 -t 上海交通大学 -d 06-06 -p time
-[8643] buy_ticket -u Scavenger -i TvdYtAX -d 06-28 -n 2079 -f 上海交通大学 -t 上海
+[8639] query_ticket -s 浙江大学 -t 浙江 -d 06-06 -p time
+[8643] buy_ticket -u Scavenger -i TvdYtAX -d 06-28 -n 2079 -f 浙江 -t 上海交通大学
 [8648] query_profile -c Nian -u Matterhorn
-[8651] query_ticket -s 浙江大学 -t 温州 -d 06-19 -p cost
+[8651] query_ticket -s 温州 -t 浙江大学 -d 06-19 -p cost
 [8654] query_train -i TvdYtAX -d 08-26
 [8662] query_profile -c Midnight -u Scavenger
 [8669] query_profile -c Matterhorn -u Breeze
-[8678] buy_ticket -u Bibeak -i TvdYtAX -d 06-23 -n 678 -f 北京 -t 浙江大学
+[8678] buy_ticket -u Bibeak -i TvdYtAX -d 06-23 -n 678 -f 上海 -t 温州
 [8680] logout -u Durnar
 [8683] query_profile -c Mousse -u Angelina
 [8691] refund_ticket -u Greyy -n 5
-[8697] query_ticket -s 温州 -t 上海 -d 08-09 -p time
+[8697] query_ticket -s 浙江大学 -t 上海交通大学 -d 08-09 -p time
 [8706] query_profile -c Gravel -u Mostima
 [8714] query_order -u Durnar
 [8721] query_profile -c Gummy -u Glaucus
 [8731] add_user -c Durnar -u REsTegIkGmfY -p wOkwJyqHJB -n 莓絔疖 -m QvNNFfs -g 9
 [8734] login -u Lappland -p R_Ds_trj7FL
-[8735] buy_ticket -u Vanilla -i TvdYtAX -d 08-28 -n 3886 -f 温州 -t 浙江
+[8735] buy_ticket -u Vanilla -i TvdYtAX -d 08-28 -n 3886 -f 浙江大学 -t 北京
 [8738] add_user -c Purestream -u NLDLZOhNI -p ooaDMlqkNqgNMkCVsRkkBXtyTsTko -n 油嘀訊 -m xtr -g 4
-[8739] buy_ticket -u BluePoison -i TvdYtAX -d 06-11 -n 562 -f 浙江 -t 温州
-[8742] query_profile -c Adnachiel -u Meteorite -p rLNOzyjEjaoqGoYWsMQtlgxCjroo -g 4
-[8748] buy_ticket -u Magallan -i TvdYtAX -d 06-08 -n 4088 -f 温州 -t 北京
-[8757] query_profile -c Specter -u Myrtle -p GpQqn -g 4
+[8739] buy_ticket -u BluePoison -i TvdYtAX -d 06-11 -n 562 -f 北京 -t 浙江大学
+[8742] modify_profile -c Adnachiel -u Meteorite -p rLNOzyjEjaoqGoYWsMQtlgxCjroo -g 4
+[8748] buy_ticket -u Magallan -i TvdYtAX -d 06-08 -n 4088 -f 浙江大学 -t 上海
+[8757] modify_profile -c Specter -u Myrtle -p GpQqn -g 4
 [8766] refund_ticket -u Deepcolor -n 5
 [8776] logout -u Scavenger
-[8779] query_profile -c Glaucus -u Vanilla -p JlVNxfhkjSGIqO -g 3
+[8779] modify_profile -c Glaucus -u Vanilla -p JlVNxfhkjSGIqO -g 3
 [8787] query_order -u Rangers
-[8794] query_ticket -s 上海 -t 上海交通大学 -d 07-28 -p time
-[8795] query_ticket -s 浙江 -t 上海 -d 08-14 -p cost
-[8802] query_profile -c Manticore -u May -p LRrUUtikTpYTtcAQbJQOyseuegK -g 8
-[8803] query_ticket -s 温州 -t 浙江 -d 07-02 -p cost
-[8806] buy_ticket -u Savage -i TvdYtAX -d 08-11 -n 3313 -f 浙江 -t 上海交通大学
-[8816] query_ticket -s 浙江 -t 浙江大学 -d 07-28 -p cost
+[8794] query_ticket -s 上海交通大学 -t 浙江 -d 07-28 -p time
+[8795] query_ticket -s 北京 -t 上海交通大学 -d 08-14 -p cost
+[8802] modify_profile -c Manticore -u May -p LRrUUtikTpYTtcAQbJQOyseuegK -g 8
+[8803] query_ticket -s 浙江大学 -t 北京 -d 07-02 -p cost
+[8806] buy_ticket -u Savage -i TvdYtAX -d 08-11 -n 3313 -f 北京 -t 浙江
+[8816] query_ticket -s 北京 -t 温州 -d 07-28 -p cost
 [8826] query_order -u Beagle
-[8829] buy_ticket -u Beagle -i TvdYtAX -d 07-30 -n 3635 -f 上海 -t 浙江
+[8829] buy_ticket -u Beagle -i TvdYtAX -d 07-30 -n 3635 -f 上海交通大学 -t 北京
 [8836] login -u Savage -p K-7qS4rR0lMJ
 [8839] logout -u Breeze
-[8849] query_ticket -s 浙江大学 -t 北京 -d 06-11 -p time
+[8849] query_ticket -s 温州 -t 上海 -d 06-11 -p time
 [8852] query_profile -c Exusiai -u Hibiscus
-[8858] query_ticket -s 浙江 -t 上海 -d 07-19 -p cost
+[8858] query_ticket -s 北京 -t 上海交通大学 -d 07-19 -p cost
 [8860] logout -u Manticore
-[8866] add_train -i mZEcvLiYnUAI -n 3 -m 82602 -s 温州|北京|上海交通大学 -p 49368|7284 -x 12:09 -t 15|7 -o 15 -d 06-16|08-06 -y s
-[8869] buy_ticket -u Weedy -i TvdYtAX -d 06-10 -n 1800 -f 浙江 -t 北京
+[8866] add_train -i mZEcvLiYnUAI -n 3 -m 82602 -s 浙江大学|上海|浙江 -p 49368|7284 -x 12:09 -t 15|7 -o 15 -d 06-16|08-06 -y s
+[8869] buy_ticket -u Weedy -i TvdYtAX -d 06-10 -n 1800 -f 北京 -t 上海
 [8874] query_profile -c Frostleaf -u Orchid
 [8884] login -u May -p aczJCkABhM
 [8886] login -u Mostima -p wJsD
-[8892] query_ticket -s 浙江大学 -t 浙江 -d 07-20 -p cost
-[8893] query_ticket -s 浙江大学 -t 上海 -d 08-29 -p cost
+[8892] query_ticket -s 温州 -t 北京 -d 07-20 -p cost
+[8893] query_ticket -s 温州 -t 上海交通大学 -d 08-29 -p cost
 [8899] login -u Provence -p vlVx2sQ_hPhf
 [8904] add_user -c Phantom -u haqAOMjBwZkyYbgGN -p PFqMSGqwppVMjnYybsGyjNiWXNCsjY -n 龫脠蒔 -m rQAOuYjtNPDRPunECjdZwHw -g 6
 [8911] query_profile -c Istina -u Skadi
-[8913] add_train -i DCfuyCo -n 3 -m 71785 -s 浙江大学|北京|温州 -p 90207|53353 -x 07:28 -t 10|13 -o 7 -d 06-12|08-01 -y n
-[8916] query_profile -c Hung -u Leizi -p rdKKxYIdvVGosQhvXGHBxlwnGTf -g 5
+[8913] add_train -i DCfuyCo -n 3 -m 71785 -s 温州|上海|浙江大学 -p 90207|53353 -x 07:28 -t 10|13 -o 7 -d 06-12|08-01 -y n
+[8916] modify_profile -c Hung -u Leizi -p rdKKxYIdvVGosQhvXGHBxlwnGTf -g 5
 [8917] query_order -u Mostima
 [8921] query_order -u Estelle
 [8930] logout -u Phantom
-[8940] buy_ticket -u Skyfire -i DCfuyCo -d 06-20 -n 1830 -f 北京 -t 上海
+[8940] buy_ticket -u Skyfire -i DCfuyCo -d 06-20 -n 1830 -f 上海 -t 上海交通大学
 [8950] query_profile -c Bibeak -u Mayer
-[8952] query_transfer -s 上海交通大学 -t 上海 -d 08-15 -p cost
-[8955] buy_ticket -u Scavenger -i TvdYtAX -d 08-12 -n 1076 -f 北京 -t 上海
-[8957] query_ticket -s 浙江 -t 北京 -d 07-02 -p time
-[8965] buy_ticket -u Mostima -i DCfuyCo -d 08-20 -n 213 -f 上海交通大学 -t 浙江大学
-[8970] query_profile -c Skadi -u Chen -p VLFwCCxcAbDSjsxhpilUPVlSPAonS -g 7
+[8952] query_transfer -s 浙江 -t 上海交通大学 -d 08-15 -p cost
+[8955] buy_ticket -u Scavenger -i TvdYtAX -d 08-12 -n 1076 -f 上海 -t 上海交通大学
+[8957] query_ticket -s 北京 -t 上海 -d 07-02 -p time
+[8965] buy_ticket -u Mostima -i DCfuyCo -d 08-20 -n 213 -f 浙江 -t 温州
+[8970] modify_profile -c Skadi -u Chen -p VLFwCCxcAbDSjsxhpilUPVlSPAonS -g 7
 [8976] refund_ticket -u WaaiFu -n 2
-[8979] buy_ticket -u Adnachiel -i mZEcvLiYnUAI -d 06-08 -n 2998 -f 北京 -t 浙江大学
+[8979] buy_ticket -u Adnachiel -i mZEcvLiYnUAI -d 06-08 -n 2998 -f 上海 -t 温州
 [8989] query_profile -c Angelina -u Croissant
 [8990] login -u Leizi -p w$u_KwJra5BDodk_sL
-[8993] buy_ticket -u Nearl -i DCfuyCo -d 07-12 -n 3112 -f 北京 -t 上海交通大学
+[8993] buy_ticket -u Nearl -i DCfuyCo -d 07-12 -n 3112 -f 上海 -t 浙江
 [9003] query_order -u Cardigan
-[9005] buy_ticket -u Lappland -i DCfuyCo -d 07-20 -n 2571 -f 温州 -t 浙江
-[9010] buy_ticket -u Matterhorn -i TvdYtAX -d 06-11 -n 3364 -f 北京 -t 上海
+[9005] buy_ticket -u Lappland -i DCfuyCo -d 07-20 -n 2571 -f 浙江大学 -t 北京
+[9010] buy_ticket -u Matterhorn -i TvdYtAX -d 06-11 -n 3364 -f 上海 -t 上海交通大学
 [9014] release_train -i mZEcvLiYnUAI
-[9019] buy_ticket -u Exusiai -i mZEcvLiYnUAI -d 06-20 -n 4872 -f 温州 -t 北京
-[9021] query_ticket -s 上海交通大学 -t 浙江 -d 06-21 -p time
+[9019] buy_ticket -u Exusiai -i mZEcvLiYnUAI -d 06-20 -n 4872 -f 浙江大学 -t 上海
+[9021] query_ticket -s 浙江 -t 北京 -d 06-21 -p time
 [9026] query_order -u Nightingale
-[9033] query_ticket -s 北京 -t 上海交通大学 -d 06-09 -p cost
+[9033] query_ticket -s 上海 -t 浙江 -d 06-09 -p cost
 [9039] query_order -u Elysium
-[9045] query_ticket -s 浙江大学 -t 上海交通大学 -d 08-12 -p time
-[9046] buy_ticket -u Glaucus -i DCfuyCo -d 07-05 -n 1168 -f 浙江大学 -t 温州
-[9047] query_ticket -s 浙江 -t 上海交通大学 -d 06-27 -p cost
+[9045] query_ticket -s 温州 -t 浙江 -d 08-12 -p time
+[9046] buy_ticket -u Glaucus -i DCfuyCo -d 07-05 -n 1168 -f 温州 -t 浙江大学
+[9047] query_ticket -s 北京 -t 浙江 -d 06-27 -p cost
 [9051] release_train -i TvdYtAX
-[9056] query_ticket -s 上海交通大学 -t 浙江大学 -d 08-19 -p time
+[9056] query_ticket -s 浙江 -t 温州 -d 08-19 -p time
 [9064] query_profile -c Specter -u Exusiai
-[9070] query_ticket -s 上海交通大学 -t 北京 -d 07-07 -p cost
+[9070] query_ticket -s 浙江 -t 上海 -d 07-07 -p cost
 [9080] query_profile -c Estelle -u Croissant
 [9083] query_train -i TvdYtAX -d 06-19
 [9092] query_profile -c Adnachiel -u Utage
@@ -151,62 +151,62 @@
 [9111] login -u Skyfire -p sLFuQgeuulVkd
 [9112] refund_ticket -u Beagle -n 2
 [9121] login -u Eyjafjalla -p jhjWp
-[9130] buy_ticket -u Zima -i TvdYtAX -d 06-19 -n 2500 -f 浙江大学 -t 北京
+[9130] buy_ticket -u Zima -i TvdYtAX -d 06-19 -n 2500 -f 温州 -t 上海
 [9136] delete_train -i TvdYtAX
 [9146] query_profile -c Sideroca -u Nian
 [9149] login -u Hung -p JWKnufrTTBRasie
 [9159] login -u ShiraYuki -p 9pWN5J_fo1a_9wmwB
 [9161] query_order -u Istina
-[9168] query_ticket -s 上海 -t 浙江 -d 06-02 -p time
+[9168] query_ticket -s 上海交通大学 -t 北京 -d 06-02 -p time
 [9177] query_profile -c Chen -u Rangers
-[9179] add_train -i PNopePpeBRMooWiB -n 2 -m 29068 -s 浙江|浙江大学 -p 96986 -x 20:07 -t 11 -o _ -d 07-15|08-07 -y p
-[9186] buy_ticket -u Gravel -i DCfuyCo -d 08-16 -n 149 -f 浙江 -t 温州
+[9179] add_train -i PNopePpeBRMooWiB -n 2 -m 29068 -s 北京|温州 -p 96986 -x 20:07 -t 11 -o _ -d 07-15|08-07 -y p
+[9186] buy_ticket -u Gravel -i PNopePpeBRMooWiB -d 08-16 -n 149 -f 北京 -t 浙江大学
 [9194] logout -u Frostleaf
-[9196] query_transfer -s 浙江大学 -t 浙江 -d 06-24 -p time
-[9205] buy_ticket -u Ansel -i TvdYtAX -d 06-17 -n 4909 -f 温州 -t 上海交通大学
+[9196] query_transfer -s 温州 -t 北京 -d 06-24 -p time
+[9205] buy_ticket -u Ansel -i TvdYtAX -d 06-17 -n 4909 -f 浙江大学 -t 浙江
 [9214] query_profile -c Gummy -u Skyfire
 [9215] add_user -c Courier -u Es -p qvHDQqlaGgQeOF -n 摙庀颃 -m kZQhLOTxj -g 5
 [9222] query_profile -c Matterhorn -u Durin
-[9225] query_ticket -s 上海 -t 上海交通大学 -d 07-08 -p cost
+[9225] query_ticket -s 上海交通大学 -t 浙江 -d 07-08 -p cost
 [9228] query_profile -c Nightmare -u Mousse
 [9234] query_profile -c Lappland -u Hibiscus
-[9243] buy_ticket -u Zima -i mZEcvLiYnUAI -d 08-09 -n 4244 -f 浙江 -t 浙江大学
-[9247] query_ticket -s 上海交通大学 -t 上海 -d 07-30 -p time
-[9255] query_ticket -s 上海交通大学 -t 浙江 -d 06-24 -p time
+[9243] buy_ticket -u Zima -i mZEcvLiYnUAI -d 08-09 -n 4244 -f 北京 -t 温州
+[9247] query_ticket -s 浙江 -t 上海交通大学 -d 07-30 -p time
+[9255] query_ticket -s 浙江 -t 北京 -d 06-24 -p time
 [9260] query_order -u Texas
 [9264] logout -u Eyjafjalla
-[9271] query_ticket -s 温州 -t 浙江大学 -d 07-26 -p cost
+[9271] query_ticket -s 浙江大学 -t 温州 -d 07-26 -p cost
 [9275] login -u Elysium -p ERkB93k6a6KBH
 [9282] refund_ticket -u NoirCorne -n 3
-[9290] query_ticket -s 温州 -t 浙江大学 -d 08-30 -p cost
+[9290] query_ticket -s 浙江大学 -t 温州 -d 08-30 -p cost
 [9294] query_order -u Estelle
-[9299] query_ticket -s 上海交通大学 -t 上海 -d 07-27 -p cost
-[9303] buy_ticket -u Skyfire -i mZEcvLiYnUAI -d 07-29 -n 2962 -f 上海 -t 北京
+[9299] query_ticket -s 浙江 -t 上海交通大学 -d 07-27 -p cost
+[9303] buy_ticket -u Skyfire -i mZEcvLiYnUAI -d 07-29 -n 2962 -f 上海交通大学 -t 上海
 [9313] query_profile -c Bison -u Breeze
-[9315] query_profile -c NoirCorne -u Phantom -p xKpjcrGkOvAZbKYcMPvxDgAbyKVI -g 0
-[9319] add_train -i MPwiSs -n 3 -m 61060 -s 温州|浙江大学|上海 -p 57047|88704 -x 17:08 -t 14|14 -o 8 -d 06-13|07-14 -y f
+[9315] modify_profile -c NoirCorne -u Phantom -p xKpjcrGkOvAZbKYcMPvxDgAbyKVI -g 0
+[9319] add_train -i MPwiSs -n 3 -m 61060 -s 浙江大学|温州|上海交通大学 -p 57047|88704 -x 17:08 -t 14|14 -o 8 -d 06-13|07-14 -y f
 [9325] query_profile -c Dobermann -u Greyy
-[9326] query_ticket -s 温州 -t 浙江 -d 08-22 -p time
-[9333] query_ticket -s 浙江大学 -t 上海交通大学 -d 08-14 -p cost
+[9326] query_ticket -s 浙江大学 -t 北京 -d 08-22 -p time
+[9333] query_ticket -s 温州 -t 浙江 -d 08-14 -p cost
 [9335] add_user -c Frostleaf -u x -p MqDSyASrPvCqaTXXXnBVSm -n 佌院窘 -m YEuYPGvgVXTcnVpQsJmjgHrDgzRUIB -g 2
 [9338] refund_ticket -u Deepcolor -n 3
-[9340] buy_ticket -u Myrtle -i PNopePpeBRMooWiB -d 08-09 -n 2217 -f 温州 -t 上海交通大学
+[9340] buy_ticket -u Myrtle -i DCfuyCo -d 08-09 -n 2217 -f 浙江大学 -t 浙江
 [9342] query_profile -c Myrtle -u Popukar
 [9349] logout -u Courier
-[9354] query_train -i mZEcvLiYnUAI -d 07-19
+[9354] query_train -i TvdYtAX -d 07-19
 [9362] refund_ticket -u Steward -n 2
-[9365] query_ticket -s 北京 -t 浙江 -d 08-17 -p cost
+[9365] query_ticket -s 上海 -t 北京 -d 08-17 -p cost
 [9372] rollback -t 7921
-[9373] query_transfer -s 上海 -t 北京 -d 06-06 -p cost
+[9373] query_transfer -s 上海交通大学 -t 上海 -d 06-06 -p cost
 [9375] query_order -u Steward
 [9377] query_profile -c Cutter -u Istina
-[9386] query_train -i mZEcvLiYnUAI -d 07-06
+[9386] query_train -i TvdYtAX -d 07-06
 [9393] query_profile -c Dobermann -u Bison
 [9398] query_order -u Vermeil
-[9406] query_ticket -s 浙江大学 -t 上海交通大学 -d 07-11 -p cost
+[9406] query_ticket -s 温州 -t 浙江 -d 07-11 -p cost
 [9407] query_profile -c Provence -u Ambriel
-[9416] query_train -i PNopePpeBRMooWiB -d 06-03
-[9422] query_train -i PNopePpeBRMooWiB -d 08-06
+[9416] query_train -i DCfuyCo -d 06-03
+[9422] query_train -i DCfuyCo -d 08-06
 [9431] query_profile -c ShiraYuki -u Perfumer
 [9434] query_profile -c Bibeak -u NoirCorne
 [9435] query_profile -c ProjeKTRed -u BluePoison
@@ -216,12 +216,12 @@
 [9467] query_profile -c Durin -u ProjeKTRed
 [9471] query_order -u Nearl
 [9481] query_profile -c Rangers -u goPhtzWCqpaGJxItn
-[9486] query_ticket -s 浙江大学 -t 温州 -d 08-10 -p time
-[9493] query_train -i PNopePpeBRMooWiB -d 07-19
+[9486] query_ticket -s 温州 -t 浙江大学 -d 08-10 -p time
+[9493] query_train -i DCfuyCo -d 07-19
 [9496] query_order -u Grani
 [9502] query_profile -c Midnight -u Grani
 [9509] query_profile -c Midnight -u ShiraYuki
-[9513] query_train -i PNopePpeBRMooWiB -d 06-01
+[9513] query_train -i DCfuyCo -d 06-01
 [9515] login -u Croissant -p JTSKVj-Wpss
 [9520] login -u Sideroca -p v1qcE$RV6pXCQI5
 [9527] login -u Provence -p vlVx2sQ_hPhf
@@ -598,11 +598,11 @@
 [11597] add_user -m middle.class@by.industrial -n 嘉维尔 -u Gavial -g 3 -p GNpcWolXTeOcn -c Steward
 [11616] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [11623] query_ticket -s 潘开森 -t 王梓 -d 08-13
-[11625] query_profile -c Cutter -u Gavial -p DmoOvfFJZOHvtsAkZocdZFj -g 5
+[11625] modify_profile -c Cutter -u Gavial -p DmoOvfFJZOHvtsAkZocdZFj -g 5
 [11631] query_profile -c Catapult -u Elysium
 [11636] query_transfer -s 潘开森 -t 王梓 -d 08-13
 [11640] query_order -u Gravel
-[11641] query_profile -c Zima -u GreyThroat -p aghELdTfWm -g 8
+[11641] modify_profile -c Zima -u GreyThroat -p aghELdTfWm -g 8
 [11647] query_profile -c Ceylon -u Glaucus
 [11653] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [11661] query_ticket -s 潘开森 -t 王梓 -d 08-13
@@ -610,13 +610,13 @@
 [11674] login -u Vermeil -p B
 [11682] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [11692] query_ticket -s 潘开森 -t 王梓 -d 08-13
-[11693] query_profile -c BluePoison -u Liskarm -p mCDXAmZUEVuyGODqDWuogSvYgWplps -g 8
+[11693] modify_profile -c BluePoison -u Liskarm -p mCDXAmZUEVuyGODqDWuogSvYgWplps -g 8
 [11694] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [11700] query_profile -c goPhtzWCqpaGJxItn -u Hung
 [11709] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [11716] login -u Glaucus -p jI2X4Ts1VQPlC8
 [11718] query_profile -c Gitano -u ProjeKTRed
-[11719] query_profile -c Manticore -u Gravel -p jjBRHoWQSCTUNHleiPBRV -g 5
+[11719] modify_profile -c Manticore -u Gravel -p jjBRHoWQSCTUNHleiPBRV -g 5
 [11727] release_train -i pks
 [11733] query_profile -c Catapult -u Hellagur
 [11740] refund_ticket -u Zima -n 1
@@ -625,7 +625,7 @@
 [11756] logout -u goPhtzWCqpaGJxItn
 [11760] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [11768] query_ticket -s 潘开森 -t 王梓 -d 08-13
-[11776] query_profile -c Blaze -u Ceobe -p stmbzonpnocHZQJfzsMzsIjSK -g 2
+[11776] modify_profile -c Blaze -u Ceobe -p stmbzonpnocHZQJfzsMzsIjSK -g 2
 [11782] release_train -i pks
 [11787] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [11795] logout -u Grani
@@ -636,14 +636,14 @@
 [11829] query_train -i pks -d 08-13
 [11832] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [11834] add_user -c Gummy -u COceiStUwBRmWDQVv -p jSf -n 燩漞梂 -m ttThsxrLdAnrx -g 3
-[11843] query_profile -c Siege -u Vanilla -p wVwrdrjcCUEsSoZheDdXHeIvv -g 0
+[11843] modify_profile -c Siege -u Vanilla -p wVwrdrjcCUEsSoZheDdXHeIvv -g 0
 [11848] query_profile -c Durin -u Shamare
 [11855] login -u Sideroca -p FmdpoXsiqvElmdHa
 [11863] query_profile -c W -u Popukar
 [11872] query_profile -c Lappland -u Sesa
 [11882] query_order -u Gavial
 [11891] query_ticket -s 潘开森 -t 王梓 -d 08-13
-[11899] query_profile -c Broca -u Bibeak -p BcMmyeHVZlQNrkGBLQRxae -g 2
+[11899] modify_profile -c Broca -u Bibeak -p BcMmyeHVZlQNrkGBLQRxae -g 2
 [11907] add_user -c Plume -u IXatcihpMScfN -p miZaWgnsbaMPvOKSmHm -n 望妪搴 -m WoruesCpYxHOYYwDKxJTjnmnvYkh -g 1
 [11916] delete_train -i pks
 [11921] delete_train -i pks
@@ -654,7 +654,7 @@
 [11946] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [11947] login -u Firewatch -p HBPMZgPgIRtckIswNeZP
 [11952] query_ticket -s 潘开森 -t 王梓 -d 08-13
-[11953] query_profile -c Provence -u Leizi -p uLfQRkLGLVbLvmmY -g 10
+[11953] modify_profile -c Provence -u Leizi -p uLfQRkLGLVbLvmmY -g 10
 [11958] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [11966] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [11972] query_ticket -s 潘开森 -t 王梓 -d 08-13
@@ -669,135 +669,135 @@
 [12009] query_order -u Mousse
 [12015] login -u ShiraYuki -p 9pWN5J_fo1a_9wmwB
 [12021] query_order -u Blaze
-[12026] add_train -i MjgbGERfFcytIMjPd -n 3 -m 84622 -s 温州|浙江大学|上海交通大学 -p 76547|45009 -x 14:25 -t 11|7 -o 15 -d 06-09|06-24 -y Z
-[12028] query_profile -c Breeze -u Istina -p SLMsoNj -g 0
-[12030] query_profile -c Durin -u Firewatch -p lHrneMwvoSsoVhPPPoHMM -g 10
+[12026] add_train -i MjgbGERfFcytIMjPd -n 3 -m 84622 -s 浙江大学|温州|浙江 -p 76547|45009 -x 14:25 -t 11|7 -o 15 -d 06-09|06-24 -y Z
+[12028] modify_profile -c Breeze -u Istina -p SLMsoNj -g 0
+[12030] modify_profile -c Durin -u Firewatch -p lHrneMwvoSsoVhPPPoHMM -g 10
 [12037] add_user -c Gummy -u kVYqYCVqPrtMcP -p EW -n 猸憘犉 -m VfOztzWfPBxfhFUqbqPXpRmxOKZ -g 2
-[12038] buy_ticket -u Rope -i MjgbGERfFcytIMjPd -d 07-25 -n 4368 -f 浙江 -t 北京
-[12039] query_ticket -s 温州 -t 北京 -d 07-07 -p cost
+[12038] buy_ticket -u Rope -i MjgbGERfFcytIMjPd -d 07-25 -n 4368 -f 北京 -t 上海
+[12039] query_ticket -s 浙江大学 -t 上海 -d 07-07 -p cost
 [12043] logout -u Lappland
-[12046] buy_ticket -u Cardigan -i MjgbGERfFcytIMjPd -d 08-28 -n 2590 -f 北京 -t 浙江
-[12056] buy_ticket -u Fang -i MjgbGERfFcytIMjPd -d 06-27 -n 3751 -f 浙江 -t 温州
-[12065] query_ticket -s 浙江 -t 北京 -d 08-12 -p cost
-[12068] buy_ticket -u Rope -i MjgbGERfFcytIMjPd -d 06-23 -n 2096 -f 浙江大学 -t 北京
+[12046] buy_ticket -u Cardigan -i MjgbGERfFcytIMjPd -d 08-28 -n 2590 -f 上海 -t 北京
+[12056] buy_ticket -u Fang -i MjgbGERfFcytIMjPd -d 06-27 -n 3751 -f 北京 -t 浙江大学
+[12065] query_ticket -s 北京 -t 上海 -d 08-12 -p cost
+[12068] buy_ticket -u Rope -i MjgbGERfFcytIMjPd -d 06-23 -n 2096 -f 温州 -t 上海
 [12070] logout -u ShiraYuki
 [12076] query_profile -c Gummy -u Cutter
 [12080] query_profile -c Greyy -u Catapult
-[12089] query_ticket -s 上海交通大学 -t 上海 -d 08-09 -p cost
+[12089] query_ticket -s 浙江 -t 上海交通大学 -d 08-09 -p cost
 [12099] add_user -c Franka -u tSmq -p eWqBmmhaYXigrqaZYXwrC -n 慹痁炪 -m gnYdTbVBGkDWGkjWuPhzADSI -g 6
-[12109] query_ticket -s 温州 -t 浙江大学 -d 07-16 -p time
-[12110] buy_ticket -u Astesia -i MjgbGERfFcytIMjPd -d 06-29 -n 3344 -f 上海交通大学 -t 温州
-[12116] buy_ticket -u Zima -i MjgbGERfFcytIMjPd -d 06-17 -n 2376 -f 温州 -t 浙江大学
-[12123] query_ticket -s 浙江 -t 温州 -d 07-18 -p cost
+[12109] query_ticket -s 浙江大学 -t 温州 -d 07-16 -p time
+[12110] buy_ticket -u Astesia -i MjgbGERfFcytIMjPd -d 06-29 -n 3344 -f 浙江 -t 浙江大学
+[12116] buy_ticket -u Zima -i MjgbGERfFcytIMjPd -d 06-17 -n 2376 -f 浙江大学 -t 温州
+[12123] query_ticket -s 北京 -t 浙江大学 -d 07-18 -p cost
 [12124] query_profile -c Ceobe -u Ambriel
 [12125] login -u Dobermann -p NNffnCntoGIGoJRgvnybuCRGxChiLl
-[12135] query_ticket -s 北京 -t 上海 -d 08-02 -p time
-[12142] query_ticket -s 温州 -t 北京 -d 06-04 -p time
+[12135] query_ticket -s 上海 -t 上海交通大学 -d 08-02 -p time
+[12142] query_ticket -s 浙江大学 -t 上海 -d 06-04 -p time
 [12151] query_profile -c Nightingale -u Liskarm
 [12156] logout -u Steward
-[12163] buy_ticket -u Executor -i MjgbGERfFcytIMjPd -d 07-23 -n 112 -f 浙江 -t 北京
+[12163] buy_ticket -u Executor -i MjgbGERfFcytIMjPd -d 07-23 -n 112 -f 北京 -t 上海
 [12165] login -u Amiya -p !uGLz_MhZIII9!rGOCI
-[12166] query_ticket -s 上海 -t 浙江大学 -d 07-03 -p time
-[12175] query_profile -c Durnar -u Myrtle -p cLVQyaCEXUBBojgWwFvTAMT -g 10
-[12178] buy_ticket -u Warfarin -i MjgbGERfFcytIMjPd -d 06-18 -n 2144 -f 温州 -t 浙江大学
-[12188] buy_ticket -u Shamare -i MjgbGERfFcytIMjPd -d 07-12 -n 3565 -f 浙江大学 -t 温州
+[12166] query_ticket -s 上海交通大学 -t 温州 -d 07-03 -p time
+[12175] modify_profile -c Durnar -u Myrtle -p cLVQyaCEXUBBojgWwFvTAMT -g 10
+[12178] buy_ticket -u Warfarin -i MjgbGERfFcytIMjPd -d 06-18 -n 2144 -f 浙江大学 -t 温州
+[12188] buy_ticket -u Shamare -i MjgbGERfFcytIMjPd -d 07-12 -n 3565 -f 温州 -t 浙江大学
 [12192] login -u Haze -p WaNEouuzbzwofrjRWY
-[12197] buy_ticket -u Leizi -i MjgbGERfFcytIMjPd -d 08-03 -n 851 -f 浙江大学 -t 温州
+[12197] buy_ticket -u Leizi -i MjgbGERfFcytIMjPd -d 08-03 -n 851 -f 温州 -t 浙江大学
 [12199] query_profile -c Sora -u Nian
 [12209] logout -u Shamare
-[12215] query_ticket -s 上海 -t 上海交通大学 -d 06-22 -p time
-[12222] add_train -i WChJpEdXfhWUUIS -n 3 -m 39131 -s 上海交通大学|浙江|北京 -p 52394|36022 -x 18:29 -t 9|9 -o 9 -d 08-02|08-10 -y P
-[12230] buy_ticket -u May -i WChJpEdXfhWUUIS -d 08-19 -n 1003 -f 浙江大学 -t 浙江
+[12215] query_ticket -s 上海交通大学 -t 浙江 -d 06-22 -p time
+[12222] add_train -i WChJpEdXfhWUUIS -n 3 -m 39131 -s 浙江|北京|上海 -p 52394|36022 -x 18:29 -t 9|9 -o 9 -d 08-02|08-10 -y P
+[12230] buy_ticket -u May -i MjgbGERfFcytIMjPd -d 08-19 -n 1003 -f 温州 -t 北京
 [12238] query_profile -c Vermeil -u Plume
-[12243] query_ticket -s 温州 -t 浙江大学 -d 08-29 -p cost
-[12246] buy_ticket -u Durnar -i WChJpEdXfhWUUIS -d 08-09 -n 3046 -f 上海 -t 温州
-[12247] query_profile -c Platinum -u Manticore -p uDDzgIUvPBhCYVpdGPet -g 10
-[12255] query_profile -c Perfumer -u Cuora -p WhSoSWeX -g 8
+[12243] query_ticket -s 浙江大学 -t 温州 -d 08-29 -p cost
+[12246] buy_ticket -u Durnar -i MjgbGERfFcytIMjPd -d 08-09 -n 3046 -f 上海交通大学 -t 浙江大学
+[12247] modify_profile -c Platinum -u Manticore -p uDDzgIUvPBhCYVpdGPet -g 10
+[12255] modify_profile -c Perfumer -u Cuora -p WhSoSWeX -g 8
 [12265] query_order -u Ethan
 [12267] query_profile -c Lappland -u Glaucus
-[12268] buy_ticket -u Vanilla -i WChJpEdXfhWUUIS -d 08-26 -n 1364 -f 上海 -t 浙江
-[12278] query_ticket -s 上海交通大学 -t 北京 -d 07-10 -p cost
+[12268] buy_ticket -u Vanilla -i MjgbGERfFcytIMjPd -d 08-26 -n 1364 -f 上海交通大学 -t 北京
+[12278] query_ticket -s 浙江 -t 上海 -d 07-10 -p cost
 [12284] logout -u Courier
-[12286] buy_ticket -u Ceobe -i WChJpEdXfhWUUIS -d 07-28 -n 3699 -f 温州 -t 浙江大学
+[12286] buy_ticket -u Ceobe -i MjgbGERfFcytIMjPd -d 07-28 -n 3699 -f 浙江大学 -t 温州
 [12296] query_profile -c Cuora -u Fang
-[12297] query_ticket -s 上海 -t 上海交通大学 -d 06-14 -p cost
-[12307] query_ticket -s 浙江大学 -t 上海交通大学 -d 08-12 -p time
-[12316] add_train -i CfWEaebUTdPDGQMbGRe -n 3 -m 34075 -s 上海|浙江|浙江大学 -p 22061|2338 -x 05:42 -t 12|15 -o 15 -d 07-14|08-20 -y s
+[12297] query_ticket -s 上海交通大学 -t 浙江 -d 06-14 -p cost
+[12307] query_ticket -s 温州 -t 浙江 -d 08-12 -p time
+[12316] add_train -i CfWEaebUTdPDGQMbGRe -n 3 -m 34075 -s 上海交通大学|北京|温州 -p 22061|2338 -x 05:42 -t 12|15 -o 15 -d 07-14|08-20 -y s
 [12325] login -u Scavenger -p N
-[12333] query_ticket -s 温州 -t 浙江大学 -d 06-14 -p time
-[12339] query_ticket -s 上海 -t 上海交通大学 -d 06-08 -p time
-[12340] query_ticket -s 温州 -t 上海交通大学 -d 07-29 -p time
-[12345] query_ticket -s 北京 -t 上海交通大学 -d 07-19 -p cost
-[12350] query_profile -c Hung -u Astesia -p xVSjwbjpw -g 7
+[12333] query_ticket -s 浙江大学 -t 温州 -d 06-14 -p time
+[12339] query_ticket -s 上海交通大学 -t 浙江 -d 06-08 -p time
+[12340] query_ticket -s 浙江大学 -t 浙江 -d 07-29 -p time
+[12345] query_ticket -s 上海 -t 浙江 -d 07-19 -p cost
+[12350] modify_profile -c Hung -u Astesia -p xVSjwbjpw -g 7
 [12355] logout -u Siege
 [12365] query_profile -c Provence -u Snowsant
 [12369] login -u Frostleaf -p 13bFbyywvQ_g9Z
 [12373] login -u Purestream -p u8!DOSOVeW6KFfV
-[12374] query_profile -c Fang -u Istina -p SleKdhZStpVATxwBYYVpCiHdmmHNP -g 5
-[12379] query_profile -c Ceobe -u Cardigan -p pjfeZDGcMnwBgRpMjmCLlGiHMscfa -g 7
+[12374] modify_profile -c Fang -u Istina -p SleKdhZStpVATxwBYYVpCiHdmmHNP -g 5
+[12379] modify_profile -c Ceobe -u Cardigan -p pjfeZDGcMnwBgRpMjmCLlGiHMscfa -g 7
 [12380] logout -u Sesa
 [12390] refund_ticket -u GreyThroat -n 1
 [12396] query_order -u Broca
-[12399] query_ticket -s 上海 -t 北京 -d 06-08 -p cost
-[12409] query_ticket -s 温州 -t 浙江 -d 07-06 -p time
+[12399] query_ticket -s 上海交通大学 -t 上海 -d 06-08 -p cost
+[12409] query_ticket -s 浙江大学 -t 北京 -d 07-06 -p time
 [12410] query_profile -c FEater -u May
-[12417] buy_ticket -u Meteorite -i CfWEaebUTdPDGQMbGRe -d 08-19 -n 527 -f 上海交通大学 -t 上海
+[12417] buy_ticket -u Meteorite -i CfWEaebUTdPDGQMbGRe -d 08-19 -n 527 -f 浙江 -t 上海交通大学
 [12423] query_profile -c Ifrit -u Hung
-[12430] query_ticket -s 北京 -t 上海交通大学 -d 07-23 -p time
-[12440] query_ticket -s 温州 -t 上海 -d 07-25 -p cost
-[12449] buy_ticket -u Franka -i MjgbGERfFcytIMjPd -d 08-20 -n 2901 -f 浙江大学 -t 上海交通大学
-[12457] query_profile -c Astesia -u Cutter -p zqiWXCnhsaWNEvlKTZlFEcqtvj -g 10
+[12430] query_ticket -s 上海 -t 浙江 -d 07-23 -p time
+[12440] query_ticket -s 浙江大学 -t 上海交通大学 -d 07-25 -p cost
+[12449] buy_ticket -u Franka -i WChJpEdXfhWUUIS -d 08-20 -n 2901 -f 温州 -t 浙江
+[12457] modify_profile -c Astesia -u Cutter -p zqiWXCnhsaWNEvlKTZlFEcqtvj -g 10
 [12459] refund_ticket -u Perfumer -n 1
-[12460] query_profile -c IXatcihpMScfN -u Snowsant -p eBsQpPdgcCpMHVtLAPrPWeV -g 3
+[12460] modify_profile -c IXatcihpMScfN -u Snowsant -p eBsQpPdgcCpMHVtLAPrPWeV -g 3
 [12461] query_profile -c Bagpipe -u BluePoison
-[12466] query_ticket -s 上海 -t 浙江 -d 06-10 -p time
+[12466] query_ticket -s 上海交通大学 -t 北京 -d 06-10 -p time
 [12475] add_user -c Conviction -u GFovBij -p vSXgaQzNkXvGd -n 貀鯧坿 -m tSXYuSvnZZlwH -g 10
-[12482] query_profile -c Angelina -u Leizi -p LDIbeLxuike -g 4
+[12482] modify_profile -c Angelina -u Leizi -p LDIbeLxuike -g 4
 [12491] logout -u BluePoison
 [12493] query_profile -c Vigna -u Lava
-[12496] buy_ticket -u Bibeak -i CfWEaebUTdPDGQMbGRe -d 06-29 -n 1454 -f 上海交通大学 -t 温州
-[12497] query_ticket -s 上海 -t 上海交通大学 -d 06-24 -p cost
-[12504] query_ticket -s 上海交通大学 -t 浙江 -d 07-22 -p time
-[12508] buy_ticket -u Franka -i MjgbGERfFcytIMjPd -d 08-08 -n 2183 -f 上海交通大学 -t 浙江
-[12510] query_ticket -s 北京 -t 浙江 -d 07-25 -p cost
-[12512] add_train -i eMiWdBPQkB -n 2 -m 27118 -s 上海交通大学|上海 -p 23907 -x 10:44 -t 5 -o _ -d 07-23|08-27 -y P
-[12522] query_ticket -s 上海 -t 上海交通大学 -d 06-19 -p cost
-[12523] query_profile -c Exusiai -u Liskarm -p PNcpzKmTlFTqwvbqkVMJGhNYQoXXC -g 3
-[12527] query_ticket -s 浙江 -t 浙江大学 -d 08-28 -p time
-[12532] query_ticket -s 温州 -t 上海 -d 07-18 -p time
+[12496] buy_ticket -u Bibeak -i CfWEaebUTdPDGQMbGRe -d 06-29 -n 1454 -f 浙江 -t 浙江大学
+[12497] query_ticket -s 上海交通大学 -t 浙江 -d 06-24 -p cost
+[12504] query_ticket -s 浙江 -t 北京 -d 07-22 -p time
+[12508] buy_ticket -u Franka -i WChJpEdXfhWUUIS -d 08-08 -n 2183 -f 浙江 -t 北京
+[12510] query_ticket -s 上海 -t 北京 -d 07-25 -p cost
+[12512] add_train -i eMiWdBPQkB -n 2 -m 27118 -s 浙江|上海交通大学 -p 23907 -x 10:44 -t 5 -o _ -d 07-23|08-27 -y P
+[12522] query_ticket -s 上海交通大学 -t 浙江 -d 06-19 -p cost
+[12523] modify_profile -c Exusiai -u Liskarm -p PNcpzKmTlFTqwvbqkVMJGhNYQoXXC -g 3
+[12527] query_ticket -s 北京 -t 温州 -d 08-28 -p time
+[12532] query_ticket -s 浙江大学 -t 上海交通大学 -d 07-18 -p time
 [12539] query_profile -c WaaiFu -u Grani
 [12546] logout -u Estelle
 [12553] refund_ticket -u Leizi -n 4
-[12554] buy_ticket -u Hung -i MjgbGERfFcytIMjPd -d 06-14 -n 2014 -f 上海交通大学 -t 温州
-[12557] query_ticket -s 温州 -t 上海 -d 07-10 -p cost
-[12560] query_ticket -s 上海交通大学 -t 浙江大学 -d 08-27 -p time
-[12567] buy_ticket -u Ptilopsis -i MjgbGERfFcytIMjPd -d 06-10 -n 2145 -f 上海 -t 浙江大学
-[12574] buy_ticket -u Haze -i CfWEaebUTdPDGQMbGRe -d 06-23 -n 1879 -f 浙江大学 -t 上海
+[12554] buy_ticket -u Hung -i WChJpEdXfhWUUIS -d 06-14 -n 2014 -f 浙江 -t 浙江大学
+[12557] query_ticket -s 浙江大学 -t 上海交通大学 -d 07-10 -p cost
+[12560] query_ticket -s 浙江 -t 温州 -d 08-27 -p time
+[12567] buy_ticket -u Ptilopsis -i WChJpEdXfhWUUIS -d 06-10 -n 2145 -f 上海交通大学 -t 温州
+[12574] buy_ticket -u Haze -i CfWEaebUTdPDGQMbGRe -d 06-23 -n 1879 -f 温州 -t 上海交通大学
 [12581] query_profile -c Croissant -u Popukar
-[12591] query_profile -c WaaiFu -u Cuora -p htYaUEgYg -g 2
+[12591] modify_profile -c WaaiFu -u Cuora -p htYaUEgYg -g 2
 [12599] query_order -u Myrtle
-[12607] buy_ticket -u Deepcolor -i eMiWdBPQkB -d 08-10 -n 1975 -f 上海 -t 上海交通大学
+[12607] buy_ticket -u Deepcolor -i eMiWdBPQkB -d 08-10 -n 1975 -f 上海交通大学 -t 浙江
 [12615] logout -u ProjeKTRed
-[12625] buy_ticket -u ShiraYuki -i WChJpEdXfhWUUIS -d 08-29 -n 60 -f 浙江大学 -t 北京
+[12625] buy_ticket -u ShiraYuki -i MjgbGERfFcytIMjPd -d 08-29 -n 60 -f 温州 -t 上海
 [12631] release_train -i eMiWdBPQkB
 [12640] add_user -c Hibiscus -u WlijKjWPCNCOXrTDMchO -p pXMjLtJyAvczQZto -n 岧凥轔 -m crfPijhWkbKbwSOPpwTeENKvOC -g 7
 [12648] query_order -u Siege
-[12655] query_profile -c Skadi -u Midnight -p KZuFD -g 1
-[12657] query_ticket -s 上海交通大学 -t 温州 -d 08-25 -p time
-[12666] buy_ticket -u Vigna -i CfWEaebUTdPDGQMbGRe -d 08-22 -n 3061 -f 上海 -t 上海交通大学
-[12673] query_ticket -s 浙江 -t 上海交通大学 -d 07-29 -p cost
+[12655] modify_profile -c Skadi -u Midnight -p KZuFD -g 1
+[12657] query_ticket -s 浙江 -t 浙江大学 -d 08-25 -p time
+[12666] buy_ticket -u Vigna -i CfWEaebUTdPDGQMbGRe -d 08-22 -n 3061 -f 上海交通大学 -t 浙江
+[12673] query_ticket -s 北京 -t 浙江 -d 07-29 -p cost
 [12678] logout -u Siege
-[12679] query_ticket -s 上海交通大学 -t 浙江 -d 07-19 -p cost
-[12683] buy_ticket -u Nian -i eMiWdBPQkB -d 08-28 -n 1156 -f 温州 -t 浙江
-[12684] buy_ticket -u Estelle -i CfWEaebUTdPDGQMbGRe -d 07-28 -n 4700 -f 北京 -t 上海交通大学
+[12679] query_ticket -s 浙江 -t 北京 -d 07-19 -p cost
+[12683] buy_ticket -u Nian -i eMiWdBPQkB -d 08-28 -n 1156 -f 浙江大学 -t 北京
+[12684] buy_ticket -u Estelle -i CfWEaebUTdPDGQMbGRe -d 07-28 -n 4700 -f 上海 -t 浙江
 [12689] query_profile -c Nian -u Reed
-[12693] query_ticket -s 上海 -t 温州 -d 08-22 -p time
-[12703] query_ticket -s 上海 -t 浙江大学 -d 08-15 -p time
+[12693] query_ticket -s 上海交通大学 -t 浙江大学 -d 08-22 -p time
+[12703] query_ticket -s 上海交通大学 -t 温州 -d 08-15 -p time
 [12706] add_user -c Shaw -u uCmegI -p YyvmOicMtCmgdUPpPKyDACErgUTNyb -n 魙拆鉖 -m qQalmfrOOeuSsUw -g 10
-[12709] buy_ticket -u I_am_the_admin -i MjgbGERfFcytIMjPd -d 06-12 -n 1538 -f 温州 -t 浙江大学
+[12709] buy_ticket -u I_am_the_admin -i WChJpEdXfhWUUIS -d 06-12 -n 1538 -f 浙江大学 -t 温州
 [12714] refund_ticket -u May -n 2
-[12717] query_ticket -s 上海交通大学 -t 北京 -d 08-02 -p cost
-[12725] buy_ticket -u Bison -i WChJpEdXfhWUUIS -d 08-07 -n 2072 -f 温州 -t 浙江大学
+[12717] query_ticket -s 浙江 -t 上海 -d 08-02 -p cost
+[12725] buy_ticket -u Bison -i MjgbGERfFcytIMjPd -d 08-07 -n 2072 -f 浙江大学 -t 温州
 [12728] add_user -c Ambriel -u jvYXHh -p OCpoqakDwruWYmwfpHbl -n 蟐婦泤 -m YaKnmzCVhGkqn -g 5
 [12733] login -u BluePoison -p xcxdZ
 [12737] query_order -u goPhtzWCqpaGJxItn
@@ -806,88 +806,88 @@
 [12757] logout -u Conviction
 [12760] refund_ticket -u Cuora -n 1
 [12770] query_profile -c Bibeak -u Midnight
-[12774] buy_ticket -u Vermeil -i eMiWdBPQkB -d 08-27 -n 3675 -f 浙江 -t 北京
-[12780] add_train -i iyQqt -n 3 -m 72842 -s 温州|浙江大学|上海 -p 13606|94140 -x 12:03 -t 7|5 -o 6 -d 06-27|07-11 -y u
-[12786] buy_ticket -u Ceobe -i iyQqt -d 06-11 -n 3716 -f 浙江大学 -t 上海
-[12791] query_ticket -s 浙江大学 -t 上海 -d 08-03 -p cost
-[12797] query_transfer -s 浙江 -t 温州 -d 06-09 -p cost
+[12774] buy_ticket -u Vermeil -i eMiWdBPQkB -d 08-27 -n 3675 -f 北京 -t 上海
+[12780] add_train -i iyQqt -n 3 -m 72842 -s 浙江大学|温州|上海交通大学 -p 13606|94140 -x 12:03 -t 7|5 -o 6 -d 06-27|07-11 -y u
+[12786] buy_ticket -u Ceobe -i WChJpEdXfhWUUIS -d 06-11 -n 3716 -f 温州 -t 上海交通大学
+[12791] query_ticket -s 温州 -t 上海交通大学 -d 08-03 -p cost
+[12797] query_transfer -s 北京 -t 浙江大学 -d 06-09 -p cost
 [12803] logout -u Conviction
-[12811] query_ticket -s 浙江大学 -t 上海交通大学 -d 07-29 -p time
-[12820] query_ticket -s 北京 -t 上海交通大学 -d 07-20 -p time
-[12830] add_train -i xIaiHmjpfL -n 3 -m 56937 -s 上海交通大学|上海|温州 -p 403|88941 -x 17:11 -t 10|5 -o 6 -d 08-25|08-27 -y o
-[12831] buy_ticket -u NoirCorne -i CfWEaebUTdPDGQMbGRe -d 06-06 -n 3944 -f 浙江大学 -t 上海交通大学
+[12811] query_ticket -s 温州 -t 浙江 -d 07-29 -p time
+[12820] query_ticket -s 上海 -t 浙江 -d 07-20 -p time
+[12830] add_train -i xIaiHmjpfL -n 3 -m 56937 -s 浙江|上海交通大学|浙江大学 -p 403|88941 -x 17:11 -t 10|5 -o 6 -d 08-25|08-27 -y o
+[12831] buy_ticket -u NoirCorne -i iyQqt -d 06-06 -n 3944 -f 温州 -t 浙江
 [12839] query_profile -c Indra -u Leizi
-[12845] query_ticket -s 温州 -t 北京 -d 07-13 -p time
+[12845] query_ticket -s 浙江大学 -t 上海 -d 07-13 -p time
 [12848] refund_ticket -u Ceobe -n 1
 [12853] login -u Sussurro -p RljpTyVquEZin
-[12859] buy_ticket -u Astesia -i CfWEaebUTdPDGQMbGRe -d 06-23 -n 415 -f 上海交通大学 -t 温州
-[12869] buy_ticket -u Shining -i xIaiHmjpfL -d 06-25 -n 2028 -f 浙江大学 -t 上海
-[12876] release_train -i eMiWdBPQkB
-[12877] buy_ticket -u goPhtzWCqpaGJxItn -i CfWEaebUTdPDGQMbGRe -d 08-15 -n 704 -f 浙江 -t 上海交通大学
-[12881] buy_ticket -u Plume -i iyQqt -d 07-15 -n 4363 -f 浙江大学 -t 北京
+[12859] buy_ticket -u Astesia -i iyQqt -d 06-23 -n 415 -f 浙江 -t 浙江大学
+[12869] buy_ticket -u Shining -i xIaiHmjpfL -d 06-25 -n 2028 -f 温州 -t 上海交通大学
+[12876] release_train -i CfWEaebUTdPDGQMbGRe
+[12877] buy_ticket -u goPhtzWCqpaGJxItn -i iyQqt -d 08-15 -n 704 -f 北京 -t 浙江
+[12881] buy_ticket -u Plume -i WChJpEdXfhWUUIS -d 07-15 -n 4363 -f 温州 -t 上海
 [12884] logout -u Courier
 [12888] query_order -u Astesia
 [12890] login -u Istina -p dpaWdIFboEEKWID
-[12891] query_profile -c Leizi -u Executor -p yAltQdiKbKhvRuOX -g 5
-[12896] buy_ticket -u Breeze -i WChJpEdXfhWUUIS -d 07-30 -n 4018 -f 温州 -t 北京
-[12898] buy_ticket -u Shining -i MjgbGERfFcytIMjPd -d 07-29 -n 2120 -f 温州 -t 浙江
-[12902] query_profile -c Sora -u Estelle -p bmyNxhjOedFVQ -g 9
+[12891] modify_profile -c Leizi -u Executor -p yAltQdiKbKhvRuOX -g 5
+[12896] buy_ticket -u Breeze -i MjgbGERfFcytIMjPd -d 07-30 -n 4018 -f 浙江大学 -t 上海
+[12898] buy_ticket -u Shining -i eMiWdBPQkB -d 07-29 -n 2120 -f 浙江大学 -t 北京
+[12902] modify_profile -c Sora -u Estelle -p bmyNxhjOedFVQ -g 9
 [12906] add_user -c Matoimaru -u PnAkIYMFasZxdaiHDJq -p YKhifyTZmjHQNI -n 堰礆祉 -m sIRIkwGKuWRLdMZZjaq -g 9
-[12911] buy_ticket -u Adnachiel -i iyQqt -d 06-21 -n 2110 -f 浙江大学 -t 北京
-[12914] buy_ticket -u WaaiFu -i MjgbGERfFcytIMjPd -d 07-18 -n 4431 -f 浙江 -t 上海交通大学
-[12922] buy_ticket -u Sideroca -i CfWEaebUTdPDGQMbGRe -d 07-17 -n 468 -f 浙江大学 -t 温州
-[12928] buy_ticket -u Durnar -i iyQqt -d 07-13 -n 1647 -f 浙江大学 -t 上海交通大学
-[12933] delete_train -i iyQqt
-[12942] query_ticket -s 上海 -t 温州 -d 06-09 -p time
-[12944] query_profile -c Astesia -u Breeze -p XgZpxx -g 7
+[12911] buy_ticket -u Adnachiel -i WChJpEdXfhWUUIS -d 06-21 -n 2110 -f 温州 -t 上海
+[12914] buy_ticket -u WaaiFu -i eMiWdBPQkB -d 07-18 -n 4431 -f 北京 -t 浙江
+[12922] buy_ticket -u Sideroca -i iyQqt -d 07-17 -n 468 -f 温州 -t 浙江大学
+[12928] buy_ticket -u Durnar -i WChJpEdXfhWUUIS -d 07-13 -n 1647 -f 温州 -t 浙江
+[12933] delete_train -i WChJpEdXfhWUUIS
+[12942] query_ticket -s 上海交通大学 -t 浙江大学 -d 06-09 -p time
+[12944] modify_profile -c Astesia -u Breeze -p XgZpxx -g 7
 [12950] query_order -u Mayer
-[12955] buy_ticket -u WaaiFu -i WChJpEdXfhWUUIS -d 06-14 -n 2849 -f 温州 -t 浙江
-[12961] query_ticket -s 上海交通大学 -t 上海 -d 07-09 -p time
-[12969] query_ticket -s 浙江 -t 温州 -d 08-27 -p time
+[12955] buy_ticket -u WaaiFu -i MjgbGERfFcytIMjPd -d 06-14 -n 2849 -f 浙江大学 -t 北京
+[12961] query_ticket -s 浙江 -t 上海交通大学 -d 07-09 -p time
+[12969] query_ticket -s 北京 -t 浙江大学 -d 08-27 -p time
 [12979] query_profile -c Firewatch -u Mayer
-[12982] delete_train -i eMiWdBPQkB
-[12990] buy_ticket -u Eyjafjalla -i CfWEaebUTdPDGQMbGRe -d 07-28 -n 2339 -f 浙江 -t 上海交通大学
+[12982] delete_train -i CfWEaebUTdPDGQMbGRe
+[12990] buy_ticket -u Eyjafjalla -i iyQqt -d 07-28 -n 2339 -f 北京 -t 浙江
 [12998] logout -u Executor
 [13003] query_order -u Hung
 [13011] refund_ticket -u Cutter -n 5
-[13020] buy_ticket -u Franka -i iyQqt -d 08-14 -n 3631 -f 上海交通大学 -t 浙江大学
+[13020] buy_ticket -u Franka -i WChJpEdXfhWUUIS -d 08-14 -n 3631 -f 浙江 -t 温州
 [13022] query_profile -c Deepcolor -u Astesia
 [13026] query_profile -c Liskarm -u Siege
 [13029] query_order -u Skyfire
 [13032] login -u Ceylon -p dnNPf412U_lfOKG
-[13035] query_ticket -s 北京 -t 浙江大学 -d 06-28 -p cost
+[13035] query_ticket -s 上海 -t 温州 -d 06-28 -p cost
 [13040] query_order -u ShiraYuki
 [13043] query_profile -c Rangers -u Savage
-[13047] query_ticket -s 浙江大学 -t 温州 -d 08-05 -p time
-[13053] query_profile -c Frostleaf -u Ptilopsis -p ETwUcVjXzESHC -g 2
+[13047] query_ticket -s 温州 -t 浙江大学 -d 08-05 -p time
+[13053] modify_profile -c Frostleaf -u Ptilopsis -p ETwUcVjXzESHC -g 2
 [13062] query_profile -c Specter -u Cuora
-[13068] buy_ticket -u Yato -i WChJpEdXfhWUUIS -d 06-24 -n 3616 -f 上海 -t 浙江
+[13068] buy_ticket -u Yato -i MjgbGERfFcytIMjPd -d 06-24 -n 3616 -f 上海交通大学 -t 北京
 [13077] query_profile -c Ambriel -u ShiraYuki
-[13083] buy_ticket -u Melantha -i eMiWdBPQkB -d 07-15 -n 2226 -f 浙江大学 -t 温州
-[13088] query_ticket -s 上海交通大学 -t 上海 -d 08-08 -p time
-[13092] query_ticket -s 北京 -t 温州 -d 06-06 -p cost
-[13096] query_ticket -s 浙江 -t 浙江大学 -d 08-11 -p cost
-[13101] buy_ticket -u Weedy -i WChJpEdXfhWUUIS -d 07-01 -n 3884 -f 浙江 -t 上海
-[13108] query_ticket -s 上海 -t 浙江 -d 08-17 -p time
-[13118] query_train -i eMiWdBPQkB -d 06-23
+[13083] buy_ticket -u Melantha -i CfWEaebUTdPDGQMbGRe -d 07-15 -n 2226 -f 温州 -t 浙江大学
+[13088] query_ticket -s 浙江 -t 上海交通大学 -d 08-08 -p time
+[13092] query_ticket -s 上海 -t 浙江大学 -d 06-06 -p cost
+[13096] query_ticket -s 北京 -t 温州 -d 08-11 -p cost
+[13101] buy_ticket -u Weedy -i MjgbGERfFcytIMjPd -d 07-01 -n 3884 -f 北京 -t 上海交通大学
+[13108] query_ticket -s 上海交通大学 -t 北京 -d 08-17 -p time
+[13118] query_train -i CfWEaebUTdPDGQMbGRe -d 06-23
 [13121] add_user -c Fang -u XengFXaG -p jiUXcURyiCSkQLBuSGpQSmfzrUTibS -n 箇珏湦 -m QAJxpPUqcj -g 10
-[13129] release_train -i eMiWdBPQkB
-[13138] query_profile -c Broca -u Schwarz -p msbczPiecjePqagFiAVd -g 6
+[13129] release_train -i CfWEaebUTdPDGQMbGRe
+[13138] modify_profile -c Broca -u Schwarz -p msbczPiecjePqagFiAVd -g 6
 [13148] query_order -u Hibiscus
-[13151] query_ticket -s 浙江大学 -t 上海 -d 08-11 -p cost
-[13152] query_ticket -s 浙江 -t 上海交通大学 -d 07-26 -p time
+[13151] query_ticket -s 温州 -t 上海交通大学 -d 08-11 -p cost
+[13152] query_ticket -s 北京 -t 浙江 -d 07-26 -p time
 [13162] query_profile -c Snowsant -u Courier
 [13167] add_user -c Indra -u iemNmzkb -p h -n 饉黔蓒 -m oVW -g 7
-[13169] query_ticket -s 上海 -t 温州 -d 06-06 -p time
-[13178] query_profile -c Nearl -u Matoimaru -p tolSomxwFcppQdyvKPDNmzJCQo -g 2
+[13169] query_ticket -s 上海交通大学 -t 浙江大学 -d 06-06 -p time
+[13178] modify_profile -c Nearl -u Matoimaru -p tolSomxwFcppQdyvKPDNmzJCQo -g 2
 [13186] query_profile -c Myrtle -u Orchid
-[13188] query_ticket -s 上海 -t 浙江大学 -d 06-07 -p cost
+[13188] query_ticket -s 上海交通大学 -t 温州 -d 06-07 -p cost
 [13190] login -u Mostima -p hgcVumJeJ
 [13192] rollback -t 11609
 [13193] query_order -u Platinum
 [13197] query_order -u Gavial
 [13205] query_profile -c Liskarm -u Savage
-[13214] query_ticket -s 浙江大学 -t 上海 -d 08-01 -p time
+[13214] query_ticket -s 温州 -t 上海交通大学 -d 08-01 -p time
 [13217] query_profile -c Glaucus -u Beehunter
 [13221] query_profile -c Hellagur -u Liskarm
 [13226] query_order -u Deepcolor
@@ -895,9 +895,9 @@
 [13241] query_order -u Ptilopsis
 [13250] query_profile -c Jessica -u Exusiai
 [13253] query_profile -c Mostima -u Pramanix
-[13262] query_ticket -s 上海 -t 浙江 -d 08-26 -p time
+[13262] query_ticket -s 上海交通大学 -t 北京 -d 08-26 -p time
 [13264] query_profile -c Warfarin -u Chen
-[13273] query_train -i eMiWdBPQkB -d 08-13
+[13273] query_train -i CfWEaebUTdPDGQMbGRe -d 08-13
 [13279] query_profile -c Sesa -u Hibiscus
 [13286] query_profile -c Specter -u Ceylon
 [13294] query_profile -c Melantha -u Lappland
@@ -908,7 +908,7 @@
 [13325] query_profile -c Broca -u Warfarin
 [13331] query_order -u Rangers
 [13334] query_profile -c Perfumer -u Vermeil
-[13343] query_train -i eMiWdBPQkB -d 06-05
+[13343] query_train -i CfWEaebUTdPDGQMbGRe -d 06-05
 [13353] query_profile -c Provence -u Plume
 [13363] query_profile -c IXatcihpMScfN -u Weedy
 [13373] query_profile -c goPhtzWCqpaGJxItn -u Utage
@@ -1007,7 +1007,7 @@
 [13860] release_train -i pks
 [13861] query_order -u Sussurro
 [13871] login -u May -p xDystx0_hCQtGq2y4
-[13879] query_profile -c Bibeak -u Bibeak -p iAqRTTy -g 1
+[13879] modify_profile -c Bibeak -u Bibeak -p iAqRTTy -g 1
 [13888] query_profile -c Midnight -u Popukar
 [13894] refund_ticket -u ProjeKTRed -n 2
 [13895] login -u Reed -p wMxtoyTitpDbKrnDpOOlUTyL
@@ -1017,8 +1017,8 @@
 [13916] query_transfer -s 潘开森 -t 王梓 -d 08-13
 [13926] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [13929] add_user -c WaaiFu -u aCVkbyNcraSgHEerKy -p SEmSjWOeybXjkQfH -n 蚟沟挘 -m xvQYUMysqmqrwYL -g 2
-[13930] query_profile -c Angelina -u Sideroca -p axeBwTlAcTgJLFAG -g 10
-[13932] query_profile -c Sora -u Skadi -p aitUFOjyajQUoIlUEKW -g 3
+[13930] modify_profile -c Angelina -u Sideroca -p axeBwTlAcTgJLFAG -g 10
+[13932] modify_profile -c Sora -u Skadi -p aitUFOjyajQUoIlUEKW -g 3
 [13940] logout -u Shaw
 [13943] query_train -i pks -d 08-13
 [13952] query_order -u GreyThroat
@@ -1044,7 +1044,7 @@
 [14050] login -u Beehunter -p 79GnUmZgiP
 [14058] query_order -u Warfarin
 [14059] login -u Cutter -p OIFRnEij
-[14060] query_profile -c Ambriel -u Shaw -p QywzTgcBCNGVropg -g 0
+[14060] modify_profile -c Ambriel -u Shaw -p QywzTgcBCNGVropg -g 0
 [14070] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [14080] refund_ticket -u Weedy -n 3
 [14087] login -u Durin -p m
@@ -1070,7 +1070,7 @@
 [14194] login -u Hung -p lFFBglxUeIkCkREi8f08
 [14201] query_profile -c Orchid -u Haze
 [14203] query_order -u Rope
-[14212] query_profile -c Orchid -u Durnar -p cKckZnGxLuY -g 7
+[14212] modify_profile -c Orchid -u Durnar -p cKckZnGxLuY -g 7
 [14215] query_order -u Ifrit
 [14219] query_profile -c Cliffheart -u Weedy
 [14225] query_order -u Nightmare
@@ -1097,16 +1097,16 @@
 [14349] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [14356] release_train -i pks
 [14366] login -u Executor -p pCPyzkfWTxmehhuVdTHlGXOoJLGOI
-[14376] add_train -i gvoqgdmC -n 2 -m 86686 -s 上海|浙江大学 -p 37020 -x 06:18 -t 5 -o _ -d 06-03|06-08 -y A
-[14379] query_ticket -s 浙江 -t 北京 -d 07-05 -p cost
+[14376] add_train -i gvoqgdmC -n 2 -m 86686 -s 上海交通大学|温州 -p 37020 -x 06:18 -t 5 -o _ -d 06-03|06-08 -y A
+[14379] query_ticket -s 北京 -t 上海 -d 07-05 -p cost
 [14384] query_profile -c FEater -u Siege
 [14389] query_profile -c Nightmare -u Catapult
 [14390] query_order -u BluePoison
-[14395] buy_ticket -u Chen -i gvoqgdmC -d 06-18 -n 4020 -f 温州 -t 浙江
+[14395] buy_ticket -u Chen -i gvoqgdmC -d 06-18 -n 4020 -f 浙江大学 -t 北京
 [14399] query_order -u Istina
-[14400] query_profile -c Gravel -u Executor -p XpKnrLzXpELJGvQei -g 5
-[14403] query_ticket -s 温州 -t 浙江大学 -d 06-02 -p cost
-[14404] query_ticket -s 浙江大学 -t 浙江 -d 06-08 -p time
+[14400] modify_profile -c Gravel -u Executor -p XpKnrLzXpELJGvQei -g 5
+[14403] query_ticket -s 浙江大学 -t 温州 -d 06-02 -p cost
+[14404] query_ticket -s 温州 -t 北京 -d 06-08 -p time
 [14412] query_order -u Yato
 [14415] query_order -u goPhtzWCqpaGJxItn
 [14425] login -u Istina -p pV$Ib2DhsZ9$eVp-bUX
@@ -1115,115 +1115,115 @@
 [14438] logout -u Gummy
 [14444] query_profile -c Hung -u Bagpipe
 [14452] login -u Hung -p cUlPzsYXkqsfx
-[14462] query_profile -c Scavenger -u Vanilla -p UugyPRNvcAGLgjnjVNUFLSvcCMlX -g 5
-[14465] buy_ticket -u Franka -i gvoqgdmC -d 07-24 -n 1629 -f 温州 -t 浙江
+[14462] modify_profile -c Scavenger -u Vanilla -p UugyPRNvcAGLgjnjVNUFLSvcCMlX -g 5
+[14465] buy_ticket -u Franka -i gvoqgdmC -d 07-24 -n 1629 -f 浙江大学 -t 北京
 [14473] login -u Reed -p J2iXWcMqVuT
 [14474] release_train -i gvoqgdmC
 [14484] query_profile -c Durin -u Pramanix
 [14493] login -u Nightmare -p zQJwm
 [14497] query_profile -c Skadi -u Fang
-[14502] query_ticket -s 上海 -t 浙江 -d 07-24 -p time
+[14502] query_ticket -s 上海交通大学 -t 北京 -d 07-24 -p time
 [14507] query_profile -c Rangers -u Melantha
 [14512] logout -u Skyfire
-[14521] buy_ticket -u Zima -i gvoqgdmC -d 08-29 -n 2966 -f 浙江 -t 浙江大学
+[14521] buy_ticket -u Zima -i gvoqgdmC -d 08-29 -n 2966 -f 北京 -t 温州
 [14530] query_order -u Zima
-[14537] buy_ticket -u Vermeil -i gvoqgdmC -d 07-02 -n 2891 -f 上海交通大学 -t 北京
+[14537] buy_ticket -u Vermeil -i gvoqgdmC -d 07-02 -n 2891 -f 浙江 -t 上海
 [14541] query_profile -c Adnachiel -u Courier
-[14548] buy_ticket -u Popukar -i gvoqgdmC -d 08-20 -n 183 -f 上海 -t 浙江大学
-[14550] query_profile -c Steward -u Deepcolor -p oiSeKjB -g 0
-[14552] buy_ticket -u goPhtzWCqpaGJxItn -i gvoqgdmC -d 06-16 -n 2363 -f 北京 -t 浙江大学
+[14548] buy_ticket -u Popukar -i gvoqgdmC -d 08-20 -n 183 -f 上海交通大学 -t 温州
+[14550] modify_profile -c Steward -u Deepcolor -p oiSeKjB -g 0
+[14552] buy_ticket -u goPhtzWCqpaGJxItn -i gvoqgdmC -d 06-16 -n 2363 -f 上海 -t 温州
 [14558] login -u Earthspirit -p KdZaGvvdsrJnrv
-[14568] buy_ticket -u Ptilopsis -i gvoqgdmC -d 08-04 -n 4646 -f 浙江大学 -t 温州
+[14568] buy_ticket -u Ptilopsis -i gvoqgdmC -d 08-04 -n 4646 -f 温州 -t 浙江大学
 [14572] query_profile -c Astesia -u Eyjafjalla
 [14573] login -u Liskarm -p kDGnOCAJvsKtfmskgWdWsIPCIRobo
-[14575] query_ticket -s 浙江 -t 温州 -d 08-29 -p time
+[14575] query_ticket -s 北京 -t 浙江大学 -d 08-29 -p time
 [14584] login -u Orchid -p oWh!Zqp_fZSh82e_fCMP
 [14587] logout -u FEater
 [14596] logout -u Ceobe
-[14602] query_ticket -s 浙江 -t 上海交通大学 -d 06-05 -p cost
-[14610] buy_ticket -u Mostima -i gvoqgdmC -d 06-02 -n 830 -f 北京 -t 浙江
-[14611] query_transfer -s 浙江 -t 上海 -d 07-26 -p cost
+[14602] query_ticket -s 北京 -t 浙江 -d 06-05 -p cost
+[14610] buy_ticket -u Mostima -i gvoqgdmC -d 06-02 -n 830 -f 上海 -t 北京
+[14611] query_transfer -s 北京 -t 上海交通大学 -d 07-26 -p cost
 [14620] query_profile -c Bibeak -u Cardigan
-[14630] query_profile -c ShiraYuki -u Beagle -p ewellIZqzmIinYVm -g 8
+[14630] modify_profile -c ShiraYuki -u Beagle -p ewellIZqzmIinYVm -g 8
 [14632] logout -u Hung
-[14638] buy_ticket -u Mousse -i gvoqgdmC -d 06-23 -n 4195 -f 浙江大学 -t 上海交通大学
+[14638] buy_ticket -u Mousse -i gvoqgdmC -d 06-23 -n 4195 -f 温州 -t 浙江
 [14647] refund_ticket -u Ifrit -n 5
 [14655] add_user -c Rangers -u nIzhqqwneVhTbuqXcKR -p OIGzc -n 幼飰岂 -m NxrNlQqjDFMTffBSbge -g 6
-[14656] query_ticket -s 温州 -t 上海交通大学 -d 07-22 -p time
-[14663] buy_ticket -u Mousse -i gvoqgdmC -d 08-11 -n 3039 -f 北京 -t 浙江
-[14665] query_ticket -s 浙江 -t 温州 -d 06-26 -p time
+[14656] query_ticket -s 浙江大学 -t 浙江 -d 07-22 -p time
+[14663] buy_ticket -u Mousse -i gvoqgdmC -d 08-11 -n 3039 -f 上海 -t 北京
+[14665] query_ticket -s 北京 -t 浙江大学 -d 06-26 -p time
 [14674] logout -u Shaw
-[14675] query_profile -c Vanilla -u Cuora -p YAcpslvgSEQFWauxWlzDLOQp -g 0
+[14675] modify_profile -c Vanilla -u Cuora -p YAcpslvgSEQFWauxWlzDLOQp -g 0
 [14676] query_profile -c Hibiscus -u Shining
-[14681] query_ticket -s 上海交通大学 -t 浙江 -d 07-22 -p cost
-[14689] query_ticket -s 北京 -t 上海交通大学 -d 08-03 -p time
-[14698] buy_ticket -u ProjeKTRed -i gvoqgdmC -d 08-18 -n 82 -f 浙江 -t 上海交通大学
+[14681] query_ticket -s 浙江 -t 北京 -d 07-22 -p cost
+[14689] query_ticket -s 上海 -t 浙江 -d 08-03 -p time
+[14698] buy_ticket -u ProjeKTRed -i gvoqgdmC -d 08-18 -n 82 -f 北京 -t 浙江
 [14708] query_order -u Franka
-[14716] buy_ticket -u Mousse -i gvoqgdmC -d 08-12 -n 2309 -f 上海 -t 浙江
-[14725] query_transfer -s 温州 -t 上海交通大学 -d 06-03 -p cost
-[14728] query_ticket -s 温州 -t 上海交通大学 -d 06-21 -p time
-[14735] buy_ticket -u Broca -i gvoqgdmC -d 08-26 -n 2339 -f 温州 -t 上海
+[14716] buy_ticket -u Mousse -i gvoqgdmC -d 08-12 -n 2309 -f 上海交通大学 -t 北京
+[14725] query_transfer -s 浙江大学 -t 浙江 -d 06-03 -p cost
+[14728] query_ticket -s 浙江大学 -t 浙江 -d 06-21 -p time
+[14735] buy_ticket -u Broca -i gvoqgdmC -d 08-26 -n 2339 -f 浙江大学 -t 上海交通大学
 [14744] refund_ticket -u Franka -n 4
 [14748] query_train -i gvoqgdmC -d 08-15
-[14758] query_ticket -s 浙江大学 -t 浙江 -d 08-10 -p cost
-[14766] query_profile -c Ansel -u Durin -p NubRczieWLmysAtLTsoFQVXezIiim -g 10
-[14768] query_profile -c Lappland -u Magallan -p IRlSmItaeTHnfBuSVMzYz -g 0
+[14758] query_ticket -s 温州 -t 北京 -d 08-10 -p cost
+[14766] modify_profile -c Ansel -u Durin -p NubRczieWLmysAtLTsoFQVXezIiim -g 10
+[14768] modify_profile -c Lappland -u Magallan -p IRlSmItaeTHnfBuSVMzYz -g 0
 [14776] query_profile -c Ifrit -u Gavial
-[14785] query_ticket -s 浙江大学 -t 上海 -d 08-27 -p cost
+[14785] query_ticket -s 温州 -t 上海交通大学 -d 08-27 -p cost
 [14788] login -u Lappland -p R_Ds_trj7FL
 [14793] query_profile -c Mousse -u Nightmare
 [14801] query_profile -c Sideroca -u Scavenger
 [14809] refund_ticket -u Texas -n 3
-[14815] query_ticket -s 浙江大学 -t 上海 -d 08-05 -p time
-[14824] query_ticket -s 浙江 -t 北京 -d 06-25 -p time
-[14830] buy_ticket -u Nian -i gvoqgdmC -d 07-27 -n 4203 -f 浙江 -t 北京
-[14834] query_ticket -s 北京 -t 温州 -d 07-13 -p cost
+[14815] query_ticket -s 温州 -t 上海交通大学 -d 08-05 -p time
+[14824] query_ticket -s 北京 -t 上海 -d 06-25 -p time
+[14830] buy_ticket -u Nian -i gvoqgdmC -d 07-27 -n 4203 -f 北京 -t 上海
+[14834] query_ticket -s 上海 -t 浙江大学 -d 07-13 -p cost
 [14843] query_train -i gvoqgdmC -d 07-25
-[14851] buy_ticket -u Jessica -i gvoqgdmC -d 08-28 -n 1977 -f 浙江 -t 浙江大学
+[14851] buy_ticket -u Jessica -i gvoqgdmC -d 08-28 -n 1977 -f 北京 -t 温州
 [14857] query_order -u ShiraYuki
 [14865] add_user -c Adnachiel -u PLol -p EYxebRmqFcFgM -n 岖荎錉 -m sGDelmQTHqIaZbVuFIoRKL -g 9
 [14868] logout -u Skyfire
 [14878] login -u Ceylon -p gBr
 [14886] logout -u Croissant
 [14892] login -u Earthspirit -p ybjwlDKFMzAj
-[14901] query_ticket -s 上海交通大学 -t 上海 -d 06-03 -p cost
+[14901] query_ticket -s 浙江 -t 上海交通大学 -d 06-03 -p cost
 [14904] query_profile -c Skadi -u Leizi
-[14911] query_ticket -s 浙江 -t 温州 -d 08-07 -p cost
-[14918] query_ticket -s 上海交通大学 -t 浙江 -d 06-27 -p time
-[14919] buy_ticket -u Popukar -i gvoqgdmC -d 07-15 -n 2940 -f 温州 -t 北京
-[14929] buy_ticket -u Beehunter -i gvoqgdmC -d 06-03 -n 1306 -f 北京 -t 浙江
-[14930] query_profile -c Plume -u ShiraYuki -p xUDFtGrNcAfIQvLrgDnFeL -g 1
-[14935] buy_ticket -u Conviction -i gvoqgdmC -d 08-20 -n 1023 -f 温州 -t 上海
+[14911] query_ticket -s 北京 -t 浙江大学 -d 08-07 -p cost
+[14918] query_ticket -s 浙江 -t 北京 -d 06-27 -p time
+[14919] buy_ticket -u Popukar -i gvoqgdmC -d 07-15 -n 2940 -f 浙江大学 -t 上海
+[14929] buy_ticket -u Beehunter -i gvoqgdmC -d 06-03 -n 1306 -f 上海 -t 北京
+[14930] modify_profile -c Plume -u ShiraYuki -p xUDFtGrNcAfIQvLrgDnFeL -g 1
+[14935] buy_ticket -u Conviction -i gvoqgdmC -d 08-20 -n 1023 -f 浙江大学 -t 上海交通大学
 [14939] query_profile -c ProjeKTRed -u GreyThroat
-[14949] query_profile -c Durin -u Frostleaf -p CBwQTjcdtbhodXcMzAGgbXVspJw -g 2
+[14949] modify_profile -c Durin -u Frostleaf -p CBwQTjcdtbhodXcMzAGgbXVspJw -g 2
 [14950] query_profile -c Franka -u Platinum
 [14951] query_profile -c Orchid -u Provence
 [14960] add_user -c Siege -u EzZQ -p gnkfyNLlB -n 会詃檪 -m STfodKQajHcJvxNZxMaIBEJW -g 8
 [14965] logout -u Snowsant
-[14969] buy_ticket -u Savage -i gvoqgdmC -d 07-17 -n 2068 -f 上海 -t 温州
+[14969] buy_ticket -u Savage -i gvoqgdmC -d 07-17 -n 2068 -f 上海交通大学 -t 浙江大学
 [14971] add_user -c Purestream -u KpnTs -p LmRjFveT -n 嗔籰冇 -m jwecYHFlQcVdvnvfeROtmMEK -g 7
-[14974] add_train -i dDDnTLirnRIqmJUl -n 3 -m 6455 -s 上海交通大学|上海|北京 -p 76923|36507 -x 00:47 -t 15|12 -o 9 -d 07-21|08-30 -y j
+[14974] add_train -i dDDnTLirnRIqmJUl -n 3 -m 6455 -s 浙江|上海交通大学|上海 -p 76923|36507 -x 00:47 -t 15|12 -o 9 -d 07-21|08-30 -y j
 [14978] logout -u Indra
 [14985] query_order -u Shining
 [14989] add_user -c Purestream -u mbZkkPXVgSYwQY -p OvFktCwjQZWmfsyPTb -n 帄孒蛟 -m lWebipVXGnEJgxfJrm -g 7
 [14990] query_train -i gvoqgdmC -d 07-05
-[14996] buy_ticket -u Magallan -i dDDnTLirnRIqmJUl -d 08-17 -n 2434 -f 温州 -t 上海交通大学
+[14996] buy_ticket -u Magallan -i dDDnTLirnRIqmJUl -d 08-17 -n 2434 -f 浙江大学 -t 浙江
 [15005] login -u Grani -p afyWmRAg
 [15006] query_profile -c Leizi -u Vulcan
 [15008] query_profile -c Cutter -u Ceobe
 [15017] query_profile -c Ethan -u Vigna
-[15021] buy_ticket -u Vanilla -i dDDnTLirnRIqmJUl -d 06-26 -n 3786 -f 上海交通大学 -t 北京
+[15021] buy_ticket -u Vanilla -i dDDnTLirnRIqmJUl -d 06-26 -n 3786 -f 浙江 -t 上海
 [15022] refund_ticket -u Nightmare -n 1
 [15028] query_profile -c Mousse -u Glaucus
 [15032] logout -u Exusiai
-[15036] query_profile -c Snowsant -u WaaiFu -p gVxoXtKNBkcUSKtYgO -g 3
+[15036] modify_profile -c Snowsant -u WaaiFu -p gVxoXtKNBkcUSKtYgO -g 3
 [15040] logout -u Franka
-[15045] buy_ticket -u Astesia -i gvoqgdmC -d 07-17 -n 1088 -f 上海 -t 浙江大学
-[15050] query_ticket -s 浙江大学 -t 北京 -d 07-18 -p time
+[15045] buy_ticket -u Astesia -i gvoqgdmC -d 07-17 -n 1088 -f 上海交通大学 -t 温州
+[15050] query_ticket -s 温州 -t 上海 -d 07-18 -p time
 [15054] login -u Nearl -p zrWDMlmPLZTUlw
-[15060] query_ticket -s 上海交通大学 -t 北京 -d 08-18 -p cost
+[15060] query_ticket -s 浙江 -t 上海 -d 08-18 -p cost
 [15064] query_train -i gvoqgdmC -d 06-02
-[15071] query_ticket -s 浙江大学 -t 北京 -d 06-25 -p cost
+[15071] query_ticket -s 温州 -t 上海 -d 06-25 -p cost
 [15079] query_profile -c Phantom -u Exusiai
 [15089] query_profile -c Liskarm -u Hung
 [15091] refund_ticket -u Vermeil -n 3
@@ -1232,140 +1232,140 @@
 [15108] query_profile -c Hung -u Durin
 [15110] refund_ticket -u Manticore -n 5
 [15116] logout -u Vigna
-[15118] add_train -i gapfOzKwUdqdOlfh -n 3 -m 46097 -s 温州|上海交通大学|上海 -p 22404|43801 -x 08:49 -t 14|10 -o 5 -d 06-15|08-29 -y v
-[15120] delete_train -i dDDnTLirnRIqmJUl
-[15122] query_ticket -s 北京 -t 温州 -d 07-05 -p cost
+[15118] add_train -i gapfOzKwUdqdOlfh -n 3 -m 46097 -s 浙江大学|浙江|上海交通大学 -p 22404|43801 -x 08:49 -t 14|10 -o 5 -d 06-15|08-29 -y v
+[15120] delete_train -i gapfOzKwUdqdOlfh
+[15122] query_ticket -s 上海 -t 浙江大学 -d 07-05 -p cost
 [15123] query_profile -c Fang -u Weedy
-[15132] query_ticket -s 温州 -t 浙江大学 -d 07-17 -p time
-[15133] buy_ticket -u Durnar -i dDDnTLirnRIqmJUl -d 08-15 -n 2256 -f 北京 -t 浙江
-[15135] buy_ticket -u Shamare -i dDDnTLirnRIqmJUl -d 06-25 -n 2027 -f 北京 -t 上海
+[15132] query_ticket -s 浙江大学 -t 温州 -d 07-17 -p time
+[15133] buy_ticket -u Durnar -i gapfOzKwUdqdOlfh -d 08-15 -n 2256 -f 上海 -t 北京
+[15135] buy_ticket -u Shamare -i gapfOzKwUdqdOlfh -d 06-25 -n 2027 -f 上海 -t 上海交通大学
 [15136] query_order -u May
 [15141] query_profile -c Gavial -u Grani
-[15144] buy_ticket -u Reed -i gapfOzKwUdqdOlfh -d 08-04 -n 187 -f 北京 -t 浙江大学
-[15146] query_ticket -s 上海 -t 上海交通大学 -d 06-29 -p cost
+[15144] buy_ticket -u Reed -i dDDnTLirnRIqmJUl -d 08-04 -n 187 -f 上海 -t 温州
+[15146] query_ticket -s 上海交通大学 -t 浙江 -d 06-29 -p cost
 [15147] query_profile -c Matoimaru -u Franka
-[15156] release_train -i gapfOzKwUdqdOlfh
-[15162] buy_ticket -u Franka -i gapfOzKwUdqdOlfh -d 06-09 -n 2478 -f 上海 -t 上海交通大学
-[15164] query_transfer -s 上海交通大学 -t 北京 -d 08-20 -p cost
+[15156] release_train -i dDDnTLirnRIqmJUl
+[15162] buy_ticket -u Franka -i dDDnTLirnRIqmJUl -d 06-09 -n 2478 -f 上海交通大学 -t 浙江
+[15164] query_transfer -s 浙江 -t 上海 -d 08-20 -p cost
 [15168] query_profile -c Schwarz -u Haze
 [15169] logout -u Angelina
 [15175] add_user -c ShiraYuki -u sOuLsjMwPEWzdSBMfeo -p ZZbpZdxoRzsuPoXsyMRUHHSkqcPyLt -n 鷤竤讈 -m euwoqVOuuwoYoNRWXmHQcFlXA -g 3
 [15184] logout -u I_am_the_admin
-[15191] buy_ticket -u ProjeKTRed -i dDDnTLirnRIqmJUl -d 08-22 -n 274 -f 上海交通大学 -t 上海
-[15193] query_profile -c Ifrit -u Indra -p DkixJrQzCptTwzZqiyf -g 0
+[15191] buy_ticket -u ProjeKTRed -i gapfOzKwUdqdOlfh -d 08-22 -n 274 -f 浙江 -t 上海交通大学
+[15193] modify_profile -c Ifrit -u Indra -p DkixJrQzCptTwzZqiyf -g 0
 [15201] query_profile -c Astesia -u Deepcolor
 [15207] query_profile -c Blaze -u Matterhorn
-[15209] query_ticket -s 温州 -t 浙江大学 -d 08-14 -p time
-[15216] query_profile -c Leizi -u Gavial -p tLlNHvkIkZynML -g 7
+[15209] query_ticket -s 浙江大学 -t 温州 -d 08-14 -p time
+[15216] modify_profile -c Leizi -u Gavial -p tLlNHvkIkZynML -g 7
 [15222] query_profile -c bubkRA -u Zima
-[15230] query_ticket -s 温州 -t 浙江大学 -d 08-06 -p cost
+[15230] query_ticket -s 浙江大学 -t 温州 -d 08-06 -p cost
 [15238] refund_ticket -u Gummy -n 5
-[15246] query_profile -c Nearl -u Magallan -p iPqzVzaVCcKZNIVUKCItLE -g 8
+[15246] modify_profile -c Nearl -u Magallan -p iPqzVzaVCcKZNIVUKCItLE -g 8
 [15254] query_profile -c Matterhorn -u Ceylon
 [15263] query_profile -c Midnight -u sOuLsjMwPEWzdSBMfeo
-[15269] query_ticket -s 温州 -t 上海交通大学 -d 08-26 -p time
+[15269] query_ticket -s 浙江大学 -t 浙江 -d 08-26 -p time
 [15274] query_order -u May
 [15276] query_profile -c bubkRA -u goPhtzWCqpaGJxItn
-[15277] buy_ticket -u Blaze -i gapfOzKwUdqdOlfh -d 06-15 -n 2354 -f 浙江大学 -t 上海
-[15285] buy_ticket -u Shaw -i gapfOzKwUdqdOlfh -d 07-27 -n 1470 -f 北京 -t 上海交通大学
-[15286] query_ticket -s 温州 -t 上海 -d 06-24 -p time
-[15288] query_ticket -s 北京 -t 浙江 -d 08-07 -p cost
+[15277] buy_ticket -u Blaze -i dDDnTLirnRIqmJUl -d 06-15 -n 2354 -f 温州 -t 上海交通大学
+[15285] buy_ticket -u Shaw -i dDDnTLirnRIqmJUl -d 07-27 -n 1470 -f 上海 -t 浙江
+[15286] query_ticket -s 浙江大学 -t 上海交通大学 -d 06-24 -p time
+[15288] query_ticket -s 上海 -t 北京 -d 08-07 -p cost
 [15292] query_profile -c BluePoison -u Perfumer
-[15296] query_train -i dDDnTLirnRIqmJUl -d 08-28
-[15306] query_ticket -s 上海交通大学 -t 浙江大学 -d 07-21 -p cost
+[15296] query_train -i gapfOzKwUdqdOlfh -d 08-28
+[15306] query_ticket -s 浙江 -t 温州 -d 07-21 -p cost
 [15314] refund_ticket -u Warfarin -n 1
-[15323] query_ticket -s 温州 -t 上海 -d 08-28 -p cost
-[15325] query_transfer -s 北京 -t 浙江大学 -d 06-24 -p cost
+[15323] query_ticket -s 浙江大学 -t 上海交通大学 -d 08-28 -p cost
+[15325] query_transfer -s 上海 -t 温州 -d 06-24 -p cost
 [15328] query_profile -c Istina -u Nearl
 [15335] query_order -u Zima
 [15338] logout -u Croissant
 [15340] refund_ticket -u Rangers -n 3
-[15347] query_ticket -s 浙江大学 -t 上海交通大学 -d 06-30 -p cost
+[15347] query_ticket -s 温州 -t 浙江 -d 06-30 -p cost
 [15354] login -u Nightingale -p tAyFWhBGrZ7C
-[15361] query_ticket -s 浙江大学 -t 上海 -d 08-08 -p cost
+[15361] query_ticket -s 温州 -t 上海交通大学 -d 08-08 -p cost
 [15365] add_user -c Reed -u KkNscIQifFqjsf -p RlQJcWHwrDcqJDVfkINrDdIioyWRG -n 殬惫怳 -m xisjENjQogGntFGxfo -g 4
 [15373] logout -u Istina
-[15376] query_ticket -s 浙江 -t 温州 -d 08-05 -p time
-[15385] query_ticket -s 北京 -t 浙江 -d 06-19 -p cost
+[15376] query_ticket -s 北京 -t 浙江大学 -d 08-05 -p time
+[15385] query_ticket -s 上海 -t 北京 -d 06-19 -p cost
 [15387] query_profile -c Deepcolor -u Estelle
 [15395] add_user -c Lava -u cfOAv -p lJMMrRzZRURKBPAkGSmJZBqAcu -n 柹檔刀 -m XDXhLiDXrNVViCaeptgunjRkg -g 8
 [15403] query_profile -c Siege -u Snowsant
 [15411] add_user -c WaaiFu -u WT -p CxFqLGiemugLbjWTudkaHY -n 榘齼逡 -m xVfXUsGNAvwTFhuMSuFJBMejFL -g 4
-[15421] query_ticket -s 北京 -t 上海 -d 06-19 -p time
-[15422] query_ticket -s 上海交通大学 -t 浙江 -d 08-30 -p time
-[15423] buy_ticket -u Schwarz -i dDDnTLirnRIqmJUl -d 07-22 -n 4586 -f 浙江大学 -t 上海
-[15431] query_profile -c Savage -u Vanilla -p IoKsYRVdixlKJeau -g 3
-[15440] query_profile -c Gavial -u Midnight -p CPgzPlgcKrRV -g 6
+[15421] query_ticket -s 上海 -t 上海交通大学 -d 06-19 -p time
+[15422] query_ticket -s 浙江 -t 北京 -d 08-30 -p time
+[15423] buy_ticket -u Schwarz -i gapfOzKwUdqdOlfh -d 07-22 -n 4586 -f 温州 -t 上海交通大学
+[15431] modify_profile -c Savage -u Vanilla -p IoKsYRVdixlKJeau -g 3
+[15440] modify_profile -c Gavial -u Midnight -p CPgzPlgcKrRV -g 6
 [15448] query_profile -c Gavial -u Reed
 [15453] logout -u Schwarz
 [15461] refund_ticket -u Schwarz -n 2
-[15470] query_transfer -s 浙江 -t 上海交通大学 -d 07-30 -p time
+[15470] query_transfer -s 北京 -t 浙江 -d 07-30 -p time
 [15476] add_user -c Orchid -u FMDIxBzopCLAOsL -p DpbqcWWMmQM -n 廙扆壼 -m XReNgcg -g 1
-[15481] query_ticket -s 上海交通大学 -t 浙江大学 -d 07-29 -p cost
-[15482] query_profile -c Adnachiel -u Weedy -p KICGSeudeasMOKWQnmyvELL -g 9
+[15481] query_ticket -s 浙江 -t 温州 -d 07-29 -p cost
+[15482] modify_profile -c Adnachiel -u Weedy -p KICGSeudeasMOKWQnmyvELL -g 9
 [15488] query_order -u Rangers
-[15496] buy_ticket -u Beagle -i dDDnTLirnRIqmJUl -d 07-01 -n 2912 -f 北京 -t 浙江大学
-[15501] query_ticket -s 温州 -t 浙江 -d 07-30 -p cost
+[15496] buy_ticket -u Beagle -i gapfOzKwUdqdOlfh -d 07-01 -n 2912 -f 上海 -t 温州
+[15501] query_ticket -s 浙江大学 -t 北京 -d 07-30 -p cost
 [15504] query_order -u Schwarz
-[15514] query_ticket -s 北京 -t 浙江 -d 07-05 -p cost
-[15522] query_ticket -s 上海交通大学 -t 浙江 -d 06-21 -p cost
-[15526] buy_ticket -u Bison -i dDDnTLirnRIqmJUl -d 07-01 -n 792 -f 浙江大学 -t 温州
+[15514] query_ticket -s 上海 -t 北京 -d 07-05 -p cost
+[15522] query_ticket -s 浙江 -t 北京 -d 06-21 -p cost
+[15526] buy_ticket -u Bison -i gapfOzKwUdqdOlfh -d 07-01 -n 792 -f 温州 -t 浙江大学
 [15529] logout -u Melantha
-[15531] buy_ticket -u goPhtzWCqpaGJxItn -i dDDnTLirnRIqmJUl -d 06-29 -n 4460 -f 温州 -t 上海交通大学
-[15537] buy_ticket -u NoirCorne -i gvoqgdmC -d 08-18 -n 2973 -f 上海 -t 温州
+[15531] buy_ticket -u goPhtzWCqpaGJxItn -i gapfOzKwUdqdOlfh -d 06-29 -n 4460 -f 浙江大学 -t 浙江
+[15537] buy_ticket -u NoirCorne -i gvoqgdmC -d 08-18 -n 2973 -f 上海交通大学 -t 浙江大学
 [15547] login -u Scavenger -p eeuyxgV3pmGMMhdhu60
-[15557] query_ticket -s 北京 -t 浙江 -d 08-07 -p time
+[15557] query_ticket -s 上海 -t 北京 -d 08-07 -p time
 [15564] query_profile -c Frostleaf -u Gitano
-[15569] query_ticket -s 浙江 -t 北京 -d 06-09 -p cost
-[15570] query_ticket -s 温州 -t 上海交通大学 -d 08-19 -p time
-[15574] buy_ticket -u Cardigan -i gvoqgdmC -d 06-04 -n 4011 -f 浙江 -t 上海交通大学
-[15580] query_profile -c Amiya -u Franka -p DSwtWXApRFNxlaZMPKmfrjqlP -g 8
-[15584] buy_ticket -u Firewatch -i dDDnTLirnRIqmJUl -d 07-03 -n 4739 -f 温州 -t 上海
+[15569] query_ticket -s 北京 -t 上海 -d 06-09 -p cost
+[15570] query_ticket -s 浙江大学 -t 浙江 -d 08-19 -p time
+[15574] buy_ticket -u Cardigan -i gvoqgdmC -d 06-04 -n 4011 -f 北京 -t 浙江
+[15580] modify_profile -c Amiya -u Franka -p DSwtWXApRFNxlaZMPKmfrjqlP -g 8
+[15584] buy_ticket -u Firewatch -i gapfOzKwUdqdOlfh -d 07-03 -n 4739 -f 浙江大学 -t 上海交通大学
 [15592] login -u May -p viPmsScINYNlQkRZKHBgOp
 [15599] login -u Schwarz -p iHMRDeklCJz
-[15601] query_ticket -s 上海交通大学 -t 浙江 -d 08-02 -p time
+[15601] query_ticket -s 浙江 -t 北京 -d 08-02 -p time
 [15604] query_profile -c Blaze -u Bibeak
 [15606] query_profile -c Jessica -u Durin
 [15616] logout -u Midnight
-[15625] query_ticket -s 浙江 -t 浙江大学 -d 08-22 -p cost
+[15625] query_ticket -s 北京 -t 温州 -d 08-22 -p cost
 [15631] query_profile -c Meteorite -u Deepcolor
-[15640] buy_ticket -u Dobermann -i gvoqgdmC -d 06-03 -n 1624 -f 温州 -t 浙江大学
-[15641] query_profile -c Frostleaf -u Exusiai -p UOlZjdfsiYGZhpdJBJFA -g 2
-[15644] buy_ticket -u Vermeil -i dDDnTLirnRIqmJUl -d 08-30 -n 2165 -f 上海 -t 温州
+[15640] buy_ticket -u Dobermann -i gvoqgdmC -d 06-03 -n 1624 -f 浙江大学 -t 温州
+[15641] modify_profile -c Frostleaf -u Exusiai -p UOlZjdfsiYGZhpdJBJFA -g 2
+[15644] buy_ticket -u Vermeil -i gapfOzKwUdqdOlfh -d 08-30 -n 2165 -f 上海交通大学 -t 浙江大学
 [15647] logout -u Breeze
-[15654] buy_ticket -u I_am_the_admin -i gapfOzKwUdqdOlfh -d 08-14 -n 4956 -f 上海 -t 上海交通大学
+[15654] buy_ticket -u I_am_the_admin -i dDDnTLirnRIqmJUl -d 08-14 -n 4956 -f 上海交通大学 -t 浙江
 [15658] add_user -c Hibiscus -u QEZFnBmYNMOikBs -p VZkfmyADIHzSJ -n 篿丩軹 -m LXZrHXxwsJKXoJuCgKfmKPycyuiv -g 9
 [15668] query_order -u Platinum
-[15675] query_ticket -s 浙江 -t 温州 -d 06-06 -p cost
+[15675] query_ticket -s 北京 -t 浙江大学 -d 06-06 -p cost
 [15680] query_profile -c Sora -u Liskarm
-[15689] buy_ticket -u Beehunter -i gvoqgdmC -d 06-11 -n 3023 -f 浙江大学 -t 上海
+[15689] buy_ticket -u Beehunter -i gvoqgdmC -d 06-11 -n 3023 -f 温州 -t 上海交通大学
 [15697] login -u Hibiscus -p AE2ZjUtE8ztm
 [15700] query_profile -c Purestream -u Shamare
-[15704] query_profile -c Scavenger -u Frostleaf -p DUMqU -g 7
+[15704] modify_profile -c Scavenger -u Frostleaf -p DUMqU -g 7
 [15713] query_order -u Siege
 [15719] login -u Shaw -p ywGpJC-EBl0hqgF8B
 [15725] login -u Shaw -p ywGpJC-EBl0hqgF8B
-[15731] query_profile -c ProjeKTRed -u NoirCorne -p OMKxcFvvulLdXndGPiyBj -g 2
-[15741] buy_ticket -u ProjeKTRed -i gvoqgdmC -d 07-05 -n 741 -f 浙江 -t 温州
-[15750] query_ticket -s 浙江大学 -t 上海交通大学 -d 08-29 -p time
+[15731] modify_profile -c ProjeKTRed -u NoirCorne -p OMKxcFvvulLdXndGPiyBj -g 2
+[15741] buy_ticket -u ProjeKTRed -i gvoqgdmC -d 07-05 -n 741 -f 北京 -t 浙江大学
+[15750] query_ticket -s 温州 -t 浙江 -d 08-29 -p time
 [15754] query_order -u Bison
 [15758] query_profile -c Adnachiel -u BluePoison
-[15766] query_ticket -s 上海 -t 浙江 -d 08-20 -p cost
-[15771] query_ticket -s 浙江大学 -t 北京 -d 06-05 -p cost
-[15772] buy_ticket -u ShiraYuki -i gvoqgdmC -d 08-19 -n 741 -f 北京 -t 温州
-[15773] query_profile -c Durnar -u Haze -p YUArFNdEcoBOnqtMZhugbTOkoe -g 9
+[15766] query_ticket -s 上海交通大学 -t 北京 -d 08-20 -p cost
+[15771] query_ticket -s 温州 -t 上海 -d 06-05 -p cost
+[15772] buy_ticket -u ShiraYuki -i gvoqgdmC -d 08-19 -n 741 -f 上海 -t 浙江大学
+[15773] modify_profile -c Durnar -u Haze -p YUArFNdEcoBOnqtMZhugbTOkoe -g 9
 [15774] logout -u Nearl
-[15783] query_profile -c Nightingale -u Cuora -p ALkloPlwxHquMxhwpypAVRHazwf -g 4
-[15793] query_train -i gapfOzKwUdqdOlfh -d 07-12
+[15783] modify_profile -c Nightingale -u Cuora -p ALkloPlwxHquMxhwpypAVRHazwf -g 4
+[15793] query_train -i dDDnTLirnRIqmJUl -d 07-12
 [15796] query_order -u Purestream
 [15804] query_profile -c Cuora -u Perfumer
 [15814] login -u Phantom -p FauDadatSQWDPg
 [15821] query_profile -c Hibiscus -u Croissant
 [15823] query_order -u Popukar
 [15825] query_order -u Orchid
-[15828] add_train -i gyRjtVnQjGvKRQMdNj -n 3 -m 41532 -s 上海交通大学|温州|北京 -p 92004|28565 -x 15:45 -t 7|14 -o 7 -d 06-21|06-25 -y D
-[15838] buy_ticket -u Snowsant -i gyRjtVnQjGvKRQMdNj -d 08-25 -n 2159 -f 浙江大学 -t 上海
-[15848] query_profile -c Nightingale -u Earthspirit -p zzuKMdfYmwPRBWgSLrMcsW -g 1
+[15828] add_train -i gyRjtVnQjGvKRQMdNj -n 3 -m 41532 -s 浙江|浙江大学|上海 -p 92004|28565 -x 15:45 -t 7|14 -o 7 -d 06-21|06-25 -y D
+[15838] buy_ticket -u Snowsant -i gvoqgdmC -d 08-25 -n 2159 -f 温州 -t 上海交通大学
+[15848] modify_profile -c Nightingale -u Earthspirit -p zzuKMdfYmwPRBWgSLrMcsW -g 1
 [15854] add_user -c Specter -u ASWWwzc -p eIkfYS -n 贛岗唃 -m RhbHxvcoGKfcBRWcIYDUVo -g 6
 [15855] logout -u W
 [15859] login -u Nightmare -p !ozyfpEqh5LtoF
@@ -1374,14 +1374,14 @@
 [15862] rollback -t 13097
 [15865] query_profile -c Nightingale -u bubkRA
 [15869] query_profile -c Rope -u Chen
-[15878] query_train -i gapfOzKwUdqdOlfh -d 06-23
+[15878] query_train -i dDDnTLirnRIqmJUl -d 06-23
 [15885] query_profile -c Perfumer -u Bison
 [15894] query_profile -c Popukar -u Siege
 [15901] query_profile -c Magallan -u Angelina
-[15911] query_train -i gvoqgdmC -d 06-13
+[15911] query_train -i gyRjtVnQjGvKRQMdNj -d 06-13
 [15915] query_profile -c Vermeil -u Jessica
 [15924] query_profile -c Provence -u Schwarz
-[15932] query_train -i gapfOzKwUdqdOlfh -d 07-03
+[15932] query_train -i dDDnTLirnRIqmJUl -d 07-03
 [15935] query_order -u Skadi
 [15944] query_profile -c W -u Scavenger
 [15946] query_profile -c Meteorite -u Magallan
@@ -1389,24 +1389,24 @@
 [15958] query_order -u Cardigan
 [15960] query_order -u Cardigan
 [15970] query_order -u Vermeil
-[15973] query_train -i gvoqgdmC -d 06-19
-[15977] query_ticket -s 温州 -t 上海 -d 08-03 -p time
+[15973] query_train -i gyRjtVnQjGvKRQMdNj -d 06-19
+[15977] query_ticket -s 浙江大学 -t 上海交通大学 -d 08-03 -p time
 [15980] query_profile -c Durin -u Broca
 [15982] query_profile -c Weedy -u Bagpipe
 [15984] query_profile -c Adnachiel -u Melantha
 [15988] query_profile -c Shamare -u Ambriel
 [15998] query_profile -c Vulcan -u Durin
 [16007] query_profile -c Greyy -u GreyThroat
-[16017] query_transfer -s 北京 -t 温州 -d 08-19 -p cost
+[16017] query_transfer -s 上海 -t 浙江大学 -d 08-19 -p cost
 [16027] query_profile -c Zima -u Siege
 [16036] query_order -u Angelina
 [16046] query_profile -c Estelle -u Breeze
-[16055] query_train -i gapfOzKwUdqdOlfh -d 08-22
-[16061] query_train -i gvoqgdmC -d 07-18
+[16055] query_train -i dDDnTLirnRIqmJUl -d 08-22
+[16061] query_train -i gyRjtVnQjGvKRQMdNj -d 07-18
 [16066] query_profile -c Mayer -u Beagle
-[16071] query_train -i gapfOzKwUdqdOlfh -d 07-14
-[16076] query_train -i gapfOzKwUdqdOlfh -d 08-14
-[16081] query_train -i gyRjtVnQjGvKRQMdNj -d 06-24
+[16071] query_train -i dDDnTLirnRIqmJUl -d 07-14
+[16076] query_train -i dDDnTLirnRIqmJUl -d 08-14
+[16081] query_train -i gvoqgdmC -d 06-24
 [16085] query_profile -c Skadi -u Plume
 [16087] query_profile -c Ptilopsis -u Warfarin
 [16092] query_profile -c Shamare -u Ethan
@@ -1551,16 +1551,16 @@
 [16873] logout -u Savage
 [16876] query_profile -c Nearl -u Manticore
 [16882] logout -u Hibiscus
-[16884] query_profile -c Istina -u Vanilla -p ymbSd -g 8
+[16884] modify_profile -c Istina -u Vanilla -p ymbSd -g 8
 [16893] query_profile -c Estelle -u Blaze
 [16903] query_profile -c Estelle -u Jessica
 [16910] logout -u Scavenger
-[16912] query_profile -c Beagle -u Deepcolor -p qcWsFLuFgodgIMxyyH -g 1
+[16912] modify_profile -c Beagle -u Deepcolor -p qcWsFLuFgodgIMxyyH -g 1
 [16917] query_order -u Franka
 [16922] query_order -u Fang
 [16927] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [16936] query_ticket -s 潘开森 -t 王梓 -d 08-13
-[16946] query_profile -c Ethan -u Firewatch -p tGgdlQQDqRXsXQrzuLb -g 1
+[16946] modify_profile -c Ethan -u Firewatch -p tGgdlQQDqRXsXQrzuLb -g 1
 [16950] query_profile -c Haze -u Executor
 [16952] query_profile -c Croissant -u Lava
 [16961] query_profile -c Texas -u Adnachiel
@@ -1578,93 +1578,93 @@
 [17034] query_profile -c Leizi -u Liskarm
 [17039] query_profile -c Breeze -u Pramanix
 [17043] query_ticket -s 潘开森 -t 王梓 -d 08-13
-[17053] add_train -i KUnTgJwrpfWFeGi -n 2 -m 42969 -s 北京|浙江 -p 86384 -x 04:08 -t 15 -o _ -d 06-02|08-29 -y E
-[17060] query_ticket -s 温州 -t 浙江 -d 06-09 -p time
+[17053] add_train -i KUnTgJwrpfWFeGi -n 2 -m 42969 -s 上海|北京 -p 86384 -x 04:08 -t 15 -o _ -d 06-02|08-29 -y E
+[17060] query_ticket -s 浙江大学 -t 北京 -d 06-09 -p time
 [17067] login -u Ethan -p CyEzgfblPfczwNFFjY
-[17069] buy_ticket -u Meteorite -i KUnTgJwrpfWFeGi -d 08-10 -n 1640 -f 北京 -t 浙江
-[17077] query_profile -c Melantha -u FEater -p YjWBpGXgJICdbpl -g 2
+[17069] buy_ticket -u Meteorite -i KUnTgJwrpfWFeGi -d 08-10 -n 1640 -f 上海 -t 北京
+[17077] modify_profile -c Melantha -u FEater -p YjWBpGXgJICdbpl -g 2
 [17082] release_train -i KUnTgJwrpfWFeGi
-[17092] query_ticket -s 上海交通大学 -t 北京 -d 06-30 -p cost
-[17102] query_ticket -s 温州 -t 上海 -d 07-13 -p cost
-[17106] add_train -i DnUHqGhxrDKTyollV -n 3 -m 37785 -s 温州|浙江|上海 -p 61096|85292 -x 18:01 -t 14|7 -o 14 -d 07-12|08-22 -y b
-[17115] query_ticket -s 浙江大学 -t 浙江 -d 07-15 -p cost
-[17120] buy_ticket -u goPhtzWCqpaGJxItn -i KUnTgJwrpfWFeGi -d 08-07 -n 1230 -f 上海 -t 温州
-[17127] query_ticket -s 浙江大学 -t 温州 -d 06-03 -p cost
+[17092] query_ticket -s 浙江 -t 上海 -d 06-30 -p cost
+[17102] query_ticket -s 浙江大学 -t 上海交通大学 -d 07-13 -p cost
+[17106] add_train -i DnUHqGhxrDKTyollV -n 3 -m 37785 -s 浙江大学|北京|上海交通大学 -p 61096|85292 -x 18:01 -t 14|7 -o 14 -d 07-12|08-22 -y b
+[17115] query_ticket -s 温州 -t 北京 -d 07-15 -p cost
+[17120] buy_ticket -u goPhtzWCqpaGJxItn -i DnUHqGhxrDKTyollV -d 08-07 -n 1230 -f 上海交通大学 -t 浙江大学
+[17127] query_ticket -s 温州 -t 浙江大学 -d 06-03 -p cost
 [17137] refund_ticket -u Cuora -n 3
 [17140] query_profile -c Fang -u Purestream
-[17150] query_ticket -s 上海交通大学 -t 上海 -d 06-06 -p cost
+[17150] query_ticket -s 浙江 -t 上海交通大学 -d 06-06 -p cost
 [17160] query_profile -c Gravel -u Steward
 [17162] refund_ticket -u Pramanix -n 3
-[17165] buy_ticket -u Orchid -i DnUHqGhxrDKTyollV -d 08-04 -n 2754 -f 浙江 -t 北京
+[17165] buy_ticket -u Orchid -i KUnTgJwrpfWFeGi -d 08-04 -n 2754 -f 北京 -t 上海
 [17174] logout -u Greyy
 [17182] query_profile -c Durin -u Texas
-[17188] query_ticket -s 浙江大学 -t 浙江 -d 06-08 -p cost
-[17193] release_train -i DnUHqGhxrDKTyollV
+[17188] query_ticket -s 温州 -t 北京 -d 06-08 -p cost
+[17193] release_train -i KUnTgJwrpfWFeGi
 [17200] login -u Texas -p g7Wn3gJAbBY8Z!y$pPk9
 [17210] query_order -u goPhtzWCqpaGJxItn
 [17218] login -u ProjeKTRed -p BBJjexPE
-[17223] query_ticket -s 上海 -t 浙江大学 -d 07-10 -p cost
+[17223] query_ticket -s 上海交通大学 -t 温州 -d 07-10 -p cost
 [17226] query_profile -c Gitano -u Beehunter
 [17227] logout -u Plume
 [17229] query_order -u Meteorite
 [17239] query_order -u Elysium
 [17246] logout -u Gitano
 [17256] logout -u Schwarz
-[17257] buy_ticket -u Snowsant -i DnUHqGhxrDKTyollV -d 08-19 -n 935 -f 北京 -t 上海交通大学
-[17262] query_train -i KUnTgJwrpfWFeGi -d 08-15
-[17266] buy_ticket -u BluePoison -i DnUHqGhxrDKTyollV -d 06-08 -n 3053 -f 上海 -t 北京
-[17270] query_ticket -s 上海 -t 北京 -d 06-29 -p cost
+[17257] buy_ticket -u Snowsant -i KUnTgJwrpfWFeGi -d 08-19 -n 935 -f 上海 -t 浙江
+[17262] query_train -i DnUHqGhxrDKTyollV -d 08-15
+[17266] buy_ticket -u BluePoison -i KUnTgJwrpfWFeGi -d 06-08 -n 3053 -f 上海交通大学 -t 上海
+[17270] query_ticket -s 上海交通大学 -t 上海 -d 06-29 -p cost
 [17272] query_profile -c Fang -u Perfumer
 [17281] login -u Skyfire -p OpokGSsGRAWgeQ
 [17291] query_profile -c Nightingale -u Cuora
 [17297] query_order -u Broca
-[17302] buy_ticket -u Grani -i DnUHqGhxrDKTyollV -d 06-06 -n 2417 -f 上海 -t 浙江
+[17302] buy_ticket -u Grani -i KUnTgJwrpfWFeGi -d 06-06 -n 2417 -f 上海交通大学 -t 北京
 [17307] refund_ticket -u Nearl -n 4
 [17310] login -u Reed -p J2iXWcMqVuT
 [17316] query_profile -c Beehunter -u Istina
 [17318] query_profile -c Courier -u Vermeil
-[17328] query_ticket -s 上海 -t 上海交通大学 -d 08-12 -p cost
+[17328] query_ticket -s 上海交通大学 -t 浙江 -d 08-12 -p cost
 [17336] logout -u Ethan
-[17340] query_ticket -s 温州 -t 上海 -d 08-30 -p cost
+[17340] query_ticket -s 浙江大学 -t 上海交通大学 -d 08-30 -p cost
 [17346] refund_ticket -u Ceylon -n 3
 [17355] query_profile -c Plume -u Snowsant
 [17362] query_order -u Provence
-[17363] query_ticket -s 温州 -t 上海交通大学 -d 08-03 -p cost
+[17363] query_ticket -s 浙江大学 -t 浙江 -d 08-03 -p cost
 [17364] query_profile -c Firewatch -u Meteor
 [17369] login -u Cliffheart -p fQzBXaqLWxn
 [17378] query_order -u I_am_the_admin
-[17386] buy_ticket -u Warfarin -i KUnTgJwrpfWFeGi -d 07-29 -n 1708 -f 上海 -t 上海交通大学
-[17392] query_ticket -s 北京 -t 上海 -d 08-06 -p cost
-[17397] query_ticket -s 浙江大学 -t 浙江 -d 06-13 -p cost
-[17403] buy_ticket -u Specter -i DnUHqGhxrDKTyollV -d 07-22 -n 3607 -f 北京 -t 温州
+[17386] buy_ticket -u Warfarin -i DnUHqGhxrDKTyollV -d 07-29 -n 1708 -f 上海交通大学 -t 浙江
+[17392] query_ticket -s 上海 -t 上海交通大学 -d 08-06 -p cost
+[17397] query_ticket -s 温州 -t 北京 -d 06-13 -p cost
+[17403] buy_ticket -u Specter -i KUnTgJwrpfWFeGi -d 07-22 -n 3607 -f 上海 -t 浙江大学
 [17413] query_profile -c Hung -u Hibiscus
-[17418] query_ticket -s 浙江大学 -t 上海 -d 08-12 -p time
-[17426] buy_ticket -u Shining -i KUnTgJwrpfWFeGi -d 07-27 -n 3141 -f 温州 -t 浙江大学
-[17429] query_ticket -s 温州 -t 北京 -d 06-22 -p cost
+[17418] query_ticket -s 温州 -t 上海交通大学 -d 08-12 -p time
+[17426] buy_ticket -u Shining -i DnUHqGhxrDKTyollV -d 07-27 -n 3141 -f 浙江大学 -t 温州
+[17429] query_ticket -s 浙江大学 -t 上海 -d 06-22 -p cost
 [17435] login -u Shaw -p ywGpJC-EBl0hqgF8B
 [17438] query_profile -c GreyThroat -u Firewatch
 [17444] query_profile -c Matterhorn -u Meteorite
 [17453] refund_ticket -u Myrtle -n 4
-[17460] release_train -i DnUHqGhxrDKTyollV
+[17460] release_train -i KUnTgJwrpfWFeGi
 [17464] query_profile -c ShiraYuki -u Snowsant
 [17469] add_user -c Liskarm -u wQhbhtQTxugUcfh -p P -n 愂疃沤 -m XpHnuaacJBadtVAx -g 10
-[17478] query_ticket -s 温州 -t 上海 -d 07-15 -p time
-[17486] buy_ticket -u Mousse -i KUnTgJwrpfWFeGi -d 06-04 -n 719 -f 北京 -t 上海
-[17487] query_ticket -s 北京 -t 上海 -d 08-02 -p cost
+[17478] query_ticket -s 浙江大学 -t 上海交通大学 -d 07-15 -p time
+[17486] buy_ticket -u Mousse -i DnUHqGhxrDKTyollV -d 06-04 -n 719 -f 上海 -t 上海交通大学
+[17487] query_ticket -s 上海 -t 上海交通大学 -d 08-02 -p cost
 [17496] add_user -c Reed -u VZ -p NRCnCJI -n 蹗楅刎 -m cvyuZjEFTUfgy -g 3
-[17497] release_train -i DnUHqGhxrDKTyollV
-[17503] buy_ticket -u Ethan -i KUnTgJwrpfWFeGi -d 07-24 -n 292 -f 浙江 -t 上海交通大学
-[17509] query_ticket -s 上海交通大学 -t 浙江 -d 08-29 -p time
-[17518] buy_ticket -u Mayer -i DnUHqGhxrDKTyollV -d 06-09 -n 2921 -f 温州 -t 上海交通大学
-[17526] query_train -i DnUHqGhxrDKTyollV -d 08-04
+[17497] release_train -i KUnTgJwrpfWFeGi
+[17503] buy_ticket -u Ethan -i DnUHqGhxrDKTyollV -d 07-24 -n 292 -f 北京 -t 浙江
+[17509] query_ticket -s 浙江 -t 北京 -d 08-29 -p time
+[17518] buy_ticket -u Mayer -i KUnTgJwrpfWFeGi -d 06-09 -n 2921 -f 浙江大学 -t 浙江
+[17526] query_train -i KUnTgJwrpfWFeGi -d 08-04
 [17535] login -u Ambriel -p bDgAYqEik
-[17537] buy_ticket -u Manticore -i KUnTgJwrpfWFeGi -d 07-28 -n 91 -f 温州 -t 上海
+[17537] buy_ticket -u Manticore -i DnUHqGhxrDKTyollV -d 07-28 -n 91 -f 浙江大学 -t 上海交通大学
 [17540] query_profile -c Ansel -u Gravel
-[17545] query_profile -c Beagle -u Snowsant -p FiOnbPFecFzYJEmovtDfSWqu -g 0
-[17547] buy_ticket -u Earthspirit -i KUnTgJwrpfWFeGi -d 08-10 -n 2021 -f 温州 -t 北京
-[17557] release_train -i DnUHqGhxrDKTyollV
-[17558] buy_ticket -u Rope -i DnUHqGhxrDKTyollV -d 07-05 -n 861 -f 浙江 -t 温州
-[17559] buy_ticket -u Sesa -i DnUHqGhxrDKTyollV -d 06-09 -n 4732 -f 浙江大学 -t 浙江
+[17545] modify_profile -c Beagle -u Snowsant -p FiOnbPFecFzYJEmovtDfSWqu -g 0
+[17547] buy_ticket -u Earthspirit -i DnUHqGhxrDKTyollV -d 08-10 -n 2021 -f 浙江大学 -t 上海
+[17557] release_train -i KUnTgJwrpfWFeGi
+[17558] buy_ticket -u Rope -i KUnTgJwrpfWFeGi -d 07-05 -n 861 -f 北京 -t 浙江大学
+[17559] buy_ticket -u Sesa -i KUnTgJwrpfWFeGi -d 06-09 -n 4732 -f 温州 -t 北京
 [17569] query_profile -c Nightingale -u Catapult
 [17574] refund_ticket -u Ceobe -n 1
 [17579] refund_ticket -u Provence -n 1
@@ -1676,350 +1676,350 @@
 [17606] refund_ticket -u Midnight -n 3
 [17608] query_profile -c Utage -u Indra
 [17618] login -u Steward -p GgRIolCDNjpytbiSiMkwImHne
-[17621] query_profile -c Utage -u Perfumer -p BMnzpqKEohgQRgkssnYBOhkSlqqCEB -g 3
+[17621] modify_profile -c Utage -u Perfumer -p BMnzpqKEohgQRgkssnYBOhkSlqqCEB -g 3
 [17631] logout -u Mousse
 [17634] add_user -c Snowsant -u YEagJIgCUQS -p ZLPYMhmVnwdOQlnWpXwbrYhzp -n 森勖痎 -m OTsLAFvWjIafu -g 5
 [17637] query_profile -c Indra -u Blaze
-[17643] buy_ticket -u Popukar -i DnUHqGhxrDKTyollV -d 08-17 -n 667 -f 温州 -t 北京
-[17644] query_ticket -s 上海交通大学 -t 北京 -d 06-01 -p time
-[17650] buy_ticket -u Astesia -i DnUHqGhxrDKTyollV -d 08-12 -n 416 -f 浙江 -t 上海交通大学
-[17657] add_train -i LwgRacrTujYRZBI -n 2 -m 35367 -s 上海交通大学|浙江 -p 89054 -x 05:20 -t 9 -o _ -d 08-07|08-25 -y U
-[17660] buy_ticket -u Beehunter -i LwgRacrTujYRZBI -d 07-11 -n 2957 -f 温州 -t 浙江大学
-[17668] query_ticket -s 浙江大学 -t 上海 -d 06-25 -p cost
-[17677] query_profile -c Shaw -u Melantha -p VZpxPjwNLkUKnr -g 10
+[17643] buy_ticket -u Popukar -i KUnTgJwrpfWFeGi -d 08-17 -n 667 -f 浙江大学 -t 上海
+[17644] query_ticket -s 浙江 -t 上海 -d 06-01 -p time
+[17650] buy_ticket -u Astesia -i KUnTgJwrpfWFeGi -d 08-12 -n 416 -f 北京 -t 浙江
+[17657] add_train -i LwgRacrTujYRZBI -n 2 -m 35367 -s 浙江|北京 -p 89054 -x 05:20 -t 9 -o _ -d 08-07|08-25 -y U
+[17660] buy_ticket -u Beehunter -i KUnTgJwrpfWFeGi -d 07-11 -n 2957 -f 浙江大学 -t 温州
+[17668] query_ticket -s 温州 -t 上海交通大学 -d 06-25 -p cost
+[17677] modify_profile -c Shaw -u Melantha -p VZpxPjwNLkUKnr -g 10
 [17680] query_profile -c Conviction -u Manticore
-[17681] release_train -i DnUHqGhxrDKTyollV
-[17688] query_ticket -s 上海 -t 温州 -d 07-13 -p time
+[17681] release_train -i LwgRacrTujYRZBI
+[17688] query_ticket -s 上海交通大学 -t 浙江大学 -d 07-13 -p time
 [17692] query_profile -c Shining -u Schwarz
 [17697] login -u Popukar -p WeCfBRNJwfOTvrTpKnRyyE
-[17706] buy_ticket -u Chen -i KUnTgJwrpfWFeGi -d 07-16 -n 2454 -f 上海 -t 北京
-[17711] query_ticket -s 浙江 -t 浙江大学 -d 07-30 -p cost
+[17706] buy_ticket -u Chen -i DnUHqGhxrDKTyollV -d 07-16 -n 2454 -f 上海交通大学 -t 上海
+[17711] query_ticket -s 北京 -t 温州 -d 07-30 -p cost
 [17721] query_profile -c Vermeil -u Fang
-[17726] release_train -i KUnTgJwrpfWFeGi
+[17726] release_train -i DnUHqGhxrDKTyollV
 [17734] query_profile -c Mayer -u Indra
 [17736] login -u Schwarz -p sECfXPJbikTKBFT
 [17745] query_order -u Savage
 [17752] query_profile -c Melantha -u Midnight
-[17762] query_ticket -s 北京 -t 温州 -d 08-15 -p cost
-[17769] buy_ticket -u Gitano -i LwgRacrTujYRZBI -d 07-16 -n 4986 -f 北京 -t 温州
+[17762] query_ticket -s 上海 -t 浙江大学 -d 08-15 -p cost
+[17769] buy_ticket -u Gitano -i KUnTgJwrpfWFeGi -d 07-16 -n 4986 -f 上海 -t 浙江大学
 [17772] login -u Vermeil -p !iEUvmj_-q_GbQlyu
 [17773] query_profile -c Beagle -u Mostima
 [17774] login -u Ceobe -p CbPuR8uAk5XtU7I1S
-[17776] query_train -i LwgRacrTujYRZBI -d 08-18
+[17776] query_train -i KUnTgJwrpfWFeGi -d 08-18
 [17785] query_profile -c Vigna -u Skyfire
-[17788] query_ticket -s 北京 -t 浙江大学 -d 07-04 -p time
+[17788] query_ticket -s 上海 -t 温州 -d 07-04 -p time
 [17796] logout -u goPhtzWCqpaGJxItn
-[17800] buy_ticket -u Gitano -i KUnTgJwrpfWFeGi -d 07-30 -n 2724 -f 浙江 -t 北京
+[17800] buy_ticket -u Gitano -i DnUHqGhxrDKTyollV -d 07-30 -n 2724 -f 北京 -t 上海
 [17803] add_user -c Melantha -u ikf -p ZNgRNzWfBRVAbySzuXrkmNK -n 鈐伣村 -m YmIRaDbqQYyOSxJ -g 9
 [17812] refund_ticket -u Gavial -n 2
-[17817] buy_ticket -u Yato -i KUnTgJwrpfWFeGi -d 07-30 -n 1090 -f 北京 -t 上海
+[17817] buy_ticket -u Yato -i DnUHqGhxrDKTyollV -d 07-30 -n 1090 -f 上海 -t 上海交通大学
 [17818] refund_ticket -u Breeze -n 3
-[17826] query_profile -c Lava -u Nian -p UlCzyPkrNUgQHxP -g 1
+[17826] modify_profile -c Lava -u Nian -p UlCzyPkrNUgQHxP -g 1
 [17830] query_profile -c Sideroca -u Vulcan
-[17837] query_ticket -s 浙江 -t 上海交通大学 -d 06-01 -p cost
-[17841] query_profile -c Nearl -u Ceylon -p nQfZV -g 0
+[17837] query_ticket -s 北京 -t 浙江 -d 06-01 -p cost
+[17841] modify_profile -c Nearl -u Ceylon -p nQfZV -g 0
 [17848] query_profile -c Hung -u Mostima
 [17856] query_order -u Fang
 [17860] query_profile -c Magallan -u Weedy
-[17862] query_ticket -s 北京 -t 浙江 -d 07-15 -p cost
-[17867] query_ticket -s 温州 -t 上海 -d 08-07 -p cost
-[17873] release_train -i KUnTgJwrpfWFeGi
+[17862] query_ticket -s 上海 -t 北京 -d 07-15 -p cost
+[17867] query_ticket -s 浙江大学 -t 上海交通大学 -d 08-07 -p cost
+[17873] release_train -i DnUHqGhxrDKTyollV
 [17877] query_profile -c Beagle -u Adnachiel
-[17878] buy_ticket -u Haze -i DnUHqGhxrDKTyollV -d 06-26 -n 120 -f 上海交通大学 -t 北京
+[17878] buy_ticket -u Haze -i LwgRacrTujYRZBI -d 06-26 -n 120 -f 浙江 -t 上海
 [17879] add_user -c Ifrit -u fuAPFMhjZQQu -p fexBunhgqsbIERyznubniDlsw -n 賤鳓荫 -m clggqbgPGbDeqhkNdWFc -g 2
 [17882] refund_ticket -u Reed -n 1
-[17891] buy_ticket -u Perfumer -i KUnTgJwrpfWFeGi -d 08-10 -n 4145 -f 浙江 -t 北京
+[17891] buy_ticket -u Perfumer -i DnUHqGhxrDKTyollV -d 08-10 -n 4145 -f 北京 -t 上海
 [17901] logout -u Magallan
 [17905] query_profile -c Vanilla -u Plume
 [17911] query_order -u Ethan
-[17916] query_transfer -s 浙江 -t 温州 -d 07-25 -p cost
-[17926] buy_ticket -u WaaiFu -i DnUHqGhxrDKTyollV -d 08-09 -n 2285 -f 上海 -t 上海交通大学
-[17927] query_train -i LwgRacrTujYRZBI -d 07-27
+[17916] query_transfer -s 北京 -t 浙江大学 -d 07-25 -p cost
+[17926] buy_ticket -u WaaiFu -i LwgRacrTujYRZBI -d 08-09 -n 2285 -f 上海交通大学 -t 浙江
+[17927] query_train -i KUnTgJwrpfWFeGi -d 07-27
 [17936] login -u Croissant -p JTSKVj-Wpss
 [17940] logout -u Grani
-[17950] buy_ticket -u Hung -i DnUHqGhxrDKTyollV -d 06-26 -n 345 -f 上海交通大学 -t 温州
+[17950] buy_ticket -u Hung -i LwgRacrTujYRZBI -d 06-26 -n 345 -f 浙江 -t 浙江大学
 [17960] query_profile -c Beagle -u GreyThroat
-[17964] buy_ticket -u Sora -i KUnTgJwrpfWFeGi -d 07-28 -n 3427 -f 上海交通大学 -t 上海
-[17967] release_train -i KUnTgJwrpfWFeGi
+[17964] buy_ticket -u Sora -i DnUHqGhxrDKTyollV -d 07-28 -n 3427 -f 浙江 -t 上海交通大学
+[17967] release_train -i DnUHqGhxrDKTyollV
 [17969] add_user -c Rope -u pERdVZRlPLpgcWiF -p GasaJrIhuFLSNqUEscb -n 是次府 -m lMp -g 8
 [17971] query_profile -c Ptilopsis -u goPhtzWCqpaGJxItn
-[17976] delete_train -i DnUHqGhxrDKTyollV
-[17978] query_train -i DnUHqGhxrDKTyollV -d 07-28
-[17988] buy_ticket -u Deepcolor -i KUnTgJwrpfWFeGi -d 06-20 -n 395 -f 浙江大学 -t 上海
+[17976] delete_train -i LwgRacrTujYRZBI
+[17978] query_train -i LwgRacrTujYRZBI -d 07-28
+[17988] buy_ticket -u Deepcolor -i DnUHqGhxrDKTyollV -d 06-20 -n 395 -f 温州 -t 上海交通大学
 [17991] logout -u Grani
-[17997] buy_ticket -u Durnar -i LwgRacrTujYRZBI -d 06-13 -n 1668 -f 北京 -t 温州
-[18000] query_profile -c Specter -u Siege -p SEuOfuIekxgdGseR -g 3
+[17997] buy_ticket -u Durnar -i KUnTgJwrpfWFeGi -d 06-13 -n 1668 -f 上海 -t 浙江大学
+[18000] modify_profile -c Specter -u Siege -p SEuOfuIekxgdGseR -g 3
 [18009] query_order -u Melantha
-[18011] query_ticket -s 浙江大学 -t 上海 -d 07-19 -p time
+[18011] query_ticket -s 温州 -t 上海交通大学 -d 07-19 -p time
 [18021] query_order -u Gitano
 [18030] logout -u Nian
 [18033] query_profile -c Gavial -u Haze
 [18035] query_profile -c Dobermann -u Popukar
-[18036] add_train -i kUIqmtkRomFzZgIDm -n 2 -m 99081 -s 北京|浙江大学 -p 30962 -x 09:18 -t 8 -o _ -d 06-16|08-24 -y B
+[18036] add_train -i kUIqmtkRomFzZgIDm -n 2 -m 99081 -s 上海|温州 -p 30962 -x 09:18 -t 8 -o _ -d 06-16|08-24 -y B
 [18038] query_profile -c Texas -u Zima
-[18040] query_ticket -s 上海交通大学 -t 温州 -d 07-26 -p cost
+[18040] query_ticket -s 浙江 -t 浙江大学 -d 07-26 -p cost
 [18048] add_user -c Liskarm -u xIFpGqtXFhdhmOjpPw -p I -n 輜鞮悥 -m PKCHERLDqALeLNEVjzJyaaKSL -g 1
 [18056] query_order -u Skyfire
 [18061] refund_ticket -u ShiraYuki -n 5
-[18067] buy_ticket -u Elysium -i kUIqmtkRomFzZgIDm -d 08-05 -n 2251 -f 上海交通大学 -t 温州
-[18070] add_train -i GZfTHiZOFmhMJAylnaRU -n 3 -m 30163 -s 温州|北京|上海 -p 91481|45639 -x 05:52 -t 12|15 -o 13 -d 06-04|08-11 -y O
-[18071] buy_ticket -u Platinum -i GZfTHiZOFmhMJAylnaRU -d 07-06 -n 4813 -f 上海交通大学 -t 浙江大学
+[18067] buy_ticket -u Elysium -i kUIqmtkRomFzZgIDm -d 08-05 -n 2251 -f 浙江 -t 浙江大学
+[18070] add_train -i GZfTHiZOFmhMJAylnaRU -n 3 -m 30163 -s 浙江大学|上海|上海交通大学 -p 91481|45639 -x 05:52 -t 12|15 -o 13 -d 06-04|08-11 -y O
+[18071] buy_ticket -u Platinum -i LwgRacrTujYRZBI -d 07-06 -n 4813 -f 浙江 -t 温州
 [18081] login -u Dobermann -p TC9irad83nDxNQk_k
 [18083] refund_ticket -u Beagle -n 2
 [18085] logout -u Jessica
-[18089] release_train -i GZfTHiZOFmhMJAylnaRU
+[18089] release_train -i LwgRacrTujYRZBI
 [18098] refund_ticket -u Provence -n 4
 [18103] query_profile -c VZ -u Angelina
-[18104] buy_ticket -u Chen -i DnUHqGhxrDKTyollV -d 07-19 -n 3326 -f 浙江 -t 温州
+[18104] buy_ticket -u Chen -i GZfTHiZOFmhMJAylnaRU -d 07-19 -n 3326 -f 北京 -t 浙江大学
 [18114] query_profile -c Executor -u Gitano
-[18117] buy_ticket -u Croissant -i kUIqmtkRomFzZgIDm -d 08-11 -n 773 -f 温州 -t 北京
+[18117] buy_ticket -u Croissant -i DnUHqGhxrDKTyollV -d 08-11 -n 773 -f 浙江大学 -t 上海
 [18119] query_order -u Zima
-[18123] buy_ticket -u Sideroca -i DnUHqGhxrDKTyollV -d 07-26 -n 3105 -f 北京 -t 上海交通大学
+[18123] buy_ticket -u Sideroca -i GZfTHiZOFmhMJAylnaRU -d 07-26 -n 3105 -f 上海 -t 浙江
 [18130] login -u Lappland -p R_Ds_trj7FL
 [18135] query_order -u I_am_the_admin
-[18136] query_ticket -s 上海交通大学 -t 北京 -d 07-12 -p time
+[18136] query_ticket -s 浙江 -t 上海 -d 07-12 -p time
 [18137] query_order -u Mayer
-[18143] query_ticket -s 浙江 -t 上海交通大学 -d 08-20 -p time
+[18143] query_ticket -s 北京 -t 浙江 -d 08-20 -p time
 [18150] logout -u Matterhorn
-[18152] query_ticket -s 浙江 -t 北京 -d 08-13 -p cost
+[18152] query_ticket -s 北京 -t 上海 -d 08-13 -p cost
 [18158] query_profile -c Myrtle -u W
 [18160] login -u Nightmare -p CCfcPgSqtEBJrkvzPi
-[18164] query_ticket -s 北京 -t 浙江 -d 07-05 -p cost
+[18164] query_ticket -s 上海 -t 北京 -d 07-05 -p cost
 [18166] query_order -u Durnar
 [18173] query_profile -c Courier -u Cliffheart
 [18174] query_order -u Vulcan
-[18184] query_ticket -s 浙江 -t 上海交通大学 -d 06-23 -p cost
+[18184] query_ticket -s 北京 -t 浙江 -d 06-23 -p cost
 [18194] query_profile -c Skadi -u Breeze
-[18196] query_ticket -s 北京 -t 浙江大学 -d 07-19 -p cost
-[18204] query_ticket -s 上海 -t 上海交通大学 -d 08-07 -p cost
-[18209] buy_ticket -u Dobermann -i LwgRacrTujYRZBI -d 06-17 -n 925 -f 温州 -t 上海
+[18196] query_ticket -s 上海 -t 温州 -d 07-19 -p cost
+[18204] query_ticket -s 上海交通大学 -t 浙江 -d 08-07 -p cost
+[18209] buy_ticket -u Dobermann -i KUnTgJwrpfWFeGi -d 06-17 -n 925 -f 浙江大学 -t 上海交通大学
 [18219] query_profile -c Magallan -u Bibeak
 [18220] add_user -c Popukar -u gFZdgRizfDK -p kJbXdkEXECtuVtqJTOJnqx -n 蘂啇饑 -m FxvHzaf -g 6
 [18228] refund_ticket -u Durin -n 3
-[18237] query_ticket -s 温州 -t 上海交通大学 -d 07-08 -p cost
-[18239] query_profile -c ProjeKTRed -u Vulcan -p wUWnvtabMhHz -g 3
-[18247] buy_ticket -u Haze -i DnUHqGhxrDKTyollV -d 08-16 -n 3893 -f 浙江大学 -t 上海交通大学
-[18254] add_train -i XertvtjP -n 2 -m 8533 -s 浙江大学|浙江 -p 20317 -x 13:47 -t 6 -o _ -d 07-04|07-13 -y b
-[18257] buy_ticket -u May -i GZfTHiZOFmhMJAylnaRU -d 06-16 -n 3929 -f 北京 -t 浙江
+[18237] query_ticket -s 浙江大学 -t 浙江 -d 07-08 -p cost
+[18239] modify_profile -c ProjeKTRed -u Vulcan -p wUWnvtabMhHz -g 3
+[18247] buy_ticket -u Haze -i GZfTHiZOFmhMJAylnaRU -d 08-16 -n 3893 -f 温州 -t 浙江
+[18254] add_train -i XertvtjP -n 2 -m 8533 -s 温州|北京 -p 20317 -x 13:47 -t 6 -o _ -d 07-04|07-13 -y b
+[18257] buy_ticket -u May -i LwgRacrTujYRZBI -d 06-16 -n 3929 -f 上海 -t 北京
 [18267] login -u Perfumer -p Qxl5zy!S6giH0
-[18273] query_profile -c GreyThroat -u Glaucus -p qYCyJgNNucs -g 9
-[18278] buy_ticket -u Rangers -i kUIqmtkRomFzZgIDm -d 08-27 -n 3690 -f 浙江 -t 上海交通大学
+[18273] modify_profile -c GreyThroat -u Glaucus -p qYCyJgNNucs -g 9
+[18278] buy_ticket -u Rangers -i XertvtjP -d 08-27 -n 3690 -f 北京 -t 浙江
 [18279] add_user -c Chen -u abzrKdbMPW -p lSYAA -n 妍蘁藛 -m EeCHkhIZDmFmdVrhpUhAPG -g 4
 [18280] query_profile -c Vulcan -u Weedy
 [18285] query_order -u Cuora
 [18287] login -u Istina -p pV$Ib2DhsZ9$eVp-bUX
-[18291] buy_ticket -u Mostima -i XertvtjP -d 07-06 -n 4765 -f 北京 -t 上海交通大学
-[18298] query_ticket -s 上海交通大学 -t 上海 -d 06-26 -p time
+[18291] buy_ticket -u Mostima -i DnUHqGhxrDKTyollV -d 07-06 -n 4765 -f 上海 -t 浙江
+[18298] query_ticket -s 浙江 -t 上海交通大学 -d 06-26 -p time
 [18304] login -u Beagle -p FKvDeeLsWqdAyGphxbPuIwKS
-[18308] query_ticket -s 上海交通大学 -t 北京 -d 06-04 -p cost
-[18315] query_profile -c Hung -u Earthspirit -p lKqPpXEcFiDUytYvIKTgMqtCITeow -g 3
-[18317] query_ticket -s 北京 -t 上海 -d 07-22 -p time
-[18320] buy_ticket -u Greyy -i kUIqmtkRomFzZgIDm -d 06-06 -n 1305 -f 浙江大学 -t 温州
-[18322] query_profile -c Indra -u Frostleaf -p IXJAMcVBjLGesAHoepEC -g 2
+[18308] query_ticket -s 浙江 -t 上海 -d 06-04 -p cost
+[18315] modify_profile -c Hung -u Earthspirit -p lKqPpXEcFiDUytYvIKTgMqtCITeow -g 3
+[18317] query_ticket -s 上海 -t 上海交通大学 -d 07-22 -p time
+[18320] buy_ticket -u Greyy -i XertvtjP -d 06-06 -n 1305 -f 温州 -t 浙江大学
+[18322] modify_profile -c Indra -u Frostleaf -p IXJAMcVBjLGesAHoepEC -g 2
 [18330] query_order -u Popukar
 [18335] logout -u Skyfire
 [18344] query_profile -c Utage -u Sesa
-[18354] buy_ticket -u Croissant -i kUIqmtkRomFzZgIDm -d 06-26 -n 965 -f 温州 -t 上海交通大学
-[18360] query_ticket -s 上海交通大学 -t 浙江大学 -d 07-15 -p cost
-[18361] query_profile -c Beehunter -u Ceylon -p gZbkYmZiSSPzsn -g 3
+[18354] buy_ticket -u Croissant -i XertvtjP -d 06-26 -n 965 -f 浙江大学 -t 浙江
+[18360] query_ticket -s 浙江 -t 温州 -d 07-15 -p cost
+[18361] modify_profile -c Beehunter -u Ceylon -p gZbkYmZiSSPzsn -g 3
 [18362] query_profile -c Eyjafjalla -u Lappland
 [18368] query_profile -c Texas -u Skadi
 [18371] add_user -c Greyy -u fRG -p hM -n 藯考浓 -m a -g 6
-[18376] query_train -i DnUHqGhxrDKTyollV -d 08-21
+[18376] query_train -i GZfTHiZOFmhMJAylnaRU -d 08-21
 [18385] query_profile -c Sussurro -u Orchid
 [18387] query_profile -c Jessica -u Perfumer
-[18388] query_ticket -s 温州 -t 浙江 -d 06-13 -p time
-[18394] buy_ticket -u Myrrh -i DnUHqGhxrDKTyollV -d 07-19 -n 1550 -f 北京 -t 温州
-[18398] buy_ticket -u Haze -i LwgRacrTujYRZBI -d 07-11 -n 4623 -f 上海交通大学 -t 浙江大学
-[18406] buy_ticket -u Manticore -i DnUHqGhxrDKTyollV -d 06-19 -n 1180 -f 上海 -t 温州
+[18388] query_ticket -s 浙江大学 -t 北京 -d 06-13 -p time
+[18394] buy_ticket -u Myrrh -i GZfTHiZOFmhMJAylnaRU -d 07-19 -n 1550 -f 上海 -t 浙江大学
+[18398] buy_ticket -u Haze -i KUnTgJwrpfWFeGi -d 07-11 -n 4623 -f 浙江 -t 温州
+[18406] buy_ticket -u Manticore -i GZfTHiZOFmhMJAylnaRU -d 06-19 -n 1180 -f 上海交通大学 -t 浙江大学
 [18407] query_profile -c Croissant -u Skyfire
-[18411] query_profile -c Sora -u Istina -p vBwOxlKoIgPFsXpCpSsSfL -g 1
+[18411] modify_profile -c Sora -u Istina -p vBwOxlKoIgPFsXpCpSsSfL -g 1
 [18413] logout -u Zima
 [18421] login -u Shamare -p Dp6_wwFqmJ14askYd
-[18429] query_profile -c Dobermann -u Snowsant -p QpLSypJOGNThAy -g 6
-[18433] query_ticket -s 温州 -t 上海 -d 08-05 -p time
-[18439] delete_train -i DnUHqGhxrDKTyollV
-[18440] buy_ticket -u Executor -i DnUHqGhxrDKTyollV -d 06-17 -n 1120 -f 上海交通大学 -t 上海
+[18429] modify_profile -c Dobermann -u Snowsant -p QpLSypJOGNThAy -g 6
+[18433] query_ticket -s 浙江大学 -t 上海交通大学 -d 08-05 -p time
+[18439] delete_train -i GZfTHiZOFmhMJAylnaRU
+[18440] buy_ticket -u Executor -i GZfTHiZOFmhMJAylnaRU -d 06-17 -n 1120 -f 浙江 -t 上海交通大学
 [18450] add_user -c Courier -u NWdWqtiUxexCFFRkwdSo -p JMGzcVkvtq -n 簑燙敐 -m IuiGjuOze -g 2
 [18456] query_profile -c Nearl -u goPhtzWCqpaGJxItn
-[18461] query_ticket -s 上海 -t 北京 -d 06-15 -p cost
-[18464] query_ticket -s 温州 -t 浙江 -d 08-19 -p time
-[18469] release_train -i GZfTHiZOFmhMJAylnaRU
-[18478] buy_ticket -u Magallan -i KUnTgJwrpfWFeGi -d 06-05 -n 3849 -f 上海 -t 上海交通大学
-[18480] buy_ticket -u W -i LwgRacrTujYRZBI -d 08-12 -n 93 -f 温州 -t 浙江
-[18487] query_ticket -s 上海 -t 北京 -d 07-02 -p cost
+[18461] query_ticket -s 上海交通大学 -t 上海 -d 06-15 -p cost
+[18464] query_ticket -s 浙江大学 -t 北京 -d 08-19 -p time
+[18469] release_train -i LwgRacrTujYRZBI
+[18478] buy_ticket -u Magallan -i kUIqmtkRomFzZgIDm -d 06-05 -n 3849 -f 上海交通大学 -t 浙江
+[18480] buy_ticket -u W -i KUnTgJwrpfWFeGi -d 08-12 -n 93 -f 浙江大学 -t 北京
+[18487] query_ticket -s 上海交通大学 -t 上海 -d 07-02 -p cost
 [18495] add_user -c Matoimaru -u yEbZkRXPaR -p ryPvXImijNguVDivLsnIIaD -n 劏濳炃 -m IhbsyNXJoB -g 4
 [18505] query_profile -c Specter -u GreyThroat
-[18511] query_ticket -s 上海交通大学 -t 浙江 -d 06-13 -p time
-[18516] release_train -i DnUHqGhxrDKTyollV
-[18518] buy_ticket -u NoirCorne -i GZfTHiZOFmhMJAylnaRU -d 06-17 -n 2260 -f 北京 -t 上海交通大学
+[18511] query_ticket -s 浙江 -t 北京 -d 06-13 -p time
+[18516] release_train -i GZfTHiZOFmhMJAylnaRU
+[18518] buy_ticket -u NoirCorne -i LwgRacrTujYRZBI -d 06-17 -n 2260 -f 上海 -t 浙江
 [18519] query_profile -c Shining -u Gravel
-[18520] query_ticket -s 上海 -t 浙江 -d 07-02 -p time
+[18520] query_ticket -s 上海交通大学 -t 北京 -d 07-02 -p time
 [18524] add_user -c Manticore -u QEJOQKNEgnpjvUrAjJ -p mwRJGDXy -n 裀卟裸 -m GckTaqbhN -g 7
 [18531] login -u Adnachiel -p iZeWPnrRmgnPSrRf
-[18540] buy_ticket -u Cliffheart -i GZfTHiZOFmhMJAylnaRU -d 08-10 -n 1811 -f 浙江大学 -t 北京
+[18540] buy_ticket -u Cliffheart -i LwgRacrTujYRZBI -d 08-10 -n 1811 -f 温州 -t 上海
 [18544] query_order -u Melantha
-[18554] query_ticket -s 温州 -t 浙江 -d 06-26 -p cost
+[18554] query_ticket -s 浙江大学 -t 北京 -d 06-26 -p cost
 [18562] logout -u Haze
-[18569] release_train -i kUIqmtkRomFzZgIDm
+[18569] release_train -i XertvtjP
 [18576] add_user -c Lappland -u HJMS -p hSudbxrpinmolAhCcwyOxrBR -n 鳡鷺忬 -m dlTlyUIhPWsGDrqwKTmLhHfST -g 10
-[18581] query_ticket -s 北京 -t 上海 -d 07-15 -p cost
+[18581] query_ticket -s 上海 -t 上海交通大学 -d 07-15 -p cost
 [18588] query_profile -c Popukar -u Mostima
-[18595] buy_ticket -u Gummy -i XertvtjP -d 08-23 -n 2634 -f 浙江 -t 北京
-[18605] query_ticket -s 北京 -t 温州 -d 07-16 -p time
-[18607] buy_ticket -u Zima -i DnUHqGhxrDKTyollV -d 06-15 -n 146 -f 北京 -t 温州
+[18595] buy_ticket -u Gummy -i DnUHqGhxrDKTyollV -d 08-23 -n 2634 -f 北京 -t 上海
+[18605] query_ticket -s 上海 -t 浙江大学 -d 07-16 -p time
+[18607] buy_ticket -u Zima -i GZfTHiZOFmhMJAylnaRU -d 06-15 -n 146 -f 上海 -t 浙江大学
 [18617] logout -u fuAPFMhjZQQu
-[18625] buy_ticket -u Shamare -i GZfTHiZOFmhMJAylnaRU -d 06-23 -n 3481 -f 温州 -t 北京
+[18625] buy_ticket -u Shamare -i LwgRacrTujYRZBI -d 06-23 -n 3481 -f 浙江大学 -t 上海
 [18635] refund_ticket -u Elysium -n 2
-[18636] buy_ticket -u Frostleaf -i XertvtjP -d 06-18 -n 4275 -f 上海 -t 浙江
-[18638] query_profile -c Texas -u Reed -p cblVqFQYBmRqZCz -g 7
-[18639] query_ticket -s 浙江大学 -t 浙江 -d 07-06 -p cost
+[18636] buy_ticket -u Frostleaf -i DnUHqGhxrDKTyollV -d 06-18 -n 4275 -f 上海交通大学 -t 北京
+[18638] modify_profile -c Texas -u Reed -p cblVqFQYBmRqZCz -g 7
+[18639] query_ticket -s 温州 -t 北京 -d 07-06 -p cost
 [18643] query_profile -c Mostima -u Sora
-[18652] buy_ticket -u NoirCorne -i kUIqmtkRomFzZgIDm -d 08-09 -n 2618 -f 上海 -t 浙江大学
+[18652] buy_ticket -u NoirCorne -i XertvtjP -d 08-09 -n 2618 -f 上海交通大学 -t 温州
 [18660] logout -u Platinum
-[18667] buy_ticket -u Purestream -i kUIqmtkRomFzZgIDm -d 06-18 -n 2075 -f 浙江大学 -t 上海
-[18675] add_train -i UHofhisZcOBtLKaZLC -n 2 -m 72566 -s 上海交通大学|浙江大学 -p 67095 -x 01:05 -t 15 -o _ -d 06-04|08-14 -y a
-[18683] buy_ticket -u Skadi -i kUIqmtkRomFzZgIDm -d 07-06 -n 884 -f 浙江 -t 上海
-[18688] query_ticket -s 浙江 -t 温州 -d 08-26 -p time
+[18667] buy_ticket -u Purestream -i XertvtjP -d 06-18 -n 2075 -f 温州 -t 上海交通大学
+[18675] add_train -i UHofhisZcOBtLKaZLC -n 2 -m 72566 -s 浙江|温州 -p 67095 -x 01:05 -t 15 -o _ -d 06-04|08-14 -y a
+[18683] buy_ticket -u Skadi -i UHofhisZcOBtLKaZLC -d 07-06 -n 884 -f 北京 -t 上海交通大学
+[18688] query_ticket -s 北京 -t 浙江大学 -d 08-26 -p time
 [18692] query_profile -c Vulcan -u Estelle
-[18702] buy_ticket -u Liskarm -i LwgRacrTujYRZBI -d 07-14 -n 864 -f 北京 -t 上海
+[18702] buy_ticket -u Liskarm -i KUnTgJwrpfWFeGi -d 07-14 -n 864 -f 上海 -t 上海交通大学
 [18707] logout -u Scavenger
 [18715] query_order -u Sora
 [18721] query_profile -c Purestream -u Provence
 [18728] login -u Leizi -p w$u_KwJra5BDodk_sL
-[18731] buy_ticket -u Croissant -i GZfTHiZOFmhMJAylnaRU -d 06-13 -n 398 -f 上海 -t 浙江
-[18733] query_profile -c Cardigan -u ProjeKTRed -p zUqhyhuZNdqLCluqVCwJ -g 8
+[18731] buy_ticket -u Croissant -i LwgRacrTujYRZBI -d 06-13 -n 398 -f 上海交通大学 -t 北京
+[18733] modify_profile -c Cardigan -u ProjeKTRed -p zUqhyhuZNdqLCluqVCwJ -g 8
 [18739] logout -u Adnachiel
 [18742] login -u Pramanix -p Bd-gB-By7GN48Li
 [18745] query_profile -c Cuora -u Firewatch
 [18755] login -u NoirCorne -p YSJpXdJ4Mud7kB2y0703
 [18756] refund_ticket -u Sideroca -n 3
-[18762] query_train -i GZfTHiZOFmhMJAylnaRU -d 08-07
-[18770] buy_ticket -u Bagpipe -i DnUHqGhxrDKTyollV -d 06-02 -n 1732 -f 上海 -t 浙江大学
-[18774] buy_ticket -u Zima -i UHofhisZcOBtLKaZLC -d 07-10 -n 3123 -f 温州 -t 浙江大学
+[18762] query_train -i LwgRacrTujYRZBI -d 08-07
+[18770] buy_ticket -u Bagpipe -i GZfTHiZOFmhMJAylnaRU -d 06-02 -n 1732 -f 上海交通大学 -t 温州
+[18774] buy_ticket -u Zima -i DnUHqGhxrDKTyollV -d 07-10 -n 3123 -f 浙江大学 -t 温州
 [18782] logout -u Manticore
 [18785] query_order -u Beagle
-[18794] query_ticket -s 浙江 -t 上海交通大学 -d 08-01 -p time
+[18794] query_ticket -s 北京 -t 浙江 -d 08-01 -p time
 [18804] query_profile -c Cardigan -u Hibiscus
 [18806] refund_ticket -u I_am_the_admin -n 5
 [18814] refund_ticket -u Sora -n 2
 [18818] login -u Sideroca -p nTQNVMK
 [18823] login -u Amiya -p usacMJwX
 [18827] query_profile -c Angelina -u Glaucus
-[18837] query_ticket -s 温州 -t 浙江大学 -d 06-13 -p time
+[18837] query_ticket -s 浙江大学 -t 温州 -d 06-13 -p time
 [18839] query_order -u Istina
-[18845] query_ticket -s 温州 -t 浙江 -d 07-27 -p time
+[18845] query_ticket -s 浙江大学 -t 北京 -d 07-27 -p time
 [18850] query_profile -c Mostima -u Durin
-[18854] query_transfer -s 上海交通大学 -t 浙江大学 -d 08-13 -p cost
-[18864] query_transfer -s 上海交通大学 -t 上海 -d 07-06 -p cost
-[18868] query_profile -c Midnight -u Nian -p ECmjwjFVYmRgLsmn -g 4
-[18871] buy_ticket -u Orchid -i LwgRacrTujYRZBI -d 08-13 -n 2819 -f 上海交通大学 -t 北京
+[18854] query_transfer -s 浙江 -t 温州 -d 08-13 -p cost
+[18864] query_transfer -s 浙江 -t 上海交通大学 -d 07-06 -p cost
+[18868] modify_profile -c Midnight -u Nian -p ECmjwjFVYmRgLsmn -g 4
+[18871] buy_ticket -u Orchid -i KUnTgJwrpfWFeGi -d 08-13 -n 2819 -f 浙江 -t 上海
 [18875] query_profile -c Cutter -u Greyy
-[18880] query_transfer -s 浙江 -t 浙江大学 -d 07-30 -p cost
-[18884] buy_ticket -u Nearl -i UHofhisZcOBtLKaZLC -d 06-09 -n 312 -f 温州 -t 北京
+[18880] query_transfer -s 北京 -t 温州 -d 07-30 -p cost
+[18884] buy_ticket -u Nearl -i DnUHqGhxrDKTyollV -d 06-09 -n 312 -f 浙江大学 -t 上海
 [18885] query_profile -c Perfumer -u fuAPFMhjZQQu
-[18888] buy_ticket -u Elysium -i UHofhisZcOBtLKaZLC -d 06-20 -n 4181 -f 北京 -t 上海交通大学
+[18888] buy_ticket -u Elysium -i DnUHqGhxrDKTyollV -d 06-20 -n 4181 -f 上海 -t 浙江
 [18893] login -u Leizi -p abaRaRkmSIwQ
 [18901] query_profile -c Glaucus -u Utage
-[18903] buy_ticket -u Vermeil -i UHofhisZcOBtLKaZLC -d 07-29 -n 4082 -f 温州 -t 北京
-[18910] delete_train -i LwgRacrTujYRZBI
+[18903] buy_ticket -u Vermeil -i DnUHqGhxrDKTyollV -d 07-29 -n 4082 -f 浙江大学 -t 上海
+[18910] delete_train -i KUnTgJwrpfWFeGi
 [18920] query_profile -c Vanilla -u Cutter
-[18928] buy_ticket -u Specter -i UHofhisZcOBtLKaZLC -d 08-11 -n 3749 -f 北京 -t 温州
+[18928] buy_ticket -u Specter -i DnUHqGhxrDKTyollV -d 08-11 -n 3749 -f 上海 -t 浙江大学
 [18929] login -u Ceylon -p rANATAfwzA
-[18934] query_train -i LwgRacrTujYRZBI -d 07-23
-[18942] query_ticket -s 浙江 -t 上海 -d 08-20 -p cost
+[18934] query_train -i KUnTgJwrpfWFeGi -d 07-23
+[18942] query_ticket -s 北京 -t 上海交通大学 -d 08-20 -p cost
 [18946] logout -u Sideroca
 [18955] query_profile -c Dobermann -u Leizi
-[18960] query_ticket -s 上海 -t 浙江大学 -d 07-19 -p time
+[18960] query_ticket -s 上海交通大学 -t 温州 -d 07-19 -p time
 [18965] query_order -u Scavenger
 [18972] query_profile -c Rope -u Phantom
-[18973] buy_ticket -u Istina -i LwgRacrTujYRZBI -d 06-21 -n 4050 -f 浙江 -t 浙江大学
-[18976] query_transfer -s 浙江大学 -t 上海交通大学 -d 08-07 -p cost
-[18983] release_train -i UHofhisZcOBtLKaZLC
+[18973] buy_ticket -u Istina -i KUnTgJwrpfWFeGi -d 06-21 -n 4050 -f 北京 -t 温州
+[18976] query_transfer -s 温州 -t 浙江 -d 08-07 -p cost
+[18983] release_train -i DnUHqGhxrDKTyollV
 [18989] query_profile -c W -u Breeze
-[18999] query_ticket -s 上海交通大学 -t 浙江大学 -d 06-17 -p time
+[18999] query_ticket -s 浙江 -t 温州 -d 06-17 -p time
 [19007] login -u WaaiFu -p XX_v-Sl$jc1JkV-L8
-[19012] query_ticket -s 温州 -t 浙江大学 -d 08-02 -p time
+[19012] query_ticket -s 浙江大学 -t 温州 -d 08-02 -p time
 [19014] logout -u Nian
 [19018] query_order -u Mostima
 [19019] query_profile -c FEater -u Nightmare
-[19021] query_ticket -s 上海 -t 上海交通大学 -d 07-10 -p time
+[19021] query_ticket -s 上海交通大学 -t 浙江 -d 07-10 -p time
 [19029] query_order -u fuAPFMhjZQQu
-[19038] query_train -i LwgRacrTujYRZBI -d 08-08
-[19045] query_profile -c Durnar -u Yato -p RQtiXVBK -g 3
-[19055] buy_ticket -u Sussurro -i kUIqmtkRomFzZgIDm -d 08-04 -n 313 -f 温州 -t 上海
+[19038] query_train -i KUnTgJwrpfWFeGi -d 08-08
+[19045] modify_profile -c Durnar -u Yato -p RQtiXVBK -g 3
+[19055] buy_ticket -u Sussurro -i UHofhisZcOBtLKaZLC -d 08-04 -n 313 -f 浙江大学 -t 上海交通大学
 [19059] query_order -u Glaucus
 [19066] refund_ticket -u Eyjafjalla -n 1
 [19070] refund_ticket -u Snowsant -n 5
 [19071] query_order -u Bagpipe
 [19077] query_profile -c Elysium -u FEater
-[19081] release_train -i GZfTHiZOFmhMJAylnaRU
+[19081] release_train -i LwgRacrTujYRZBI
 [19090] logout -u Nightingale
 [19099] query_profile -c Mayer -u Purestream
 [19105] query_profile -c Nightmare -u Greyy
 [19111] query_profile -c Lava -u Indra
-[19112] add_train -i NGhGe -n 3 -m 1987 -s 上海交通大学|上海|浙江 -p 14266|41549 -x 00:47 -t 15|8 -o 6 -d 08-10|08-20 -y S
+[19112] add_train -i NGhGe -n 3 -m 1987 -s 浙江|上海交通大学|北京 -p 14266|41549 -x 00:47 -t 15|8 -o 6 -d 08-10|08-20 -y S
 [19116] query_profile -c Skadi -u Midnight
 [19126] logout -u Ceylon
-[19128] query_ticket -s 北京 -t 温州 -d 06-17 -p cost
+[19128] query_ticket -s 上海 -t 浙江大学 -d 06-17 -p cost
 [19135] refund_ticket -u Jessica -n 5
-[19140] add_train -i xAeYRWgjCJTr -n 2 -m 28031 -s 北京|浙江 -p 11769 -x 17:53 -t 5 -o _ -d 06-27|07-15 -y p
-[19142] delete_train -i NGhGe
-[19143] query_ticket -s 北京 -t 上海交通大学 -d 06-19 -p cost
-[19148] buy_ticket -u Specter -i xAeYRWgjCJTr -d 08-07 -n 4228 -f 浙江 -t 北京
+[19140] add_train -i xAeYRWgjCJTr -n 2 -m 28031 -s 上海|北京 -p 11769 -x 17:53 -t 5 -o _ -d 06-27|07-15 -y p
+[19142] delete_train -i xAeYRWgjCJTr
+[19143] query_ticket -s 上海 -t 浙江 -d 06-19 -p cost
+[19148] buy_ticket -u Specter -i UHofhisZcOBtLKaZLC -d 08-07 -n 4228 -f 北京 -t 上海
 [19153] refund_ticket -u Bagpipe -n 1
 [19157] logout -u Leizi
 [19162] login -u Mostima -p 3VwRTHWRVWo
 [19168] query_profile -c Earthspirit -u Mostima
-[19177] query_ticket -s 浙江 -t 上海 -d 07-12 -p cost
+[19177] query_ticket -s 北京 -t 上海交通大学 -d 07-12 -p cost
 [19181] query_profile -c Ansel -u Jessica
-[19184] buy_ticket -u Franka -i xAeYRWgjCJTr -d 08-30 -n 1760 -f 上海 -t 浙江
-[19185] query_ticket -s 上海 -t 浙江大学 -d 08-20 -p cost
+[19184] buy_ticket -u Franka -i UHofhisZcOBtLKaZLC -d 08-30 -n 1760 -f 上海交通大学 -t 北京
+[19185] query_ticket -s 上海交通大学 -t 温州 -d 08-20 -p cost
 [19188] query_profile -c Nightingale -u goPhtzWCqpaGJxItn
 [19194] query_order -u Indra
-[19197] query_train -i DnUHqGhxrDKTyollV -d 08-08
-[19201] query_profile -c Cutter -u Weedy -p qbVUeQVNrktvnkIM -g 6
-[19202] query_ticket -s 北京 -t 上海交通大学 -d 07-29 -p time
+[19197] query_train -i GZfTHiZOFmhMJAylnaRU -d 08-08
+[19201] modify_profile -c Cutter -u Weedy -p qbVUeQVNrktvnkIM -g 6
+[19202] query_ticket -s 上海 -t 浙江 -d 07-29 -p time
 [19209] rollback -t 16800
 [19215] query_profile -c Broca -u Mostima
-[19224] query_train -i kUIqmtkRomFzZgIDm -d 07-26
+[19224] query_train -i NGhGe -d 07-26
 [19233] query_profile -c Shaw -u Lava
 [19240] query_profile -c I_am_the_admin -u Vermeil
-[19250] query_train -i DnUHqGhxrDKTyollV -d 06-26
+[19250] query_train -i GZfTHiZOFmhMJAylnaRU -d 06-26
 [19254] query_profile -c Hibiscus -u Mostima
 [19255] query_profile -c Gravel -u Bison
-[19265] query_train -i NGhGe -d 07-29
+[19265] query_train -i xAeYRWgjCJTr -d 07-29
 [19275] query_profile -c Deepcolor -u GreyThroat
-[19277] query_ticket -s 浙江 -t 上海 -d 07-30 -p time
+[19277] query_ticket -s 北京 -t 上海交通大学 -d 07-30 -p time
 [19282] query_order -u Matterhorn
 [19292] query_profile -c Platinum -u Vulcan
 [19297] query_order -u fuAPFMhjZQQu
 [19306] query_profile -c BluePoison -u Hibiscus
-[19316] query_train -i NGhGe -d 06-06
+[19316] query_train -i xAeYRWgjCJTr -d 06-06
 [19325] query_order -u Siege
 [19327] query_profile -c Cliffheart -u Meteor
 [19337] query_profile -c Greyy -u Broca
 [19343] query_profile -c Rangers -u W
 [19349] query_order -u Plume
 [19351] query_profile -c Frostleaf -u Shining
-[19357] query_train -i DnUHqGhxrDKTyollV -d 06-25
-[19367] query_train -i DnUHqGhxrDKTyollV -d 06-25
-[19371] query_train -i kUIqmtkRomFzZgIDm -d 08-05
+[19357] query_train -i GZfTHiZOFmhMJAylnaRU -d 06-25
+[19367] query_train -i GZfTHiZOFmhMJAylnaRU -d 06-25
+[19371] query_train -i NGhGe -d 08-05
 [19373] query_profile -c Matterhorn -u Matterhorn
-[19380] query_ticket -s 浙江 -t 北京 -d 08-08 -p time
+[19380] query_ticket -s 北京 -t 上海 -d 08-08 -p time
 [19388] query_profile -c Pramanix -u Pramanix
 [19391] query_profile -c Melantha -u Gravel
 [19399] query_profile -c Nightmare -u ProjeKTRed
-[19401] query_train -i xAeYRWgjCJTr -d 06-03
+[19401] query_train -i UHofhisZcOBtLKaZLC -d 06-03
 [19405] query_profile -c Conviction -u Utage
 [19415] query_profile -c Ceobe -u Steward
 [19418] query_profile -c Gavial -u Meteor
 [19424] query_profile -c Bibeak -u Magallan
-[19432] query_train -i UHofhisZcOBtLKaZLC -d 07-13
+[19432] query_train -i DnUHqGhxrDKTyollV -d 07-13
 [19438] query_profile -c Savage -u Nian
 [19439] query_order -u Blaze
 [19449] query_order -u Texas
-[19454] query_train -i KUnTgJwrpfWFeGi -d 08-19
+[19454] query_train -i kUIqmtkRomFzZgIDm -d 08-19
 [19455] query_order -u Platinum
 [19459] query_profile -c Durin -u Snowsant
 [19468] query_order -u Sussurro
@@ -2110,14 +2110,14 @@
 [19921] login -u Sora -p REo6Meg5fpMiK8aC
 [19923] login -u Gavial -p GNpcWolXTeOcn
 [19924] login -u Meteor -p SMwnjtnF!Gy4KEWmoKB!
-[19930] query_profile -c Lappland -u Ambriel -p ERvhYOXaxSYM -g 8
+[19930] modify_profile -c Lappland -u Ambriel -p ERvhYOXaxSYM -g 8
 [19936] refund_ticket -u NoirCorne -n 5
 [19939] login -u WaaiFu -p Aod
 [19947] release_train -i pks
 [19954] release_train -i pks
 [19959] logout -u Savage
-[19960] query_profile -c Glaucus -u Meteorite -p IhyNYlQXfLNvedfyDx -g 5
-[19967] query_profile -c Indra -u Melantha -p ZXvRNIlIJ -g 0
+[19960] modify_profile -c Glaucus -u Meteorite -p IhyNYlQXfLNvedfyDx -g 5
+[19967] modify_profile -c Indra -u Melantha -p ZXvRNIlIJ -g 0
 [19968] release_train -i pks
 [19972] query_transfer -s 潘开森 -t 王梓 -d 08-13
 [19975] query_profile -c Greyy -u Mousse
@@ -2126,7 +2126,7 @@
 [19991] query_profile -c Meteor -u Ethan
 [19993] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [19996] add_user -c Vulcan -u YXoQZzsimPtKflbndV -p gQSfcBXSooBdrIQowdlfFdIXlhVBD -n 翿睢豽 -m vISIvazdElchSPOvtLerY -g 9
-[19997] query_profile -c Indra -u Zima -p pYHcSMpxebqwNqgPyBSVZAOOf -g 9
+[19997] modify_profile -c Indra -u Zima -p pYHcSMpxebqwNqgPyBSVZAOOf -g 9
 [20003] query_profile -c Purestream -u Ifrit
 [20012] release_train -i pks
 [20013] query_profile -c Gummy -u Angelina
@@ -2153,7 +2153,7 @@
 [20133] query_profile -c Ansel -u Ceobe
 [20139] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [20143] add_user -c Phantom -u ldUCbuUgOzLaDilFlGKV -p ThmcJnS -n 載禹馜 -m UPsLEXeSZfQAVsvxNZFbwbiuMI -g 0
-[20150] query_profile -c May -u Rope -p pexFmDQmGUOMNsmOIzq -g 2
+[20150] modify_profile -c May -u Rope -p pexFmDQmGUOMNsmOIzq -g 2
 [20151] query_profile -c Mayer -u Durnar
 [20159] query_profile -c Dobermann -u Nightmare
 [20160] query_profile -c Pramanix -u Earthspirit
@@ -2162,11 +2162,11 @@
 [20177] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [20187] login -u Cliffheart -p !O9pCzp2KH
 [20192] query_ticket -s 潘开森 -t 王梓 -d 08-13
-[20197] query_profile -c Hibiscus -u Glaucus -p qoofomejwHCYw -g 4
+[20197] modify_profile -c Hibiscus -u Glaucus -p qoofomejwHCYw -g 4
 [20202] login -u Ceobe -p CbPuR8uAk5XtU7I1S
-[20205] query_profile -c Hibiscus -u Croissant -p xSfctYkXwDuXScNrZGlkBQNrvHhqGX -g 2
+[20205] modify_profile -c Hibiscus -u Croissant -p xSfctYkXwDuXScNrZGlkBQNrvHhqGX -g 2
 [20213] query_profile -c Weedy -u Midnight
-[20217] query_profile -c Reed -u Popukar -p AjvSzIEyZoIEEiQOxQOvRzXXSIExTK -g 4
+[20217] modify_profile -c Reed -u Popukar -p AjvSzIEyZoIEEiQOxQOvRzXXSIExTK -g 4
 [20222] query_profile -c NoirCorne -u Nightingale
 [20228] query_order -u Purestream
 [20230] query_profile -c Dobermann -u Savage
@@ -2175,150 +2175,150 @@
 [20238] logout -u Liskarm
 [20243] query_ticket -s 潘开森 -t 王梓 -d 08-13
 [20249] add_user -c Jessica -u qFt -p XPhWcAgcNWTRttbhQApLEoiA -n 衭噛無 -m EhBTROQtfIlfZdEALbS -g 9
-[20250] add_train -i pVFSoaFkXRkCzMuq -n 3 -m 59957 -s 温州|上海交通大学|浙江大学 -p 1281|59192 -x 23:54 -t 10|10 -o 14 -d 07-24|08-03 -y a
+[20250] add_train -i pVFSoaFkXRkCzMuq -n 3 -m 59957 -s 浙江大学|浙江|温州 -p 1281|59192 -x 23:54 -t 10|10 -o 14 -d 07-24|08-03 -y a
 [20260] login -u Vermeil -p iRrTyAaaiLkqwwKYEaaZGgf
 [20261] query_profile -c Texas -u Dobermann
-[20262] query_ticket -s 上海交通大学 -t 浙江大学 -d 08-09 -p time
-[20263] buy_ticket -u Astesia -i pVFSoaFkXRkCzMuq -d 07-05 -n 3625 -f 上海交通大学 -t 浙江
-[20264] query_ticket -s 温州 -t 北京 -d 08-07 -p time
-[20270] query_ticket -s 温州 -t 上海交通大学 -d 06-05 -p cost
-[20275] query_ticket -s 温州 -t 浙江大学 -d 08-27 -p cost
-[20280] buy_ticket -u Rope -i pVFSoaFkXRkCzMuq -d 07-04 -n 2247 -f 浙江 -t 上海
-[20281] query_profile -c Fang -u Texas -p hxlwmxrpgm -g 8
-[20285] query_ticket -s 浙江大学 -t 上海 -d 07-11 -p time
+[20262] query_ticket -s 浙江 -t 温州 -d 08-09 -p time
+[20263] buy_ticket -u Astesia -i pVFSoaFkXRkCzMuq -d 07-05 -n 3625 -f 浙江 -t 北京
+[20264] query_ticket -s 浙江大学 -t 上海 -d 08-07 -p time
+[20270] query_ticket -s 浙江大学 -t 浙江 -d 06-05 -p cost
+[20275] query_ticket -s 浙江大学 -t 温州 -d 08-27 -p cost
+[20280] buy_ticket -u Rope -i pVFSoaFkXRkCzMuq -d 07-04 -n 2247 -f 北京 -t 上海交通大学
+[20281] modify_profile -c Fang -u Texas -p hxlwmxrpgm -g 8
+[20285] query_ticket -s 温州 -t 上海交通大学 -d 07-11 -p time
 [20286] query_profile -c Lappland -u Nearl
 [20292] login -u Conviction -p sbZFIyOdvuhXMi
 [20296] login -u Broca -p tTceybDb
 [20302] query_order -u Lappland
-[20305] buy_ticket -u Exusiai -i pVFSoaFkXRkCzMuq -d 06-29 -n 3058 -f 浙江 -t 温州
-[20309] query_ticket -s 上海交通大学 -t 浙江大学 -d 08-15 -p time
+[20305] buy_ticket -u Exusiai -i pVFSoaFkXRkCzMuq -d 06-29 -n 3058 -f 北京 -t 浙江大学
+[20309] query_ticket -s 浙江 -t 温州 -d 08-15 -p time
 [20315] query_profile -c Angelina -u Dobermann
 [20319] logout -u Deepcolor
-[20329] buy_ticket -u BluePoison -i pVFSoaFkXRkCzMuq -d 08-15 -n 687 -f 北京 -t 温州
+[20329] buy_ticket -u BluePoison -i pVFSoaFkXRkCzMuq -d 08-15 -n 687 -f 上海 -t 浙江大学
 [20337] refund_ticket -u Lava -n 2
 [20345] query_profile -c Lava -u Cutter
-[20355] query_ticket -s 浙江大学 -t 温州 -d 07-16 -p time
+[20355] query_ticket -s 温州 -t 浙江大学 -d 07-16 -p time
 [20360] query_profile -c Pramanix -u WaaiFu
-[20365] query_ticket -s 温州 -t 浙江大学 -d 08-20 -p cost
+[20365] query_ticket -s 浙江大学 -t 温州 -d 08-20 -p cost
 [20375] query_profile -c ShiraYuki -u Scavenger
 [20380] logout -u Sussurro
 [20385] logout -u Mostima
-[20389] query_ticket -s 浙江 -t 浙江大学 -d 06-18 -p time
-[20395] buy_ticket -u goPhtzWCqpaGJxItn -i pVFSoaFkXRkCzMuq -d 08-01 -n 3848 -f 上海 -t 浙江
-[20405] buy_ticket -u Hung -i pVFSoaFkXRkCzMuq -d 07-29 -n 1762 -f 上海 -t 浙江
-[20409] query_ticket -s 温州 -t 北京 -d 06-26 -p time
-[20415] query_profile -c Hibiscus -u Haze -p GNXFsULERTuzhbCkz -g 3
+[20389] query_ticket -s 北京 -t 温州 -d 06-18 -p time
+[20395] buy_ticket -u goPhtzWCqpaGJxItn -i pVFSoaFkXRkCzMuq -d 08-01 -n 3848 -f 上海交通大学 -t 北京
+[20405] buy_ticket -u Hung -i pVFSoaFkXRkCzMuq -d 07-29 -n 1762 -f 上海交通大学 -t 北京
+[20409] query_ticket -s 浙江大学 -t 上海 -d 06-26 -p time
+[20415] modify_profile -c Hibiscus -u Haze -p GNXFsULERTuzhbCkz -g 3
 [20421] logout -u Gravel
-[20422] buy_ticket -u Broca -i pVFSoaFkXRkCzMuq -d 08-26 -n 2294 -f 浙江大学 -t 北京
+[20422] buy_ticket -u Broca -i pVFSoaFkXRkCzMuq -d 08-26 -n 2294 -f 温州 -t 上海
 [20426] logout -u Purestream
 [20431] query_profile -c Lava -u Istina
 [20440] query_profile -c Gummy -u Matoimaru
-[20445] query_ticket -s 上海 -t 浙江大学 -d 07-08 -p cost
-[20446] buy_ticket -u Bibeak -i pVFSoaFkXRkCzMuq -d 08-19 -n 3893 -f 浙江 -t 浙江大学
-[20447] query_profile -c Shining -u Matoimaru -p qxElKOaZQOpHMpgGFSXjeyGMHjzh -g 6
+[20445] query_ticket -s 上海交通大学 -t 温州 -d 07-08 -p cost
+[20446] buy_ticket -u Bibeak -i pVFSoaFkXRkCzMuq -d 08-19 -n 3893 -f 北京 -t 温州
+[20447] modify_profile -c Shining -u Matoimaru -p qxElKOaZQOpHMpgGFSXjeyGMHjzh -g 6
 [20455] add_user -c Plume -u WKtm -p GnbeCJWuMhsaEaXSqcY -n 犊蒵獈 -m bpCbRpunW -g 8
-[20464] buy_ticket -u Durin -i pVFSoaFkXRkCzMuq -d 08-22 -n 1225 -f 北京 -t 温州
-[20471] buy_ticket -u Zima -i pVFSoaFkXRkCzMuq -d 07-29 -n 1152 -f 温州 -t 浙江大学
-[20472] buy_ticket -u Vermeil -i pVFSoaFkXRkCzMuq -d 07-26 -n 3500 -f 北京 -t 浙江大学
+[20464] buy_ticket -u Durin -i pVFSoaFkXRkCzMuq -d 08-22 -n 1225 -f 上海 -t 浙江大学
+[20471] buy_ticket -u Zima -i pVFSoaFkXRkCzMuq -d 07-29 -n 1152 -f 浙江大学 -t 温州
+[20472] buy_ticket -u Vermeil -i pVFSoaFkXRkCzMuq -d 07-26 -n 3500 -f 上海 -t 温州
 [20476] logout -u Shining
-[20484] buy_ticket -u Sideroca -i pVFSoaFkXRkCzMuq -d 08-18 -n 3079 -f 浙江大学 -t 上海交通大学
-[20489] query_ticket -s 上海 -t 浙江 -d 06-23 -p cost
-[20499] buy_ticket -u Rangers -i pVFSoaFkXRkCzMuq -d 06-12 -n 1657 -f 上海交通大学 -t 上海
+[20484] buy_ticket -u Sideroca -i pVFSoaFkXRkCzMuq -d 08-18 -n 3079 -f 温州 -t 浙江
+[20489] query_ticket -s 上海交通大学 -t 北京 -d 06-23 -p cost
+[20499] buy_ticket -u Rangers -i pVFSoaFkXRkCzMuq -d 06-12 -n 1657 -f 浙江 -t 上海交通大学
 [20509] release_train -i pVFSoaFkXRkCzMuq
 [20515] query_profile -c Executor -u Bison
 [20519] query_order -u GreyThroat
 [20525] query_profile -c Vigna -u Vanilla
 [20530] query_profile -c Vermeil -u Midnight
-[20536] buy_ticket -u Schwarz -i pVFSoaFkXRkCzMuq -d 06-19 -n 4833 -f 北京 -t 上海交通大学
-[20542] buy_ticket -u BluePoison -i pVFSoaFkXRkCzMuq -d 07-22 -n 973 -f 浙江大学 -t 上海
+[20536] buy_ticket -u Schwarz -i pVFSoaFkXRkCzMuq -d 06-19 -n 4833 -f 上海 -t 浙江
+[20542] buy_ticket -u BluePoison -i pVFSoaFkXRkCzMuq -d 07-22 -n 973 -f 温州 -t 上海交通大学
 [20548] release_train -i pVFSoaFkXRkCzMuq
 [20552] query_profile -c Nightingale -u Myrtle
-[20559] query_profile -c Shaw -u Estelle -p iABZPPnHRmZvy -g 3
+[20559] modify_profile -c Shaw -u Estelle -p iABZPPnHRmZvy -g 3
 [20563] logout -u Cutter
-[20570] query_transfer -s 温州 -t 上海 -d 08-24 -p cost
+[20570] query_transfer -s 浙江大学 -t 上海交通大学 -d 08-24 -p cost
 [20576] query_profile -c Ansel -u Popukar
 [20578] login -u Provence -p tiMqyXcCnMaWOmTTDslHkUHwMbSmEI
-[20584] add_train -i gCzYmYLJgAeN -n 3 -m 47811 -s 浙江|上海交通大学|浙江大学 -p 63801|50090 -x 00:47 -t 14|7 -o 11 -d 07-11|08-20 -y Z
+[20584] add_train -i gCzYmYLJgAeN -n 3 -m 47811 -s 北京|浙江|温州 -p 63801|50090 -x 00:47 -t 14|7 -o 11 -d 07-11|08-20 -y Z
 [20585] add_user -c Adnachiel -u efk -p MoEGDZ -n 梀馌咺 -m ktHtiQUCEmQIcXXU -g 10
-[20590] query_train -i gCzYmYLJgAeN -d 08-07
-[20592] query_ticket -s 温州 -t 上海 -d 06-28 -p cost
-[20596] buy_ticket -u Greyy -i pVFSoaFkXRkCzMuq -d 06-11 -n 3998 -f 浙江 -t 浙江大学
-[20598] query_ticket -s 浙江大学 -t 浙江 -d 06-03 -p cost
+[20590] query_train -i pVFSoaFkXRkCzMuq -d 08-07
+[20592] query_ticket -s 浙江大学 -t 上海交通大学 -d 06-28 -p cost
+[20596] buy_ticket -u Greyy -i gCzYmYLJgAeN -d 06-11 -n 3998 -f 北京 -t 温州
+[20598] query_ticket -s 温州 -t 北京 -d 06-03 -p cost
 [20600] logout -u Mostima
-[20609] query_ticket -s 浙江 -t 温州 -d 06-06 -p cost
+[20609] query_ticket -s 北京 -t 浙江大学 -d 06-06 -p cost
 [20616] refund_ticket -u Texas -n 5
-[20624] buy_ticket -u Steward -i gCzYmYLJgAeN -d 07-15 -n 1764 -f 温州 -t 上海交通大学
-[20630] query_ticket -s 上海交通大学 -t 北京 -d 07-02 -p cost
-[20634] release_train -i pVFSoaFkXRkCzMuq
-[20635] buy_ticket -u I_am_the_admin -i pVFSoaFkXRkCzMuq -d 06-05 -n 2595 -f 上海交通大学 -t 温州
+[20624] buy_ticket -u Steward -i pVFSoaFkXRkCzMuq -d 07-15 -n 1764 -f 浙江大学 -t 浙江
+[20630] query_ticket -s 浙江 -t 上海 -d 07-02 -p cost
+[20634] release_train -i gCzYmYLJgAeN
+[20635] buy_ticket -u I_am_the_admin -i gCzYmYLJgAeN -d 06-05 -n 2595 -f 浙江 -t 浙江大学
 [20638] query_profile -c Dobermann -u Gummy
-[20644] query_ticket -s 上海 -t 浙江大学 -d 06-14 -p cost
-[20645] buy_ticket -u Warfarin -i gCzYmYLJgAeN -d 07-13 -n 3641 -f 北京 -t 上海交通大学
-[20649] query_ticket -s 温州 -t 北京 -d 08-07 -p time
-[20657] query_train -i pVFSoaFkXRkCzMuq -d 07-30
-[20662] buy_ticket -u Mousse -i gCzYmYLJgAeN -d 07-30 -n 1526 -f 上海 -t 北京
-[20670] buy_ticket -u Jessica -i pVFSoaFkXRkCzMuq -d 07-23 -n 2649 -f 北京 -t 上海
+[20644] query_ticket -s 上海交通大学 -t 温州 -d 06-14 -p cost
+[20645] buy_ticket -u Warfarin -i pVFSoaFkXRkCzMuq -d 07-13 -n 3641 -f 上海 -t 浙江
+[20649] query_ticket -s 浙江大学 -t 上海 -d 08-07 -p time
+[20657] query_train -i gCzYmYLJgAeN -d 07-30
+[20662] buy_ticket -u Mousse -i pVFSoaFkXRkCzMuq -d 07-30 -n 1526 -f 上海交通大学 -t 上海
+[20670] buy_ticket -u Jessica -i gCzYmYLJgAeN -d 07-23 -n 2649 -f 上海 -t 上海交通大学
 [20671] logout -u Hung
 [20680] login -u Ceobe -p CbPuR8uAk5XtU7I1S
 [20684] query_profile -c Liskarm -u Shaw
 [20692] logout -u Deepcolor
 [20701] query_order -u Ethan
 [20710] query_profile -c Manticore -u Meteor
-[20713] query_ticket -s 浙江大学 -t 浙江 -d 06-27 -p cost
+[20713] query_ticket -s 温州 -t 北京 -d 06-27 -p cost
 [20714] query_profile -c Shaw -u Phantom
-[20715] query_ticket -s 浙江 -t 上海交通大学 -d 07-10 -p cost
-[20716] query_ticket -s 浙江 -t 浙江大学 -d 08-26 -p time
-[20718] query_ticket -s 温州 -t 浙江大学 -d 08-04 -p cost
-[20728] add_train -i IyKXYVgzbUnmZkisOwWX -n 2 -m 59506 -s 温州|浙江 -p 54386 -x 04:23 -t 9 -o _ -d 07-12|07-27 -y c
+[20715] query_ticket -s 北京 -t 浙江 -d 07-10 -p cost
+[20716] query_ticket -s 北京 -t 温州 -d 08-26 -p time
+[20718] query_ticket -s 浙江大学 -t 温州 -d 08-04 -p cost
+[20728] add_train -i IyKXYVgzbUnmZkisOwWX -n 2 -m 59506 -s 浙江大学|北京 -p 54386 -x 04:23 -t 9 -o _ -d 07-12|07-27 -y c
 [20735] logout -u Executor
-[20745] buy_ticket -u Reed -i pVFSoaFkXRkCzMuq -d 08-29 -n 547 -f 北京 -t 上海
-[20747] buy_ticket -u Firewatch -i gCzYmYLJgAeN -d 07-22 -n 968 -f 浙江大学 -t 上海交通大学
-[20755] query_ticket -s 北京 -t 温州 -d 08-11 -p time
-[20762] buy_ticket -u I_am_the_admin -i IyKXYVgzbUnmZkisOwWX -d 06-19 -n 1807 -f 浙江 -t 上海
-[20767] query_ticket -s 温州 -t 浙江大学 -d 08-28 -p cost
-[20774] query_ticket -s 浙江大学 -t 上海交通大学 -d 06-09 -p time
+[20745] buy_ticket -u Reed -i gCzYmYLJgAeN -d 08-29 -n 547 -f 上海 -t 上海交通大学
+[20747] buy_ticket -u Firewatch -i pVFSoaFkXRkCzMuq -d 07-22 -n 968 -f 温州 -t 浙江
+[20755] query_ticket -s 上海 -t 浙江大学 -d 08-11 -p time
+[20762] buy_ticket -u I_am_the_admin -i IyKXYVgzbUnmZkisOwWX -d 06-19 -n 1807 -f 北京 -t 上海交通大学
+[20767] query_ticket -s 浙江大学 -t 温州 -d 08-28 -p cost
+[20774] query_ticket -s 温州 -t 浙江 -d 06-09 -p time
 [20776] query_profile -c Mostima -u ProjeKTRed
-[20779] buy_ticket -u Magallan -i IyKXYVgzbUnmZkisOwWX -d 06-07 -n 2512 -f 上海 -t 浙江
-[20780] query_ticket -s 北京 -t 温州 -d 07-29 -p time
+[20779] buy_ticket -u Magallan -i IyKXYVgzbUnmZkisOwWX -d 06-07 -n 2512 -f 上海交通大学 -t 北京
+[20780] query_ticket -s 上海 -t 浙江大学 -d 07-29 -p time
 [20789] query_order -u Skadi
-[20795] buy_ticket -u Durin -i IyKXYVgzbUnmZkisOwWX -d 07-22 -n 4313 -f 温州 -t 浙江大学
-[20800] buy_ticket -u Lappland -i IyKXYVgzbUnmZkisOwWX -d 06-17 -n 1925 -f 浙江 -t 上海交通大学
-[20807] buy_ticket -u Shaw -i gCzYmYLJgAeN -d 06-12 -n 4551 -f 上海交通大学 -t 北京
-[20812] add_train -i GgRvWSmdb -n 2 -m 16780 -s 浙江|浙江大学 -p 42808 -x 04:31 -t 15 -o _ -d 06-29|08-23 -y a
+[20795] buy_ticket -u Durin -i IyKXYVgzbUnmZkisOwWX -d 07-22 -n 4313 -f 浙江大学 -t 温州
+[20800] buy_ticket -u Lappland -i IyKXYVgzbUnmZkisOwWX -d 06-17 -n 1925 -f 北京 -t 浙江
+[20807] buy_ticket -u Shaw -i pVFSoaFkXRkCzMuq -d 06-12 -n 4551 -f 浙江 -t 上海
+[20812] add_train -i GgRvWSmdb -n 2 -m 16780 -s 北京|温州 -p 42808 -x 04:31 -t 15 -o _ -d 06-29|08-23 -y a
 [20813] login -u Rangers -p IAaZcWhnARZuwImiIzHvRMjQ
 [20819] query_profile -c ProjeKTRed -u Durnar
 [20823] query_order -u ProjeKTRed
-[20829] query_profile -c Skyfire -u Scavenger -p JqCoqx -g 5
-[20839] buy_ticket -u Gitano -i IyKXYVgzbUnmZkisOwWX -d 06-04 -n 2617 -f 浙江大学 -t 北京
-[20847] add_train -i IeEKrwDkWgoE -n 3 -m 17208 -s 上海|浙江|浙江大学 -p 81065|84214 -x 18:42 -t 12|6 -o 15 -d 06-24|08-26 -y y
-[20849] query_profile -c Yato -u Skadi -p FiYBXKwFcpotyrdqbS -g 5
-[20853] buy_ticket -u Savage -i IyKXYVgzbUnmZkisOwWX -d 07-04 -n 406 -f 北京 -t 浙江
+[20829] modify_profile -c Skyfire -u Scavenger -p JqCoqx -g 5
+[20839] buy_ticket -u Gitano -i IyKXYVgzbUnmZkisOwWX -d 06-04 -n 2617 -f 温州 -t 上海
+[20847] add_train -i IeEKrwDkWgoE -n 3 -m 17208 -s 上海交通大学|北京|温州 -p 81065|84214 -x 18:42 -t 12|6 -o 15 -d 06-24|08-26 -y y
+[20849] modify_profile -c Yato -u Skadi -p FiYBXKwFcpotyrdqbS -g 5
+[20853] buy_ticket -u Savage -i IyKXYVgzbUnmZkisOwWX -d 07-04 -n 406 -f 上海 -t 北京
 [20861] query_order -u Meteorite
-[20863] query_ticket -s 浙江 -t 温州 -d 06-17 -p time
-[20865] query_ticket -s 北京 -t 温州 -d 06-02 -p time
-[20868] buy_ticket -u Estelle -i IeEKrwDkWgoE -d 08-10 -n 3704 -f 浙江 -t 上海交通大学
+[20863] query_ticket -s 北京 -t 浙江大学 -d 06-17 -p time
+[20865] query_ticket -s 上海 -t 浙江大学 -d 06-02 -p time
+[20868] buy_ticket -u Estelle -i pVFSoaFkXRkCzMuq -d 08-10 -n 3704 -f 北京 -t 浙江
 [20871] logout -u Mayer
-[20873] query_ticket -s 北京 -t 温州 -d 06-13 -p time
-[20874] buy_ticket -u Executor -i pVFSoaFkXRkCzMuq -d 08-26 -n 4859 -f 浙江 -t 浙江大学
+[20873] query_ticket -s 上海 -t 浙江大学 -d 06-13 -p time
+[20874] buy_ticket -u Executor -i GgRvWSmdb -d 08-26 -n 4859 -f 北京 -t 温州
 [20884] add_user -c Conviction -u HwGYkliMGqYIAK -p EHMZRNLZlpcT -n 恤飇闤 -m nivVwuqhLp -g 1
 [20889] query_profile -c Ptilopsis -u Nian
-[20898] query_transfer -s 上海 -t 浙江大学 -d 08-14 -p cost
-[20903] buy_ticket -u Jessica -i IeEKrwDkWgoE -d 07-19 -n 89 -f 浙江 -t 浙江大学
+[20898] query_transfer -s 上海交通大学 -t 温州 -d 08-14 -p cost
+[20903] buy_ticket -u Jessica -i pVFSoaFkXRkCzMuq -d 07-19 -n 89 -f 北京 -t 温州
 [20905] query_order -u Estelle
 [20908] query_train -i IyKXYVgzbUnmZkisOwWX -d 07-03
 [20916] logout -u FEater
-[20925] query_ticket -s 浙江 -t 上海 -d 07-14 -p cost
+[20925] query_ticket -s 北京 -t 上海交通大学 -d 07-14 -p cost
 [20930] login -u Greyy -p N9ZlK6gcWDeL$es
 [20936] logout -u Cutter
 [20941] query_profile -c Meteorite -u Beehunter
-[20949] buy_ticket -u Schwarz -i pVFSoaFkXRkCzMuq -d 06-10 -n 4985 -f 上海 -t 上海交通大学
-[20957] buy_ticket -u Sesa -i pVFSoaFkXRkCzMuq -d 07-21 -n 52 -f 上海 -t 浙江大学
+[20949] buy_ticket -u Schwarz -i GgRvWSmdb -d 06-10 -n 4985 -f 上海交通大学 -t 浙江
+[20957] buy_ticket -u Sesa -i GgRvWSmdb -d 07-21 -n 52 -f 上海交通大学 -t 温州
 [20958] query_order -u Midnight
-[20968] buy_ticket -u Ptilopsis -i gCzYmYLJgAeN -d 08-26 -n 1687 -f 浙江 -t 上海
-[20971] query_ticket -s 上海 -t 温州 -d 07-18 -p cost
-[20981] buy_ticket -u Estelle -i gCzYmYLJgAeN -d 08-30 -n 68 -f 上海交通大学 -t 温州
-[20983] query_ticket -s 浙江 -t 北京 -d 06-20 -p time
-[20990] buy_ticket -u Savage -i GgRvWSmdb -d 08-05 -n 47 -f 浙江 -t 北京
+[20968] buy_ticket -u Ptilopsis -i gCzYmYLJgAeN -d 08-26 -n 1687 -f 北京 -t 上海交通大学
+[20971] query_ticket -s 上海交通大学 -t 浙江大学 -d 07-18 -p cost
+[20981] buy_ticket -u Estelle -i gCzYmYLJgAeN -d 08-30 -n 68 -f 浙江 -t 浙江大学
+[20983] query_ticket -s 北京 -t 上海 -d 06-20 -p time
+[20990] buy_ticket -u Savage -i IeEKrwDkWgoE -d 08-05 -n 47 -f 北京 -t 上海
 [21000] logout -u Steward
 [21004] logout -u Vulcan
 [21012] logout -u Mousse
@@ -2327,29 +2327,29 @@
 [21027] refund_ticket -u Lava -n 2
 [21032] query_profile -c Jessica -u ShiraYuki
 [21041] query_order -u Zima
-[21051] buy_ticket -u Exusiai -i gCzYmYLJgAeN -d 06-29 -n 4061 -f 浙江 -t 北京
-[21057] buy_ticket -u Beagle -i IyKXYVgzbUnmZkisOwWX -d 08-03 -n 963 -f 温州 -t 上海交通大学
+[21051] buy_ticket -u Exusiai -i gCzYmYLJgAeN -d 06-29 -n 4061 -f 北京 -t 上海
+[21057] buy_ticket -u Beagle -i IyKXYVgzbUnmZkisOwWX -d 08-03 -n 963 -f 浙江大学 -t 浙江
 [21065] add_user -c I_am_the_admin -u cZtmbB -p bKBCTDNOwrWb -n 繳憱搶 -m TpdqUImuELMM -g 10
-[21073] query_profile -c Savage -u Courier -p UysTWgwOnsvGbWtVZcaPgbKxkjT -g 2
+[21073] modify_profile -c Savage -u Courier -p UysTWgwOnsvGbWtVZcaPgbKxkjT -g 2
 [21081] query_profile -c Executor -u Ansel
-[21090] delete_train -i GgRvWSmdb
-[21094] query_ticket -s 上海 -t 上海交通大学 -d 08-18 -p cost
-[21099] buy_ticket -u Myrrh -i IyKXYVgzbUnmZkisOwWX -d 06-20 -n 3118 -f 上海 -t 温州
+[21090] delete_train -i IeEKrwDkWgoE
+[21094] query_ticket -s 上海交通大学 -t 浙江 -d 08-18 -p cost
+[21099] buy_ticket -u Myrrh -i IyKXYVgzbUnmZkisOwWX -d 06-20 -n 3118 -f 上海交通大学 -t 浙江大学
 [21108] refund_ticket -u Hung -n 4
-[21114] buy_ticket -u Cuora -i IeEKrwDkWgoE -d 07-16 -n 2566 -f 浙江大学 -t 浙江
+[21114] buy_ticket -u Cuora -i pVFSoaFkXRkCzMuq -d 07-16 -n 2566 -f 温州 -t 北京
 [21118] login -u Amiya -p C
 [21120] logout -u Nian
-[21123] query_ticket -s 北京 -t 上海 -d 08-01 -p cost
+[21123] query_ticket -s 上海 -t 上海交通大学 -d 08-01 -p cost
 [21124] refund_ticket -u Midnight -n 2
-[21131] query_profile -c Catapult -u Firewatch -p LlUxKfmWsBOvTylBfmFVoI -g 1
+[21131] modify_profile -c Catapult -u Firewatch -p LlUxKfmWsBOvTylBfmFVoI -g 1
 [21137] query_order -u Rope
-[21144] query_profile -c Bibeak -u Pramanix -p zcPKulZVaQeUgiqWEAByYGDNRp -g 5
-[21152] query_ticket -s 温州 -t 北京 -d 06-06 -p cost
-[21153] query_ticket -s 浙江 -t 上海交通大学 -d 07-01 -p cost
+[21144] modify_profile -c Bibeak -u Pramanix -p zcPKulZVaQeUgiqWEAByYGDNRp -g 5
+[21152] query_ticket -s 浙江大学 -t 上海 -d 06-06 -p cost
+[21153] query_ticket -s 北京 -t 浙江 -d 07-01 -p cost
 [21155] logout -u Savage
 [21163] add_user -c Sussurro -u H -p XuEMHMUUdzPdhKuNcJUYCAjT -n 驩竗岜 -m eNAGDPeKRacVkWuIdqAzeqaUoXzeJ -g 1
 [21169] rollback -t 18635
-[21173] query_ticket -s 温州 -t 上海交通大学 -d 08-29 -p time
+[21173] query_ticket -s 浙江大学 -t 浙江 -d 08-29 -p time
 [21182] query_profile -c Steward -u Haze
 [21185] query_train -i gCzYmYLJgAeN -d 08-20
 [21192] query_profile -c Lava -u Executor
@@ -2358,7 +2358,7 @@
 [21210] query_order -u Mousse
 [21211] query_profile -c Reed -u Matterhorn
 [21221] query_profile -c Nian -u Ptilopsis
-[21222] query_train -i pVFSoaFkXRkCzMuq -d 08-19
+[21222] query_train -i GgRvWSmdb -d 08-19
 [21225] query_order -u Durin
 [21233] query_profile -c Nian -u Eyjafjalla
 [21239] query_profile -c Sesa -u BluePoison
@@ -2369,8 +2369,8 @@
 [21278] query_train -i IyKXYVgzbUnmZkisOwWX -d 07-18
 [21287] query_order -u Steward
 [21293] query_profile -c Franka -u BluePoison
-[21302] query_transfer -s 温州 -t 浙江 -d 07-14 -p cost
-[21311] query_train -i pVFSoaFkXRkCzMuq -d 06-14
+[21302] query_transfer -s 浙江大学 -t 北京 -d 07-14 -p cost
+[21311] query_train -i GgRvWSmdb -d 06-14
 [21321] query_train -i gCzYmYLJgAeN -d 08-26
 [21331] login -u Croissant -p JTSKVj-Wpss
 [21334] login -u Provence -p vlVx2sQ_hPhf

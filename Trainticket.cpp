@@ -165,22 +165,31 @@ static int GetCost(const Train_System::Train &train,const string &startStation,c
 	}
 	return sumCost;
 }
-static int GetMaxSeatNum(const Train_System::Train &train,const string &startStation,const string &endStation,const int &firday){
+int Train_System::GetMaxSeatNum(const Train_System::Train &train,const string &startStation,const string &endStation,const int &firday){
+	DayTrain daytrain;
+	DayTrainData.read(daytrain,train.DayseatPos[firday-train.saleDateL+1]);
 	int MaxSeatNum=1e9,Count=0;
 	for(int i=1;i<=train.stationNum;i++){
 		if(string(train.stations[i])==startStation)Count=1;
 		if(string(train.stations[i])==endStation)break;
-		if(Count)MaxSeatNum=min(MaxSeatNum,train.seatNum[firday-train.saleDateL+1][i]);
+		if(Count)MaxSeatNum=min(MaxSeatNum,daytrain.seatNum[i]);
 	}
 	return MaxSeatNum;
 }
-void updateSeatNum(Train_System::Train &train,const string &startStation,const string &endStation,const int &num,const int &firday){
+void Train_System::updateSeatNum(Train_System::Train &train,const string &startStation,const string &endStation,const int &num,const int &firday){
+	DayTrain daytrain;
+	DayTrainData.read(daytrain,train.DayseatPos[firday-train.saleDateL+1]);
 	int Count=0;
 	for(int i=1;i<=train.stationNum;i++){
 		if(string(train.stations[i])==startStation)Count=1;
 		if(string(train.stations[i])==endStation)break;
-		if(Count)train.seatNum[firday-train.saleDateL+1][i]+=num;
+		if(Count)daytrain.seatNum[i]+=num;
 	}
+	int pos=train.DayseatPos[firday-train.saleDateL+1];
+	DayTrainData.update(daytrain,pos);
+	
+	int tmp_rollback=string_to_int2(d_order[1]);
+	DayTrainData_rollback.write(tmp_rollback);
 }
 static string GetLeavingTime(const Train_System::Train &train,const string &Station,const int &firday){
 	int ArrivingDay,ArrivingMinute;
@@ -324,13 +333,9 @@ void Train_System::queueUpdate(const string &trainID){
 			int tmp_rollback2=string_to_int2(d_order[1]);
 			OrderData_rollback.write(tmp_rollback2);
 
-			//更新TrainData
+			//更新DayTrainData
 			updateSeatNum(train,AllOrder[i].startStation,AllOrder[i].endStation,-AllOrder[i].seatNum,AllOrder[i].firday);
-			int pos=TrainIndex.FindAll(train.trainID)[0];
-			TrainData.update(train,pos);
 			
-			tmp_rollback2=string_to_int2(d_order[1]);
-			TrainData_rollback.write(tmp_rollback2);
 			
 			//在QueueIndex中删除
 			QueueIndex.Delete(AllOrder[i].trainID,G[i]);
@@ -340,10 +345,11 @@ void Train_System::queueUpdate(const string &trainID){
 	}
 }
 
-Train_System::Train_System():TrainData("TrainData",true),OrderData("OrderData",true),
-							 TrainIndex("TrainIndex"),StationIndex("StationIndex"),OrderIndex("OrderIndex"),QueueIndex("QueueIndex")
-							 ,TrainIndex_rollback("TrainIndex_rollback"),StationIndex_rollback("StationIndex_rollback"),OrderIndex_rollback("OrderIndex_rollback"),QueueIndex_rollback("QueueIndex_rollback"),
-							 TrainData_rollback("TrainData_rollback"),OrderData_rollback("OrderData_rollback")
+Train_System::Train_System():TrainData("TrainData",true,true),DayTrainData("DayTrainData",true,true),OrderData("OrderData",true,true),
+							 TrainIndex("TrainIndex"),StationIndex("StationIndex"),OrderIndex("OrderIndex"),QueueIndex("QueueIndex"),
+							 TrainIndex_rollback("TrainIndex_rollback",false,false),StationIndex_rollback("StationIndex_rollback",false,false),
+							 OrderIndex_rollback("OrderIndex_rollback",false,false),QueueIndex_rollback("QueueIndex_rollback",false,false),
+							 TrainData_rollback("TrainData_rollback",false,false),DayTrainData_rollback("DayTrainData_rollback",false,false),OrderData_rollback("OrderData_rollback",false,false)
 							{}
 void Train_System::add_train(){
 	string tmp[105];
@@ -380,7 +386,14 @@ void Train_System::add_train(){
 	}
 	NewTrain.isRelease=0;
 	NewTrain.MaxseatNum=seatNum;
-	for(int i=1;i<=NewTrain.saleDateR-NewTrain.saleDateL+1;i++)for(int j=1;j<NewTrain.stationNum;j++)NewTrain.seatNum[i][j]=seatNum;
+	// for(int i=1;i<=NewTrain.saleDateR-NewTrain.saleDateL+1;i++)for(int j=1;j<NewTrain.stationNum;j++)NewTrain.seatNum[i][j]=seatNum;
+	for(int i=1;i<=NewTrain.saleDateR-NewTrain.saleDateL+1;i++){
+		DayTrain tmpdaytrain;
+		for(int j=1;j<NewTrain.stationNum;j++)tmpdaytrain.seatNum[j]=seatNum;
+		NewTrain.DayseatPos[i]=DayTrainData.write(tmpdaytrain);
+		int tmp_rollback=string_to_int2(d_order[1]);
+		DayTrainData_rollback.write(tmp_rollback);
+	}
 	//已经存在该动车 不合法
 	if(TrainIndex.Find(NewTrain.trainID))throw Train_Is_Exist();
 	// Output(NewTrain);
@@ -453,6 +466,8 @@ void Train_System::query_train(){
 	int ArrivingDay,ArrivingMinute;
 	int LeavingDay=day,LeavingMinute=train.startTime;
 	int SumPrice=0;
+	DayTrain daytrain;
+	DayTrainData.read(daytrain,train.DayseatPos[day-train.saleDateL+1]);
 	for(int i=1;i<=train.stationNum;i++){
 		cout<<train.stations[i]<<" ";
 		if(i==1)cout<<"xx-xx xx:xx ";
@@ -462,7 +477,7 @@ void Train_System::query_train(){
 		else cout<<day_to_date(LeavingDay)<<" "<<minute_to_time(LeavingMinute)<<" ";
 		cout<<SumPrice<<" ";
 		if(i==train.stationNum)cout<<"x"<<endl;
-		else cout<<train.seatNum[day-train.saleDateL+1][i]<<endl;
+		else cout<<daytrain.seatNum[i]<<endl;
 		
 		OutputData+=string(train.stations[i])+" ";
 		if(i==1)OutputData+="xx-xx xx:xx ";
@@ -472,7 +487,7 @@ void Train_System::query_train(){
 		else OutputData+=string(day_to_date(LeavingDay))+" "+string(minute_to_time(LeavingMinute))+" ";
 		OutputData+="从起始站到该站价格："+int_to_string(SumPrice)+" ";
 		if(i==train.stationNum)OutputData+="到下一站剩余座位数:"+string("x")+"<br>";
-		else OutputData+="到下一站剩余座位数:"+int_to_string(train.seatNum[day-train.saleDateL+1][i])+"<br>";
+		else OutputData+="到下一站剩余座位数:"+int_to_string(daytrain.seatNum[i])+"<br>";
 
 		ArrivingDay=LeavingDay,ArrivingMinute=LeavingMinute+train.travelTimes[i];
 		if(ArrivingMinute>=1440)ArrivingDay+=ArrivingMinute/1440,ArrivingMinute%=1440;
@@ -758,13 +773,8 @@ void Train_System::buy_ticket(){
 		OrderIndex.insert(username,pos);
 		for_rollback<int> tmp_rollback(string_to_int2(d_order[1]),1,username,pos);
 		OrderIndex_rollback.write(tmp_rollback);
-		//更新TrainData
+		//更新DayTrainData
 		updateSeatNum(train,order.startStation,order.endStation,-order.seatNum,order.firday);
-		int pos2=TrainIndex.FindAll(train.trainID)[0];
-		TrainData.update(train,pos2);
-		
-		tmp_rollback2=string_to_int2(d_order[1]);
-		TrainData_rollback.write(tmp_rollback2);
 
 		cout<<d_order[1]<<" ";
 		printf("%lld\n",(long long)order.seatNum*GetCost(train,order.startStation,order.endStation));
@@ -858,12 +868,8 @@ void Train_System::refund_ticket(){
 	//若是原来已经购买了，要退票，更新TrainData
 	if(order.status==1){
 		Train train=GetTrainFromData(order.trainID);
+		//更改DayTrainData
 		updateSeatNum(train,order.startStation,order.endStation,order.seatNum,order.firday);
-		int pos2=TrainIndex.FindAll(train.trainID)[0];
-		TrainData.update(train,pos2);
-		
-		int tmp_rollback2=string_to_int2(d_order[1]);
-		TrainData_rollback.write(tmp_rollback2);
 
 		//queueUpdate
 		queueUpdate(train.trainID);
@@ -961,6 +967,17 @@ void Train_System::rollback(){
 		TrainData.rollback();
 		TrainData_rollback.Delete(pos,1);
 		pos=TrainData_rollback.Maxpos();
+	}
+
+	//回滚DayTrainData
+	pos=DayTrainData_rollback.Maxpos();
+	while(pos!=-1){
+		DayTrainData_rollback.read(tmp2,pos);
+		if(tmp2<Backtimestmp)break;
+		// cout<<"@@@ DayTrainData "<<tmp2<<endl;
+		DayTrainData.rollback();
+		DayTrainData_rollback.Delete(pos,1);
+		pos=DayTrainData_rollback.Maxpos();
 	}
 
 	//回滚OrderData

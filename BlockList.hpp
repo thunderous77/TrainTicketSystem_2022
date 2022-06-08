@@ -52,7 +52,7 @@ private:
 	MemoryRiver<Block_info,3>Blocks_info;//2 blocknum,3 fir_id
 	MemoryRiver<Block_data,1>Blocks_data;
 public:
-	Key_value_database(const string &Blockname):Blocks_info(Blockname+"_info"),Blocks_data(Blockname+"_data"){}
+	Key_value_database(const string &Blockname):Blocks_info(Blockname+"_info",true,false),Blocks_data(Blockname+"_data",true,false){}
 	void Split(Block_info &Now,Block_data &Now2){
 		Block_info tmp;
 		Block_data tmp2;
