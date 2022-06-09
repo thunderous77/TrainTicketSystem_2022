@@ -39,7 +39,7 @@ private:
 		}
 		bool operator !=(const node &other)const{return !((*this)==other);}
 	};
-	const static int BlockMaxn=2000;
+	const static int BlockMaxn=50;
 	const static int MergeSize=BlockMaxn*0.4;
 	struct Block_info{//表头文件
 		int size=0,pre_id=-1,next_id=-1;
@@ -195,8 +195,8 @@ public:
 			return 1;
 		}
 	}
-	vector<int> FindAll(const string key){
-		vector<int>ans;
+	vector<T> FindAll(const string key){
+		vector<T>ans;
 		int blocknum;
 		Blocks_info.read_info(blocknum,2);
 		if(!blocknum)return ans;
@@ -222,7 +222,6 @@ public:
 		return ans;
 	}
 	bool Find(const string key){
-		// cerr<<"find"<<" "<<key<<endl;
 		int blocknum;
 		Blocks_info.read_info(blocknum,2);
 		if(!blocknum)return 0;

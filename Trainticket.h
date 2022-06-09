@@ -23,6 +23,10 @@ public:
 		int saleDateL,saleDateR;
 		bool isRelease=0;
 		char type;
+		friend bool operator <(const Train &A,const Train &B){return string(A.trainID)<string(B.trainID);}
+		friend bool operator >(const Train &A,const Train &B){return string(A.trainID)>string(B.trainID);}
+		friend bool operator ==(const Train &A,const Train &B){return string(A.trainID)==string(B.trainID);}
+		friend bool operator !=(const Train &A,const Train &B){return !(A==B);}
 	};
 	class DayTrain{
 	public:
@@ -42,12 +46,13 @@ private:
 	int GetMaxSeatNum(const Train_System::Train &train,const string &startStation,const string &endStation,const int &firday);
 	void updateSeatNum(Train_System::Train &train,const string &startStation,const string &endStation,const int &num,const int &firday);
 public:
-	MemoryRiver<Train> TrainData;
 	MemoryRiver<DayTrain> DayTrainData;
 	MemoryRiver<Order> OrderData;
-	Key_value_database<int> TrainIndex,StationIndex,OrderIndex,QueueIndex;
-	MemoryRiver< for_rollback<int> > TrainIndex_rollback,StationIndex_rollback,OrderIndex_rollback,QueueIndex_rollback;
-	MemoryRiver<int> TrainData_rollback,DayTrainData_rollback,OrderData_rollback;
+	Key_value_database<Train> TrainIndex,StationIndex;
+	Key_value_database<int> OrderIndex,QueueIndex;
+	MemoryRiver< for_rollback<Train> > TrainIndex_rollback,StationIndex_rollback;
+	MemoryRiver< for_rollback<int> > OrderIndex_rollback,QueueIndex_rollback;
+	MemoryRiver<int> DayTrainData_rollback,OrderData_rollback;
 	Train_System();
 	void add_train();
 	void release_train();

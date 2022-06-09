@@ -206,9 +206,11 @@ public:
     void Delete(int index,bool type=0) {//type=1时不回收空间,保证删除的是最后一个(同时保证IsRollback=0)
 		if(!type){
 			T data;
-			file.open(file_name);
-			file.seekg(index);
-			file.read(reinterpret_cast<char*>(&data),sizeofT);
+			if(Ismemoryrecycling){
+				file.open(file_name);
+				file.seekg(index);
+				file.read(reinterpret_cast<char*>(&data),sizeofT);
+			}
 			num--;
 			file.seekp(0);
 			file.write(reinterpret_cast<char*>(&num),sizeof(int));
