@@ -103,6 +103,15 @@ static void Output(Train_System::Train G){
 	cout<<"type="<<G.type<<endl;
 	cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl;
 }
+static void Output(Train_System::StationTrain G){
+	cout<<"~~~~ "<<G.trainID<<" ~~~~"<<endl;
+	cout<<"StationIndex="<<G.StationIndex<<endl;
+	cout<<"sumprice="<<G.sumprice<<endl;
+	cout<<"sumArrivingTime="<<G.sumArrivingTime<<endl;
+	cout<<"sumLeavingTime="<<G.sumLeavingTime<<endl;
+	cout<<"startTime="<<G.startTime<<endl;
+	cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl;
+}
 static void Analysis(string s,string *tmp,int &tmplen){
 	tmp[tmplen=1]="";
 	for(int i=0;i<(int)s.size();i++){
@@ -142,6 +151,10 @@ static bool Is_exist(const Train_System::Train &train,const string &startStation
 	// cout<<"@@"<<train.trainID<<" "<<startStation<<" "<<endStation<<endl;
 	return 0;
 }
+static bool Is_exist2(const Train_System::StationTrain &stationtrain,const int &startday){
+	int Day=startday-(stationtrain.startTime+stationtrain.sumLeavingTime)/1440;
+	return stationtrain.saleDateL<=Day&&Day<=stationtrain.saleDateR;
+}
 static int GetTime(const Train_System::Train &train,const string &startStation,const string &endStation){
 	int sumTime=0,Count=0;
 	for(int i=1;i<=train.stationNum;i++){
@@ -172,6 +185,13 @@ int Train_System::GetMaxSeatNum(const Train_System::Train &train,const string &s
 		if(string(train.stations[i])==endStation)break;
 		if(Count)MaxSeatNum=min(MaxSeatNum,daytrain.seatNum[i]);
 	}
+	return MaxSeatNum;
+}
+int Train_System::GetMaxSeatNum2(const Train_System::StationTrain &stationtrain,const int &L,const int &R,const int &firday){
+	DayTrain daytrain;
+	DayTrainData.read(daytrain,stationtrain.DayseatPos[firday-stationtrain.saleDateL+1]);
+	int MaxSeatNum=1e9;
+	for(int i=L;i<R;i++)MaxSeatNum=min(MaxSeatNum,daytrain.seatNum[i]);
 	return MaxSeatNum;
 }
 void Train_System::updateSeatNum(Train_System::Train &train,const string &startStation,const string &endStation,const int &num,const int &firday){
@@ -239,6 +259,9 @@ static int GetTrainStartDay(const Train_System::Train &train,const string &start
 	}
 	return -2333;
 }
+static int GetTrainStartDay2(const Train_System::StationTrain &stationtrain,const int &startday){
+	return startday-(stationtrain.startTime+stationtrain.sumLeavingTime)/1440;
+}
 static int GetTransferStartDay(const Train_System::Train &train,const string &Station,const string &ArrivingDateTime){
 	int totMinute=DateTime_to_minute(ArrivingDateTime);
 	int L_ArrivingDay=totMinute/1440,L_ArrivingMinute=totMinute%1440;
@@ -263,35 +286,56 @@ static int GetTransferStartDay(const Train_System::Train &train,const string &St
 	}
 	return -1;
 }
-static vector<string> tmp1;
-static vector<int> tmp2;
-static vector<Train_System::Train> tmp3;
-static void SortTrainTime(vector<string> &AlltrainID,vector<int> &Time,vector<Train_System::Train> &Alltrain,int l,int r){
+struct ansType{
+	string trainID;
+	int Time,Cost;
+	string LeavingTime,ArrivingTime;
+	int seatNum;
+	ansType(string _trainID,int _Time,int _Cost,string _LeavingTime,string _ArrivingTime,int _seatNum):
+		trainID(_trainID),Time(_Time),Cost(_Cost),LeavingTime(_LeavingTime),ArrivingTime(_ArrivingTime),seatNum(_seatNum){}
+};
+static vector<Train_System::StationTrain> tmp1;
+static vector<ansType> tmp2;
+static void SortStationTrain(vector<Train_System::StationTrain> &Alltrain,int l,int r){
 	if(l>=r)return;
 	int mid=(l+r)>>1;
-	SortTrainTime(AlltrainID,Time,Alltrain,l,mid),SortTrainTime(AlltrainID,Time,Alltrain,mid+1,r);
+	SortStationTrain(Alltrain,l,mid),SortStationTrain(Alltrain,mid+1,r);
 	int g1=l,g2=mid+1,g=l;
 	while(g1<=mid&&g2<=r){
-		if(Time[g1]<Time[g2]||(Time[g1]==Time[g2]&&AlltrainID[g1]<AlltrainID[g2]))tmp1[g]=AlltrainID[g1],tmp2[g]=Time[g1],tmp3[g]=Alltrain[g1],g++,g1++;
-		else tmp1[g]=AlltrainID[g2],tmp2[g]=Time[g2],tmp3[g]=Alltrain[g2],g++,g2++;
+		if(Alltrain[g1].trainID<Alltrain[g2].trainID)tmp1[g]=Alltrain[g1],g++,g1++;
+		else tmp1[g]=Alltrain[g2],g++,g2++;
 	}
-	while(g1<=mid)tmp1[g]=AlltrainID[g1],tmp2[g]=Time[g1],tmp3[g]=Alltrain[g1],g++,g1++;
-	while(g2<=r)tmp1[g]=AlltrainID[g2],tmp2[g]=Time[g2],tmp3[g]=Alltrain[g2],g++,g2++;
-	for(int i=l;i<=r;i++)AlltrainID[i]=tmp1[i],Time[i]=tmp2[i],Alltrain[i]=tmp3[i];
+	while(g1<=mid)tmp1[g]=Alltrain[g1],g++,g1++;
+	while(g2<=r)tmp1[g]=Alltrain[g2],g++,g2++;
+	for(int i=l;i<=r;i++)Alltrain[i]=tmp1[i];
 	return;
 }
-static void SortTrainCost(vector<string> &AlltrainID,vector<int> &Cost,vector<Train_System::Train> &Alltrain,int l,int r){
+static void SortAnsTime(vector<ansType> &res,int l,int r){
 	if(l>=r)return;
 	int mid=(l+r)>>1;
-	SortTrainCost(AlltrainID,Cost,Alltrain,l,mid),SortTrainCost(AlltrainID,Cost,Alltrain,mid+1,r);
+	SortAnsTime(res,l,mid),SortAnsTime(res,mid+1,r);
 	int g1=l,g2=mid+1,g=l;
 	while(g1<=mid&&g2<=r){
-		if(Cost[g1]<Cost[g2]||(Cost[g1]==Cost[g2]&&AlltrainID[g1]<AlltrainID[g2]))tmp1[g]=AlltrainID[g1],tmp2[g]=Cost[g1],tmp3[g]=Alltrain[g1],g++,g1++;
-		else tmp1[g]=AlltrainID[g2],tmp2[g]=Cost[g2],tmp3[g]=Alltrain[g2],g++,g2++;
+		if(res[g1].Time<res[g2].Time||(res[g1].Time==res[g2].Time&&res[g1].trainID<res[g2].trainID))tmp2[g]=res[g1],g++,g1++;
+		else tmp2[g]=res[g2],g++,g2++;
 	}
-	while(g1<=mid)tmp1[g]=AlltrainID[g1],tmp2[g]=Cost[g1],tmp3[g]=Alltrain[g1],g++,g1++;
-	while(g2<=r)tmp1[g]=AlltrainID[g2],tmp2[g]=Cost[g2],tmp3[g]=Alltrain[g2],g++,g2++;
-	for(int i=l;i<=r;i++)AlltrainID[i]=tmp1[i],Cost[i]=tmp2[i],Alltrain[i]=tmp3[i];
+	while(g1<=mid)tmp2[g]=res[g1],g++,g1++;
+	while(g2<=r)tmp2[g]=res[g2],g++,g2++;
+	for(int i=l;i<=r;i++)res[i]=tmp2[i];
+	return;
+}
+static void SortAnsCost(vector<ansType> &res,int l,int r){
+	if(l>=r)return;
+	int mid=(l+r)>>1;
+	SortAnsCost(res,l,mid),SortAnsCost(res,mid+1,r);
+	int g1=l,g2=mid+1,g=l;
+	while(g1<=mid&&g2<=r){
+		if(res[g1].Cost<res[g2].Cost||(res[g1].Cost==res[g2].Cost&&res[g1].trainID<res[g2].trainID))tmp2[g]=res[g1],g++,g1++;
+		else tmp2[g]=res[g2],g++,g2++;
+	}
+	while(g1<=mid)tmp2[g]=res[g1],g++,g1++;
+	while(g2<=r)tmp2[g]=res[g2],g++,g2++;
+	for(int i=l;i<=r;i++)res[i]=tmp2[i];
 	return;
 }
 static vector<Train_System::Order> tmp4;
@@ -401,11 +445,6 @@ void Train_System::add_train(){
 	for_rollback<Train> tmp_rollback(string_to_int2(d_order[1]),1,NewTrain.trainID,NewTrain);
 	TrainIndex_rollback.write(tmp_rollback);
 
-	for(int i=1;i<=NewTrain.stationNum;i++){
-		StationIndex.insert(NewTrain.stations[i],NewTrain);
-		for_rollback<Train> tmp_rollback(string_to_int2(d_order[1]),1,NewTrain.stations[i],NewTrain);
-		StationIndex_rollback.write(tmp_rollback);
-	}
 	cout<<d_order[1]<<" ";
 	printf("0\n");OutputData+="添加成功<br>";
 
@@ -421,18 +460,11 @@ void Train_System::release_train(){
 	Train train=GetTrainFromData(trainID);
 	//动车已经发布 不合法
 	if(train.isRelease)throw Train_Is_Release();
-	//更新TrainIndex和StationIndex
+	//更新TrainIndex,增加StationIndex
 	TrainIndex.Delete(train.trainID,train);
 
 	for_rollback<Train> tmp_rollback(string_to_int2(d_order[1]),-1,train.trainID,train);
 	TrainIndex_rollback.write(tmp_rollback);
-
-	for(int i=1;i<=train.stationNum;i++){
-		StationIndex.Delete(train.stations[i],train);
-
-		for_rollback<Train> tmp_rollback2(string_to_int2(d_order[1]),-1,train.stations[i],train);
-		StationIndex_rollback.write(tmp_rollback2);
-	}
 
 	train.isRelease=1;
 	TrainIndex.insert(train.trainID,train);
@@ -440,11 +472,27 @@ void Train_System::release_train(){
 	for_rollback<Train> tmp_rollback3(string_to_int2(d_order[1]),1,train.trainID,train);
 	TrainIndex_rollback.write(tmp_rollback3);
 
+	StationTrain stationtrain;
+	strcpy(stationtrain.trainID,train.trainID);
+	for(int i=0;i<MaxDay;i++)stationtrain.DayseatPos[i]=train.DayseatPos[i];
+	stationtrain.saleDateL=train.saleDateL,stationtrain.saleDateR=train.saleDateR;
+	stationtrain.startTime=train.startTime;
+	stationtrain.StationIndex=1;
+	stationtrain.sumprice=0;
+	stationtrain.sumArrivingTime=-1;
+	stationtrain.sumLeavingTime=0;
 	for(int i=1;i<=train.stationNum;i++){
-		StationIndex.insert(train.stations[i],train);
+		// Output(stationtrain);
+		StationIndex.insert(train.stations[i],stationtrain);
 		
-		for_rollback<Train> tmp_rollback4(string_to_int2(d_order[1]),1,train.stations[i],train);
+		for_rollback<StationTrain> tmp_rollback4(string_to_int2(d_order[1]),1,train.stations[i],stationtrain);
 		StationIndex_rollback.write(tmp_rollback4);
+		
+		if(i==train.stationNum)continue;
+		stationtrain.StationIndex++;
+		stationtrain.sumprice+=train.prices[i];
+		stationtrain.sumArrivingTime=stationtrain.sumLeavingTime+train.travelTimes[i];
+		stationtrain.sumLeavingTime=stationtrain.sumArrivingTime+train.stopoverTimes[i+1];
 	}
 
 	cout<<d_order[1]<<" ";
@@ -522,12 +570,7 @@ void Train_System::delete_train(){
 
 	for_rollback<Train> tmp_rollback(string_to_int2(d_order[1]),-1,trainID,train);
 	TrainIndex_rollback.write(tmp_rollback);
-	//在StationIndex中删除
-	for(int i=1;i<=train.stationNum;i++){
-		StationIndex.Delete(train.stations[i],train);
-		for_rollback<Train> tmp_rollback(string_to_int2(d_order[1]),-1,train.stations[i],train);
-		StationIndex_rollback.write(tmp_rollback);
-	}
+
 	cout<<d_order[1]<<" ";
 	printf("0\n");OutputData+="删除成功<br>";
 }
@@ -542,45 +585,52 @@ void Train_System::query_ticket(){
 		if(d_order[i]=="-p")sortType=d_order[i+1];
 	}
 	//读取并选出选出合法数据，并按照要求排序
-	vector<Train> Alltrain=StationIndex.FindAll(startStation);
-	Train tmptrain;
-	vector<int> Time,Cost;
-	vector<string> AlltrainID;
-	int Num=0;
-	for(int i=0;i<(int)Alltrain.size();i++){
-		if(!Is_exist(Alltrain[i],startStation,endStation,startday))continue;
-		if(!Alltrain[i].isRelease)continue;
-		AlltrainID.push_back(string(Alltrain[i].trainID));
-		Time.push_back(GetTime(Alltrain[i],startStation,endStation));
-		Cost.push_back(GetCost(Alltrain[i],startStation,endStation));
-		Alltrain[Num++]=Alltrain[i];
+	vector<StationTrain> Alltrain1=StationIndex.FindAll(startStation);
+	vector<StationTrain> Alltrain2=StationIndex.FindAll(endStation);
+	int Size1=Alltrain1.size(),Size2=Alltrain2.size();
+	tmp1=Alltrain1,SortStationTrain(Alltrain1,0,Size1-1);
+	tmp1=Alltrain2,SortStationTrain(Alltrain2,0,Size2-1);
+	vector<ansType> res;
+	int Num=0,j=0;
+	for(int i=0;i<Size1;i++){
+		while(j<Size2&&string(Alltrain2[j].trainID)<string(Alltrain1[i].trainID))j++;
+		if(j==Size2||string(Alltrain1[i].trainID)!=string(Alltrain2[j].trainID))continue;
+		if(Alltrain1[i].StationIndex>=Alltrain2[j].StationIndex)continue;
+		if(!Is_exist2(Alltrain1[i],startday))continue;
+		int firday=GetTrainStartDay2(Alltrain1[i],startday);
+		int Time=Alltrain2[j].sumArrivingTime-Alltrain1[i].sumLeavingTime;
+		int Cost=Alltrain2[j].sumprice-Alltrain1[i].sumprice;
+		string LeavingTime=day_to_date(firday+(Alltrain1[i].startTime+Alltrain1[i].sumLeavingTime)/1440)+" "+minute_to_time((Alltrain1[i].startTime+Alltrain1[i].sumLeavingTime)%1440);
+		string ArrivingTime=day_to_date(firday+(Alltrain2[j].startTime+Alltrain2[j].sumArrivingTime)/1440)+" "+minute_to_time((Alltrain2[j].startTime+Alltrain2[j].sumArrivingTime)%1440);
+		int seatNum=GetMaxSeatNum2(Alltrain1[i],Alltrain1[i].StationIndex,Alltrain2[j].StationIndex,firday);
+		res.push_back(ansType(Alltrain1[i].trainID,Time,Cost,LeavingTime,ArrivingTime,seatNum));
+		Num++;
 	}
-	if(sortType=="time")tmp1=AlltrainID,tmp2=Time,tmp3=Alltrain,SortTrainTime(AlltrainID,Time,Alltrain,0,Num-1);
-	if(sortType=="cost")tmp1=AlltrainID,tmp2=Cost,tmp3=Alltrain,SortTrainCost(AlltrainID,Cost,Alltrain,0,Num-1);
+	if(sortType=="time")tmp2=res,SortAnsTime(res,0,Num-1);
+	if(sortType=="cost")tmp2=res,SortAnsCost(res,0,Num-1);
 	//输出动车信息
 	cout<<d_order[1]<<" ";
 	cout<<Num<<endl;
 	OutputData+="查询成功<br>";
 	OutputData+="合法列车数："+int_to_string(Num)+"<br>";
 	for(int i=0;i<Num;i++){
-		int firday=GetTrainStartDay(Alltrain[i],startStation,startday);
-		cout<<Alltrain[i].trainID<<" ";
+		cout<<res[i].trainID<<" ";
 		cout<<startStation<<" ";
-		cout<<GetLeavingTime(Alltrain[i],startStation,firday)<<" ";
+		cout<<res[i].LeavingTime<<" ";
 		cout<<"-> ";
 		cout<<endStation<<" ";
-		cout<<GetArrivingTime(Alltrain[i],endStation,firday)<<" ";
-		cout<<GetCost(Alltrain[i],startStation,endStation)<<" ";
-		cout<<GetMaxSeatNum(Alltrain[i],startStation,endStation,firday)<<endl;
+		cout<<res[i].ArrivingTime<<" ";
+		cout<<res[i].Cost<<" ";
+		cout<<res[i].seatNum<<endl;
 		
-		OutputData+=string(Alltrain[i].trainID)+" ";
+		OutputData+=string(res[i].trainID)+" ";
 		OutputData+=string(startStation)+" ";
-		OutputData+=string(GetLeavingTime(Alltrain[i],startStation,firday))+" ";
+		OutputData+=string(res[i].LeavingTime)+" ";
 		OutputData+="-> ";
 		OutputData+=string(endStation)+" ";
-		OutputData+=string(GetArrivingTime(Alltrain[i],endStation,firday))+" ";
-		OutputData+="价格："+int_to_string(GetCost(Alltrain[i],startStation,endStation))+" ";
-		OutputData+="剩余座位数："+int_to_string(GetMaxSeatNum(Alltrain[i],startStation,endStation,firday))+"<br>";
+		OutputData+=string(res[i].ArrivingTime)+" ";
+		OutputData+="价格："+int_to_string(res[i].Cost)+" ";
+		OutputData+="剩余座位数："+int_to_string(res[i].seatNum)+"<br>";
 		
 	}
 }
@@ -595,10 +645,14 @@ void Train_System::query_transfer(){
 		if(d_order[i]=="-p")sortType=d_order[i+1];
 	}
 	//读取数据
+	vector<StationTrain> stationtrain1,stationtrain2;
 	vector<Train> Alltrain1,Alltrain2;
 	Train tmptrain1,tmptrain2;
-	Alltrain1=StationIndex.FindAll(startStation);
-	Alltrain2=StationIndex.FindAll(endStation);
+	
+	stationtrain1=StationIndex.FindAll(startStation);
+	stationtrain2=StationIndex.FindAll(endStation);
+	for(int i=0;i<(int)stationtrain1.size();i++)Alltrain1.push_back(GetTrainFromData(stationtrain1[i].trainID));
+	for(int i=0;i<(int)stationtrain2.size();i++)Alltrain2.push_back(GetTrainFromData(stationtrain2[i].trainID));
 	//寻找最优解
 	Train ans1,ans2;
 	string ansTransferStation="";
@@ -907,7 +961,8 @@ void Train_System::rollback(){
 	// cout<<"!!!!!"<<Backtimestmp<<endl;
 	for_rollback<int> tmp;
 	for_rollback<Train> tmp2;
-	int tmp3;
+	for_rollback<StationTrain> tmp3;
+	int tmp4;
 
 	//回滚TrainIndex
 	int pos=TrainIndex_rollback.Maxpos();
@@ -924,11 +979,11 @@ void Train_System::rollback(){
 	//回滚StationIndex
 	pos=StationIndex_rollback.Maxpos();
 	while(pos!=-1){
-		StationIndex_rollback.read(tmp2,pos);
-		if(tmp2.timestamp<Backtimestmp)break;
-		// cout<<(tmp2.type==1?"insert":"Delete")<<" "<<tmp2.key<<" "<<tmp2.val<<endl;
-		if(tmp2.type==1)StationIndex.Delete(tmp2.key,tmp2.val);//在原来该时间戳insert(key,val)
-		if(tmp2.type==-1)StationIndex.insert(tmp2.key,tmp2.val);//在原来该时间戳Delete(key,val)
+		StationIndex_rollback.read(tmp3,pos);
+		if(tmp3.timestamp<Backtimestmp)break;
+		// cout<<(tmp3.type==1?"insert":"Delete")<<" "<<tmp3.key<<" "<<tmp3.val<<endl;
+		if(tmp3.type==1)StationIndex.Delete(tmp3.key,tmp3.val);//在原来该时间戳insert(key,val)
+		if(tmp3.type==-1)StationIndex.insert(tmp3.key,tmp3.val);//在原来该时间戳Delete(key,val)
 		StationIndex_rollback.Delete(pos,1);
 		pos=StationIndex_rollback.Maxpos();
 	}
@@ -960,9 +1015,9 @@ void Train_System::rollback(){
 	//回滚DayTrainData
 	pos=DayTrainData_rollback.Maxpos();
 	while(pos!=-1){
-		DayTrainData_rollback.read(tmp3,pos);
-		if(tmp3<Backtimestmp)break;
-		// cout<<"@@@ DayTrainData "<<tmp3<<endl;
+		DayTrainData_rollback.read(tmp4,pos);
+		if(tmp4<Backtimestmp)break;
+		// cout<<"@@@ DayTrainData "<<tmp4<<endl;
 		DayTrainData.rollback();
 		DayTrainData_rollback.Delete(pos,1);
 		pos=DayTrainData_rollback.Maxpos();
@@ -971,9 +1026,9 @@ void Train_System::rollback(){
 	//回滚OrderData
 	pos=OrderData_rollback.Maxpos();
 	while(pos!=-1){
-		OrderData_rollback.read(tmp3,pos);
-		if(tmp3<Backtimestmp)break;
-		// cout<<"@@@ OrderData "<<tmp3<<endl;
+		OrderData_rollback.read(tmp4,pos);
+		if(tmp4<Backtimestmp)break;
+		// cout<<"@@@ OrderData "<<tmp4<<endl;
 		OrderData.rollback();
 		OrderData_rollback.Delete(pos,1);
 		pos=OrderData_rollback.Maxpos();

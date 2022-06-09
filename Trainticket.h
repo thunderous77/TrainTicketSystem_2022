@@ -32,6 +32,20 @@ public:
 	public:
 		int seatNum[MaxStation];
 	};
+	class StationTrain{
+	public:
+		char trainID[MaxTrainName];
+		int StationIndex;
+		int DayseatPos[MaxDay];
+		int sumprice;
+		int sumArrivingTime,sumLeavingTime;
+		int saleDateL,saleDateR;
+		int startTime;
+		friend bool operator <(const StationTrain &A,const StationTrain &B){return string(A.trainID)<string(B.trainID)|| (string(A.trainID)==string(B.trainID)&&A.StationIndex<B.StationIndex);}
+		friend bool operator >(const StationTrain &A,const StationTrain &B){return string(A.trainID)>string(B.trainID)|| (string(A.trainID)==string(B.trainID)&&A.StationIndex>B.StationIndex);}
+		friend bool operator ==(const StationTrain &A,const StationTrain &B){return string(A.trainID)==string(B.trainID)&&A.StationIndex==B.StationIndex;}
+		friend bool operator !=(const StationTrain &A,const StationTrain &B){return !(A==B);}
+	};
 	class Order{
 	public:
 		int status;//1:buy,0:queue,-1:refund
@@ -44,13 +58,16 @@ private:
 	Train GetTrainFromData(const string &trainID);
 	void queueUpdate(const string &trainID);
 	int GetMaxSeatNum(const Train_System::Train &train,const string &startStation,const string &endStation,const int &firday);
+	int GetMaxSeatNum2(const Train_System::StationTrain &stationtrain,const int &L,const int &R,const int &firday);
 	void updateSeatNum(Train_System::Train &train,const string &startStation,const string &endStation,const int &num,const int &firday);
 public:
 	MemoryRiver<DayTrain> DayTrainData;
 	MemoryRiver<Order> OrderData;
-	Key_value_database<Train> TrainIndex,StationIndex;
+	Key_value_database<Train> TrainIndex;
+	Key_value_database<StationTrain> StationIndex;
 	Key_value_database<int> OrderIndex,QueueIndex;
-	MemoryRiver< for_rollback<Train> > TrainIndex_rollback,StationIndex_rollback;
+	MemoryRiver< for_rollback<Train> > TrainIndex_rollback;
+	MemoryRiver< for_rollback<StationTrain> >StationIndex_rollback;
 	MemoryRiver< for_rollback<int> > OrderIndex_rollback,QueueIndex_rollback;
 	MemoryRiver<int> DayTrainData_rollback,OrderData_rollback;
 	Train_System();
