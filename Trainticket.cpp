@@ -123,8 +123,10 @@ static void Analysis(string s,string *tmp,int &tmplen){
 }
 
 Train_System::Train Train_System::GetTrainFromData(const string &trainID){
-	vector<Train> Alltrain=TrainIndex.FindAll(trainID);
-	return Alltrain[0];
+	vector<int> G=TrainIndex.FindAll(trainID);
+	Train tmptrain;
+	TrainData.read(tmptrain,G[0]);
+	return tmptrain;
 }
 static bool Is_exist(const Train_System::Train &train,const string &startStation,const string &endStation,const int &startday=-1){
 	// cout<<"!!!"<<train.trainID<<" "<<startStation<<" "<<endStation<<" "<<startday<<endl;
@@ -388,11 +390,11 @@ void Train_System::queueUpdate(const string &trainID){
 	}
 }
 
-Train_System::Train_System():DayTrainData("DayTrainData",true,true),OrderData("OrderData",true,true),
+Train_System::Train_System():TrainData("TrainData",true,true),DayTrainData("DayTrainData",true,true),OrderData("OrderData",true,true),
 							 TrainIndex("TrainIndex"),StationIndex("StationIndex"),OrderIndex("OrderIndex"),QueueIndex("QueueIndex"),
 							 TrainIndex_rollback("TrainIndex_rollback",false,false),StationIndex_rollback("StationIndex_rollback",false,false),
 							 OrderIndex_rollback("OrderIndex_rollback",false,false),QueueIndex_rollback("QueueIndex_rollback",false,false),
-							 DayTrainData_rollback("DayTrainData_rollback",false,false),OrderData_rollback("OrderData_rollback",false,false)
+							 TrainData_rollback("TrainData_rollback",false,false),DayTrainData_rollback("DayTrainData_rollback",false,false),OrderData_rollback("OrderData_rollback",false,false)
 							{}
 void Train_System::add_train(){
 	string tmp[105];
@@ -441,8 +443,15 @@ void Train_System::add_train(){
 	if(TrainIndex.Find(NewTrain.trainID))throw Train_Is_Exist();
 	// Output(NewTrain);
 	//添加train
-	TrainIndex.insert(NewTrain.trainID,NewTrain);
-	for_rollback<Train> tmp_rollback(string_to_int2(d_order[1]),1,NewTrain.trainID,NewTrain);
+	int pos=TrainData.write(NewTrain);
+	// cout<<"@@@@@@@"<<pos<<endl;
+
+	int tmp_rollback2=string_to_int2(d_order[1]);
+	TrainData_rollback.write(tmp_rollback2);
+
+	TrainIndex.insert(NewTrain.trainID,pos);
+
+	for_rollback<int> tmp_rollback(string_to_int2(d_order[1]),1,NewTrain.trainID,pos);
 	TrainIndex_rollback.write(tmp_rollback);
 
 	cout<<d_order[1]<<" ";
@@ -460,17 +469,13 @@ void Train_System::release_train(){
 	Train train=GetTrainFromData(trainID);
 	//动车已经发布 不合法
 	if(train.isRelease)throw Train_Is_Release();
-	//更新TrainIndex,增加StationIndex
-	TrainIndex.Delete(train.trainID,train);
-
-	for_rollback<Train> tmp_rollback(string_to_int2(d_order[1]),-1,train.trainID,train);
-	TrainIndex_rollback.write(tmp_rollback);
-
+	//更新TrainData
 	train.isRelease=1;
-	TrainIndex.insert(train.trainID,train);
-
-	for_rollback<Train> tmp_rollback3(string_to_int2(d_order[1]),1,train.trainID,train);
-	TrainIndex_rollback.write(tmp_rollback3);
+	int pos=TrainIndex.FindAll(trainID)[0];
+	TrainData.update(train,pos);
+	
+	int tmp_rollback2=string_to_int2(d_order[1]);
+	TrainData_rollback.write(tmp_rollback2);
 
 	StationTrain stationtrain;
 	strcpy(stationtrain.trainID,train.trainID);
@@ -564,11 +569,18 @@ void Train_System::delete_train(){
 	// Output(train);
 	//动车已经发布，不合法
 	if(train.isRelease)throw Train_Is_Release();
+	//在TrainData中删除
+	int pos=TrainIndex.FindAll(trainID)[0];
+	// cout<<"Del "<<trainID<<" "<<pos<<endl;
+	TrainData.Delete(pos);
+	
+	int tmp_rollback2=string_to_int2(d_order[1]);
+	TrainData_rollback.write(tmp_rollback2);
 
 	//在TrainIndex中删除
-	TrainIndex.Delete(trainID,train);
+	TrainIndex.Delete(trainID,pos);
 
-	for_rollback<Train> tmp_rollback(string_to_int2(d_order[1]),-1,trainID,train);
+	for_rollback<int> tmp_rollback(string_to_int2(d_order[1]),-1,trainID,pos);
 	TrainIndex_rollback.write(tmp_rollback);
 
 	cout<<d_order[1]<<" ";
@@ -938,12 +950,14 @@ void Train_System::refund_ticket(){
 	OutputData+="退票成功<br>";
 }
 void Train_System::clean(){
+	TrainData.clean();
 	DayTrainData.clean();
 	OrderData.clean();
 	TrainIndex.clean();
 	StationIndex.clean();
 	OrderIndex.clean();
 	QueueIndex.clean();
+	TrainData_rollback.clean();
 	DayTrainData_rollback.clean();
 	OrderData_rollback.clean();
 	TrainIndex_rollback.clean();
@@ -960,18 +974,17 @@ void Train_System::rollback(){
 	if(Backtimestmp>timestamp)throw Rollback_Timestamp_Error();
 	// cout<<"!!!!!"<<Backtimestmp<<endl;
 	for_rollback<int> tmp;
-	for_rollback<Train> tmp2;
 	for_rollback<StationTrain> tmp3;
 	int tmp4;
 
 	//回滚TrainIndex
 	int pos=TrainIndex_rollback.Maxpos();
 	while(pos!=-1){
-		TrainIndex_rollback.read(tmp2,pos);
-		if(tmp2.timestamp<Backtimestmp)break;
-		// cout<<(tmp2.type==1?"insert":"Delete")<<" "<<tmp2.key<<" "<<tmp2.val<<endl;
-		if(tmp2.type==1)TrainIndex.Delete(tmp2.key,tmp2.val);//在原来该时间戳insert(key,val)
-		if(tmp2.type==-1)TrainIndex.insert(tmp2.key,tmp2.val);//在原来该时间戳Delete(key,val)
+		TrainIndex_rollback.read(tmp,pos);
+		if(tmp.timestamp<Backtimestmp)break;
+		// cout<<(tmp.type==1?"insert":"Delete")<<" "<<tmp.key<<" "<<tmp.val<<endl;
+		if(tmp.type==1)TrainIndex.Delete(tmp.key,tmp.val);//在原来该时间戳insert(key,val)
+		if(tmp.type==-1)TrainIndex.insert(tmp.key,tmp.val);//在原来该时间戳Delete(key,val)
 		TrainIndex_rollback.Delete(pos,1);
 		pos=TrainIndex_rollback.Maxpos();
 	}
@@ -1010,6 +1023,17 @@ void Train_System::rollback(){
 		if(tmp.type==-1)QueueIndex.insert(tmp.key,tmp.val);//在原来该时间戳Delete(key,val)
 		QueueIndex_rollback.Delete(pos,1);
 		pos=QueueIndex_rollback.Maxpos();
+	}
+
+	//回滚TrainData
+	pos=TrainData_rollback.Maxpos();
+	while(pos!=-1){
+		TrainData_rollback.read(tmp4,pos);
+		if(tmp4<Backtimestmp)break;
+		// cout<<"@@@ TrainData "<<tmp4<<endl;
+		TrainData.rollback();
+		TrainData_rollback.Delete(pos,1);
+		pos=TrainData_rollback.Maxpos();
 	}
 
 	//回滚DayTrainData

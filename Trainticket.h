@@ -61,15 +61,14 @@ private:
 	int GetMaxSeatNum2(const Train_System::StationTrain &stationtrain,const int &L,const int &R,const int &firday);
 	void updateSeatNum(Train_System::Train &train,const string &startStation,const string &endStation,const int &num,const int &firday);
 public:
+	MemoryRiver<Train> TrainData;
 	MemoryRiver<DayTrain> DayTrainData;
 	MemoryRiver<Order> OrderData;
-	Key_value_database<Train> TrainIndex;
 	Key_value_database<StationTrain> StationIndex;
-	Key_value_database<int> OrderIndex,QueueIndex;
-	MemoryRiver< for_rollback<Train> > TrainIndex_rollback;
+	Key_value_database<int> TrainIndex,OrderIndex,QueueIndex;
 	MemoryRiver< for_rollback<StationTrain> >StationIndex_rollback;
-	MemoryRiver< for_rollback<int> > OrderIndex_rollback,QueueIndex_rollback;
-	MemoryRiver<int> DayTrainData_rollback,OrderData_rollback;
+	MemoryRiver< for_rollback<int> > TrainIndex_rollback,OrderIndex_rollback,QueueIndex_rollback;
+	MemoryRiver<int> TrainData_rollback,DayTrainData_rollback,OrderData_rollback;
 	Train_System();
 	void add_train();
 	void release_train();
