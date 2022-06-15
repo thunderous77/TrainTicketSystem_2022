@@ -86,7 +86,7 @@ CInternalNode<T>::~CInternalNode() {}
 
 template<class T>
 CInternalNode<T> CInternalNode<T>::getChildInternal(int i, CBPlusTree<T> *tree) {
-    CInternalNode tmp;
+    CInternalNode<T> tmp;
     tree->InternalRead(tmp, m_Childs[i]);
     return tmp;
 }
@@ -103,7 +103,7 @@ void CInternalNode<T>::clear(CBPlusTree<T> *tree) {
     for (int i = 0; i <= m_KeyNum; ++i) {
         if (m_Childs[i] == 0) continue;
         if (childs_type == INTERNAL) {
-            CInternalNode tmp = getChildInternal(i, tree);
+            CInternalNode<T> tmp = getChildInternal(i, tree);
             tmp.clear(tree);
             tree->InternalDelete(m_Childs[i]);
         } else {
@@ -130,7 +130,7 @@ void CInternalNode<T>::split(CInternalNode<T> parentNode, int childIndex, CBPlus
     parentNode.insert(childIndex, childIndex + 1, m_KeyData[MINNUM_KEY],
                       nNode.storePossession, INTERNAL);
     tree->InteranlUpdate(parentNode, parentNode.getPossession());
-    CInternalNode tmp = *this;
+    CInternalNode<T> tmp = *this;
     tree->InteranlUpdate(tmp, storePossession);
 }
 
@@ -161,7 +161,7 @@ void CInternalNode<T>::mergeChild(CInternalNode<T> parentNode, CInternalNode<T> 
     tree->InternalDelete(childNode.getPossession());
     parentNode.removeKey(keyIndex, keyIndex + 1);
     tree->InteranlUpdate(parentNode, parentNode.getPossession());
-    CInternalNode tmp = *this;
+    CInternalNode<T> tmp = *this;
     tree->InteranlUpdate(tmp, storePossession);
 }
 
@@ -197,7 +197,7 @@ void CInternalNode<T>::borrowFrom(CInternalNode<T> siblingNode, CInternalNode<T>
     }
     tree->InteranlUpdate(siblingNode, siblingNode.getPossession());
     tree->InteranlUpdate(parentNode, parentNode.getPossession());
-    CInternalNode tmp = *this;
+    CInternalNode<T> tmp = *this;
     tree->InteranlUpdate(tmp, storePossession);
 }
 
@@ -228,7 +228,7 @@ void CLeafNode<T>::clear(CBPlusTree<T> *tree) {
 
 template<class T>
 CLeafNode<T> CLeafNode<T>::getRightSibling(CBPlusTree<T> *tree) const {
-    CLeafNode tmp;
+    CLeafNode<T> tmp;
     tree->LeafRead(tmp, m_RightSibling);
     return tmp;
 }
@@ -285,7 +285,7 @@ void CLeafNode<T>::removeKey(int keyIndex, CBPlusTree<T> *tree) {
     for (int i = keyIndex; i < getKeyNum() - 1; ++i)
         setKeyData(i, m_KeyData[i + 1]);
     setKeyNum(getKeyNum() - 1);
-    CLeafNode tmp = *this;
+    CLeafNode<T> tmp = *this;
     tree->LeafUpdate(tmp, getPossession());
 }
 
@@ -296,7 +296,7 @@ void CLeafNode<T>::remove(KeyDataType<T> keyData, CBPlusTree<T> *tree) {
     for (int i = keyDataIndex; i < getKeyNum() - 1; ++i)
         setKeyData(i, getKeyDataValue(i + 1));
     setKeyNum(getKeyNum() - 1);
-    CLeafNode *tmp = this;
+    CLeafNode<T> *tmp = this;
     tree->LeafUpdate(*tmp, getPossession());
 }
 
@@ -354,7 +354,7 @@ CBPlusTree<T>::~CBPlusTree() {
 
 template<class T>
 void CBPlusTree<T>::insert(string key,const T &data) {
-    KeyDataType keyData(key, data);
+    KeyDataType<T> keyData(key, data);
     if (rootPossession == 0) {
         CLeafNode<T> newRoot;
         rootType = LEAF;
@@ -371,12 +371,12 @@ void CBPlusTree<T>::insert(string key,const T &data) {
             root.split(newNode, 0, this);    // 叶子结点分裂
             rootPossession = newNode.getPossession();
             rootType = newNode.getType();//更新根节点指针
-            CInternalNode nRoot = getRootInternal();
+            CInternalNode<T> nRoot = getRootInternal();
             recursive_insertInternal(nRoot, keyData);
         } else
             recursive_insertLeaf(root, keyData);
     } else {
-        CInternalNode root = getRootInternal();
+        CInternalNode<T> root = getRootInternal();
         if (root.getKeyNum() >= MAXNUM_KEY) { // 根结点已满，分裂
             CInternalNode<T> newNode;  //创建新的根节点
             newNode.setPossession(CInternalNode_store.write(newNode));
@@ -401,7 +401,7 @@ void CBPlusTree<T>::recursive_insertInternal(CInternalNode<T> parentNode, KeyDat
     int keyIndex = parentNode.getKeyDataIndex(keyData);
     int childIndex = parentNode.getChildIndex(keyData, keyIndex);
     if (parentNode.getChildtype() == INTERNAL) {
-        CInternalNode childNode = parentNode.getChildInternal(childIndex, this);
+        CInternalNode<T> childNode = parentNode.getChildInternal(childIndex, this);
         if (childNode.getKeyNum() >= MAXNUM_LEAF) {
             childNode.split(parentNode, childIndex, this);
             CInternalNode_store.read(parentNode, parentNode.getPossession());
@@ -410,7 +410,7 @@ void CBPlusTree<T>::recursive_insertInternal(CInternalNode<T> parentNode, KeyDat
         }
         recursive_insertInternal(childNode, keyData);
     } else {
-        CLeafNode childNode = parentNode.getChildLeaf(childIndex, this);
+        CLeafNode<T> childNode = parentNode.getChildLeaf(childIndex, this);
         if (childNode.getKeyNum() >= MAXNUM_LEAF) {  // 子结点已满，需进行分裂
             childNode.split(parentNode, childIndex, this);
             CInternalNode_store.read(parentNode, parentNode.getPossession());
@@ -422,13 +422,13 @@ void CBPlusTree<T>::recursive_insertInternal(CInternalNode<T> parentNode, KeyDat
 }
 
 template<class T>
-void CBPlusTree<T>::clear() {
+void CBPlusTree<T>::clean() {
     if (rootPossession != 0) {
         if (rootType == INTERNAL) {
-            CInternalNode root = getRootInternal();
+            CInternalNode<T> root = getRootInternal();
             root.clear(this);
         } else {
-            CLeafNode root = getRootLeaf();
+            CLeafNode<T> root = getRootLeaf();
             root.clear(this);
         }
         rootPossession = m_DataHead = 0;
@@ -436,7 +436,7 @@ void CBPlusTree<T>::clear() {
 }
 
 template<class T>
-bool CBPlusTree<T>::search(string key) {
+bool CBPlusTree<T>::Find(string key) {
     if (rootPossession == 0) return false;
     if (rootType == INTERNAL) return recursive_searchInternal(getRootInternal(), key);
     else return recursive_searchLeaf(getRootLeaf(), key);
@@ -466,16 +466,16 @@ bool CBPlusTree<T>::recursive_searchLeaf(CLeafNode<T> pNode, string key) {
 template<class T>
 void CBPlusTree<T>::remove(string key, T &dataValue) {
     if (rootPossession == 0) return;
-    KeyDataType keyData(key, dataValue);
+    KeyDataType<T> keyData(key, dataValue);
     if (rootType == LEAF) {
-        CLeafNode root = getRootLeaf();
+        CLeafNode<T> root = getRootLeaf();
         if (root.getKeyNum() == 1) {
             if (root.getKeyDataValue(0) == keyData)
-                clear();
+                clean();
             return;
         } else recursive_removeLeaf(root, keyData);
     } else {
-        CInternalNode root = getRootInternal();
+        CInternalNode<T> root = getRootInternal();
 //        cout << dataValue << " :";
 //        for (int i = 0; i < root.getKeyNum(); ++i)
 //            cout << root.getKeyDataValue(i).DataValue << " ";
@@ -558,7 +558,7 @@ void CBPlusTree<T>::recursive_removeLeaf(CLeafNode<T> parentNode, KeyDataType<T>
     parentNode.remove(keyData, this);  // 直接删除
     // 如果键值在内部结点中存在，也要相应的替换内部结点
     if (keyIndex == 0 && rootType != LEAF && parentNode.getPossession() != m_DataHead) {
-        CInternalNode root = getRootInternal();
+        CInternalNode<T> root = getRootInternal();
         changeKey(root, keyData, parentNode.getKeyDataValue(0));
     }
 }
@@ -571,14 +571,14 @@ void CBPlusTree<T>::changeKey(CInternalNode<T> pNode, KeyDataType<T> oldKeyData,
         CInternalNode_store.update(pNode, pNode.getPossession());
     } else {  // 继续找
         if (pNode.getChildtype() == INTERNAL) {
-            CInternalNode pChildnode = pNode.getChildInternal(keyIndex, this);
+            CInternalNode<T> pChildnode = pNode.getChildInternal(keyIndex, this);
             changeKey(pChildnode, oldKeyData, newKeyData);
         }
     }
 }
 
 template<class T>
-vector<T> CBPlusTree<T>::Findall(string compareKey) {
+vector<T> CBPlusTree<T>::FindAll(string compareKey) {
     vector<T> ans;
     if (m_DataHead == 0) {
         cout << "null\n";
