@@ -134,11 +134,11 @@ public:
 
     int getChild(int i) { return m_Childs[i]; }
 
-    CInternalNode getChildInternal(int i, CBPlusTree<T> *tree);
+    CInternalNode<T> getChildInternal(int i, CBPlusTree<T> *tree);
 
     CLeafNode<T> getChildLeaf(int i, CBPlusTree<T> *tree);
 
-    void split(CInternalNode parentNode, int childIndex, CBPlusTree<T> *tree);
+    void split(CInternalNode<T> parentNode, int childIndex, CBPlusTree<T> *tree);
 
     void setChild(int i, int child, NODE_TYPE type) {
         m_Childs[i] = child;
@@ -151,14 +151,14 @@ public:
 
     NODE_TYPE getChildtype() { return childs_type; }
 
-    void mergeChild(CInternalNode parentNode, CInternalNode childNode, int keyIndex,
+    void mergeChild(CInternalNode<T> parentNode, CInternalNode<T> childNode, int keyIndex,
                     CBPlusTree<T> *tree);//将childnode（右）合并到this（左）里
 
     void removeKey(int keyIndex, int childIndex);//不修改文件
 
     void clear(CBPlusTree<T> *tree);
 
-    void borrowFrom(CInternalNode siblingNode, CInternalNode parentNode, int keyIndex, SIBLING_DIRECTION d,
+    void borrowFrom(CInternalNode<T> siblingNode, CInternalNode<T> parentNode, int keyIndex, SIBLING_DIRECTION d,
                     CBPlusTree<T> *tree);//尽量从左边借，复杂度小
 
     int getChildIndex(string key, int keyIndex);
@@ -204,7 +204,7 @@ public:
 
     void setLeftSibling(int possession) { m_LeftSibling = possession; }
 
-    CLeafNode getRightSibling(CBPlusTree<T> *tree) const;
+    CLeafNode<T> getRightSibling(CBPlusTree<T> *tree) const;
 
     int getRightPossession();
 
@@ -218,14 +218,14 @@ public:
 
     void split(CInternalNode<T> parentNode, int childIndex, CBPlusTree<T> *tree);
 
-    void mergeChild(CInternalNode<T> parentNode, CLeafNode childNode, int keyIndex, CBPlusTree<T> *tree);
+    void mergeChild(CInternalNode<T> parentNode, CLeafNode<T> childNode, int keyIndex, CBPlusTree<T> *tree);
 
     void removeKey(int keyIndex, CBPlusTree<T> *tree);
 
     void clear(CBPlusTree<T> *tree);
 
     void
-    borrowFrom(CLeafNode siblingNode, CInternalNode<T> parentNode, int keyIndex, SIBLING_DIRECTION d, CBPlusTree<T> *tree);
+    borrowFrom(CLeafNode<T> siblingNode, CInternalNode<T> parentNode, int keyIndex, SIBLING_DIRECTION d, CBPlusTree<T> *tree);
 };
 
 template<class T>
@@ -239,13 +239,11 @@ public:
 
     void remove(string key, T &dataValue);
 
-    vector<T> Findall(string compareKey);
+    vector<T> FindAll(string compareKey);
 
-    bool search(string key);
+    bool Find(string key);
 
-    int searchFind(string key);
-
-    void clear();
+    void clean();
 
     void InternalRead(CInternalNode<T> &node, int index) { CInternalNode_store.read(node, index); };
 
@@ -279,6 +277,8 @@ private:
     int recursive_searchFindInternal(CInternalNode<T> pNode, string key);
 
     bool recursive_searchLeaf(CLeafNode<T> pNode, string key);
+
+    int searchFind(string key);
 
     void changeKey(CInternalNode<T> pNode, KeyDataType<T> oldKeyData, KeyDataType<T> newKeyData);
 
