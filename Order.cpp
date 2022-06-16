@@ -11,6 +11,8 @@
 #include "User.h"
 #include "Trainticket.h"
 using namespace std;
+long long Clock1=0,Clock2=0,Clock3=0,Clock4=0,Clock5;
+
 string d_order[30];
 int dcnt;
 void Order_System::DivideOrder(string order){
@@ -52,6 +54,14 @@ void Order_System::AnalysisOrder(string order){
 	if(d_order[2]=="refund_ticket")TrainSystem.refund_ticket();
 	if(d_order[2]=="rollback"){UserSystem.rollback(),TrainSystem.rollback();cout<<d_order[1]<<" ";cout<<0<<endl;}
 	if(d_order[2]=="clean"){UserSystem.clean(),TrainSystem.clean();cout<<d_order[1]<<" ";cout<<0<<endl;}
-	if(d_order[2]=="exit"){cout<<d_order[1]<<" ";cout<<"bye"<<endl;exit(0);}
+	if(d_order[2]=="exit"){
+		cerr<<d_order[1]<<" ";cerr<<"bye"<<endl;
+		cerr<<"query_ticket time:"<<Clock1/(double)(1e6)<<endl;
+		cerr<<"query_transfer time:"<<Clock2/(double)(1e6)<<endl;
+		cerr<<"query_order time:"<<Clock3/(double)(1e6)<<endl;
+		cerr<<"refund_ticket time:"<<Clock4/(double)(1e6)<<endl;
+		cerr<<"read_write time:"<<Clock5/(double)(1e6)<<endl;
+		exit(0);
+	}
 }
 #endif

@@ -12,6 +12,7 @@
 #include<vector>//最后用手写的vector换掉
 #include<algorithm>
 using namespace std;
+extern long long Clock1,Clock2,Clock3,Clock4;
 
 extern string OutputData;
 extern string d_order[30];
@@ -587,6 +588,7 @@ void Train_System::delete_train(){
 	printf("0\n");OutputData+="删除成功<br>";
 }
 void Train_System::query_ticket(){
+	Clock1-=clock();
 	string startStation,endStation;
 	int startday;
 	string sortType="time";
@@ -643,10 +645,11 @@ void Train_System::query_ticket(){
 		OutputData+=string(res[i].ArrivingTime)+" ";
 		OutputData+="价格："+int_to_string(res[i].Cost)+" ";
 		OutputData+="剩余座位数："+int_to_string(res[i].seatNum)+"<br>";
-		
 	}
+	Clock1+=clock();
 }
 void Train_System::query_transfer(){
+	Clock2-=clock();
 	string startStation,endStation;
 	int startday;
 	string sortType="time";
@@ -731,7 +734,7 @@ void Train_System::query_transfer(){
 	// cout<<"!!!!!"<<day_to_date(ansFirday1)<<endl;
 	// cout<<"!!!!!"<<day_to_date(ansFirday2)<<endl;
 	//未找到方案
-	if(ansTransferStation==""){cout<<d_order[1]<<" ";printf("0\n");OutputData+="查询成功<br>未找到方案<br>";return;}
+	if(ansTransferStation==""){cout<<d_order[1]<<" ";printf("0\n");OutputData+="查询成功<br>未找到方案<br>";Clock2+=clock();return;}
 
 	//输出最优方案
 	OutputData+="查询成功<br>";
@@ -771,6 +774,8 @@ void Train_System::query_transfer(){
 	OutputData+=string(GetArrivingTime(ans2,endStation,ansFirday2))+" ";
 	OutputData+="价格："+int_to_string(GetCost(ans2,ansTransferStation,endStation))+" ";
 	OutputData+="剩余座位数："+int_to_string(GetMaxSeatNum(ans2,ansTransferStation,endStation,ansFirday2))+"<br>";
+
+	Clock2+=clock();
 }
 void Train_System::buy_ticket(){
 	string username;
@@ -848,12 +853,14 @@ void Train_System::buy_ticket(){
 }
 
 void Train_System::query_order(){
+	Clock3-=clock();
+
 	string username;
 	for(int i=3;i<=dcnt;i+=2){
 		if(d_order[i]=="-u")username=d_order[i+1];
 	}
 	//未登录 不合法
-	if(!Is_login[username])throw User_Not_Login();
+	if(!Is_login[username]){Clock3+=clock();throw User_Not_Login();}
 	//读取数据并排序
 	vector<int> G=OrderIndex.FindAll(username);
 	vector<Order> AllOrder;
@@ -897,8 +904,11 @@ void Train_System::query_order(){
 		OutputData+="总价格："+int_to_string(GetCost(train,AllOrder[i].startStation,AllOrder[i].endStation))+" ";
 		OutputData+="购票数量："+int_to_string(AllOrder[i].seatNum)+"<br>";
 	}
+
+	Clock3+=clock();
 }
 void Train_System::refund_ticket(){
+	Clock4-=clock();
 	string username;
 	int K=1;
 	for(int i=3;i<=dcnt;i+=2){
@@ -906,7 +916,7 @@ void Train_System::refund_ticket(){
 		if(d_order[i]=="-n")K=string_to_int(d_order[i+1]);
 	}
 	//未登录 不合法
-	if(!Is_login[username])throw User_Not_Login();
+	if(!Is_login[username]){Clock4+=clock();throw User_Not_Login();}
 	//读取数据并排序，找到第K个订单
 	vector<int> G=OrderIndex.FindAll(username);
 	vector<Order> AllOrder;
@@ -918,11 +928,11 @@ void Train_System::refund_ticket(){
 	}
 	tmp4=AllOrder,tmp5=G,SortOrderTime(AllOrder,G,0,Num-1,1);
 	//订单数<k 不合法
-	if(K>Num)throw Order_Kth_Invalid();
+	if(K>Num){Clock4+=clock();throw Order_Kth_Invalid();}
 	Order order=AllOrder[K-1];
 	int pos=G[K-1];
 	//已经退票 不合法
-	if(order.status==-1)throw Already_Refund();
+	if(order.status==-1){Clock4+=clock();throw Already_Refund();}
 	//若该订单在pending中,在queueIndex中将其删掉
 	if(order.status==0){
 		QueueIndex.Delete(order.trainID,pos);
@@ -948,6 +958,8 @@ void Train_System::refund_ticket(){
 	cout<<d_order[1]<<" ";
 	printf("0\n");
 	OutputData+="退票成功<br>";
+	
+	Clock4+=clock();
 }
 void Train_System::clean(){
 	TrainData.clean();

@@ -8,6 +8,8 @@ using std::fstream;
 using std::ifstream;
 using std::ofstream;
 
+extern long long Clock5;
+
 //T为存储类型，info_len为开头int类型个数(info一开始都设为0),info中的第一位存的是数据占据的最大位置(即要求info_len>=1)
 template<class T,int info_len = 1>
 class MemoryRiver {
@@ -147,6 +149,7 @@ public:
     //位置索引意味着当输入正确的位置索引index，在以下三个函数中都能顺利的找到目标对象进行操作
     //位置索引index可以取为对象写入的起始位置
     int write(T &t) {
+		Clock5-=clock();
 		file.open(file_name);
 		int index;
 		if(Ismemoryrecycling&&num2){
@@ -176,11 +179,13 @@ public:
 		file.seekp(index);
 		file.write(reinterpret_cast<char*>(&t),sizeofT);
 		file.close();
+		Clock5+=clock();
 		return index;
     }
 
     //用t的值更新位置索引index对应的对象，保证调用的index都是由write函数产生
     void update(T &t, const int index) {
+		Clock5-=clock();
 		file.open(file_name);
 		T data;
 		file.seekp(index);
@@ -191,14 +196,17 @@ public:
 		file.close();
 
 		if(IsRollback)file3_update(0,index,data,0,-1,0);
+		Clock5+=clock();
     }
 
     //读出位置索引index对应的T对象的值并赋值给t，保证调用的index都是由write函数产生
     void read(T &t, const int index) {
+		Clock5-=clock();
 		file.open(file_name);
 		file.seekp(index);
 		file.read(reinterpret_cast<char*>(&t),sizeofT);
 		file.close();
+		Clock5+=clock();
         /* your code here */
     }
 

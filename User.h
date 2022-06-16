@@ -2,7 +2,8 @@
 #define USER_H
 
 #include "MemoryRiver.hpp"
-#include "BlockList.hpp"
+// #include "BlockList.hpp"
+#include "CBPlusTree.hpp"
 #include<map>//最后用手写的map换掉
 using namespace std;
 template<class T>class for_rollback{
@@ -33,7 +34,7 @@ private:
 	User GetUserFromData(const string &username);
 public:
 	MemoryRiver<User> UserData;
-	Key_value_database<int> UserIndex;
+	CBPlusTree<int> UserIndex;
 	MemoryRiver< for_rollback<int> > UserIndex_rollback;
 	MemoryRiver<int> UserData_rollback;
 	User_System();

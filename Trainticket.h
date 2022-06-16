@@ -2,7 +2,8 @@
 #define TRAINTICKET_H
 
 #include "MemoryRiver.hpp"
-#include "BlockList.hpp"
+// #include "BlockList.hpp"
+#include "CBPlusTree.hpp"
 #include "User.h"
 using namespace std;
 class Train_System{
@@ -64,8 +65,8 @@ public:
 	MemoryRiver<Train> TrainData;
 	MemoryRiver<DayTrain> DayTrainData;
 	MemoryRiver<Order> OrderData;
-	Key_value_database<StationTrain> StationIndex;
-	Key_value_database<int> TrainIndex,OrderIndex,QueueIndex;
+	CBPlusTree<StationTrain> StationIndex;
+	CBPlusTree<int> TrainIndex,OrderIndex,QueueIndex;
 	MemoryRiver< for_rollback<StationTrain> >StationIndex_rollback;
 	MemoryRiver< for_rollback<int> > TrainIndex_rollback,OrderIndex_rollback,QueueIndex_rollback;
 	MemoryRiver<int> TrainData_rollback,DayTrainData_rollback,OrderData_rollback;
