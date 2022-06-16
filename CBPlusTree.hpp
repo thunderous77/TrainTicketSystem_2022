@@ -7,7 +7,7 @@ enum NODE_TYPE {
 enum SIBLING_DIRECTION {
     LEFT, RIGHT
 };   // 兄弟结点方向：左兄弟结点、右兄弟结点
-const int ORDER = 120;                   // B+树的阶（非根内结点的最小子树个数）
+const int ORDER = 50;                   // B+树的阶（非根内结点的最小子树个数）
 const int MINNUM_KEY = ORDER - 1;        // 最小键值个数
 const int MAXNUM_KEY = 2 * ORDER - 1;      // 最大键值个数
 const int MINNUM_CHILD = MINNUM_KEY + 1; // 最小子树个数
