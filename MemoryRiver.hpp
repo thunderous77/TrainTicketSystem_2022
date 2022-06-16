@@ -333,7 +333,7 @@ public:
 		if(Ismemoryrecycling)initialise2(FN+"_memory_recycling",ReMake);
 		if(IsRollback)initialise3(FN+"_inside_rollback",ReMake);
     }
-    MemoryRiver(string _FN="",bool _Ismemoryrecycling=0,bool _IsRollback=0,int _capacity=120):cache(_capacity){
+    MemoryRiver(string _FN="",bool _Ismemoryrecycling=0,bool _IsRollback=0,int _capacity=100):cache(_capacity){
 		// _IsRollback=0;//关闭rollback指令
 		Ismemoryrecycling=_Ismemoryrecycling;
 		IsRollback=_IsRollback;
