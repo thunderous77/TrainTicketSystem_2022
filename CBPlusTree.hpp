@@ -7,7 +7,7 @@ enum NODE_TYPE {
 enum SIBLING_DIRECTION {
     LEFT, RIGHT
 };   // 兄弟结点方向：左兄弟结点、右兄弟结点
-const int ORDER = 120;                   // B+树的阶（非根内结点的最小子树个数）
+const int ORDER = 100;                   // B+树的阶（非根内结点的最小子树个数）
 const int MINNUM_KEY = ORDER - 1;        // 最小键值个数
 const int MAXNUM_KEY = 2 * ORDER - 1;      // 最大键值个数
 const int MINNUM_CHILD = MINNUM_KEY + 1; // 最小子树个数
@@ -41,11 +41,11 @@ struct KeyDataType {
     }
 
     KeyDataType &operator=(const KeyDataType &other) {
-        if (*this == other) return *this;
+        if (this == &other) return *this;
         for (int iter = 0; iter < CHAR_LENGTH; ++iter) {
             KeyValue[iter] = other.KeyValue[iter];
-            DataValue = other.DataValue;
         }
+        DataValue = other.DataValue;
         return *this;
     }
 
@@ -649,6 +649,7 @@ CBPlusTree<T>::~CBPlusTree() {
 
 template<class T>
 void CBPlusTree<T>::insert(string key, const T &data) {
+    // cout<<"!!!"<<key<<endl;
     KeyDataType<T> keyData(key, data);
     if (rootPossession == 0) {
         CLeafNode<T> newRoot;
@@ -732,6 +733,7 @@ void CBPlusTree<T>::clean() {
 
 template<class T>
 bool CBPlusTree<T>::Find(string key) {
+    // cout<<"Find "<<key<<endl;
     if (rootPossession == 0) return false;
     if (rootType == INTERNAL) return recursive_searchInternal(getRootInternal(), key);
     else return recursive_searchLeaf(getRootLeaf(), key);
@@ -760,6 +762,7 @@ bool CBPlusTree<T>::recursive_searchLeaf(CLeafNode<T> pNode, string key) {
 
 template<class T>
 void CBPlusTree<T>::Delete(string key, T &dataValue) {
+    // cout<<"@@@"<<key<<endl;
     if (rootPossession == 0) return;
     KeyDataType<T> keyData(key, dataValue);
     if (rootType == LEAF) {
@@ -874,6 +877,7 @@ void CBPlusTree<T>::changeKey(CInternalNode<T> pNode, KeyDataType<T> oldKeyData,
 
 template<class T>
 vector<T> CBPlusTree<T>::FindAll(string compareKey) {
+    // cout<<"FindAll "<<compareKey<<endl;
     vector<T> ans;
     if (m_DataHead == 0) {
         // cout << "null\n";

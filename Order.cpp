@@ -55,7 +55,7 @@ void Order_System::AnalysisOrder(string order){
 	if(d_order[2]=="rollback"){UserSystem.rollback(),TrainSystem.rollback();cout<<d_order[1]<<" ";cout<<0<<endl;}
 	if(d_order[2]=="clean"){UserSystem.clean(),TrainSystem.clean();cout<<d_order[1]<<" ";cout<<0<<endl;}
 	if(d_order[2]=="exit"){
-		cerr<<d_order[1]<<" ";cerr<<"bye"<<endl;
+		cout<<d_order[1]<<" ";cout<<"bye"<<endl;
 		cerr<<"query_ticket time:"<<Clock1/(double)(1e6)<<endl;
 		cerr<<"query_transfer time:"<<Clock2/(double)(1e6)<<endl;
 		cerr<<"query_order time:"<<Clock3/(double)(1e6)<<endl;

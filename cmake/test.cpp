@@ -4,7 +4,7 @@ int main(){
 	system("./code<0.in>0.ans");
 	
 	system("./code<1.in>1.ans");
-	// if(system("diff 1.out 1.ans -b")){printf("WA 1\n");return 0;}
+	if(system("diff 1.out 1.ans -b")){printf("WA 1\n");return 0;}
 	printf("AC 1\n");
 	// system("./code<2.in>2.ans");
 	// if(system("diff 2.out 2.ans -b")){printf("WA 2\n");return 0;}

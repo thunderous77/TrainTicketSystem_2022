@@ -50,10 +50,15 @@ public:
 	class Order{
 	public:
 		int status;//1:buy,0:queue,-1:refund
+		char username[22];
 		char trainID[MaxTrainName];
 		int firday,seatNum;
 		char startStation[MaxStationName],endStation[MaxStationName];
 		int timestamp;
+		friend bool operator <(const Order &A,const Order &B){return A.timestamp<B.timestamp;}
+		friend bool operator >(const Order &A,const Order &B){return A.timestamp>B.timestamp;}
+		friend bool operator ==(const Order &A,const Order &B){return A.timestamp==B.timestamp;}
+		friend bool operator !=(const Order &A,const Order &B){return !(A==B);}
 	};
 private:
 	Train GetTrainFromData(const string &trainID);
@@ -64,12 +69,13 @@ private:
 public:
 	MemoryRiver<Train> TrainData;
 	MemoryRiver<DayTrain> DayTrainData;
-	MemoryRiver<Order> OrderData;
 	CBPlusTree<StationTrain> StationIndex;
-	CBPlusTree<int> TrainIndex,OrderIndex,QueueIndex;
+	CBPlusTree<int> TrainIndex;
+	CBPlusTree<Order> OrderIndex,QueueIndex;
 	MemoryRiver< for_rollback<StationTrain> >StationIndex_rollback;
-	MemoryRiver< for_rollback<int> > TrainIndex_rollback,OrderIndex_rollback,QueueIndex_rollback;
-	MemoryRiver<int> TrainData_rollback,DayTrainData_rollback,OrderData_rollback;
+	MemoryRiver< for_rollback<int> > TrainIndex_rollback;
+	MemoryRiver< for_rollback<Order> >OrderIndex_rollback,QueueIndex_rollback;
+	MemoryRiver<int> TrainData_rollback,DayTrainData_rollback;
 	Train_System();
 	void add_train();
 	void release_train();
