@@ -10,7 +10,7 @@ class Train_System{
 	#define MaxStation 102
 	#define MaxDay 96
 	#define MaxTrainName 22
-	#define MaxStationName 46
+	#define MaxStationName 42
 public:
 	class Train{
 	public:
@@ -69,9 +69,10 @@ private:
 public:
 	MemoryRiver<Train> TrainData;
 	MemoryRiver<DayTrain> DayTrainData;
-	CBPlusTree<StationTrain> StationIndex;
-	CBPlusTree<int> TrainIndex;
-	CBPlusTree<Order> OrderIndex,QueueIndex;
+	CBPlusTree<StationTrain,MaxStationName> StationIndex;
+	CBPlusTree<int,MaxTrainName> TrainIndex;
+	CBPlusTree<Order,22> OrderIndex;
+	CBPlusTree<Order,MaxTrainName> QueueIndex;
 	MemoryRiver< for_rollback<StationTrain> >StationIndex_rollback;
 	MemoryRiver< for_rollback<int> > TrainIndex_rollback;
 	MemoryRiver< for_rollback<Order> >OrderIndex_rollback,QueueIndex_rollback;
