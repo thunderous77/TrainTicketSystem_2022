@@ -1,31 +1,40 @@
 #ifndef MAIN_CPP_CBPLUSTREE_HPP
 #define MAIN_CPP_CBPLUSTREE_HPP
-#include<vector>
+#include "vector.hpp"
+#include "MemoryRiver.hpp"
+using namespace std;
+using namespace sjtu;
+#define MINNUM_KEY (ORDER - 1)
+#define MAXNUM_KEY (2 * ORDER - 1)
+#define MINNUM_CHILD (MINNUM_KEY + 1)
+#define MAXNUM_CHILD (MAXNUM_KEY + 1)
+#define MINNUM_LEAF (MINNUM_KEY)
+#define MAXNUM_LEAF (MAXNUM_KEY)
 enum NODE_TYPE {
     INTERNAL, LEAF
 };        // 结点类型：内结点、叶子结点
 enum SIBLING_DIRECTION {
     LEFT, RIGHT
 };   // 兄弟结点方向：左兄弟结点、右兄弟结点
-const int ORDER = 50;                   // B+树的阶（非根内结点的最小子树个数）
-const int MINNUM_KEY = ORDER - 1;        // 最小键值个数
-const int MAXNUM_KEY = 2 * ORDER - 1;      // 最大键值个数
-const int MINNUM_CHILD = MINNUM_KEY + 1; // 最小子树个数
-const int MAXNUM_CHILD = MAXNUM_KEY + 1; // 最大子树个数
-const int MINNUM_LEAF = MINNUM_KEY;    // 最小叶子结点键值个数
-const int MAXNUM_LEAF = MAXNUM_KEY;    // 最大叶子结点键值个数
+// const int ORDER = 20;                   // B+树的阶（非根内结点的最小子树个数）
+// const int MINNUM_KEY = ORDER - 1;        // 最小键值个数
+// const int MAXNUM_KEY = 2 * ORDER - 1;      // 最大键值个数
+// const int MINNUM_CHILD = MINNUM_KEY + 1; // 最小子树个数
+// const int MAXNUM_CHILD = MAXNUM_KEY + 1; // 最大子树个数
+// const int MINNUM_LEAF = MINNUM_KEY;    // 最小叶子结点键值个数
+// const int MAXNUM_LEAF = MAXNUM_KEY;    // 最大叶子结点键值个数
 // const int CHAR_LENGTH = 42;//key长度
 
-template<class T,int CHAR_LENGTH>
+template<class T,int CHAR_LENGTH,int ORDER>
 class CBPlusTree;
 
-template<class T,int CHAR_LENGTH>
+template<class T,int CHAR_LENGTH,int ORDER>
 class CInternalNode;
 
-template<class T,int CHAR_LENGTH>
+template<class T,int CHAR_LENGTH,int ORDER>
 class CLeafNode;
 
-template<class T,int CHAR_LENGTH>
+template<class T,int CHAR_LENGTH=42,int ORDER=35>
 struct KeyDataType {
     char KeyValue[CHAR_LENGTH];
     T DataValue;
@@ -77,12 +86,12 @@ struct KeyDataType {
 };
 
 // 内结点
-template<class T,int CHAR_LENGTH=42>
+template<class T,int CHAR_LENGTH=42,int ORDER=35>
 class CInternalNode {
 private:
     NODE_TYPE m_Type;
     int m_KeyNum;
-    KeyDataType<T,CHAR_LENGTH> m_KeyData[MAXNUM_KEY];
+    KeyDataType<T,CHAR_LENGTH,ORDER> m_KeyData[MAXNUM_KEY];
     int storePossession;
     int m_Childs[MAXNUM_CHILD];
     NODE_TYPE childs_type;
@@ -103,11 +112,11 @@ public:
 
     void setKeyNum(int n) { m_KeyNum = n; }
 
-    KeyDataType<T,CHAR_LENGTH> getKeyDataValue(int i) { return m_KeyData[i]; }
+    KeyDataType<T,CHAR_LENGTH,ORDER> getKeyDataValue(int i) { return m_KeyData[i]; }
 
     int compareKeyvalue(int i, string key) { return strcmp(key.c_str(), m_KeyData[i].KeyValue); }
 
-    void setKeyData(int i, KeyDataType<T,CHAR_LENGTH> keyData) {
+    void setKeyData(int i, KeyDataType<T,CHAR_LENGTH,ORDER> keyData) {
         m_KeyData[i] = keyData;
     }
 
@@ -115,9 +124,9 @@ public:
 
     int getKeyIndexLow(string key); //第一个大于key的下标
 
-    int getKeyDataIndex(KeyDataType<T,CHAR_LENGTH> keyData);
+    int getKeyDataIndex(KeyDataType<T,CHAR_LENGTH,ORDER> keyData);
 
-    int getChildIndex(KeyDataType<T,CHAR_LENGTH> keyData, int keyIndex) {
+    int getChildIndex(KeyDataType<T,CHAR_LENGTH,ORDER> keyData, int keyIndex) {
         if (keyIndex >= getKeyNum()) return getKeyNum();
         if (keyData < m_KeyData[keyIndex]) return keyIndex;
         else return keyIndex + 1;
@@ -125,44 +134,44 @@ public:
 
     int getChild(int i) { return m_Childs[i]; }
 
-    CInternalNode<T,CHAR_LENGTH> getChildInternal(int i, CBPlusTree<T,CHAR_LENGTH> *tree);
+    CInternalNode<T,CHAR_LENGTH,ORDER> getChildInternal(int i, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree);
 
-    CLeafNode<T,CHAR_LENGTH> getChildLeaf(int i, CBPlusTree<T,CHAR_LENGTH> *tree);
+    CLeafNode<T,CHAR_LENGTH,ORDER> getChildLeaf(int i, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree);
 
-    void split(CInternalNode<T,CHAR_LENGTH> parentNode, int childIndex, CBPlusTree<T,CHAR_LENGTH> *tree);
+    void split(CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, int childIndex, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree);
 
     void setChild(int i, int child, NODE_TYPE type) {
         m_Childs[i] = child;
         childs_type = type;
     }
 
-    void insert(int keyIndex, int childIndex, KeyDataType<T,CHAR_LENGTH> keyData, int childNode, NODE_TYPE type);
+    void insert(int keyIndex, int childIndex, KeyDataType<T,CHAR_LENGTH,ORDER> keyData, int childNode, NODE_TYPE type);
     //在keyIndex/childIndex位置插入
     // 不修改文件
 
     NODE_TYPE getChildtype() { return childs_type; }
 
-    void mergeChild(CInternalNode<T,CHAR_LENGTH> parentNode, CInternalNode<T,CHAR_LENGTH> childNode, int keyIndex,
-                    CBPlusTree<T,CHAR_LENGTH> *tree);//将childnode（右）合并到this（左）里
+    void mergeChild(CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, CInternalNode<T,CHAR_LENGTH,ORDER> childNode, int keyIndex,
+                    CBPlusTree<T,CHAR_LENGTH,ORDER> *tree);//将childnode（右）合并到this（左）里
 
     void removeKey(int keyIndex, int childIndex);//不修改文件
 
-    void clear(CBPlusTree<T,CHAR_LENGTH> *tree);
+    void clear(CBPlusTree<T,CHAR_LENGTH,ORDER> *tree);
 
-    void borrowFrom(CInternalNode<T,CHAR_LENGTH> siblingNode, CInternalNode<T,CHAR_LENGTH> parentNode, int keyIndex, SIBLING_DIRECTION d,
-                    CBPlusTree<T,CHAR_LENGTH> *tree);//尽量从左边借，复杂度小
+    void borrowFrom(CInternalNode<T,CHAR_LENGTH,ORDER> siblingNode, CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, int keyIndex, SIBLING_DIRECTION d,
+                    CBPlusTree<T,CHAR_LENGTH,ORDER> *tree);//尽量从左边借，复杂度小
 
     int getChildIndex(string key, int keyIndex);
 
 };
 
 // 叶子结点
-template<typename T,int CHAR_LENGTH=42>
+template<typename T,int CHAR_LENGTH=42,int ORDER=35>
 class CLeafNode {
 private:
     NODE_TYPE m_Type;
     int m_KeyNum;
-    KeyDataType<T,CHAR_LENGTH> m_KeyData[MAXNUM_LEAF];
+    KeyDataType<T,CHAR_LENGTH,ORDER> m_KeyData[MAXNUM_LEAF];
     int storePossession;
     int m_LeftSibling;
     int m_RightSibling;
@@ -183,19 +192,19 @@ public:
 
     void setKeyNum(int n) { m_KeyNum = n; }
 
-    void setKeyData(int i, KeyDataType<T,CHAR_LENGTH> keyData) { m_KeyData[i] = keyData; }
+    void setKeyData(int i, KeyDataType<T,CHAR_LENGTH,ORDER> keyData) { m_KeyData[i] = keyData; }
 
-    int getKeyDataIndex(KeyDataType<T,CHAR_LENGTH> keyData);
+    int getKeyDataIndex(KeyDataType<T,CHAR_LENGTH,ORDER> keyData);
 
     int compareKeyvalue(int i, string key) { return strcmp(key.c_str(), m_KeyData[i].KeyValue); }
 
     int getKeyIndex(string key);
 
-    KeyDataType<T,CHAR_LENGTH> getKeyDataValue(int i) { return m_KeyData[i]; }
+    KeyDataType<T,CHAR_LENGTH,ORDER> getKeyDataValue(int i) { return m_KeyData[i]; }
 
     void setLeftSibling(int possession) { m_LeftSibling = possession; }
 
-    CLeafNode<T,CHAR_LENGTH> getRightSibling(CBPlusTree<T,CHAR_LENGTH> *tree) const;
+    CLeafNode<T,CHAR_LENGTH,ORDER> getRightSibling(CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) const;
 
     int getRightPossession();
 
@@ -203,24 +212,24 @@ public:
 
     T getData(int i) const { return m_KeyData[i].DataValue; }
 
-    void remove(KeyDataType<T,CHAR_LENGTH> keyData, CBPlusTree<T,CHAR_LENGTH> *tree);
+    void remove(KeyDataType<T,CHAR_LENGTH,ORDER> keyData, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree);
 
-    void insert(KeyDataType<T,CHAR_LENGTH> keyData);
+    void insert(KeyDataType<T,CHAR_LENGTH,ORDER> keyData);
 
-    void split(CInternalNode<T,CHAR_LENGTH> parentNode, int childIndex, CBPlusTree<T,CHAR_LENGTH> *tree);
+    void split(CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, int childIndex, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree);
 
-    void mergeChild(CInternalNode<T,CHAR_LENGTH> parentNode, CLeafNode<T,CHAR_LENGTH> childNode, int keyIndex, CBPlusTree<T,CHAR_LENGTH> *tree);
+    void mergeChild(CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, CLeafNode<T,CHAR_LENGTH,ORDER> childNode, int keyIndex, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree);
 
-    void removeKey(int keyIndex, CBPlusTree<T,CHAR_LENGTH> *tree);
+    void removeKey(int keyIndex, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree);
 
-    void clear(CBPlusTree<T,CHAR_LENGTH> *tree);
+    void clear(CBPlusTree<T,CHAR_LENGTH,ORDER> *tree);
 
     void
-    borrowFrom(CLeafNode<T,CHAR_LENGTH> siblingNode, CInternalNode<T,CHAR_LENGTH> parentNode, int keyIndex, SIBLING_DIRECTION d,
-               CBPlusTree<T,CHAR_LENGTH> *tree);
+    borrowFrom(CLeafNode<T,CHAR_LENGTH,ORDER> siblingNode, CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, int keyIndex, SIBLING_DIRECTION d,
+               CBPlusTree<T,CHAR_LENGTH,ORDER> *tree);
 };
 
-template<class T,int CHAR_LENGTH=42>
+template<class T,int CHAR_LENGTH=42,int ORDER=35>
 class CBPlusTree {
 public:
     CBPlusTree(const string &FN);
@@ -231,69 +240,69 @@ public:
 
     void Delete(string key, T &dataValue);
 
-    vector<T> FindAll(string compareKey);
+    Vector<T> FindAll(string compareKey);
 
     bool Find(string key);
 
     void clean();
 
-    void InternalRead(CInternalNode<T,CHAR_LENGTH> &node, int index) { CInternalNode_store.read(node, index); };
+    void InternalRead(CInternalNode<T,CHAR_LENGTH,ORDER> &node, int index) { CInternalNode_store.read(node, index); };
 
     void InternalDelete(int index) { CInternalNode_store.Delete(index); }
 
-    void InteranlUpdate(CInternalNode<T,CHAR_LENGTH> &node, int index) { CInternalNode_store.update(node, index); }
+    void InteranlUpdate(CInternalNode<T,CHAR_LENGTH,ORDER> &node, int index) { CInternalNode_store.update(node, index); }
 
-    int InternalWrite(CInternalNode<T,CHAR_LENGTH> &node) { return CInternalNode_store.write(node); }
+    int InternalWrite(CInternalNode<T,CHAR_LENGTH,ORDER> &node) { return CInternalNode_store.write(node); }
 
-    void LeafRead(CLeafNode<T,CHAR_LENGTH> &node, int index) { CLeafNode_store.read(node, index); };
+    void LeafRead(CLeafNode<T,CHAR_LENGTH,ORDER> &node, int index) { CLeafNode_store.read(node, index); };
 
     void LeafDelete(int index) { CLeafNode_store.Delete(index); }
 
-    void LeafUpdate(CLeafNode<T,CHAR_LENGTH> &node, const int index) { CLeafNode_store.update(node, index); }
+    void LeafUpdate(CLeafNode<T,CHAR_LENGTH,ORDER> &node, const int index) { CLeafNode_store.update(node, index); }
 
-    int LeafWrite(CLeafNode<T,CHAR_LENGTH> &node) { return CLeafNode_store.write(node); }
+    int LeafWrite(CLeafNode<T,CHAR_LENGTH,ORDER> &node) { return CLeafNode_store.write(node); }
 
 private:
-    MemoryRiver<CInternalNode<T,CHAR_LENGTH>, 2> CInternalNode_store;
-    MemoryRiver<CLeafNode<T,CHAR_LENGTH>, 3> CLeafNode_store;
+    MemoryRiver<CInternalNode<T,CHAR_LENGTH,ORDER>, 2> CInternalNode_store;
+    MemoryRiver<CLeafNode<T,CHAR_LENGTH,ORDER>, 3> CLeafNode_store;
     NODE_TYPE rootType;
     int m_DataHead, rootPossession;
 private:
 
-    void recursive_insertLeaf(CLeafNode<T,CHAR_LENGTH> parentNode, KeyDataType<T,CHAR_LENGTH> keyData);
+    void recursive_insertLeaf(CLeafNode<T,CHAR_LENGTH,ORDER> parentNode, KeyDataType<T,CHAR_LENGTH,ORDER> keyData);
 
-    void recursive_insertInternal(CInternalNode<T,CHAR_LENGTH> parentNode, KeyDataType<T,CHAR_LENGTH> keyData);
+    void recursive_insertInternal(CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, KeyDataType<T,CHAR_LENGTH,ORDER> keyData);
 
-    bool recursive_searchInternal(CInternalNode<T,CHAR_LENGTH> pNode, string key);
+    bool recursive_searchInternal(CInternalNode<T,CHAR_LENGTH,ORDER> pNode, string key);
 
-    int recursive_searchFindInternal(CInternalNode<T,CHAR_LENGTH> pNode, string key);
+    int recursive_searchFindInternal(CInternalNode<T,CHAR_LENGTH,ORDER> pNode, string key);
 
-    bool recursive_searchLeaf(CLeafNode<T,CHAR_LENGTH> pNode, string key);
+    bool recursive_searchLeaf(CLeafNode<T,CHAR_LENGTH,ORDER> pNode, string key);
 
     int searchFind(string key);
 
-    void changeKey(CInternalNode<T,CHAR_LENGTH> pNode, KeyDataType<T,CHAR_LENGTH> oldKeyData, KeyDataType<T,CHAR_LENGTH> newKeyData);
+    void changeKey(CInternalNode<T,CHAR_LENGTH,ORDER> pNode, KeyDataType<T,CHAR_LENGTH,ORDER> oldKeyData, KeyDataType<T,CHAR_LENGTH,ORDER> newKeyData);
 
-    void recursive_removeInternal(CInternalNode<T,CHAR_LENGTH> parentNode, KeyDataType<T,CHAR_LENGTH> keyData);
+    void recursive_removeInternal(CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, KeyDataType<T,CHAR_LENGTH,ORDER> keyData);
 
-    void recursive_removeLeaf(CLeafNode<T,CHAR_LENGTH> parentNode, KeyDataType<T,CHAR_LENGTH> keyData);
+    void recursive_removeLeaf(CLeafNode<T,CHAR_LENGTH,ORDER> parentNode, KeyDataType<T,CHAR_LENGTH,ORDER> keyData);
 
-    CLeafNode<T,CHAR_LENGTH> getRootLeaf() {
-        CLeafNode<T,CHAR_LENGTH> root;
+    CLeafNode<T,CHAR_LENGTH,ORDER> getRootLeaf() {
+        CLeafNode<T,CHAR_LENGTH,ORDER> root;
         CLeafNode_store.read(root, rootPossession);
         return root;
     }
 
-    CInternalNode<T,CHAR_LENGTH> getRootInternal() {
-        CInternalNode<T,CHAR_LENGTH> root;
+    CInternalNode<T,CHAR_LENGTH,ORDER> getRootInternal() {
+        CInternalNode<T,CHAR_LENGTH,ORDER> root;
         CInternalNode_store.read(root, rootPossession);
         return root;
     }
 };
 
 
-template<class T,int CHAR_LENGTH>
-int CInternalNode<T,CHAR_LENGTH>::getKeyIndex(string key) {
+template<class T,int CHAR_LENGTH,int ORDER>
+int CInternalNode<T,CHAR_LENGTH,ORDER>::getKeyIndex(string key) {
     int left = 0;
     int right = getKeyNum() - 1;
     int mid;
@@ -306,8 +315,8 @@ int CInternalNode<T,CHAR_LENGTH>::getKeyIndex(string key) {
     return left;
 }
 
-template<class T,int CHAR_LENGTH>
-int CInternalNode<T,CHAR_LENGTH>::getKeyIndexLow(string key) {
+template<class T,int CHAR_LENGTH,int ORDER>
+int CInternalNode<T,CHAR_LENGTH,ORDER>::getKeyIndexLow(string key) {
     int left = 0;
     int right = getKeyNum() - 1;
     int mid;
@@ -320,8 +329,8 @@ int CInternalNode<T,CHAR_LENGTH>::getKeyIndexLow(string key) {
     return left;
 }
 
-template<class T,int CHAR_LENGTH>
-int CInternalNode<T,CHAR_LENGTH>::getKeyDataIndex(KeyDataType<T,CHAR_LENGTH> keyData) {
+template<class T,int CHAR_LENGTH,int ORDER>
+int CInternalNode<T,CHAR_LENGTH,ORDER>::getKeyDataIndex(KeyDataType<T,CHAR_LENGTH,ORDER> keyData) {
     int left = 0;
     int right = getKeyNum() - 1;
     int mid;
@@ -334,8 +343,8 @@ int CInternalNode<T,CHAR_LENGTH>::getKeyDataIndex(KeyDataType<T,CHAR_LENGTH> key
     return left;
 }
 
-template<class T,int CHAR_LENGTH>
-int CLeafNode<T,CHAR_LENGTH>::getKeyDataIndex(KeyDataType<T,CHAR_LENGTH> keyData) {
+template<class T,int CHAR_LENGTH,int ORDER>
+int CLeafNode<T,CHAR_LENGTH,ORDER>::getKeyDataIndex(KeyDataType<T,CHAR_LENGTH,ORDER> keyData) {
     int left = 0;
     int right = getKeyNum() - 1;
     int mid;
@@ -348,8 +357,8 @@ int CLeafNode<T,CHAR_LENGTH>::getKeyDataIndex(KeyDataType<T,CHAR_LENGTH> keyData
     return left;
 }
 
-template<class T,int CHAR_LENGTH>
-int CLeafNode<T,CHAR_LENGTH>::getKeyIndex(string key) {
+template<class T,int CHAR_LENGTH,int ORDER>
+int CLeafNode<T,CHAR_LENGTH,ORDER>::getKeyIndex(string key) {
     int left = 0;
     int right = getKeyNum() - 1;
     int mid;
@@ -363,8 +372,8 @@ int CLeafNode<T,CHAR_LENGTH>::getKeyIndex(string key) {
 }
 
 // CInternalNode
-template<class T,int CHAR_LENGTH>
-CInternalNode<T,CHAR_LENGTH>::CInternalNode() {
+template<class T,int CHAR_LENGTH,int ORDER>
+CInternalNode<T,CHAR_LENGTH,ORDER>::CInternalNode() {
     setType(INTERNAL);
     setKeyNum(0);
     for (int i = 0; i < MAXNUM_CHILD; ++i)
@@ -373,33 +382,33 @@ CInternalNode<T,CHAR_LENGTH>::CInternalNode() {
         fill(m_KeyData[i].KeyValue, m_KeyData[i].KeyValue + CHAR_LENGTH, '\0');
 }
 
-template<class T,int CHAR_LENGTH>
-CInternalNode<T,CHAR_LENGTH>::~CInternalNode() {}
+template<class T,int CHAR_LENGTH,int ORDER>
+CInternalNode<T,CHAR_LENGTH,ORDER>::~CInternalNode() {}
 
-template<class T,int CHAR_LENGTH>
-CInternalNode<T,CHAR_LENGTH> CInternalNode<T,CHAR_LENGTH>::getChildInternal(int i, CBPlusTree<T,CHAR_LENGTH> *tree) {
-    CInternalNode<T,CHAR_LENGTH> tmp;
+template<class T,int CHAR_LENGTH,int ORDER>
+CInternalNode<T,CHAR_LENGTH,ORDER> CInternalNode<T,CHAR_LENGTH,ORDER>::getChildInternal(int i, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) {
+    CInternalNode<T,CHAR_LENGTH,ORDER> tmp;
     tree->InternalRead(tmp, m_Childs[i]);
     return tmp;
 }
 
-template<class T,int CHAR_LENGTH>
-CLeafNode<T,CHAR_LENGTH> CInternalNode<T,CHAR_LENGTH>::getChildLeaf(int i, CBPlusTree<T,CHAR_LENGTH> *tree) {
-    CLeafNode<T,CHAR_LENGTH> tmp;
+template<class T,int CHAR_LENGTH,int ORDER>
+CLeafNode<T,CHAR_LENGTH,ORDER> CInternalNode<T,CHAR_LENGTH,ORDER>::getChildLeaf(int i, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) {
+    CLeafNode<T,CHAR_LENGTH,ORDER> tmp;
     tree->LeafRead(tmp, m_Childs[i]);
     return tmp;
 }
 
-template<class T,int CHAR_LENGTH>
-void CInternalNode<T,CHAR_LENGTH>::clear(CBPlusTree<T,CHAR_LENGTH> *tree) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CInternalNode<T,CHAR_LENGTH,ORDER>::clear(CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) {
     for (int i = 0; i <= m_KeyNum; ++i) {
         if (m_Childs[i] == 0) continue;
         if (childs_type == INTERNAL) {
-            CInternalNode<T,CHAR_LENGTH> tmp = getChildInternal(i, tree);
+            CInternalNode<T,CHAR_LENGTH,ORDER> tmp = getChildInternal(i, tree);
             tmp.clear(tree);
             // tree->InternalDelete(m_Childs[i]);
         } else {
-            CLeafNode<T,CHAR_LENGTH> tmp;
+            CLeafNode<T,CHAR_LENGTH,ORDER> tmp;
             tree->LeafRead(tmp, m_Childs[i]);
             tmp.clear(tree);
         }
@@ -408,9 +417,9 @@ void CInternalNode<T,CHAR_LENGTH>::clear(CBPlusTree<T,CHAR_LENGTH> *tree) {
     tree->InternalDelete(storePossession);
 }
 
-template<class T,int CHAR_LENGTH>
-void CInternalNode<T,CHAR_LENGTH>::split(CInternalNode<T,CHAR_LENGTH> parentNode, int childIndex, CBPlusTree<T,CHAR_LENGTH> *tree) {
-    CInternalNode<T,CHAR_LENGTH> nNode;//分裂后的右节点
+template<class T,int CHAR_LENGTH,int ORDER>
+void CInternalNode<T,CHAR_LENGTH,ORDER>::split(CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, int childIndex, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) {
+    CInternalNode<T,CHAR_LENGTH,ORDER> nNode;//分裂后的右节点
     nNode.storePossession = tree->InternalWrite(nNode);
     nNode.setKeyNum(MINNUM_KEY);
     int i;
@@ -423,12 +432,12 @@ void CInternalNode<T,CHAR_LENGTH>::split(CInternalNode<T,CHAR_LENGTH> parentNode
     parentNode.insert(childIndex, childIndex + 1, m_KeyData[MINNUM_KEY],
                       nNode.storePossession, INTERNAL);
     tree->InteranlUpdate(parentNode, parentNode.getPossession());
-    CInternalNode<T,CHAR_LENGTH> tmp = *this;
+    CInternalNode<T,CHAR_LENGTH,ORDER> tmp = *this;
     tree->InteranlUpdate(tmp, storePossession);
 }
 
-template<class T,int CHAR_LENGTH>
-void CInternalNode<T,CHAR_LENGTH>::insert(int keyIndex, int childIndex, KeyDataType<T,CHAR_LENGTH> keyData, int childNode, NODE_TYPE type) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CInternalNode<T,CHAR_LENGTH,ORDER>::insert(int keyIndex, int childIndex, KeyDataType<T,CHAR_LENGTH,ORDER> keyData, int childNode, NODE_TYPE type) {
     int i;
     for (i = getKeyNum(); i > keyIndex; --i)//将父节点中的childIndex后的所有关键字的值和子树指针向后移一位
         setKeyData(i, m_KeyData[i - 1]);
@@ -439,9 +448,9 @@ void CInternalNode<T,CHAR_LENGTH>::insert(int keyIndex, int childIndex, KeyDataT
     setKeyNum(m_KeyNum + 1);
 }
 
-template<class T,int CHAR_LENGTH>
-void CInternalNode<T,CHAR_LENGTH>::mergeChild(CInternalNode<T,CHAR_LENGTH> parentNode, CInternalNode<T,CHAR_LENGTH> childNode, int keyIndex,
-                                  CBPlusTree<T,CHAR_LENGTH> *tree) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CInternalNode<T,CHAR_LENGTH,ORDER>::mergeChild(CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, CInternalNode<T,CHAR_LENGTH,ORDER> childNode, int keyIndex,
+                                  CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) {
     // 合并数据
     setKeyData(MINNUM_KEY, parentNode.getKeyDataValue(keyIndex));
     setChild(MINNUM_KEY + 1, childNode.getChild(0), getChildtype());
@@ -455,12 +464,12 @@ void CInternalNode<T,CHAR_LENGTH>::mergeChild(CInternalNode<T,CHAR_LENGTH> paren
     tree->InternalDelete(childNode.getPossession());
     parentNode.removeKey(keyIndex, keyIndex + 1);
     tree->InteranlUpdate(parentNode, parentNode.getPossession());
-    CInternalNode<T,CHAR_LENGTH> tmp = *this;
+    CInternalNode<T,CHAR_LENGTH,ORDER> tmp = *this;
     tree->InteranlUpdate(tmp, storePossession);
 }
 
-template<class T,int CHAR_LENGTH>
-void CInternalNode<T,CHAR_LENGTH>::removeKey(int keyIndex, int childIndex) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CInternalNode<T,CHAR_LENGTH,ORDER>::removeKey(int keyIndex, int childIndex) {
     for (int i = 0; i < getKeyNum() - keyIndex - 1; ++i)
         setKeyData(keyIndex + i, m_KeyData[keyIndex + i + 1]);
     for (int i = 0; i < getKeyNum() - childIndex; ++i)
@@ -468,10 +477,10 @@ void CInternalNode<T,CHAR_LENGTH>::removeKey(int keyIndex, int childIndex) {
     setKeyNum(getKeyNum() - 1);
 }
 
-template<class T,int CHAR_LENGTH>
-void CInternalNode<T,CHAR_LENGTH>::borrowFrom(CInternalNode<T,CHAR_LENGTH> siblingNode, CInternalNode<T,CHAR_LENGTH> parentNode, int keyIndex,
+template<class T,int CHAR_LENGTH,int ORDER>
+void CInternalNode<T,CHAR_LENGTH,ORDER>::borrowFrom(CInternalNode<T,CHAR_LENGTH,ORDER> siblingNode, CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, int keyIndex,
                                   SIBLING_DIRECTION d,
-                                  CBPlusTree<T,CHAR_LENGTH> *tree) {
+                                  CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) {
     switch (d) {
         case LEFT:  // 从左兄弟结点借
         {
@@ -492,20 +501,20 @@ void CInternalNode<T,CHAR_LENGTH>::borrowFrom(CInternalNode<T,CHAR_LENGTH> sibli
     }
     tree->InteranlUpdate(siblingNode, siblingNode.getPossession());
     tree->InteranlUpdate(parentNode, parentNode.getPossession());
-    CInternalNode<T,CHAR_LENGTH> tmp = *this;
+    CInternalNode<T,CHAR_LENGTH,ORDER> tmp = *this;
     tree->InteranlUpdate(tmp, storePossession);
 }
 
-template<class T,int CHAR_LENGTH>
-int CInternalNode<T,CHAR_LENGTH>::getChildIndex(string key, int keyIndex) {
+template<class T,int CHAR_LENGTH,int ORDER>
+int CInternalNode<T,CHAR_LENGTH,ORDER>::getChildIndex(string key, int keyIndex) {
     if (compareKeyvalue(keyIndex, key) == 0)
         return keyIndex + 1;
     else return keyIndex;
 }
 
 // CLeafNode
-template<class T,int CHAR_LENGTH>
-CLeafNode<T,CHAR_LENGTH>::CLeafNode() {
+template<class T,int CHAR_LENGTH,int ORDER>
+CLeafNode<T,CHAR_LENGTH,ORDER>::CLeafNode() {
     setType(LEAF);
     m_LeftSibling = m_RightSibling = 0;
     setKeyNum(0);
@@ -513,28 +522,28 @@ CLeafNode<T,CHAR_LENGTH>::CLeafNode() {
         fill(m_KeyData[i].KeyValue, m_KeyData[i].KeyValue + CHAR_LENGTH, '\0');
 }
 
-template<class T,int CHAR_LENGTH>
-CLeafNode<T,CHAR_LENGTH>::~CLeafNode() = default;;
+template<class T,int CHAR_LENGTH,int ORDER>
+CLeafNode<T,CHAR_LENGTH,ORDER>::~CLeafNode() = default;;
 
-template<class T,int CHAR_LENGTH>
-void CLeafNode<T,CHAR_LENGTH>::clear(CBPlusTree<T,CHAR_LENGTH> *tree) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CLeafNode<T,CHAR_LENGTH,ORDER>::clear(CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) {
     tree->LeafDelete(storePossession);
 }
 
-template<class T,int CHAR_LENGTH>
-CLeafNode<T,CHAR_LENGTH> CLeafNode<T,CHAR_LENGTH>::getRightSibling(CBPlusTree<T,CHAR_LENGTH> *tree) const {
-    CLeafNode<T,CHAR_LENGTH> tmp;
+template<class T,int CHAR_LENGTH,int ORDER>
+CLeafNode<T,CHAR_LENGTH,ORDER> CLeafNode<T,CHAR_LENGTH,ORDER>::getRightSibling(CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) const {
+    CLeafNode<T,CHAR_LENGTH,ORDER> tmp;
     tree->LeafRead(tmp, m_RightSibling);
     return tmp;
 }
 
-template<class T,int CHAR_LENGTH>
-int CLeafNode<T,CHAR_LENGTH>::getRightPossession() {
+template<class T,int CHAR_LENGTH,int ORDER>
+int CLeafNode<T,CHAR_LENGTH,ORDER>::getRightPossession() {
     return m_RightSibling;
 }
 
-template<class T,int CHAR_LENGTH>
-void CLeafNode<T,CHAR_LENGTH>::insert(KeyDataType<T,CHAR_LENGTH> keyData) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CLeafNode<T,CHAR_LENGTH,ORDER>::insert(KeyDataType<T,CHAR_LENGTH,ORDER> keyData) {
     int i;
     for (i = m_KeyNum; i > 0 && m_KeyData[i - 1] > keyData; --i)
         setKeyData(i, m_KeyData[i - 1]);
@@ -542,9 +551,9 @@ void CLeafNode<T,CHAR_LENGTH>::insert(KeyDataType<T,CHAR_LENGTH> keyData) {
     setKeyNum(m_KeyNum + 1);
 }
 
-template<class T,int CHAR_LENGTH>
-void CLeafNode<T,CHAR_LENGTH>::split(CInternalNode<T,CHAR_LENGTH> parentNode, int childIndex, CBPlusTree<T,CHAR_LENGTH> *tree) {
-    CLeafNode<T,CHAR_LENGTH> nNode;//分裂后的右节点
+template<class T,int CHAR_LENGTH,int ORDER>
+void CLeafNode<T,CHAR_LENGTH,ORDER>::split(CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, int childIndex, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) {
+    CLeafNode<T,CHAR_LENGTH,ORDER> nNode;//分裂后的右节点
     nNode.setPossession(tree->LeafWrite(nNode));
     setKeyNum(MINNUM_LEAF);
     nNode.setKeyNum(MINNUM_LEAF + 1);
@@ -555,14 +564,14 @@ void CLeafNode<T,CHAR_LENGTH>::split(CInternalNode<T,CHAR_LENGTH> parentNode, in
         nNode.setKeyData(i, m_KeyData[i + MINNUM_LEAF]);
     tree->LeafUpdate(nNode, nNode.getPossession());
     setRightSibling(nNode.getPossession());
-    CLeafNode<T,CHAR_LENGTH> tmp1 = *this;
+    CLeafNode<T,CHAR_LENGTH,ORDER> tmp1 = *this;
     tree->LeafUpdate(tmp1, this->getPossession());
     parentNode.insert(childIndex, childIndex + 1, m_KeyData[MINNUM_LEAF], nNode.storePossession, LEAF);
     tree->InteranlUpdate(parentNode, parentNode.getPossession());
 }
 
-template<class T,int CHAR_LENGTH>
-void CLeafNode<T,CHAR_LENGTH>::mergeChild(CInternalNode<T,CHAR_LENGTH> parentNode, CLeafNode<T,CHAR_LENGTH> childNode, int keyIndex, CBPlusTree<T,CHAR_LENGTH> *tree) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CLeafNode<T,CHAR_LENGTH,ORDER>::mergeChild(CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, CLeafNode<T,CHAR_LENGTH,ORDER> childNode, int keyIndex, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) {
     // 合并数据
     for (int i = 0; i < childNode.getKeyNum(); ++i)
         setKeyData(getKeyNum() + i, childNode.getKeyDataValue(i));
@@ -570,35 +579,35 @@ void CLeafNode<T,CHAR_LENGTH>::mergeChild(CInternalNode<T,CHAR_LENGTH> parentNod
     setRightSibling(childNode.m_RightSibling);
     //父节点删除index的key，
     parentNode.removeKey(keyIndex, keyIndex + 1);
-    CLeafNode<T,CHAR_LENGTH> tmp = *this;
+    CLeafNode<T,CHAR_LENGTH,ORDER> tmp = *this;
     tree->LeafUpdate(tmp, getPossession());
     tree->InteranlUpdate(parentNode, parentNode.getPossession());
 }
 
-template<class T,int CHAR_LENGTH>
-void CLeafNode<T,CHAR_LENGTH>::removeKey(int keyIndex, CBPlusTree<T,CHAR_LENGTH> *tree) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CLeafNode<T,CHAR_LENGTH,ORDER>::removeKey(int keyIndex, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) {
     for (int i = keyIndex; i < getKeyNum() - 1; ++i)
         setKeyData(i, m_KeyData[i + 1]);
     setKeyNum(getKeyNum() - 1);
-    CLeafNode<T,CHAR_LENGTH> tmp = *this;
+    CLeafNode<T,CHAR_LENGTH,ORDER> tmp = *this;
     tree->LeafUpdate(tmp, getPossession());
 }
 
-template<class T,int CHAR_LENGTH>
-void CLeafNode<T,CHAR_LENGTH>::remove(KeyDataType<T,CHAR_LENGTH> keyData, CBPlusTree<T,CHAR_LENGTH> *tree) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CLeafNode<T,CHAR_LENGTH,ORDER>::remove(KeyDataType<T,CHAR_LENGTH,ORDER> keyData, CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) {
     int keyDataIndex = getKeyDataIndex(keyData);
     if (keyDataIndex >= getKeyNum()) return;
     if (getKeyDataValue(keyDataIndex) != keyData) return;
     for (int i = keyDataIndex; i < getKeyNum() - 1; ++i)
         setKeyData(i, getKeyDataValue(i + 1));
     setKeyNum(getKeyNum() - 1);
-    CLeafNode<T,CHAR_LENGTH> *tmp = this;
+    CLeafNode<T,CHAR_LENGTH,ORDER> *tmp = this;
     tree->LeafUpdate(*tmp, getPossession());
 }
 
-template<class T,int CHAR_LENGTH>
-void CLeafNode<T,CHAR_LENGTH>::borrowFrom(CLeafNode<T,CHAR_LENGTH> siblingNode, CInternalNode<T,CHAR_LENGTH> parentNode, int keyIndex, SIBLING_DIRECTION d,
-                              CBPlusTree<T,CHAR_LENGTH> *tree) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CLeafNode<T,CHAR_LENGTH,ORDER>::borrowFrom(CLeafNode<T,CHAR_LENGTH,ORDER> siblingNode, CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, int keyIndex, SIBLING_DIRECTION d,
+                              CBPlusTree<T,CHAR_LENGTH,ORDER> *tree) {
     switch (d) {
         case LEFT:  // 从左兄弟结点借
         {
@@ -615,13 +624,13 @@ void CLeafNode<T,CHAR_LENGTH>::borrowFrom(CLeafNode<T,CHAR_LENGTH> siblingNode, 
         }
             break;
     }
-    CLeafNode<T,CHAR_LENGTH> *tmp1 = this;
+    CLeafNode<T,CHAR_LENGTH,ORDER> *tmp1 = this;
     tree->LeafUpdate(*tmp1, getPossession());
     tree->InteranlUpdate(parentNode, parentNode.getPossession());
 }
 
-template<class T,int CHAR_LENGTH>
-CBPlusTree<T,CHAR_LENGTH>::CBPlusTree(const string &FN) : CLeafNode_store(FN + "LeafStore", 1, 0),
+template<class T,int CHAR_LENGTH,int ORDER>
+CBPlusTree<T,CHAR_LENGTH,ORDER>::CBPlusTree(const string &FN) : CLeafNode_store(FN + "LeafStore", 1, 0),
                                               CInternalNode_store(FN + "InternalStore", 1, 0) {
     int tmpLeaf, tmpInternal;
     CLeafNode_store.read_info(tmpLeaf, 2);
@@ -636,8 +645,8 @@ CBPlusTree<T,CHAR_LENGTH>::CBPlusTree(const string &FN) : CLeafNode_store(FN + "
     }
 }
 
-template<class T,int CHAR_LENGTH>
-CBPlusTree<T,CHAR_LENGTH>::~CBPlusTree() {
+template<class T,int CHAR_LENGTH,int ORDER>
+CBPlusTree<T,CHAR_LENGTH,ORDER>::~CBPlusTree() {
     CLeafNode_store.write_info(m_DataHead, 3);
     if (rootType == LEAF) {
         CLeafNode_store.write_info(rootPossession, 2);
@@ -648,34 +657,34 @@ CBPlusTree<T,CHAR_LENGTH>::~CBPlusTree() {
     }
 }
 
-template<class T,int CHAR_LENGTH>
-void CBPlusTree<T,CHAR_LENGTH>::insert(string key, const T &data) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CBPlusTree<T,CHAR_LENGTH,ORDER>::insert(string key, const T &data) {
     // cout<<"!!!"<<key<<endl;
-    KeyDataType<T,CHAR_LENGTH> keyData(key, data);
+    KeyDataType<T,CHAR_LENGTH,ORDER> keyData(key, data);
     if (rootPossession == 0) {
-        CLeafNode<T,CHAR_LENGTH> newRoot;
+        CLeafNode<T,CHAR_LENGTH,ORDER> newRoot;
         rootType = LEAF;
         newRoot.setPossession(CLeafNode_store.write(newRoot));
         m_DataHead = rootPossession = newRoot.getPossession();
         CLeafNode_store.update(newRoot, newRoot.getPossession());
     }
     if (rootType == LEAF) {
-        CLeafNode<T,CHAR_LENGTH> root = getRootLeaf();
+        CLeafNode<T,CHAR_LENGTH,ORDER> root = getRootLeaf();
         if (root.getKeyNum() >= MAXNUM_KEY) { // 根结点已满，分裂
-            CInternalNode<T,CHAR_LENGTH> newNode;  //创建新的根节点
+            CInternalNode<T,CHAR_LENGTH,ORDER> newNode;  //创建新的根节点
             newNode.setPossession(CInternalNode_store.write(newNode));
             newNode.setChild(0, root.getPossession(), root.getType());
             root.split(newNode, 0, this);    // 叶子结点分裂
             rootPossession = newNode.getPossession();
             rootType = newNode.getType();//更新根节点指针
-            CInternalNode<T,CHAR_LENGTH> nRoot = getRootInternal();
+            CInternalNode<T,CHAR_LENGTH,ORDER> nRoot = getRootInternal();
             recursive_insertInternal(nRoot, keyData);
         } else
             recursive_insertLeaf(root, keyData);
     } else {
-        CInternalNode<T,CHAR_LENGTH> root = getRootInternal();
+        CInternalNode<T,CHAR_LENGTH,ORDER> root = getRootInternal();
         if (root.getKeyNum() >= MAXNUM_KEY) { // 根结点已满，分裂
-            CInternalNode<T,CHAR_LENGTH> newNode;  //创建新的根节点
+            CInternalNode<T,CHAR_LENGTH,ORDER> newNode;  //创建新的根节点
             newNode.setPossession(CInternalNode_store.write(newNode));
             newNode.setChild(0, root.getPossession(), root.getType());
             root.split(newNode, 0, this);    // 叶子结点分裂
@@ -687,18 +696,18 @@ void CBPlusTree<T,CHAR_LENGTH>::insert(string key, const T &data) {
     }
 }
 
-template<class T,int CHAR_LENGTH>
-void CBPlusTree<T,CHAR_LENGTH>::recursive_insertLeaf(CLeafNode<T,CHAR_LENGTH> parentNode, KeyDataType<T,CHAR_LENGTH> keyData) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CBPlusTree<T,CHAR_LENGTH,ORDER>::recursive_insertLeaf(CLeafNode<T,CHAR_LENGTH,ORDER> parentNode, KeyDataType<T,CHAR_LENGTH,ORDER> keyData) {
     parentNode.insert(keyData);
     CLeafNode_store.update(parentNode, parentNode.getPossession());
 }
 
-template<class T,int CHAR_LENGTH>
-void CBPlusTree<T,CHAR_LENGTH>::recursive_insertInternal(CInternalNode<T,CHAR_LENGTH> parentNode, KeyDataType<T,CHAR_LENGTH> keyData) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CBPlusTree<T,CHAR_LENGTH,ORDER>::recursive_insertInternal(CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, KeyDataType<T,CHAR_LENGTH,ORDER> keyData) {
     int keyIndex = parentNode.getKeyDataIndex(keyData);
     int childIndex = parentNode.getChildIndex(keyData, keyIndex);
     if (parentNode.getChildtype() == INTERNAL) {
-        CInternalNode<T,CHAR_LENGTH> childNode = parentNode.getChildInternal(childIndex, this);
+        CInternalNode<T,CHAR_LENGTH,ORDER> childNode = parentNode.getChildInternal(childIndex, this);
         if (childNode.getKeyNum() >= MAXNUM_LEAF) {
             childNode.split(parentNode, childIndex, this);
             CInternalNode_store.read(parentNode, parentNode.getPossession());
@@ -707,7 +716,7 @@ void CBPlusTree<T,CHAR_LENGTH>::recursive_insertInternal(CInternalNode<T,CHAR_LE
         }
         recursive_insertInternal(childNode, keyData);
     } else {
-        CLeafNode<T,CHAR_LENGTH> childNode = parentNode.getChildLeaf(childIndex, this);
+        CLeafNode<T,CHAR_LENGTH,ORDER> childNode = parentNode.getChildLeaf(childIndex, this);
         if (childNode.getKeyNum() >= MAXNUM_LEAF) {  // 子结点已满，需进行分裂
             childNode.split(parentNode, childIndex, this);
             CInternalNode_store.read(parentNode, parentNode.getPossession());
@@ -718,30 +727,30 @@ void CBPlusTree<T,CHAR_LENGTH>::recursive_insertInternal(CInternalNode<T,CHAR_LE
     }
 }
 
-template<class T,int CHAR_LENGTH>
-void CBPlusTree<T,CHAR_LENGTH>::clean() {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CBPlusTree<T,CHAR_LENGTH,ORDER>::clean() {
     if (rootPossession != 0) {
         if (rootType == INTERNAL) {
-            CInternalNode<T,CHAR_LENGTH> root = getRootInternal();
+            CInternalNode<T,CHAR_LENGTH,ORDER> root = getRootInternal();
             root.clear(this);
         } else {
-            CLeafNode<T,CHAR_LENGTH> root = getRootLeaf();
+            CLeafNode<T,CHAR_LENGTH,ORDER> root = getRootLeaf();
             root.clear(this);
         }
         rootPossession = m_DataHead = 0;
     }
 }
 
-template<class T,int CHAR_LENGTH>
-bool CBPlusTree<T,CHAR_LENGTH>::Find(string key) {
+template<class T,int CHAR_LENGTH,int ORDER>
+bool CBPlusTree<T,CHAR_LENGTH,ORDER>::Find(string key) {
     // cout<<"Find "<<key<<endl;
     if (rootPossession == 0) return false;
     if (rootType == INTERNAL) return recursive_searchInternal(getRootInternal(), key);
     else return recursive_searchLeaf(getRootLeaf(), key);
 }
 
-template<class T,int CHAR_LENGTH>
-bool CBPlusTree<T,CHAR_LENGTH>::recursive_searchInternal(CInternalNode<T,CHAR_LENGTH> pNode, string key) {
+template<class T,int CHAR_LENGTH,int ORDER>
+bool CBPlusTree<T,CHAR_LENGTH,ORDER>::recursive_searchInternal(CInternalNode<T,CHAR_LENGTH,ORDER> pNode, string key) {
     int keyIndex = pNode.getKeyIndex(key);
     int childIndex = pNode.getChildIndex(key, keyIndex); // 孩子结点指针索引
     if (keyIndex < pNode.getKeyNum() && pNode.compareKeyvalue(keyIndex, key) == 0) {
@@ -753,35 +762,35 @@ bool CBPlusTree<T,CHAR_LENGTH>::recursive_searchInternal(CInternalNode<T,CHAR_LE
     }
 }
 
-template<class T,int CHAR_LENGTH>
-bool CBPlusTree<T,CHAR_LENGTH>::recursive_searchLeaf(CLeafNode<T,CHAR_LENGTH> pNode, string key) {
+template<class T,int CHAR_LENGTH,int ORDER>
+bool CBPlusTree<T,CHAR_LENGTH,ORDER>::recursive_searchLeaf(CLeafNode<T,CHAR_LENGTH,ORDER> pNode, string key) {
     int keyIndex = pNode.getKeyIndex(key);
     if (keyIndex < pNode.getKeyNum() && pNode.compareKeyvalue(keyIndex, key) == 0)
         return true;
     else return false;
 }
 
-template<class T,int CHAR_LENGTH>
-void CBPlusTree<T,CHAR_LENGTH>::Delete(string key, T &dataValue) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CBPlusTree<T,CHAR_LENGTH,ORDER>::Delete(string key, T &dataValue) {
     // cout<<"@@@"<<key<<endl;
     if (rootPossession == 0) return;
-    KeyDataType<T,CHAR_LENGTH> keyData(key, dataValue);
+    KeyDataType<T,CHAR_LENGTH,ORDER> keyData(key, dataValue);
     if (rootType == LEAF) {
-        CLeafNode<T,CHAR_LENGTH> root = getRootLeaf();
+        CLeafNode<T,CHAR_LENGTH,ORDER> root = getRootLeaf();
         if (root.getKeyNum() == 1) {
             if (root.getKeyDataValue(0) == keyData)
                 clean();
             return;
         } else recursive_removeLeaf(root, keyData);
     } else {
-        CInternalNode<T,CHAR_LENGTH> root = getRootInternal();
+        CInternalNode<T,CHAR_LENGTH,ORDER> root = getRootInternal();
 //        cout << dataValue << " :";
 //        for (int i = 0; i < root.getKeyNum(); ++i)
 //            cout << root.getKeyDataValue(i).DataValue << " ";
 //        cout << "\n";
         if (root.getKeyNum() == 1) {
             if (root.getChildtype() == INTERNAL) {
-                CInternalNode<T,CHAR_LENGTH> pChild1, pChild2;
+                CInternalNode<T,CHAR_LENGTH,ORDER> pChild1, pChild2;
                 pChild1 = root.getChildInternal(0, this);
                 pChild2 = root.getChildInternal(1, this);
                 if (pChild1.getKeyNum() == MINNUM_KEY && pChild2.getKeyNum() == MINNUM_KEY) {
@@ -791,7 +800,7 @@ void CBPlusTree<T,CHAR_LENGTH>::Delete(string key, T &dataValue) {
                     recursive_removeInternal(pChild1, keyData);
                 } else recursive_removeInternal(root, keyData);
             } else {
-                CLeafNode<T,CHAR_LENGTH> pChild1, pChild2;
+                CLeafNode<T,CHAR_LENGTH,ORDER> pChild1, pChild2;
                 pChild1 = root.getChildLeaf(0, this);
                 pChild2 = root.getChildLeaf(1, this);
                 if (pChild1.getKeyNum() == MINNUM_KEY && pChild2.getKeyNum() == MINNUM_KEY) {
@@ -806,14 +815,14 @@ void CBPlusTree<T,CHAR_LENGTH>::Delete(string key, T &dataValue) {
     }
 }
 
-template<class T,int CHAR_LENGTH>
-void CBPlusTree<T,CHAR_LENGTH>::recursive_removeInternal(CInternalNode<T,CHAR_LENGTH> parentNode, KeyDataType<T,CHAR_LENGTH> keyData) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CBPlusTree<T,CHAR_LENGTH,ORDER>::recursive_removeInternal(CInternalNode<T,CHAR_LENGTH,ORDER> parentNode, KeyDataType<T,CHAR_LENGTH,ORDER> keyData) {
     int keyIndex = parentNode.getKeyDataIndex(keyData);
     int childIndex = parentNode.getChildIndex(keyData, keyIndex); // 孩子结点指针索引
     if (parentNode.getChildtype() == LEAF) {
-        CLeafNode<T,CHAR_LENGTH> pChildNode = parentNode.getChildLeaf(childIndex, this);
+        CLeafNode<T,CHAR_LENGTH,ORDER> pChildNode = parentNode.getChildLeaf(childIndex, this);
         if (pChildNode.getKeyNum() == MINNUM_KEY) {
-            CLeafNode<T,CHAR_LENGTH> pLeft, pRight;
+            CLeafNode<T,CHAR_LENGTH,ORDER> pLeft, pRight;
             if (childIndex > 0) pLeft = parentNode.getChildLeaf(childIndex - 1, this);
             if (childIndex < parentNode.getKeyNum()) pRight = parentNode.getChildLeaf(childIndex + 1, this);
             // 先考虑从兄弟结点中借
@@ -830,9 +839,9 @@ void CBPlusTree<T,CHAR_LENGTH>::recursive_removeInternal(CInternalNode<T,CHAR_LE
         }
         recursive_removeLeaf(pChildNode, keyData);
     } else {
-        CInternalNode<T,CHAR_LENGTH> pChildNode = parentNode.getChildInternal(childIndex, this);
+        CInternalNode<T,CHAR_LENGTH,ORDER> pChildNode = parentNode.getChildInternal(childIndex, this);
         if (pChildNode.getKeyNum() == MINNUM_KEY) {
-            CInternalNode<T,CHAR_LENGTH> pLeft, pRight;
+            CInternalNode<T,CHAR_LENGTH,ORDER> pLeft, pRight;
             if (childIndex > 0) pLeft = parentNode.getChildInternal(childIndex - 1, this);
             if (childIndex < parentNode.getKeyNum()) pRight = parentNode.getChildInternal(childIndex + 1, this);
             // 先考虑从兄弟结点中借
@@ -851,41 +860,41 @@ void CBPlusTree<T,CHAR_LENGTH>::recursive_removeInternal(CInternalNode<T,CHAR_LE
     }
 }
 
-template<class T,int CHAR_LENGTH>
-void CBPlusTree<T,CHAR_LENGTH>::recursive_removeLeaf(CLeafNode<T,CHAR_LENGTH> parentNode, KeyDataType<T,CHAR_LENGTH> keyData) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CBPlusTree<T,CHAR_LENGTH,ORDER>::recursive_removeLeaf(CLeafNode<T,CHAR_LENGTH,ORDER> parentNode, KeyDataType<T,CHAR_LENGTH,ORDER> keyData) {
     int keyIndex = parentNode.getKeyDataIndex(keyData);
     parentNode.remove(keyData, this);  // 直接删除
     // 如果键值在内部结点中存在，也要相应的替换内部结点
     if (keyIndex == 0 && rootType != LEAF && parentNode.getPossession() != m_DataHead) {
-        CInternalNode<T,CHAR_LENGTH> root = getRootInternal();
+        CInternalNode<T,CHAR_LENGTH,ORDER> root = getRootInternal();
         changeKey(root, keyData, parentNode.getKeyDataValue(0));
     }
 }
 
-template<class T,int CHAR_LENGTH>
-void CBPlusTree<T,CHAR_LENGTH>::changeKey(CInternalNode<T,CHAR_LENGTH> pNode, KeyDataType<T,CHAR_LENGTH> oldKeyData, KeyDataType<T,CHAR_LENGTH> newKeyData) {
+template<class T,int CHAR_LENGTH,int ORDER>
+void CBPlusTree<T,CHAR_LENGTH,ORDER>::changeKey(CInternalNode<T,CHAR_LENGTH,ORDER> pNode, KeyDataType<T,CHAR_LENGTH,ORDER> oldKeyData, KeyDataType<T,CHAR_LENGTH,ORDER> newKeyData) {
     int keyIndex = pNode.getKeyDataIndex(oldKeyData);
     if (keyIndex < pNode.getKeyNum() && pNode.getKeyDataValue(keyIndex) == oldKeyData) {  // 找到
         pNode.setKeyData(keyIndex, newKeyData);
         CInternalNode_store.update(pNode, pNode.getPossession());
     } else {  // 继续找
         if (pNode.getChildtype() == INTERNAL) {
-            CInternalNode<T,CHAR_LENGTH> pChildnode = pNode.getChildInternal(keyIndex, this);
+            CInternalNode<T,CHAR_LENGTH,ORDER> pChildnode = pNode.getChildInternal(keyIndex, this);
             changeKey(pChildnode, oldKeyData, newKeyData);
         }
     }
 }
 
-template<class T,int CHAR_LENGTH>
-vector<T> CBPlusTree<T,CHAR_LENGTH>::FindAll(string compareKey) {
+template<class T,int CHAR_LENGTH,int ORDER>
+Vector<T> CBPlusTree<T,CHAR_LENGTH,ORDER>::FindAll(string compareKey) {
     // cout<<"FindAll "<<compareKey<<endl;
-    vector<T> ans;
+    Vector<T> ans;
     if (m_DataHead == 0) {
         // cout << "null\n";
         return ans;
     }
     int start = searchFind(compareKey);
-    CLeafNode<T,CHAR_LENGTH> it;
+    CLeafNode<T,CHAR_LENGTH,ORDER> it;
     CLeafNode_store.read(it, start);
     for (;; it = it.getRightSibling(this)) {
         int keyIndex = it.getKeyIndex(compareKey);
@@ -908,14 +917,14 @@ vector<T> CBPlusTree<T,CHAR_LENGTH>::FindAll(string compareKey) {
     return ans;
 }
 
-template<class T,int CHAR_LENGTH>
-int CBPlusTree<T,CHAR_LENGTH>::searchFind(string key) {
+template<class T,int CHAR_LENGTH,int ORDER>
+int CBPlusTree<T,CHAR_LENGTH,ORDER>::searchFind(string key) {
     if (rootType == INTERNAL) return recursive_searchFindInternal(getRootInternal(), key);
     else return rootPossession;
 }
 
-template<class T,int CHAR_LENGTH>
-int CBPlusTree<T,CHAR_LENGTH>::recursive_searchFindInternal(CInternalNode<T,CHAR_LENGTH> pNode, string key) {
+template<class T,int CHAR_LENGTH,int ORDER>
+int CBPlusTree<T,CHAR_LENGTH,ORDER>::recursive_searchFindInternal(CInternalNode<T,CHAR_LENGTH,ORDER> pNode, string key) {
     int keyIndex = pNode.getKeyIndex(key);
     if (keyIndex < pNode.getKeyNum() && pNode.compareKeyvalue(keyIndex, key) > 0) keyIndex++;
     if (pNode.getChildtype() == INTERNAL)

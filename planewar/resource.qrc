@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/enemy.webp</file>
+        <file>resource/love.webp</file>
+        <file>resource/ico.ico</file>
+        <file>resource/background.webp</file>
+        <file>resource/self.png</file>
+    </qresource>
+</RCC>

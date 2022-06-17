@@ -7,9 +7,9 @@
 #include "User.h"
 using namespace std;
 class Train_System{
-	#define MaxStation 102
-	#define MaxDay 96
-	#define MaxTrainName 22
+	#define MaxStation 101
+	#define MaxDay 94
+	#define MaxTrainName 21
 	#define MaxStationName 32
 public:
 	class Train{
@@ -52,7 +52,7 @@ public:
 	class Order{
 	public:
 		int status;//1:buy,0:queue,-1:refund
-		char username[22];
+		char username[21];
 		char trainID[MaxTrainName];
 		int firday,seatNum;
 		char startStation[MaxStationName],endStation[MaxStationName];
@@ -64,17 +64,17 @@ public:
 	};
 private:
 	Train GetTrainFromData(const string &trainID);
-	void queueUpdate(const string &trainID);
+	void queueUpdate(const string &trainID,const int Day);
 	int GetMaxSeatNum(const Train_System::Train &train,const string &startStation,const string &endStation,const int &firday);
 	int GetMaxSeatNum2(const Train_System::StationTrain &stationtrain,const int &L,const int &R,const int &firday);
 	void updateSeatNum(Train_System::Train &train,const string &startStation,const string &endStation,const int &num,const int &firday);
 public:
 	MemoryRiver<Train> TrainData;
-	CBPlusTree<DayTrain,MaxStationName+5> DayTrainIndex;
-	CBPlusTree<StationTrain,MaxStationName> StationIndex;
-	CBPlusTree<int,MaxTrainName> TrainIndex;
-	CBPlusTree<Order,22> OrderIndex;
-	CBPlusTree<Order,MaxTrainName> QueueIndex;
+	CBPlusTree<DayTrain,MaxStationName+4,20> DayTrainIndex;
+	CBPlusTree<StationTrain,MaxStationName,20> StationIndex;
+	CBPlusTree<int,MaxTrainName,10> TrainIndex;
+	CBPlusTree<Order,21,20> OrderIndex;
+	CBPlusTree<Order,MaxTrainName+4,20> QueueIndex;
 	// Key_value_database<DayTrain> DayTrainIndex;
 	// Key_value_database<StationTrain> StationIndex;
 	// Key_value_database<int> TrainIndex;

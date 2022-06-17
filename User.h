@@ -4,7 +4,7 @@
 #include "MemoryRiver.hpp"
 // #include "BlockList.hpp"
 #include "CBPlusTree.hpp"
-#include<map>//最后用手写的map换掉
+#include "linked_hashmap.hpp"
 using namespace std;
 template<class T>class for_rollback{
 public:
@@ -24,17 +24,17 @@ class User_System{
 public:
 	class User{
 	public:
-		char username[22];
-		char password[32];
-		char name[22];
-		char mailAddr[32];
+		char username[21];
+		char password[31];
+		char name[17];
+		char mailAddr[31];
 		int privilege;
 	};
 private:
 	User GetUserFromData(const string &username);
 public:
 	MemoryRiver<User> UserData;
-	CBPlusTree<int,22> UserIndex;
+	CBPlusTree<int,21,20> UserIndex;
 	// Key_value_database<int> UserIndex;
 	MemoryRiver< for_rollback<int> > UserIndex_rollback;
 	MemoryRiver<int> UserData_rollback;

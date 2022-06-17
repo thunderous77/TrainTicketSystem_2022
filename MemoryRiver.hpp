@@ -3,8 +3,9 @@
 
 #include <fstream>
 #include<unistd.h>
-#include<unordered_map>
+#include "linked_hashmap.hpp"
 using namespace std;
+using namespace sjtu;
 using std::string;
 using std::fstream;
 using std::ifstream;
@@ -188,7 +189,7 @@ public:
 
     using node = typename LinkedList::LinkedNode;
     int writePossession = -1;
-    unordered_map<int, node *> hashmap;
+    linked_hashmap<int, node *> hashmap;
     LinkedList cache;
 
     int cacheCount(const int key) {
@@ -197,7 +198,7 @@ public:
 
     void remake() {
         node *target = cache.popback();
-        hashmap.erase(target->key);
+        hashmap.erase(hashmap.find(target->key));
         if (target->useless)
             fileUpdate(target->key, *target->value);
         delete target;
@@ -205,7 +206,7 @@ public:
 
     void cacheErase(const int key) {
         cache.erase(hashmap[key]);
-        hashmap.erase(key);
+        hashmap.erase(hashmap.find(key));
     }
 
     void cacheWrite(const int key, const T &in) {

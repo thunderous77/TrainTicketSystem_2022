@@ -8,12 +8,25 @@
 #include<fstream>
 #include "Exceptions.hpp"
 #include "User.h"
+#include "vector.hpp"
 using namespace std;
+using namespace sjtu;
+
+extern long long Clock7;
 
 extern string OutputData;
 extern string d_order[30];
 extern int dcnt;
-map<string,int>Is_login;
+linked_hashmap<string,int>Is_login;
+linked_hashmap<string,User_System::User>User_cache;
+
+void Usercache_Get(User_System::User &user){
+	if(User_cache.find(user.username)!=User_cache.end()){
+		if(User_cache.size()==10000)User_cache.erase(User_cache.begin());
+		User_cache[user.username]=user;
+	}
+}
+
 static int string_to_int(const string &str){
 	int x=0;
 	for(int i=0;i<(int)str.size();i++)x=x*10+str[i]-'0';
@@ -37,7 +50,7 @@ static void Output(User_System::User G){
 
 
 User_System::User User_System::GetUserFromData(const string &username){
-	vector<int> G=UserIndex.FindAll(username);
+	Vector<int> G=UserIndex.FindAll(username);
 	User tmp_user;
 	UserData.read(tmp_user,G[0]);
 	return tmp_user;
@@ -68,6 +81,8 @@ void User_System::add_user(){
 	// Output(NewUser);
 	// cout<<"!!!"<<NewUser.username<<" "<<pos<<endl;
 
+	Usercache_Get(NewUser);
+
 	int tmp_rollback2=string_to_int2(d_order[1]);
 	UserData_rollback.write(tmp_rollback2);
 
@@ -90,33 +105,47 @@ void User_System::login(){
 	// cout<<"Is_Find: "<<username<<" "<<UserIndex.Find(username)<<endl;
 	if(!UserIndex.Find(username))throw Wrong_User_Or_Password();
 	// cout<<GetUserFromData(username).password<<" "<<password<<endl;
-	if(GetUserFromData(username).password==password){
+	User user=GetUserFromData(username);
+	if(user.password==password){
 		Is_login[username]=1;
 		cout<<d_order[1]<<" ";
 		printf("0\n");OutputData+="登录成功<br>";return;
+
+		Usercache_Get(user);
 	}
 	else throw Wrong_User_Or_Password();
+
+	
 }
 void User_System::logout(){
 	string username;
 	for(int i=3;i<=dcnt;i+=2){
 		if(d_order[i]=="-u")username=d_order[i+1];
 	}
-	if(!Is_login[username])throw User_Not_Login();
+	if(!Is_login[username]){throw User_Not_Login();}
 	Is_login[username]=0;
 	cout<<d_order[1]<<" ";
 	printf("0\n");OutputData+="登出成功<br>";
 }
 void User_System::query_profile(){
+	Clock7-=clock();
 	string cur_username,username;
 	for(int i=3;i<=dcnt;i+=2){
 		if(d_order[i]=="-c")cur_username=d_order[i+1];
 		if(d_order[i]=="-u")username=d_order[i+1];
 	}
-	if(!Is_login[cur_username])throw User_Not_Login();
-	if(!UserIndex.Find(username))throw Username_Not_Exist();
-	User cur_user=GetUserFromData(cur_username),user=GetUserFromData(username);
-	if(cur_username!=username&&cur_user.privilege<=user.privilege)throw Invalid_Privilege();
+	if(!Is_login[cur_username]){Clock7+=clock();throw User_Not_Login();}
+
+	User user;
+	if(User_cache.find(username)!=User_cache.end())user=User_cache[username];
+	else {
+		Vector<int> G=UserIndex.FindAll(username);
+		if(!G.size()){Clock7+=clock();throw Username_Not_Exist();}
+		// if(!UserIndex.Find(username))throw Username_Not_Exist();
+		UserData.read(user,G[0]);
+	}
+	User cur_user=GetUserFromData(cur_username);
+	if(cur_username!=username&&cur_user.privilege<=user.privilege){Clock7+=clock();throw Invalid_Privilege();}
 	cout<<d_order[1]<<" ";
 	cout<<user.username<<" "<<user.name<<" "<<user.mailAddr<<" "<<user.privilege<<endl;
 	OutputData+="查询成功<br>";
@@ -124,6 +153,11 @@ void User_System::query_profile(){
 	OutputData+="真实姓名："+string(user.name)+"<br>";
 	OutputData+="邮箱："+string(user.mailAddr)+"<br>";
 	OutputData+="权限："+int_to_string(user.privilege)+"<br>";
+
+	Usercache_Get(user);
+	Usercache_Get(cur_user);
+	
+	Clock7+=clock();
 }
 void User_System::modify_profile(){
 	string cur_username,username;
@@ -133,8 +167,14 @@ void User_System::modify_profile(){
 		if(d_order[i]=="-u")username=d_order[i+1];
 	}
 	if(!Is_login[cur_username])throw User_Not_Login();
-	if(!UserIndex.Find(username))throw Username_Not_Exist();
-	User cur_user=GetUserFromData(cur_username),user=GetUserFromData(username);
+	User user;
+	Vector<int> G=UserIndex.FindAll(username);
+	if(!G.size())throw Username_Not_Exist();
+	// if(!UserIndex.Find(username))throw Username_Not_Exist();
+	UserData.read(user,G[0]);
+	User cur_user;
+	if(User_cache.find(cur_username)!=User_cache.end())cur_user=User_cache[cur_username];
+	else cur_user=GetUserFromData(cur_username);
 	if(cur_username!=username&&cur_user.privilege<=user.privilege)throw Invalid_Privilege();
 	for(int i=3;i<=dcnt;i+=2){
 		if(d_order[i]=="-p")strcpy(user.password,d_order[i+1].c_str());
@@ -144,7 +184,7 @@ void User_System::modify_profile(){
 	}
 	if(privilege!=-1&&privilege>=cur_user.privilege)throw Invalid_Privilege();
 	if(privilege!=-1)user.privilege=privilege;
-	int pos=UserIndex.FindAll(username)[0];
+	int pos=G[0];
 	UserData.update(user,pos);
 	int tmp_rollback2=string_to_int2(d_order[1]);
 	UserData_rollback.write(tmp_rollback2);
@@ -156,6 +196,9 @@ void User_System::modify_profile(){
 	OutputData+="真实姓名："+string(user.name)+"<br>";
 	OutputData+="邮箱："+string(user.mailAddr)+"<br>";
 	OutputData+="权限："+int_to_string(user.privilege)+"<br>";
+
+	Usercache_Get(user);
+	Usercache_Get(cur_user);
 }
 void User_System::clean(){
 	UserData.clean();
@@ -163,9 +206,12 @@ void User_System::clean(){
 	UserIndex_rollback.clean();
 	UserData_rollback.clean();
 	Is_login.clear();
+	User_cache.clear();
 	OutputData+="用户系统数据清空成功<br>";
 }
 void User_System::rollback(){
+	User_cache.clear();
+
 	int Backtimestmp=string_to_int(d_order[4]);
 	int timestamp=string_to_int2(d_order[1]);
 	if(Backtimestmp>timestamp)throw Rollback_Timestamp_Error();

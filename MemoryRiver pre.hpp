@@ -2,7 +2,7 @@
 #define MEMORYRIVER_HPP
 
 #include <fstream>
-#include<unistd.h>
+// #include<unistd.h>
 using std::string;
 using std::fstream;
 using std::ifstream;
@@ -99,7 +99,7 @@ private:
 	}
 public:
 	void initialise(string FN,bool ReMake=0) {
-		if(access(string("./Data/").c_str(),0)==-1)system("mkdir Data");
+		// if(access(string("./Data/").c_str(),0)==-1)system("mkdir Data");
 		file_name = FN;
 		file.open(file_name);
 		if(!file||ReMake==1){
@@ -122,8 +122,8 @@ public:
 		// _IsRollback=0;//关闭rollback指令
 		Ismemoryrecycling=_Ismemoryrecycling;
 		IsRollback=_IsRollback;
-		string FN="./Data/"+_FN;
-		if(_FN!="")initialise(FN);
+		// string FN="./Data/"+_FN;
+		if(_FN!="")initialise(_FN);
 	}
 
     //读出第n个int的值赋给tmp，1_base
