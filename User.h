@@ -34,7 +34,8 @@ private:
 	User GetUserFromData(const string &username);
 public:
 	MemoryRiver<User> UserData;
-	CBPlusTree<int> UserIndex;
+	CBPlusTree<int,22> UserIndex;
+	// Key_value_database<int> UserIndex;
 	MemoryRiver< for_rollback<int> > UserIndex_rollback;
 	MemoryRiver<int> UserData_rollback;
 	User_System();

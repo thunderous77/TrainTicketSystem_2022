@@ -10,7 +10,7 @@ class Train_System{
 	#define MaxStation 102
 	#define MaxDay 96
 	#define MaxTrainName 22
-	#define MaxStationName 42
+	#define MaxStationName 32
 public:
 	class Train{
 	public:
@@ -18,7 +18,6 @@ public:
 		int stationNum;
 		char stations[MaxStation][MaxStationName];
 		int MaxseatNum;
-		int DayseatPos[MaxDay];
 		int prices[MaxStation];
 		int startTime,travelTimes[MaxStation],stopoverTimes[MaxStation];
 		int saleDateL,saleDateR;
@@ -32,12 +31,15 @@ public:
 	class DayTrain{
 	public:
 		int seatNum[MaxStation];
+		friend bool operator <(const DayTrain &A,const DayTrain &B){return 0;}
+		friend bool operator >(const DayTrain &A,const DayTrain &B){return 0;}
+		friend bool operator ==(const DayTrain &A,const DayTrain &B){return 1;}
+		friend bool operator !=(const DayTrain &A,const DayTrain &B){return !(A==B);}
 	};
 	class StationTrain{
 	public:
 		char trainID[MaxTrainName];
 		int StationIndex;
-		int DayseatPos[MaxDay];
 		int sumprice;
 		int sumArrivingTime,sumLeavingTime;
 		int saleDateL,saleDateR;
@@ -68,15 +70,21 @@ private:
 	void updateSeatNum(Train_System::Train &train,const string &startStation,const string &endStation,const int &num,const int &firday);
 public:
 	MemoryRiver<Train> TrainData;
-	MemoryRiver<DayTrain> DayTrainData;
+	CBPlusTree<DayTrain,MaxStationName+5> DayTrainIndex;
 	CBPlusTree<StationTrain,MaxStationName> StationIndex;
 	CBPlusTree<int,MaxTrainName> TrainIndex;
 	CBPlusTree<Order,22> OrderIndex;
 	CBPlusTree<Order,MaxTrainName> QueueIndex;
+	// Key_value_database<DayTrain> DayTrainIndex;
+	// Key_value_database<StationTrain> StationIndex;
+	// Key_value_database<int> TrainIndex;
+	// Key_value_database<Order> OrderIndex;
+	// Key_value_database<Order> QueueIndex;
 	MemoryRiver< for_rollback<StationTrain> >StationIndex_rollback;
 	MemoryRiver< for_rollback<int> > TrainIndex_rollback;
+	MemoryRiver< for_rollback<DayTrain> > DayTrainIndex_rollback;
 	MemoryRiver< for_rollback<Order> >OrderIndex_rollback,QueueIndex_rollback;
-	MemoryRiver<int> TrainData_rollback,DayTrainData_rollback;
+	MemoryRiver<int> TrainData_rollback;
 	Train_System();
 	void add_train();
 	void release_train();

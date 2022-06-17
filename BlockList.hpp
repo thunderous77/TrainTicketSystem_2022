@@ -125,7 +125,7 @@ public:
 		}
 	}
 	void insert(const string key,T val){
-		// cerr<<"insert"<<" "<<key<<" "<<val<<endl;
+		// cout<<"insert"<<" "<<key<<endl;
 		node value=node(key,val);
 		int blocknum;
 		Blocks_info.read_info(blocknum,2);
@@ -166,6 +166,7 @@ public:
 		}
 	}
 	bool Delete(const string key,T val){
+		// cout<<"Delete"<<" "<<key<<endl;
 		node value=node(key,val);
 		int blocknum;
 		Blocks_info.read_info(blocknum,2);
@@ -196,6 +197,7 @@ public:
 		}
 	}
 	vector<T> FindAll(const string key){
+		// cout<<"FindAll "<<key<<endl;
 		vector<T>ans;
 		int blocknum;
 		Blocks_info.read_info(blocknum,2);

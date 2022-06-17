@@ -3,7 +3,8 @@
 
 #include <fstream>
 #include<unistd.h>
-#include<map>
+#include<unordered_map>
+using namespace std;
 using std::string;
 using std::fstream;
 using std::ifstream;
@@ -187,7 +188,7 @@ public:
 
     using node = typename LinkedList::LinkedNode;
     int writePossession = -1;
-    map<int, node *> hashmap;
+    unordered_map<int, node *> hashmap;
     LinkedList cache;
 
     int cacheCount(const int key) {
@@ -333,7 +334,7 @@ public:
 		if(Ismemoryrecycling)initialise2(FN+"_memory_recycling",ReMake);
 		if(IsRollback)initialise3(FN+"_inside_rollback",ReMake);
     }
-    MemoryRiver(string _FN="",bool _Ismemoryrecycling=0,bool _IsRollback=0,int _capacity=100):cache(_capacity){
+    MemoryRiver(string _FN="",bool _Ismemoryrecycling=0,bool _IsRollback=0,int _capacity=50):cache(_capacity){
 		// _IsRollback=0;//关闭rollback指令
 		Ismemoryrecycling=_Ismemoryrecycling;
 		IsRollback=_IsRollback;
