@@ -26,15 +26,16 @@ public:
 	public:
 		char username[21];
 		char password[31];
-		char name[17];
+		char name[16];
 		char mailAddr[31];
-		int privilege;
+		short privilege;
 	};
 private:
 	User GetUserFromData(const string &username);
 public:
 	MemoryRiver<User> UserData;
-	CBPlusTree<int,21,20> UserIndex;
+	// CBPlusTree<int,21,20> UserIndex;
+	CBPlusTree<int,21> UserIndex;
 	// Key_value_database<int> UserIndex;
 	MemoryRiver< for_rollback<int> > UserIndex_rollback;
 	MemoryRiver<int> UserData_rollback;

@@ -29,6 +29,9 @@ private:
 	bool Ismemoryrecycling;
 	bool IsRollback;
 
+	int cacheMax;
+    linked_hashmap<int,T> hashmap;
+
 	void read2_las(int &t){
 		int index=num2*sizeof(int);
 		file2.open(file_name2);
@@ -100,128 +103,59 @@ private:
 		file3.write(reinterpret_cast<char*>(&num3),sizeof(int));
 		file3.close();
 	}
-
-
 public:
-	class LinkedList {
-	public:
-        class LinkedNode {
-        public:
-            int key = -1;
-            T *value = nullptr;
-            LinkedNode *pre = nullptr, *next = nullptr;
-            bool useless = false;
+	void initialise(string FN,bool ReMake=0) {
+		if(access(string("./Data/").c_str(),0)==-1)system("mkdir Data");
+		file_name = FN;
+		file.open(file_name);
+		if(!file||ReMake==1){
+			file.close();
+			// std::cout<<"ReMake"<<" "<<file_name<<" "<<info_len<<std::endl;
+			file.open(file_name,std::ios::out);//若文件不存在自动创建，且会清空文件
+			num = 0;
+			for (int i = 0; i < info_len; ++i)file.write(reinterpret_cast<char *>(&num), sizeof(int));
+			file.close();
+		}
+		else {
+			file.seekp(0);
+			file.read(reinterpret_cast<char*>(&num),sizeof(int));
+			file.close();
+		}
+		if(Ismemoryrecycling)initialise2(FN+"_memory_recycling",ReMake);
+		if(IsRollback)initialise3(FN+"_inside_rollback",ReMake);
+    }
+    MemoryRiver(string _FN="",bool _Ismemoryrecycling=0,bool _IsRollback=0,int _cacheMax=100){
+		// _IsRollback=0;//关闭rollback指令
+		Ismemoryrecycling=_Ismemoryrecycling;
+		IsRollback=_IsRollback;
+		cacheMax=_cacheMax;
+		string FN="./Data/"+_FN;
+		if(_FN!="")initialise(FN);
+	}
 
-            LinkedNode() = default;
-
-            LinkedNode(int k, const T &v, LinkedNode *p = nullptr, LinkedNode *n = nullptr)
-                    : key(k), value(new T(v)), pre(p), next(n) {}
-
-            ~LinkedNode() { delete value; }
-        };
-        LinkedNode *head = nullptr, *tail = nullptr;
-        int size = 0, capacity = 0;
-
-        LinkedList(int _capacity) : capacity(_capacity) {
-            head = new LinkedNode();
-            tail = new LinkedNode();
-            head->next = tail;
-            tail->pre = head;
-        }
-
-        ~LinkedList() {
-            LinkedNode *tmp = head;
-            while (head != nullptr) {
-                head = head->next;
-                delete tmp;
-                tmp = head;
-            }
-        }
-
-        void clean() {
-            size = 0;
-            LinkedNode *tmp = head;
-            while (head != nullptr) {
-                head = head->next;
-                delete tmp;
-                tmp = head;
-            }
-            head = new LinkedNode();
-            tail = new LinkedNode();
-            head->next = tail;
-            tail->pre = head;
-        }
-
-        void pushfront(LinkedNode *n) {
-            head->next->pre = n;
-            n->next = head->next;
-            head->next = n;
-            n->pre = head;
-            size++;
-        }
-
-        void movefront(LinkedNode *n) {
-            n->pre->next = n->next;
-            n->next->pre = n->pre;
-            size--;
-            pushfront(n);
-        }
-
-        LinkedNode *popback() {
-            LinkedNode *target = tail->pre;
-            target->pre->next = tail;
-            tail->pre = tail->pre->pre;
-            size--;
-            return target;
-        }
-
-        void erase(LinkedNode *n) {
-            n->pre->next = n->next;
-            n->next->pre = n->pre;
-            size--;
-            delete n;
-        }
-
-        bool full() const {
-            return size == capacity;
-        }
-    };
-
-    using node = typename LinkedList::LinkedNode;
-    int writePossession = -1;
-    linked_hashmap<int, node *> hashmap;
-    LinkedList cache;
-
-    int cacheCount(const int key) {
-        return hashmap.count(key);
+    //读出第n个int的值赋给tmp，1_base
+    void read_info(int &tmp, int n) {
+        if (n > info_len) return;
+		file.open(file_name);
+		file.seekp((n-1)*sizeof(int));
+		file.read(reinterpret_cast<char*>(&tmp),sizeof(int));
+		file.close();
     }
 
-    void remake() {
-        node *target = cache.popback();
-        hashmap.erase(hashmap.find(target->key));
-        if (target->useless)
-            fileUpdate(target->key, *target->value);
-        delete target;
+    //将tmp写入第n个int的位置，1_base
+    void write_info(int tmp, int n) {
+        if (n > info_len) return;
+		file.open(file_name);
+		file.seekp((n-1)*sizeof(int));
+		file.write(reinterpret_cast<char*>(&tmp),sizeof(int));
+		file.close();
     }
 
-    void cacheErase(const int key) {
-        cache.erase(hashmap[key]);
-        hashmap.erase(hashmap.find(key));
-    }
-
-    void cacheWrite(const int key, const T &in) {
-        if (cacheCount(key)) {
-            cache.movefront(hashmap[key]);
-            *hashmap[key]->value = in;
-            return;
-        }
-        auto newNode = new node(key, in);
-        if (cache.full()) remake();
-        cache.pushfront(newNode);
-        hashmap[key] = newNode;
-    }
-
-    int fileWrite(T &t) {
+	
+    //在文件合适位置写入类对象t，并返回写入的位置索引index
+    //位置索引意味着当输入正确的位置索引index，在以下三个函数中都能顺利的找到目标对象进行操作
+    //位置索引index可以取为对象写入的起始位置
+    int write(T &t) {
 		Clock5-=clock();
 		file.open(file_name);
 		int index;
@@ -256,16 +190,8 @@ public:
 		return index;
     }
 
-    void fileRead(T &t,const int index) {
-		Clock5-=clock();
-		file.open(file_name);
-		file.seekp(index);
-		file.read(reinterpret_cast<char*>(&t),sizeofT);
-		file.close();
-		Clock5+=clock();
-    }
-
-    void fileUpdate(int index,T &t) {
+    //用t的值更新位置索引index对应的对象，保证调用的index都是由write函数产生
+    void update(T &t, const int index) {
 		Clock5-=clock();
 		file.open(file_name);
 		T data;
@@ -278,9 +204,28 @@ public:
 
 		if(IsRollback)file3_update(0,index,data,0,-1,0);
 		Clock5+=clock();
+
+		hashmap[index]=t;
+		if(hashmap.size()>cacheMax)hashmap.erase(hashmap.begin());
     }
 
-    void fileDelete(int index,int type=0) {
+    //读出位置索引index对应的T对象的值并赋值给t，保证调用的index都是由write函数产生
+    void read(T &t, const int index) {
+		if(hashmap.find(index)!=hashmap.end()){
+			t=hashmap[index];
+			return;
+		}
+		Clock5-=clock();
+		file.open(file_name);
+		file.seekp(index);
+		file.read(reinterpret_cast<char*>(&t),sizeofT);
+		file.close();
+		Clock5+=clock();
+        /* your code here */
+    }
+
+    //删除位置索引index对应的对象(不涉及空间回收时，可忽略此函数)，保证调用的index都是由write函数产生
+    void Delete(int index,bool type=0) {//type=1时不回收空间,保证删除的是最后一个(同时保证IsRollback=0)
 		if(!type){
 			T data;
 			if(Ismemoryrecycling){
@@ -308,106 +253,14 @@ public:
 			file.write(reinterpret_cast<char*>(&num),sizeof(int));
 			file.close();
 		}
+
+		if(hashmap.find(index)!=hashmap.end())hashmap.erase(hashmap.find(index));
     }
-
-
-
-
-
-public:
-	void initialise(string FN,bool ReMake=0) {
-		if(access(string("./Data/").c_str(),0)==-1)system("mkdir Data");
-		file_name = FN;
-		file.open(file_name);
-		if(!file||ReMake==1){
-			file.close();
-			// std::cout<<"ReMake"<<" "<<file_name<<" "<<info_len<<std::endl;
-			file.open(file_name,std::ios::out);//若文件不存在自动创建，且会清空文件
-			num = 0;
-			for (int i = 0; i < info_len; ++i)file.write(reinterpret_cast<char *>(&num), sizeof(int));
-			file.close();
-		}
-		else {
-			file.seekp(0);
-			file.read(reinterpret_cast<char*>(&num),sizeof(int));
-			file.close();
-		}
-		if(Ismemoryrecycling)initialise2(FN+"_memory_recycling",ReMake);
-		if(IsRollback)initialise3(FN+"_inside_rollback",ReMake);
-    }
-    MemoryRiver(string _FN="",bool _Ismemoryrecycling=0,bool _IsRollback=0,int _capacity=50):cache(_capacity){
-		// _IsRollback=0;//关闭rollback指令
-		Ismemoryrecycling=_Ismemoryrecycling;
-		IsRollback=_IsRollback;
-		string FN="./Data/"+_FN;
-		if(_FN!="")initialise(FN);
-	}
-	// ~MemoryRiver() {
-    //     node *tmp = cache.head->next;
-    //     while (tmp != cache.tail) {
-    //         if (tmp->useless)
-    //             fileUpdate(tmp->key, *tmp->value);
-    //         tmp = tmp->next;
-    //     }
-    // }
-
-    //读出第n个int的值赋给tmp，1_base
-    void read_info(int &tmp, int n) {
-        if (n > info_len) return;
-		file.open(file_name);
-		file.seekp((n-1)*sizeof(int));
-		file.read(reinterpret_cast<char*>(&tmp),sizeof(int));
-		file.close();
-    }
-
-    //将tmp写入第n个int的位置，1_base
-    void write_info(int tmp, int n) {
-        if (n > info_len) return;
-		file.open(file_name);
-		file.seekp((n-1)*sizeof(int));
-		file.write(reinterpret_cast<char*>(&tmp),sizeof(int));
-		file.close();
-    }
-
-    //读出位置索引index对应的T对象的值并赋值给t，保证调用的index都是由write函数产生
-	void read(T &tmp,int possession) {
-        if (cacheCount(possession))
-            tmp = *hashmap[possession]->value;
-        else fileRead(tmp, possession);
-        cacheWrite(possession, tmp);
-    }
-
-	
-    //在文件合适位置写入类对象t，并返回写入的位置索引index
-    //位置索引意味着当输入正确的位置索引index，在以下三个函数中都能顺利的找到目标对象进行操作
-    //位置索引index可以取为对象写入的起始位置
-    int write(T &tmp) {
-        int possession = fileWrite(tmp);
-        cacheWrite(possession, tmp);
-        return possession;
-    }
-
-    //用t的值更新位置索引index对应的对象，保证调用的index都是由write函数产生
-    void update(T &tmp,int possession) {
-        cacheWrite(possession,tmp);
-		fileUpdate(possession,tmp);
-        // hashmap[possession]->useless = true;
-    }
-
-    //删除位置索引index对应的对象(不涉及空间回收时，可忽略此函数)，保证调用的index都是由write函数产生
-    void Delete(int possession,int type=0) {//type=1时不回收空间,保证删除的是最后一个(同时保证IsRollback=0)
-        if (cacheCount(possession))
-            cacheErase(possession);
-        fileDelete(possession,type);
-    }
-
 	
 	//清空文件
 	void clean(){
 		initialise(file_name,1);
-        cache.clean();
 		hashmap.clear();
-		writePossession=-1;
 	}
 	//找到最后一个数据的位置
 	int Maxpos(){
@@ -416,11 +269,8 @@ public:
 	}
 
 	void rollback(){//回滚一次操作(write/delete/update)
-        cache.clean();
-		hashmap.clear();
-		writePossession=-1;
-
 		if(!num3)return;
+		hashmap.clear();
 		file3.open(file_name3);
 		long long index=sizeof(int)+(long long)(num3-1)*sizeofT3;
 		// (type,pos,data,type2,pos2,data2)  (int,int,T,int,int,int) 
@@ -465,7 +315,6 @@ public:
 		file3.seekp(0);
 		file3.write(reinterpret_cast<char*>(&num3),sizeof(int));
 		file3.close();
-
 	}
 };
 

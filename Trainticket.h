@@ -10,17 +10,19 @@ class Train_System{
 	#define MaxStation 101
 	#define MaxDay 94
 	#define MaxTrainName 21
-	#define MaxStationName 32
+	#define MaxStationName 31
 public:
 	class Train{
 	public:
 		char trainID[MaxTrainName];
-		int stationNum;
+		short stationNum;
 		char stations[MaxStation][MaxStationName];
 		int MaxseatNum;
-		int prices[MaxStation];
-		int startTime,travelTimes[MaxStation],stopoverTimes[MaxStation];
-		int saleDateL,saleDateR;
+		int sumprices[MaxStation];
+		int startTime;
+		// int travelTimes[MaxStation],stopoverTimes[MaxStation];
+		int sumarrtime[MaxStation],sumleavingtime[MaxStation];
+		short saleDateL,saleDateR;
 		bool isRelease=0;
 		char type;
 		friend bool operator <(const Train &A,const Train &B){return string(A.trainID)<string(B.trainID);}
@@ -39,10 +41,10 @@ public:
 	class StationTrain{
 	public:
 		char trainID[MaxTrainName];
-		int StationIndex;
+		short StationIndex;
 		int sumprice;
 		int sumArrivingTime,sumLeavingTime;
-		int saleDateL,saleDateR;
+		short saleDateL,saleDateR;
 		int startTime;
 		friend bool operator <(const StationTrain &A,const StationTrain &B){return string(A.trainID)<string(B.trainID)|| (string(A.trainID)==string(B.trainID)&&A.StationIndex<B.StationIndex);}
 		friend bool operator >(const StationTrain &A,const StationTrain &B){return string(A.trainID)>string(B.trainID)|| (string(A.trainID)==string(B.trainID)&&A.StationIndex>B.StationIndex);}
@@ -51,10 +53,11 @@ public:
 	};
 	class Order{
 	public:
-		int status;//1:buy,0:queue,-1:refund
+		short status;//1:buy,0:queue,-1:refund
 		char username[21];
 		char trainID[MaxTrainName];
-		int firday,seatNum;
+		short firday;
+		int seatNum;
 		char startStation[MaxStationName],endStation[MaxStationName];
 		int timestamp;
 		friend bool operator <(const Order &A,const Order &B){return A.timestamp<B.timestamp;}
@@ -65,21 +68,21 @@ public:
 private:
 	Train GetTrainFromData(const string &trainID);
 	void queueUpdate(const string &trainID,const int Day);
-	int GetMaxSeatNum(const Train_System::Train &train,const string &startStation,const string &endStation,const int &firday);
+	int GetMaxSeatNum(const Train_System::Train &train,const int &Lpos,const int &Rpos,const int &firday);
 	int GetMaxSeatNum2(const Train_System::StationTrain &stationtrain,const int &L,const int &R,const int &firday);
-	void updateSeatNum(Train_System::Train &train,const string &startStation,const string &endStation,const int &num,const int &firday);
+	void updateSeatNum(Train_System::Train &train,const int &Lpos,const int &Rpos,const int &num,const int &firday);
 public:
 	MemoryRiver<Train> TrainData;
-	CBPlusTree<DayTrain,MaxStationName+4,20> DayTrainIndex;
-	CBPlusTree<StationTrain,MaxStationName,20> StationIndex;
-	CBPlusTree<int,MaxTrainName,10> TrainIndex;
-	CBPlusTree<Order,21,20> OrderIndex;
-	CBPlusTree<Order,MaxTrainName+4,20> QueueIndex;
-	// Key_value_database<DayTrain> DayTrainIndex;
-	// Key_value_database<StationTrain> StationIndex;
-	// Key_value_database<int> TrainIndex;
-	// Key_value_database<Order> OrderIndex;
-	// Key_value_database<Order> QueueIndex;
+	// CBPlusTree<DayTrain,MaxStationName+4,20> DayTrainIndex;
+	// CBPlusTree<StationTrain,MaxStationName,20> StationIndex;
+	// CBPlusTree<int,MaxTrainName,10> TrainIndex;
+	// CBPlusTree<Order,21,20> OrderIndex;
+	// CBPlusTree<Order,MaxTrainName+4,20> QueueIndex;
+	CBPlusTree<DayTrain,MaxStationName+4> DayTrainIndex;
+	CBPlusTree<StationTrain,MaxStationName> StationIndex;
+	CBPlusTree<int,MaxTrainName> TrainIndex;
+	CBPlusTree<Order,21> OrderIndex;
+	CBPlusTree<Order,MaxTrainName+4> QueueIndex;
 	MemoryRiver< for_rollback<StationTrain> >StationIndex_rollback;
 	MemoryRiver< for_rollback<int> > TrainIndex_rollback;
 	MemoryRiver< for_rollback<DayTrain> > DayTrainIndex_rollback;
