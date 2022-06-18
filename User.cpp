@@ -87,7 +87,7 @@ void User_System::add_user(){
 	UserData_rollback.write(tmp_rollback2);
 
 	
-	UserIndex.insert(NewUser.username,pos);
+	UserIndex.insert(NewUser.username,-1,pos);
 	
 	for_rollback<int> tmp_rollback(string_to_int2(d_order[1]),1,NewUser.username,pos);
 	UserIndex_rollback.write(tmp_rollback);
@@ -225,8 +225,8 @@ void User_System::rollback(){
 		UserIndex_rollback.read(tmp,pos);
 		if(tmp.timestamp<Backtimestmp)break;
 		// cout<<(tmp.type==1?"insert":"Delete")<<" "<<tmp.key<<" "<<tmp.val<<endl;
-		if(tmp.type==1)UserIndex.Delete(tmp.key,tmp.val);//在原来该时间戳insert(key,val)
-		if(tmp.type==-1)UserIndex.insert(tmp.key,tmp.val);//在原来该时间戳Delete(key,val)
+		if(tmp.type==1)UserIndex.Delete(tmp.key,-1);//在原来该时间戳insert(key,val)
+		if(tmp.type==-1)UserIndex.insert(tmp.key,-1,tmp.val);//在原来该时间戳Delete(key,val)
 		UserIndex_rollback.Delete(pos,1);
 		pos=UserIndex_rollback.Maxpos();
 	}

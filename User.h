@@ -20,6 +20,43 @@ public:
 	}
 };
 
+template<int Len>
+class MyStr{
+public:
+	char s[Len];
+	MyStr(){for(int i=0;i<Len;i++)s[i]='\0';}
+	MyStr(const string &G){strcpy(s,G.c_str());}
+	MyStr(char *G){strcpy(s,G);}
+	friend bool operator <(const MyStr &A,const MyStr &B){
+		for(int i=0;i<Len;i++){
+			if(A.s[i]<B.s[i])return 1;
+			else if(A.s[i]>B.s[i])return 0;
+			else{
+				if(A.s[i]=='\0')break;
+			}
+		}
+		return 0;
+	}
+	friend bool operator >(const MyStr &A,const MyStr &B){
+		for(int i=0;i<Len;i++){
+			if(A.s[i]>B.s[i])return 1;
+			else if(A.s[i]<B.s[i])return 0;
+			else{
+				if(A.s[i]=='\0')break;
+			}
+		}
+		return 0;
+	}
+	friend bool operator ==(const MyStr &A,const MyStr &B){
+		for(int i=0;i<Len;i++){
+			if(A.s[i]!=B.s[i])return 0;
+			if(A.s[i]=='\0')break;
+		}
+		return 1;
+	}
+	friend bool operator !=(const MyStr &A,const MyStr &B){return !(A==B);}
+};
+
 class User_System{
 public:
 	class User{
@@ -35,7 +72,7 @@ private:
 public:
 	MemoryRiver<User> UserData;
 	// CBPlusTree<int,21,20> UserIndex;
-	CBPlusTree<int,21> UserIndex;
+	CBPlusTree<int,int,21> UserIndex;
 	// Key_value_database<int> UserIndex;
 	MemoryRiver< for_rollback<int> > UserIndex_rollback;
 	MemoryRiver<int> UserData_rollback;

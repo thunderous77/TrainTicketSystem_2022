@@ -16,6 +16,7 @@ extern string d_order[30];
 // class Train_Not_Exist{public:void Output(){printf("列车ID不存在\n");OutputData+="列车ID不存在<br>";}};
 // class Train_Is_Release{public:void Output(){printf("列车已发布\n");OutputData+="列车已发布<br>";}};
 // class Train_Not_Release{public:void Output(){printf("列车未发布\n");OutputData+="列车未发布<br>";}};
+// class Not_Such_Station{public:void Output(){printf("该列车不经过该站\n");OutputData+="该列车不经过该站<br>";}};
 // class Not_In_SaleDate{public:void Output(){printf("不在该列车运行时间内\n");OutputData+="不在该列车运行时间内<br>";}};
 // class Lack_Seat{public:void Output(){printf("座位不足，购买失败\n");OutputData+="座位不足，购买失败<br>";}};
 // class Order_Kth_Invalid{public:void Output(){printf("订单编号不合法\n");OutputData+="订单编号不合法<br>";}};
@@ -32,6 +33,7 @@ class Train_Is_Exist{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}
 class Train_Not_Exist{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
 class Train_Is_Release{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
 class Train_Not_Release{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
+class Not_Such_Station{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
 class Not_In_SaleDate{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
 class Lack_Seat{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};
 class Order_Kth_Invalid{public:void Output(){cout<<d_order[1]<<" ";printf("-1\n");}};

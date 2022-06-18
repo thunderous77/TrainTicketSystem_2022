@@ -6,15 +6,15 @@ int main(){
 	system("./code<1.in>1.ans");
 	if(system("diff 1.out 1.ans -b")){printf("WA 1\n");return 0;}
 	printf("AC 1\n");
-	system("./code<2.in>2.ans");
-	if(system("diff 2.out 2.ans -b")){printf("WA 2\n");return 0;}
-	printf("AC 2\n");
-	system("./code<3.in>3.ans");
-	if(system("diff 3.out 3.ans -b")){printf("WA 3\n");return 0;}
-	printf("AC 3\n");
-	system("./code<4.in>4.ans");
-	if(system("diff 4.out 4.ans -b")){printf("WA 4\n");return 0;}
-	printf("AC 4\n");
+	// system("./code<2.in>2.ans");
+	// if(system("diff 2.out 2.ans -b")){printf("WA 2\n");return 0;}
+	// printf("AC 2\n");
+	// system("./code<3.in>3.ans");
+	// if(system("diff 3.out 3.ans -b")){printf("WA 3\n");return 0;}
+	// printf("AC 3\n");
+	// system("./code<4.in>4.ans");
+	// if(system("diff 4.out 4.ans -b")){printf("WA 4\n");return 0;}
+	// printf("AC 4\n");
 	// system("./code<5.in>5.ans");
 	// if(system("diff 5.out 5.ans -b")){printf("WA 5\n");return 0;}
 	// printf("AC 5\n");

@@ -28,6 +28,7 @@ string Solve(string order){
 	catch(Train_Not_Exist Ex){Ex.Output();}
 	catch(Train_Is_Release Ex){Ex.Output();}
 	catch(Train_Not_Release Ex){Ex.Output();}
+	catch(Not_Such_Station Ex){Ex.Output();}
 	catch(Not_In_SaleDate Ex){Ex.Output();}
 	catch(Lack_Seat Ex){Ex.Output();}
 	catch(Order_Kth_Invalid Ex){Ex.Output();}
