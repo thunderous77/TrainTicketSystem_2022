@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+function loadXMLDoc()
+{
+    var xmlhttp;//定义变量
+    if (window.XMLHttpRequest)
+    {
+      // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+      xmlhttp=new XMLHttpRequest();//创建一个XMLHttpRequest对象
+    }
+    else
+    {
+      // IE6, IE5 浏览器执行代码
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");//IE5,IE6不支持XMLHttpRequest,得使用这种方法
+    }
+    xmlhttp.onreadystatechange=function()//每当 readyState 属性改变时，就会调用该函数
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){//表示已成功获取到数据
+            //readyState表示请求状态(0:未初始化，1:服务器连接已建立，2:请求已接收，3:请求处理中，4:请求已完成，且响应已就绪)
+            //status (200:OK，404:未找到页面)
+            document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+            //document.getElementById("myDiv")表示找到第一个id为myDiv的标签的引用
+            //这里做到了把找到的标签的内部html代码改成xmlhttp中获得到的
+            //xmlhttp.responseText返回的是string类型
+            //xmlhttp.responseXML返回的是xml类型,此时还需要对获取的文件进行进一步解析
+      }
+    }
+    //以下为POST请求方式
+    xmlhttp.open("POST","./userinfo.php",true);
+    //请求方式，请求地址，是否开启异步
+    //默认请开启异步
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    //设置html header
+    //html header一般作用是 告诉电脑应该用什么语言、什么规范之类的
+    //这里的参数表示的是允许传递变量中蕴含的内容(大概)
+    //更多header信息详见 https://kb.cnblogs.com/page/92320/
+    
+    // xmlhttp.send("username=zhongzero&password=123456");
+    var username=document.getElementById("username").value;
+    var password=document.getElementById("password").value;
+    xmlhttp.send("username="+username+"&password="+password);
+    //Post在此传递参数
+    
+    /*
+    //以下为Get请求方式
+    // xmlhttp.open("GET","./userinfo.php?username=zhongzero&password=123456",true);
+    var username=document.getElementById("username").value;
+    var password=document.getElementById("password").value;
+    xmlhttp.open("GET","./userinfo.php?username="+username+"&password="+password,true);
+    xmlhttp.send();
+    */
+}
+</script>
+</head>
+<body>
+
+<h2>AJAX</h2>
+<div>
+    username
+    <input type="text" id="username">
+</div>
+<div>
+    password
+    <input type="password" id="password">
+</div>
+<button type="button" onclick="loadXMLDoc()">请求数据</button>    <!-- 每次onclick时执行loadXMLDoc() js函数 -->
+<div id="myDiv">2333</div>     <!-- 一开始其中内容为空，点击上述按钮后，通过id索引找到此处位置，可将其中代码进行修改 -->
+ 
+
+</body>
+</html>

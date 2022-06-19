@@ -1,0 +1,157 @@
+<!--
+
+=========================================================
+* Notus JS - v1.1.0 based on Tailwind Starter Kit by Creative Tim
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/notus-js
+* Copyright 2021 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md)
+
+* Tailwind Starter Kit Page: https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="shortcut icon" href="../assets/img/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../assets/img/apple-icon.png"
+    />
+    <link
+      rel="stylesheet"
+      href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../assets/styles/tailwind.css" />
+    <title>TrainTicketSystem</title>
+  </head>
+  <body class="text-blueGray-700 antialiased">
+    <nav
+      class="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow"
+    >
+      <div
+        class="container px-4 mx-auto flex flex-wrap items-center justify-between"
+      >
+        <div
+          class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
+        >
+          <a
+            class="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+            href="../trainticketsystem.html"
+            >
+            <button class="bg-orange-500 text-white active:bg-orange-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+              TrainTicketSystem
+            </button>
+            </a>
+        </div>
+        <div
+          class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none hidden"
+          id="example-collapse-navbar"
+        >
+          
+          <ul
+            class="flex flex-col lg:flex-row list-none lg:ml-auto items-center"
+          >
+              <a
+                class="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                href="../trainticketsystem.html"
+                onclick="openDropdown(event,'demo-pages-dropdown')"
+              >
+			  <button class="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+				返回主页
+			  </button>
+              </a>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+	<section class="mt-48 md:mt-40 pb-40 relative bg-blueGray-100" id="usermanage">
+		<div class="flex flex-wrap" id="wrapper-for-text-emerald">
+			<!-- 查询车票信息 -->
+			<div class="container mx-auto px-4 pb-32 pt-48" id="query_ticket">
+				<div class="items-center flex flex-wrap">
+				  <div class="w-full md:w-5/12 px-12 md:px-4">
+					<div class="md:pr-12">
+					  <div
+						class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+					  >
+						<i class="fas fa-file-alt text-xl"></i>
+					  </div>
+					  <h3 class="text-3xl font-semibold">查询车票信息</h3>
+					  <div class="mb-3 pt-0">
+						<p class="mt-4 text-lg leading-relaxed text-blueGray-500">起始站</p>
+						<input id="query_ticket_startstation" type="text" placeholder="startstation" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+					  </div>
+					  <div class="mb-3 pt-0">
+						<p class="mt-4 text-lg leading-relaxed text-blueGray-500">目的站</p>
+						<input id="query_ticket_endstation" type="text" placeholder="endstation" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+					  </div>
+					  <div class="mb-3 pt-0">
+						<p class="mt-4 text-lg leading-relaxed text-blueGray-500">从起始站出发的日期</p>
+						<input id="query_ticket_date" type="text" placeholder="date(mm-dd)" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+					  </div>
+					  <div class="mb-3 pt-0">
+						<p class="mt-4 text-lg leading-relaxed text-blueGray-500">排序方式(不填默认为time)</p>
+						<input id="query_ticket_sortType" type="text" placeholder="time/cost" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+					  </div>
+					  <button onclick="query_ticket()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+						查询
+					  </button>
+					  <div class="mb-3 pt-0">
+						<p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+						  查询结果:
+						  <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="query_ticket_output"></p>
+						</p>
+					  </div>
+					  
+					</div>
+				  </div>
+				</div>
+			  </div>
+		</div>
+	</section>
+
+
+  </body>
+  
+  <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+  <script>
+    /* Make dynamic date appear */
+    (function () {
+      if (document.getElementById("get-current-year")) {
+        document.getElementById(
+          "get-current-year"
+        ).innerHTML = new Date().getFullYear();
+      }
+    })();
+    /* Function for opning navbar on mobile */
+    function toggleNavbar(collapseID) {
+      document.getElementById(collapseID).classList.toggle("hidden");
+      document.getElementById(collapseID).classList.toggle("block");
+    }
+    /* Function for dropdowns */
+    function openDropdown(event, dropdownID) {
+      let element = event.target;
+      while (element.nodeName !== "A") {
+        element = element.parentNode;
+      }
+      Popper.createPopper(element, document.getElementById(dropdownID), {
+        placement: "bottom-start",
+      });
+      document.getElementById(dropdownID).classList.toggle("hidden");
+      document.getElementById(dropdownID).classList.toggle("block");
+    }
+  </script>
+</html>
