@@ -114,7 +114,7 @@
 				  </div>
 				  <h3 class="text-3xl font-semibold">退票</h3>
 				  <div class="mb-3 pt-0">
-					<p class="mt-4 text-lg leading-relaxed text-blueGray-500">要退订单的编号</p>
+					<p class="mt-4 text-lg leading-relaxed text-blueGray-500">要退订单的编号(从上到下)</p>
 					<input id="refund_ticket_kth" type="text" placeholder="Kth" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
 				  </div>
 				  <button onclick="refund_ticket()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
@@ -132,6 +132,24 @@
 	</section>
 
   <script>
+    function setCookie(cname,cvalue,exdays){
+      var d = new Date();
+      d.setTime(d.getTime()+(exdays*24*60*60*1000));
+      var expires = "expires="+d.toGMTString();
+      document.cookie = cname+"="+cvalue+"; "+expires+"; path=/";
+    }
+    function clearCookie(name) {  
+      setCookie(name,"",-1);
+    }
+    function getCookie(cname){
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0; i<ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+      }
+      return "";
+    }
     function query_order(){
       var xmlhttp;//定义变量
       if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
@@ -139,18 +157,41 @@
       xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState==4 && xmlhttp.status==200){
           var str=xmlhttp.responseText;
-          document.getElementById("query_order_output").innerHTML=str+"请重新查询查看订单";
+          document.getElementById("query_order_output").innerHTML=str;
         }
       }
       //以下为POST请求方式
-      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.open("POST","../TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var date=new Date();
-      var timestamp=((((((date.getFullYear()-2022)*12+date.getMonth())*31+date.getDate())*24+date.getHours())*60+date.getMinutes())*60+date.getSeconds())*10+Math.round(date.getMilliseconds()/100);
-      // var username=document.getElementById("query_order_username").value;
-      !!!!
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
+      var username=getCookie("username");
       var ans="["+timestamp+"] "+"query_order";
       if(username!="")ans+=" -u "+username;
+      // alert(ans);
+      xmlhttp.send("text="+ans);
+    }
+    function refund_ticket(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("refund_ticket_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","../TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
+      var username=getCookie("username");
+      var kth=document.getElementById("refund_ticket_kth").value;
+      var ans="["+timestamp+"] "+"refund_ticket";
+      if(username!="")ans+=" -u "+username;
+      if(kth!="")ans+=" -n "+kth;
+      alert(ans);
       xmlhttp.send("text="+ans);
     }
   </script>

@@ -36,6 +36,100 @@
     <link rel="stylesheet" href="../assets/styles/tailwind.css" />
     <title>TrainTicketSystem</title>
   </head>
+  <script>
+    function setCookie(cname,cvalue,exdays){
+      var d = new Date();
+      d.setTime(d.getTime()+(exdays*24*60*60*1000));
+      var expires = "expires="+d.toGMTString();
+      document.cookie = cname+"="+cvalue+"; "+expires+"; path=/";
+    }
+    function clearCookie(name) {  
+      setCookie(name,"",-1);
+    }
+    function getCookie(cname){
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0; i<ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+      }
+      return "";
+    }
+    function checkCookie(){
+      // var user=document.cookie;
+      var user=getCookie("username");
+      if (user!=""){
+        document.getElementById("username").innerHTML=user;
+        document.getElementById("loginstatus").innerHTML="已登录";
+        document.getElementById("loginstatus").setAttribute("style","pointer-events: none; opacity: 0.5;");
+      }
+      else {
+        document.getElementById("logoutstatus").setAttribute("style","pointer-events: none; opacity: 0.5;");
+        document.getElementById("modifystatus").setAttribute("style","pointer-events: none; opacity: 0.5;");
+      }
+      return $str;
+    }
+    function query_ticket(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("query_ticket_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","../TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
+      var startstation=document.getElementById("query_ticket_startstation").value;
+      var endstation=document.getElementById("query_ticket_endstation").value;
+      var date=document.getElementById("query_ticket_date").value;
+      var sortType=document.getElementById("query_ticket_sortType").value;
+      var ans="["+timestamp+"] "+"query_ticket";
+      if(startstation!="")ans+=" -s "+startstation;
+      if(endstation!="")ans+=" -t "+endstation;
+      if(date!="")ans+=" -d "+date;
+      if(sortType!="")ans+=" -p "+sortType;
+      // alert(ans);
+      xmlhttp.send("text="+ans);
+    }
+    function buy_ticket(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("buy_ticket_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","../TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
+      var username=getCookie("username");
+      var trainID=document.getElementById("buy_ticket_trainID").value;
+      var startstation=document.getElementById("buy_ticket_startstation").value;
+      var endstation=document.getElementById("buy_ticket_endstation").value;
+      var date=document.getElementById("buy_ticket_date").value;
+      var seatnum=document.getElementById("buy_ticket_seatnum").value;
+      var allowqueue=document.getElementById("buy_ticket_allowqueue").value;
+      var ans="["+timestamp+"] "+"buy_ticket";
+      if(username!="")ans+=" -u "+username;
+      if(trainID!="")ans+=" -i "+trainID;
+      if(startstation!="")ans+=" -f "+startstation;
+      if(endstation!="")ans+=" -t "+endstation;
+      if(date!="")ans+=" -d "+date;
+      if(seatnum!="")ans+=" -n "+seatnum;
+      if(allowqueue!="")ans+=" -q "+allowqueue;
+      // alert(ans);
+      xmlhttp.send("text="+ans);
+    }
+  </script>
   <body class="text-blueGray-700 antialiased">
     <nav
       class="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow"
@@ -118,9 +212,52 @@
 					  
 					</div>
 				  </div>
+          
+        <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+          <div class="md:pr-12">
+            <div
+              class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+            >
+              <i class="fas fa-file-alt text-xl"></i>
+            </div>
+            <h3 class="text-3xl font-semibold">购买车票</h3>
+            <div class="mb-3 pt-0">
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500">购买的票的列车ID</p>
+              <input id="buy_ticket_trainID" type="text" placeholder="trainID" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+            </div>
+            <div class="mb-3 pt-0">
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500">起始站</p>
+              <input id="buy_ticket_startstation" type="text" placeholder="startstation" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+            </div>
+            <div class="mb-3 pt-0">
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500">目的站</p>
+              <input id="buy_ticket_endstation" type="text" placeholder="endstation" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+            </div>
+            <div class="mb-3 pt-0">
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500">从起始站出发的日期</p>
+              <input id="buy_ticket_date" type="text" placeholder="date(mm-dd)" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+            </div>
+            <div class="mb-3 pt-0">
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500">购票数量</p>
+              <input id="buy_ticket_seatnum" type="text" placeholder="seatnum" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+            </div>
+            <div class="mb-3 pt-0">
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500">是否接受补票(不填默认为false)</p>
+              <input id="buy_ticket_allowqueue" type="text" placeholder="true/false" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+            </div>
+            <button onclick="buy_ticket()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+              购买
+            </button>
+            <div class="mb-3 pt-0">
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+                购买状态:
+                <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="buy_ticket_output"></p>
+              </p>
+            </div>
 				</div>
 			  </div>
 		</div>
+            
 	</section>
 
 

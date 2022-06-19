@@ -1,3 +1,3 @@
-/mnt/e/TrainTicketSystem_2022/front/cmake/CMakeFiles/rebuild_cache.dir
-/mnt/e/TrainTicketSystem_2022/front/cmake/CMakeFiles/edit_cache.dir
-/mnt/e/TrainTicketSystem_2022/front/cmake/CMakeFiles/code.dir
+/mnt/e/TrainTicketSystem_2022/back/cmake/CMakeFiles/rebuild_cache.dir
+/mnt/e/TrainTicketSystem_2022/back/cmake/CMakeFiles/edit_cache.dir
+/mnt/e/TrainTicketSystem_2022/back/cmake/CMakeFiles/code.dir

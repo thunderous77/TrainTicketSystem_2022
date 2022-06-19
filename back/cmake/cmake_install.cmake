@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/e/TrainTicketSystem_2022/front
+# Install script for directory: /mnt/e/TrainTicketSystem_2022/back
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/e/TrainTicketSystem_2022/front/cmake/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/e/TrainTicketSystem_2022/back/cmake/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

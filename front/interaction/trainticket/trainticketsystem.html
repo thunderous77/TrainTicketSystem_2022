@@ -36,7 +36,63 @@
     <link rel="stylesheet" href="./assets/styles/tailwind.css" />
     <title>TrainTicketSystem</title>
   </head>
-  <body class="text-blueGray-700 antialiased" background="./picture/background.webp" style="background-size:cover">
+  <script>
+    function setCookie(cname,cvalue,exdays){
+      var d = new Date();
+      d.setTime(d.getTime()+(exdays*24*60*60*1000));
+      var expires = "expires="+d.toGMTString();
+      document.cookie = cname+"="+cvalue+"; "+expires+"; path=/";
+    }
+    function clearCookie(name) {  
+      setCookie(name,"",-1);
+    }
+    function getCookie(cname){
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0; i<ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+      }
+      return "";
+    }
+    function checkCookie(){
+      // var user=document.cookie;
+      var user=getCookie("username");
+      if (user!=""){
+        document.getElementById("username").innerHTML=user;
+        document.getElementById("loginstatus").innerHTML="已登录";
+        document.getElementById("loginstatus").setAttribute("style","pointer-events: none; opacity: 0.5;");
+      }
+      else {
+        document.getElementById("logoutstatus").setAttribute("style","pointer-events: none; opacity: 0.5;");
+        document.getElementById("modifystatus").setAttribute("style","pointer-events: none; opacity: 0.5;");
+      }
+      return $str;
+    }
+
+    function logout(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+            clearCookie("username");
+            location.reload();
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
+      var username=getCookie("username");
+      var ans="["+timestamp+"] "+"logout";
+      if(username!="")ans+=" -u "+username;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+  <body onload="checkCookie()" class="text-blueGray-700 antialiased" background="./picture/background.webp" style="background-size:cover">
     <nav
       class="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow"
     >
@@ -53,6 +109,8 @@
             <button class="bg-orange-500 text-white active:bg-orange-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
               TrainTicketSystem
             </button>
+            
+
             </a>
           <a
             class="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
@@ -87,7 +145,7 @@
                 href="#pablo"
                 onclick="openDropdown(event,'demo-pages-dropdown')"
               >
-                <button class="bg-orange-500 text-white active:bg-orange-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                <button id="username"  class="bg-orange-500 text-white active:bg-orange-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
                   点击登录
                 </button>
               </a>
@@ -95,19 +153,20 @@
                 class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48 navbar-popper"
                 id="demo-pages-dropdown"
               >
-                <a
+                <a id="loginstatus"
                   href="./trainticketsystem/login.html"
                   class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                 >
-                  登录/注册
+                    登录/注册
                 </a>
-                <a
-                  href="./trainticketsystem/logout.html"
+                <div id="logoutstatus"
+                  onclick="logout()"
+                  style="cursor:pointer;"
                   class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                 >
                   登出
-                </a>
-                <a
+              </div>
+                <a id="modifystatus"
                   href="./trainticketsystem/modify.html"
                   class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                 >
@@ -118,6 +177,7 @@
           </ul>
         </div>
       </div>
+      
     </nav>
 
     <!-- 首页 -->

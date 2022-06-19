@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/mnt/e/TrainTicketSystem_2022/front/src/Order.cpp" "/mnt/e/TrainTicketSystem_2022/front/cmake/CMakeFiles/code.dir/src/Order.cpp.o"
-  "/mnt/e/TrainTicketSystem_2022/front/src/Trainticket.cpp" "/mnt/e/TrainTicketSystem_2022/front/cmake/CMakeFiles/code.dir/src/Trainticket.cpp.o"
-  "/mnt/e/TrainTicketSystem_2022/front/src/User.cpp" "/mnt/e/TrainTicketSystem_2022/front/cmake/CMakeFiles/code.dir/src/User.cpp.o"
-  "/mnt/e/TrainTicketSystem_2022/front/src/main.cpp" "/mnt/e/TrainTicketSystem_2022/front/cmake/CMakeFiles/code.dir/src/main.cpp.o"
+  "/mnt/e/TrainTicketSystem_2022/back/src/Order.cpp" "/mnt/e/TrainTicketSystem_2022/back/cmake/CMakeFiles/code.dir/src/Order.cpp.o"
+  "/mnt/e/TrainTicketSystem_2022/back/src/Trainticket.cpp" "/mnt/e/TrainTicketSystem_2022/back/cmake/CMakeFiles/code.dir/src/Trainticket.cpp.o"
+  "/mnt/e/TrainTicketSystem_2022/back/src/User.cpp" "/mnt/e/TrainTicketSystem_2022/back/cmake/CMakeFiles/code.dir/src/User.cpp.o"
+  "/mnt/e/TrainTicketSystem_2022/back/src/main.cpp" "/mnt/e/TrainTicketSystem_2022/back/cmake/CMakeFiles/code.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

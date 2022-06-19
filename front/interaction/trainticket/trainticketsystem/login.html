@@ -36,6 +36,93 @@
     <link rel="stylesheet" href="../assets/styles/tailwind.css" />
     <title>TrainTicketSystem</title>
   </head>
+  <script>
+    function setCookie(cname,cvalue,exdays){
+      var d = new Date();
+      d.setTime(d.getTime()+(exdays*24*60*60*1000));
+      var expires = "expires="+d.toGMTString();
+      document.cookie = cname+"="+cvalue+"; "+expires+"; path=/";
+    }
+    function clearCookie(name) {  
+      setCookie(name,"",-1);
+    } 
+    function getCookie(cname){
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0; i<ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+      }
+      return "";
+    }
+
+    function login(){
+      // clearAllCookie();
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          if(str=="登录成功<br>"){
+            // alert(str);
+            var username=document.getElementById("login_username").value;
+            setCookie("username",username,1,"/");
+            // alert(getCookie("username"));
+            window.location.href='/trainticket/trainticketsystem.html';
+          }
+          document.getElementById("login_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","../TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
+      var username=document.getElementById("login_username").value;
+      var password=document.getElementById("login_password").value;
+      var ans="["+timestamp+"] "+"login";
+      if(username!="")ans+=" -u "+username;
+      if(password!="")ans+=" -p "+password;
+      // alert(ans);
+      xmlhttp.send("text="+ans);
+    }
+    function add_user(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          if(str=="添加成功<br>"){
+            alert("注册成功");
+            location.reload();
+          }
+          document.getElementById("add_user_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","../TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
+      var curusername="admin";
+      var username=document.getElementById("add_user_username").value;
+      var password=document.getElementById("add_user_password").value;
+      var realname=document.getElementById("add_user_realname").value;
+      var mailbox=document.getElementById("add_user_mailbox").value;
+      var privilege="1";
+      var ans="["+timestamp+"] "+"add_user";
+      if(curusername!="")ans+=" -c "+curusername;
+      if(username!="")ans+=" -u "+username;
+      if(password!="")ans+=" -p "+password;
+      if(realname!="")ans+=" -n "+realname;
+      if(mailbox!="")ans+=" -m "+mailbox;
+      if(privilege!="")ans+=" -g "+privilege;
+      // alert(ans);
+      xmlhttp.send("text="+ans);
+    }
+  </script>
   <body class="text-blueGray-700 antialiased">
     <nav
       class="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow"
@@ -119,6 +206,12 @@
                       </button>
                     </div>
                   </div>
+                  <div class="mb-3 pt-0">
+                    <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+                      登录状态:
+                      <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="login_output"></p>
+                    </p>
+                  </div>
 
                   
                 </div>
@@ -151,6 +244,12 @@
                       <button onclick="add_user()"  class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
                         注册
                       </button>
+                      <div class="mb-3 pt-0">
+                        <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+                          注册状态:
+                          <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="add_user_output"></p>
+                        </p>
+                      </div>
                       
                     </div>
                   </div>
