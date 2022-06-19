@@ -1,0 +1,1886 @@
+<!--
+
+=========================================================
+* Notus JS - v1.1.0 based on Tailwind Starter Kit by Creative Tim
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/notus-js
+* Copyright 2021 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md)
+
+* Tailwind Starter Kit Page: https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="shortcut icon" href="./picture/favicon.ico" />
+    <link
+    rel="apple-touch-icon"
+    sizes="76x76"
+    href="./picture/apple-icon.png"
+    />
+    <link
+    rel="stylesheet"
+    href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./assets/styles/tailwind.css" />
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+    <title>TrainTicketSystem Management</title>
+  </head>
+  <body class="text-blueGray-700 antialiased" background="./picture/background.webp" style="background-size:cover">
+    <nav
+      class="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow"
+    >
+      <div
+        class="container px-4 mx-auto flex flex-wrap items-center justify-between"
+      >
+        <div
+          class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
+        >
+          <a
+            class="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+            href="./trainticketsystem_management.html"
+            >
+            <button class="bg-orange-500 text-white active:bg-orange-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+              TrainTicketSystem Management
+            </button>
+            </a>
+        </div>
+        <div
+          class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none hidden"
+          id="example-collapse-navbar"
+        >
+          <ul
+            class="flex flex-col lg:flex-row list-none lg:ml-auto items-center"
+          >
+            <li class="inline-block relative">
+              <p
+                class="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+              >
+                welcome
+              </a>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 首页 -->
+     <section
+      class="header relative pt-16 items-center flex h-screen max-h-860-px"
+    >
+      <div class="container mx-auto items-center flex flex-wrap">
+        <div class="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
+          <div class="pt-32 sm:pt-0">
+            <h2 class="font-semibold text-4xl text-blueGray-600">
+              火车票管理系统
+            </h2>
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              TrainTicketSystem Management
+              <br>
+              通过它来管理属于您自己的火车站系统吧
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <img
+        class="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px"
+        src="./picture/壁纸.jpg"
+        alt="..."
+      />
+    </section>
+
+    <!-- 左下角 操作列表索引 -->
+    <div class="flex flex-wrap" style="position:fixed; bottom:20px; left:0px; z-index:1000;">
+      <div class="w-full sm:w-6/12 md:w-4/12 px-4">
+        <div class="relative inline-flex align-middle w-full">
+          <button class="text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 bg-orange-500 active:bg-orange-600 ease-linear transition-all duration-150" type="button" onclick="openDropdown(event,'dropdown-id-1')">
+            操作列表
+          </button>
+          <div class="hidden bg-orange-500  text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1 min-w-48" id="dropdown-id-1">
+            <a href="#usermanage" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-white">
+              用户管理
+            </a>
+            <a href="#trainmanage" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-white">
+              火车票管理
+            </a>
+            <a href="#clean_rollback" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-white">
+              清空&回滚
+            </a>
+            <div class="h-0 my-2 border border-solid border-t-0 border-blueGray-800 opacity-25"></div>
+            <a href="#aboutme" class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-white">
+              about me
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function openDropdown(event,dropdownID){
+        let element = event.target;
+        while(element.nodeName !== "BUTTON"){
+          element = element.parentNode;
+        }
+        var popper = Popper.createPopper(element, document.getElementById(dropdownID), {
+          placement: 'bottom-start'
+        });
+        document.getElementById(dropdownID).classList.toggle("hidden");
+        document.getElementById(dropdownID).classList.toggle("block");
+      }
+    </script>
+
+<!-- 用户管理 -->
+<section class="mt-48 md:mt-40 pb-40 relative bg-blueGray-100" id="usermanage">
+  <div style="height: 300px"></div>
+  <div
+    class="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
+    style="transform: translateZ(0)"
+  >
+    <svg
+      class="absolute bottom-0 overflow-hidden"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+      version="1.1"
+      viewBox="0 0 2560 100"
+      x="0"
+      y="0"
+    >
+      <polygon
+        class="text-blueGray-100 fill-current"
+        points="2560 0 2560 100 0 100"
+      ></polygon>
+    </svg>
+  </div>
+
+  <!-- 用户管理首页 -->
+  <div class="container mx-auto">
+      <div class="flex flex-wrap items-center">
+      <div
+        class="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-32"
+      >
+        <div
+          class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-500"
+        >
+          <img
+            alt="..."
+            src="./picture/69283103_p1_master1200.jpg"
+            class="w-full align-middle rounded-t-lg"
+          />
+          <blockquote class="relative p-8 mb-4">
+            <svg
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 583 95"
+              class="absolute left-0 w-full block h-95-px -top-94-px"
+            >
+              <polygon
+                points="-30,95 583,95 583,65"
+                class="text-pink-500 fill-current"
+              ></polygon>
+            </svg>
+            <h4 class="text-xl font-bold text-white">
+              用户管理
+            </h4>
+          </blockquote>
+        </div>
+      </div>
+      
+    <div class="flex flex-wrap items-center pt-32">
+      <div class="my-4 w-full lg:w-6/12 px-4">
+        <a
+          href="#add_user"
+        >
+          <div class="bg-red-600 shadow-lg rounded-lg text-center p-8">
+            <p class="text-lg text-white mt-4 font-semibold">添加用户(add_user)</p>
+          </div>
+        </a>
+        <a
+          href="#login"
+        >
+          <div
+            class="bg-lightBlue-500 shadow-lg rounded-lg text-center p-8 mt-8"
+          >
+            <p class="text-lg text-white mt-4 font-semibold">用户登录(login)</p>
+          </div>
+        </a>
+        <a
+          href="#logout"
+        >
+          <div
+            class="bg-blueGray-700 shadow-lg rounded-lg text-center p-8 mt-8"
+          >
+            <p class="text-lg text-white mt-4 font-semibold">用户登出(logout)</p>
+          </div>
+        </a>
+      </div>
+      <div class="my-4 w-full lg:w-6/12 px-4 lg:mt-16">
+        <a
+          href="#query_profile"
+        >
+          <div
+            class="bg-yellow-500 shadow-lg rounded-lg text-center p-8"
+          >
+            <p class="text-lg text-white mt-4 font-semibold">查询用户信息(query_profile)</p>
+          </div>
+        </a>
+        <a
+          href="#modify_profile"
+        >
+          <div
+            class="bg-red-700 shadow-lg rounded-lg text-center p-8 mt-8"
+          >
+            <p class="text-lg text-white mt-4 font-semibold">更改用户信息(modify_profile)</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  <!-- 添加用户(add_user) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="add_user">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">添加用户</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            当前用户-c，创建一个账户名为-u，密码为-p，用户真实姓名为-n，用户邮箱为-m，权限为-g的用户
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="add_user_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">当前用户</p>
+            <input id="add_user_curusername" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">用户名</p>
+            <input id="add_user_username" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">密码</p>
+            <input id="add_user_password" type="password" placeholder="password" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">真实姓名</p>
+            <input id="add_user_realname" type="text" placeholder="realname" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">邮箱</p>
+            <input id="add_user_mailbox" type="text" placeholder="mailbox" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">权限</p>
+            <input id="add_user_privilege" type="text" placeholder="privilege" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="add_user()"  class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            添加
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              添加状态:
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="add_user_output"></p>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/67655281_p0.png"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function add_user(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("add_user_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("add_user_timestamp").value;
+      var curusername=document.getElementById("add_user_curusername").value;
+      var username=document.getElementById("add_user_username").value;
+      var password=document.getElementById("add_user_password").value;
+      var realname=document.getElementById("add_user_realname").value;
+      var mailbox=document.getElementById("add_user_mailbox").value;
+      var privilege=document.getElementById("add_user_privilege").value;
+      var ans="["+timestamp+"] "+"add_user";
+      if(curusername!="")ans+=" -c "+curusername;
+      if(username!="")ans+=" -u "+username;
+      if(password!="")ans+=" -p "+password;
+      if(realname!="")ans+=" -n "+realname;
+      if(mailbox!="")ans+=" -m "+mailbox;
+      if(privilege!="")ans+=" -g "+privilege;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+
+  <!-- 用户登录(login) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="login">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">用户登录</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            用户-u尝试用-p登录。
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="login_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">用户名</p>
+            <input id="login_username" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">密码</p>
+            <input id="login_password" type="password" placeholder="password" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="login()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            登录
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              登录状态:
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="login_output"></p>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/67947832_p0.png"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function login(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("login_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("login_timestamp").value;
+      var username=document.getElementById("login_username").value;
+      var password=document.getElementById("login_password").value;
+      var ans="["+timestamp+"] "+"login";
+      if(username!="")ans+=" -u "+username;
+      if(password!="")ans+=" -p "+password;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+
+  <!-- 用户登出(logout) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="logout">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">用户登出</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            当前用户-c登出
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="logout_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">用户名</p>
+            <input id="logout_username" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          
+          <button onclick="logout()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            登出
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              登出状态:
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="logout_output"></p>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/69784489_p0.png"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function logout(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("logout_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("logout_timestamp").value;
+      var username=document.getElementById("logout_username").value;
+      var ans="["+timestamp+"] "+"logout";
+      if(username!="")ans+=" -u "+username;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+
+  <!-- 查询用户信息(query_profile) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="query_profile">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">查询用户信息</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            用户-c查询-u的用户信息。
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="query_profile_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">请求查询用户</p>
+            <input id="query_profile_curusername" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">被查询用户</p>
+            <input id="query_profile_username" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="query_profile()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            查询
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              查询结果:
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="query_profile_output"></p>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/70859189_p0.png"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function query_profile(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("query_profile_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("query_profile_timestamp").value;
+      var curusername=document.getElementById("query_profile_curusername").value;
+      var username=document.getElementById("query_profile_username").value;
+      var ans="["+timestamp+"] "+"query_profile";
+      if(curusername!="")ans+=" -c "+curusername;
+      if(username!="")ans+=" -u "+username;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+  
+
+  <!-- 更改用户信息(modify_profile) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="modify_profile">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">更改用户信息</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            用户-c修改-u的用户信息。修改参数同注册参数，且均可以省略。(若是省略空着即可)
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="modify_profile_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">请求修改用户</p>
+            <input id="modify_profile_curusername" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">被修改用户</p>
+            <input id="modify_profile_username" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">密码(新)</p>
+            <input id="modify_profile_password" type="password" placeholder="password" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">真实姓名(新)</p>
+            <input id="modify_profile_realname" type="text" placeholder="realname" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">邮箱(新)</p>
+            <input id="modify_profile_mailbox" type="text" placeholder="mailbox" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">权限(新)</p>
+            <input id="modify_profile_privilege" type="text" placeholder="privilege" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="modify_profile()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            更改
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              更改结果:
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="modify_profile_output"></p>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/68128216_p0.jpg"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function modify_profile(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("modify_profile_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("modify_profile_timestamp").value;
+      var curusername=document.getElementById("modify_profile_curusername").value;
+      var username=document.getElementById("modify_profile_username").value;
+      var password=document.getElementById("modify_profile_password").value;
+      var realname=document.getElementById("modify_profile_realname").value;
+      var mailbox=document.getElementById("modify_profile_mailbox").value;
+      var privilege=document.getElementById("modify_profile_privilege").value;
+      var ans="["+timestamp+"] "+"modify_profile";
+      if(curusername!="")ans+=" -c "+curusername;
+      if(username!="")ans+=" -u "+username;
+      if(password!="")ans+=" -p "+password;
+      if(realname!="")ans+=" -n "+realname;
+      if(mailbox!="")ans+=" -m "+mailbox;
+      if(privilege!="")ans+=" -g "+privilege;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+
+  </div>
+  </div>
+</section>
+
+<!-- 火车票管理 -->
+<section class="mt-48 md:mt-40 pb-40 relative bg-blueGray-100" id="trainmanage">
+  <div style="height: 150px"></div>
+  <div
+    class="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
+    style="transform: translateZ(0)"
+  >
+    <svg
+      class="absolute bottom-0 overflow-hidden"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+      version="1.1"
+      viewBox="0 0 2560 100"
+      x="0"
+      y="0"
+    >
+      <polygon
+        class="text-blueGray-100 fill-current"
+        points="2560 0 2560 100 0 100"
+      ></polygon>
+    </svg>
+  </div>
+
+  <!-- 火车票管理首页 -->
+  <div class="container mx-auto">
+      <div class="flex flex-wrap items-center">
+      <div
+        class="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-32"
+      >
+        <div
+          class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-500"
+        >
+          <img
+            alt="..."
+            src="./picture/69283103_p2_master1200.jpg"
+            class="w-full align-middle rounded-t-lg"
+          />
+          <blockquote class="relative p-8 mb-4">
+            <svg
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 583 95"
+              class="absolute left-0 w-full block h-95-px -top-94-px"
+            >
+              <polygon
+                points="-30,95 583,95 583,65"
+                class="text-pink-500 fill-current"
+              ></polygon>
+            </svg>
+            <h4 class="text-xl font-bold text-white">
+              火车票管理
+            </h4>
+          </blockquote>
+        </div>
+      </div>
+      
+    <div class="flex flex-wrap items-center pt-4">
+      <div class="my-4 w-full lg:w-6/12 px-4">
+        <a
+          href="#add_train"
+        >
+          <div class="bg-red-600 shadow-lg rounded-lg text-center p-8">
+            <p class="text-lg text-white mt-4 font-semibold">添加动车(add_train)</p>
+          </div>
+        </a>
+        <a
+          href="#delete_train"
+        >
+          <div
+            class="bg-lightBlue-500 shadow-lg rounded-lg text-center p-8 mt-8"
+          >
+            <p class="text-lg text-white mt-4 font-semibold">删除列车(delete_train)</p>
+          </div>
+        </a>
+        <a
+          href="#release_train"
+        >
+          <div
+            class="bg-blueGray-700 shadow-lg rounded-lg text-center p-8 mt-8"
+          >
+            <p class="text-lg text-white mt-4 font-semibold">发布列车(release_train)</p>
+          </div>
+        </a>
+        <a
+          href="#query_train"
+        >
+          <div
+            class="bg-red-400 shadow-lg rounded-lg text-center p-8 mt-8"
+          >
+            <p class="text-lg text-white mt-4 font-semibold">查询列车信息(query_train)</p>
+          </div>
+        </a>
+        
+      </div>
+      <div class="my-4 w-full lg:w-6/12 px-4 lg:mt-16">
+        <a
+          href="#query_ticket"
+        >
+          <div
+            class="bg-yellow-500 shadow-lg rounded-lg text-center p-8 mt-8"
+          >
+            <p class="text-lg text-white mt-4 font-semibold">查询车票信息(query_ticket)</p>
+          </div>
+        </a>
+        <a
+          href="#query_transfer"
+        >
+          <div
+            class="bg-red-500 shadow-lg rounded-lg text-center p-8 mt-8"
+          >
+            <p class="text-lg text-white mt-4 font-semibold">查询转乘车票信息(query_transfer)</p>
+          </div>
+        </a>
+        <a
+          href="#buy_ticket"
+        >
+          <div
+            class="bg-red-700 shadow-lg rounded-lg text-center p-8 mt-8"
+          >
+            <p class="text-lg text-white mt-4 font-semibold">购买车票(buy_ticket)</p>
+          </div>
+        </a>
+        <a
+          href="#query_order"
+        >
+          <div
+            class="bg-blueGray-600 shadow-lg rounded-lg text-center p-8 mt-8"
+          >
+            <p class="text-lg text-white mt-4 font-semibold">查询订单信息(query_order)</p>
+          </div>
+        </a>
+        <a
+          href="#refund_ticket"
+        >
+          <div
+            class="bg-orange-500 shadow-lg rounded-lg text-center p-8 mt-8"
+          >
+            <p class="text-lg text-white mt-4 font-semibold">退票(refund_ticket)</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  <!-- 添加动车(add_train) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="add_train">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">添加动车</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            添加trainID为-i，stationNum为-n，seatNum为-m，stations为-s，prices为-p，startTime为-x，travelTimes为-t，stopoverTimes为-o，saleDate为-d，type为-y的车次。
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="add_train_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">动车ID</p>
+            <input id="add_train_trainID" type="text" placeholder="trainID" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">动车站数</p>
+            <input id="add_train_stationNum" type="text" placeholder="stationNum" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">座位数</p>
+            <input id="add_train_seatNum" type="text" placeholder="seatNum" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">经过的每个动车站站名(用"|"隔开)</p>
+            <input id="add_train_stations" type="text" placeholder="station1|station2|..." class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">相邻站之间的价格(用"|"隔开)</p>
+            <input id="add_train_prices" type="text" placeholder="price1|price2|..." class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">动车每天发站时间</p>
+            <input id="add_train_startTime" type="text" placeholder="startTime(xx:xx)" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">相邻站之间的行驶时间(用"|"隔开)</p>
+            <input id="add_train_travelTimes" type="text" placeholder="travelTime1|travelTime2|..." class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">每个中转站停留时间(用"|"隔开)</p>
+            <input id="add_train_stopoverTimes" type="text" placeholder="stopoverTime1|stopoverTime2|..." class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">销售的动车的日期区间</p>
+            <input id="add_train_saleDate" type="text" placeholder="saleDate(mm-dd|mm-dd)" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">动车类型</p>
+            <input id="add_train_type" type="text" placeholder="type" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="add_train()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            添加
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              添加状态:
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="add_train_output"></p>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/68412686_p0_master1200.jpg"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function add_train(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("add_train_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("add_train_timestamp").value;
+      var trainID=document.getElementById("add_train_trainID").value;
+      var stationNum=document.getElementById("add_train_stationNum").value;
+      var seatNum=document.getElementById("add_train_seatNum").value;
+      var stations=document.getElementById("add_train_stations").value;
+      var prices=document.getElementById("add_train_prices").value;
+      var startTime=document.getElementById("add_train_startTime").value;
+      var travelTimes=document.getElementById("add_train_travelTimes").value;
+      var stopoverTimes=document.getElementById("add_train_stopoverTimes").value;
+      var saleDate=document.getElementById("add_train_saleDate").value;
+      var type=document.getElementById("add_train_type").value;
+      var ans="["+timestamp+"] "+"add_train";
+      if(trainID!="")ans+=" -i "+trainID;
+      if(stationNum!="")ans+=" -n "+stationNum;
+      if(seatNum!="")ans+=" -m "+seatNum;
+      if(stations!="")ans+=" -s "+stations;
+      if(prices!="")ans+=" -p "+prices;
+      if(startTime!="")ans+=" -x "+startTime;
+      if(travelTimes!="")ans+=" -t "+travelTimes;
+      if(stopoverTimes!="")ans+=" -o "+stopoverTimes;
+      if(saleDate!="")ans+=" -d "+saleDate;
+      if(type!="")ans+=" -y "+type;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+
+
+  <!-- 删除列车(delete_train) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="delete_train">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">删除列车</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            删除trainID为-i的车次，删除车次必须保证未发布。
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="delete_train_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">动车ID</p>
+            <input id="delete_train_trainID" type="text" placeholder="trainID" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="delete_train()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            删除
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              删除状态:
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="delete_train_output"></p>
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/66951690_p1_master1200.jpg"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function delete_train(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("delete_train_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("delete_train_timestamp").value;
+      var trainID=document.getElementById("delete_train_trainID").value;
+      var ans="["+timestamp+"] "+"delete_train";
+      if(trainID!="")ans+=" -i "+trainID;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+  <!-- 发布列车(release_train) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="release_train">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">发布列车</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            将车次-i发布。发布前的车次，不可发售车票；发布后的车次不可被删除，可发售车票。
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="release_train_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">动车ID</p>
+            <input id="release_train_trainID" type="text" placeholder="trainID" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="release_train()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            发布
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              发布状态:
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="release_train_output"></p>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/69759408_p0.jpg"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function release_train(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("release_train_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("release_train_timestamp").value;
+      var trainID=document.getElementById("release_train_trainID").value;
+      var ans="["+timestamp+"] "+"release_train";
+      if(trainID!="")ans+=" -i "+trainID;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+  <!-- 查询列车信息(query_train) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="query_train">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">查询列车信息</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            查询在日期-d发车的，车次-i的情况，-d的格式为mm-dd。
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="query_train_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">动车ID</p>
+            <input id="query_train_trainID" type="text" placeholder="trainID" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">发车日期</p>
+            <input id="query_train_date" type="text" placeholder="date(mm-dd)" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="query_train()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            查询
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              查询结果
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="query_train_output"></p>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/71094339_p0.png"
+        />
+      </div>
+    </div>
+  </div>
+  <script>
+    function query_train(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("query_train_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("query_train_timestamp").value;
+      var trainID=document.getElementById("query_train_trainID").value;
+      var date=document.getElementById("query_train_date").value;
+      var ans="["+timestamp+"] "+"query_train";
+      if(trainID!="")ans+=" -i "+trainID;
+      if(date!="")ans+=" -d "+date;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+  <!-- 查询车票信息(query_ticket) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="query_ticket">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">查询车票信息</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            查询日期为-d时从-s出发，并到达-t的车票。请注意：这里的日期是列车从-s出发的日期，不是从列车始发站出发的日期。
+            <br>
+            -p的值为time和cost中的一个，若为time表示输出按照该车次所需时间从小到大排序，否则按照票价从低到高排序。如果按照时间排序车次所需时间相同，则把trainID作为第二关键字进行排序，按照票价排序；同理若出现车次票价相同，则同样把trainID作为第二关键字进行排序。
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="query_ticket_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">起始站</p>
+            <input id="query_ticket_startstation" type="text" placeholder="startstation" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">目的站</p>
+            <input id="query_ticket_endstation" type="text" placeholder="endstation" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">从起始站出发的日期</p>
+            <input id="query_ticket_date" type="text" placeholder="date(mm-dd)" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">排序方式(不填默认为time)</p>
+            <input id="query_ticket_sortType" type="text" placeholder="time/cost" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="query_ticket()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            查询
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              查询结果:
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="query_ticket_output"></p>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/69850839_p0.jpg"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function query_ticket(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("query_ticket_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("query_ticket_timestamp").value;
+      var startstation=document.getElementById("query_ticket_startstation").value;
+      var endstation=document.getElementById("query_ticket_endstation").value;
+      var date=document.getElementById("query_ticket_date").value;
+      var sortType=document.getElementById("query_ticket_sortType").value;
+      var ans="["+timestamp+"] "+"query_ticket";
+      if(startstation!="")ans+=" -s "+startstation;
+      if(endstation!="")ans+=" -t "+endstation;
+      if(date!="")ans+=" -d "+date;
+      if(sortType!="")ans+=" -p "+sortType;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+  <!-- 查询转乘车票信息(query_transfer) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="query_transfer">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">查询转乘车票信息</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            查询日期为-d时从-s出发，并到达-t的车票。请注意：这里的日期是列车从-s出发的日期，不是从列车始发站出发的日期。
+            <br>
+            -p的值为time和cost中的一个，若为time表示输出按照该车次所需时间从小到大排序，否则按照票价从低到高排序。如果按照时间排序车次所需时间相同，则把trainID作为第二关键字进行排序，按照票价排序；同理若出现车次票价相同，则同样把trainID作为第二关键字进行排序。
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="query_transfer_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">起始站</p>
+            <input id="query_transfer_startstation" type="text" placeholder="startstation" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">目的站</p>
+            <input id="query_transfer_endstation" type="text" placeholder="endstation" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">从起始站出发的日期</p>
+            <input id="query_transfer_date" type="text" placeholder="date(mm-dd)" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">排序方式(不填默认为time)</p>
+            <input id="query_transfer_sortType" type="text" placeholder="time/cost" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="query_transfer()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            查询
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              查询结果:
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="query_transfer_output"></p>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/65979190_p0.png"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function query_transfer(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("query_transfer_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("query_transfer_timestamp").value;
+      var startstation=document.getElementById("query_transfer_startstation").value;
+      var endstation=document.getElementById("query_transfer_endstation").value;
+      var date=document.getElementById("query_transfer_date").value;
+      var sortType=document.getElementById("query_transfer_sortType").value;
+      var ans="["+timestamp+"] "+"query_transfer";
+      if(startstation!="")ans+=" -s "+startstation;
+      if(endstation!="")ans+=" -t "+endstation;
+      if(date!="")ans+=" -d "+date;
+      if(sortType!="")ans+=" -p "+sortType;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+  <!-- 购买车票(buy_ticket) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="buy_ticket">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">购买车票</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            用户-u购买：车次-i，日期为-d，从站-f到站-t的车票-n张。
+            <br>
+            -q可选false或true，若为true，表明在余票不足的情况下愿意接受候补购票，当有余票时立即视为此用户购买了车票，且保证购买的车票的数量大于0。请注意：这里的日期是列车从-s出发的日期，不是从列车始发站出发的日期。
+            <br>
+            权限要求：-u已登录，且购买的车次必须已经被release。
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="buy_ticket_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">购票用户</p>
+            <input id="buy_ticket_username" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">购买的票的列车ID</p>
+            <input id="buy_ticket_trainID" type="text" placeholder="trainID" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">起始站</p>
+            <input id="buy_ticket_startstation" type="text" placeholder="startstation" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">目的站</p>
+            <input id="buy_ticket_endstation" type="text" placeholder="endstation" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">从起始站出发的日期</p>
+            <input id="buy_ticket_date" type="text" placeholder="date(mm-dd)" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">购票数量</p>
+            <input id="buy_ticket_seatnum" type="text" placeholder="seatnum" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">是否接受补票(不填默认为false)</p>
+            <input id="buy_ticket_allowqueue" type="text" placeholder="true/false" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="buy_ticket()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            购买
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              购买状态:
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="buy_ticket_output"></p>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/qwq.png"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function buy_ticket(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("buy_ticket_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("buy_ticket_timestamp").value;
+      var username=document.getElementById("buy_ticket_username").value;
+      var trainID=document.getElementById("buy_ticket_trainID").value;
+      var startstation=document.getElementById("buy_ticket_startstation").value;
+      var endstation=document.getElementById("buy_ticket_endstation").value;
+      var date=document.getElementById("buy_ticket_date").value;
+      var seatnum=document.getElementById("buy_ticket_seatnum").value;
+      var allowqueue=document.getElementById("buy_ticket_allowqueue").value;
+      var ans="["+timestamp+"] "+"buy_ticket";
+      if(username!="")ans+=" -u "+username;
+      if(trainID!="")ans+=" -i "+trainID;
+      if(startstation!="")ans+=" -f "+startstation;
+      if(endstation!="")ans+=" -t "+endstation;
+      if(date!="")ans+=" -d "+date;
+      if(seatnum!="")ans+=" -n "+seatnum;
+      if(allowqueue!="")ans+=" -q "+allowqueue;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+
+  <!-- 查询订单信息(query_order) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="query_order">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">查询订单信息</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            查询用户-u的所有订单信息，按照交易时间顺序从新到旧排序（候补订单即使补票成功，交易时间也以下单时刻为准）。
+            <br>
+            权限要求：-u已登录。
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="query_order_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">被查询用户</p>
+            <input id="query_order_username" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="query_order()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            查询
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              询问结果:
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="query_order_output"></p>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/71108554_p0.jpg"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function query_order(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("query_order_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("query_order_timestamp").value;
+      var username=document.getElementById("query_order_username").value;
+      var ans="["+timestamp+"] "+"query_order";
+      if(username!="")ans+=" -u "+username;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+
+
+  <!-- 退票(refund_ticket) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="refund_ticket">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">退票</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            用户-u退订从新到旧（即query_order的返回顺序）第-n个(1-base)订单。
+            <br>
+            权限要求：-u已登录。
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="refund_ticket_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">退单用户</p>
+            <input id="refund_ticket_username" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">要退订单的编号</p>
+            <input id="refund_ticket_kth" type="text" placeholder="Kth" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="refund_ticket()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            退票
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              询问结果:
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="refund_ticket_output"></p>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/68727810_p0-1.jpg"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function refund_ticket(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("refund_ticket_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("refund_ticket_timestamp").value;
+      var username=document.getElementById("refund_ticket_username").value;
+      var kth=document.getElementById("refund_ticket_kth").value;
+      var ans="["+timestamp+"] "+"refund_ticket";
+      if(username!="")ans+=" -u "+username;
+      if(kth!="")ans+=" -n "+kth;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+
+
+
+  </div>
+  </div>
+</section>
+
+
+<!-- 清空&回滚 -->
+<section class="mt-48 md:mt-40 pb-40 relative bg-blueGray-100" id="clean_rollback">
+  <div style="height: 300px"></div>
+  <div
+    class="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
+    style="transform: translateZ(0)"
+  >
+    <svg
+      class="absolute bottom-0 overflow-hidden"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+      version="1.1"
+      viewBox="0 0 2560 100"
+      x="0"
+      y="0"
+    >
+      <polygon
+        class="text-blueGray-100 fill-current"
+        points="2560 0 2560 100 0 100"
+      ></polygon>
+    </svg>
+  </div>
+
+  <!-- 清空&回滚首页 -->
+  <div class="container mx-auto">
+      <div class="flex flex-wrap items-center">
+      <div
+        class="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-32"
+      >
+        <div
+          class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-500"
+        >
+          <img
+            alt="..."
+            src="./picture/69283103_p3_master1200.jpg"
+            class="w-full align-middle rounded-t-lg"
+          />
+          <blockquote class="relative p-8 mb-4">
+            <svg
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 583 95"
+              class="absolute left-0 w-full block h-95-px -top-94-px"
+            >
+              <polygon
+                points="-30,95 583,95 583,65"
+                class="text-pink-500 fill-current"
+              ></polygon>
+            </svg>
+            <h4 class="text-xl font-bold text-white">
+              清空&回滚
+            </h4>
+          </blockquote>
+        </div>
+      </div>
+      
+    <div class="flex flex-wrap items-center pt-32">
+      <div class="my-4 w-full lg:w-6/12 px-4">
+        <a
+          href="#clean"
+        >
+          <div class="bg-red-600 shadow-lg rounded-lg text-center p-8">
+            <p class="text-lg text-white mt-4 font-semibold">数据清空(clean)</p>
+          </div>
+        </a>
+      </div>
+      <div class="my-4 w-full lg:w-6/12 px-4 lg:mt-16">
+        <a
+          href="#rollback"
+        >
+          <div
+            class="bg-lightBlue-500 shadow-lg rounded-lg text-center p-8 mt-8"
+          >
+            <p class="text-lg text-white mt-4 font-semibold">数据回滚(rollback)</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  <!-- 数据清空(clean) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="clean">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">数据清空</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            清除所有数据。(务必注意，谨慎使用)
+            <br>
+            请不要和rollback指令同时使用。
+          </p>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="clean_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="clean()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            清空所有数据
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              清空状态：
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="clean_output"></p>
+            </p>
+          </div>
+
+        </div>
+      </div>
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/51678256_p01.png"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function clean(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("clean_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("clean_timestamp").value;
+      var ans="["+timestamp+"] "+"clean";
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+
+
+  <!-- 数据回滚(rollback) -->
+  <div class="container mx-auto px-4 pb-32 pt-48" id="rollback">
+    <div class="items-center flex flex-wrap">
+      <div class="w-full md:w-5/12 ml-auto px-12 md:px-4">
+        <div class="md:pr-12">
+          <div
+            class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+          >
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="text-3xl font-semibold">数据回滚</h3>
+          <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+            将所有用户下线，并将数据库回滚到时间戳为-t时刻的状态。(务必注意，谨慎使用)
+          </p><div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
+            <input id="rollback_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">回滚回的时间戳</p>
+            <input id="rollback_timestamp2" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+          </div>
+          <button onclick="rollback()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            开始回滚
+          </button>
+          <div class="mb-3 pt-0">
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+              回滚状态：
+              <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="rollback_output"></p>
+            </p>
+          </div>
+
+        </div>
+      </div>
+      <div class="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+        <img
+          alt="..."
+          class="max-w-full rounded-lg shadow-xl"
+          style="
+            transform: scale(1) perspective(1040px) rotateY(-11deg)
+              rotateX(2deg) rotate(2deg);
+          "
+          src="./picture/64515548_p0.jpg"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function rollback(){
+      var xmlhttp;//定义变量
+      if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+      else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          var str=xmlhttp.responseText;
+          document.getElementById("rollback_output").innerHTML=str;
+        }
+      }
+      //以下为POST请求方式
+      xmlhttp.open("POST","./TransferOrder.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      var timestamp=document.getElementById("rollback_timestamp").value;
+      var timestamp2=document.getElementById("rollback_timestamp2").value;
+      var ans="["+timestamp+"] "+"rollback";
+      if(timestamp2!="")ans+=" -t "+timestamp2;
+      xmlhttp.send("text="+ans);
+    }
+  </script>
+  
+  </div>
+  </div>
+</section>
+
+
+  <!-- about me -->
+  <section
+  class="header relative pt-16 items-center flex h-screen max-h-860-px" id="aboutme"
+>
+  <div class="container mx-auto items-center flex flex-wrap">
+    <div class="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
+      <div class="pt-32 sm:pt-0">
+        <h2 class="font-semibold text-4xl text-blueGray-600">
+          about me
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+          这是2021届acm班大一下的大作业 TrainTicketSystem
+          <br>
+          后端主体、网页部分及前端：钟林昊
+          <br>
+          后端数据库部分(B+Tree)：章轩畅
+          <br>
+          图片源自pixiv及其他网上资源
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <img
+    class="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px"
+    src="./picture/69340313_p0.jpg"
+    alt="..."
+  />
+</section>
+
+
+
+
+
+<!-- 右下角图片 -->
+<img src="./picture/玉子.gif" style="position:fixed; bottom:0px; right:0px; z-index:1000;">
+  </body>
+</html>
