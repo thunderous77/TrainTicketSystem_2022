@@ -53,7 +53,7 @@ private:
 public:
 	MemoryRiver<User> UserData;
 	// CBPlusTree<int,21,20> UserIndex;
-	CBPlusTree<int,int,21> UserIndex;
+	CBPlusTree<int,int,21,75,75> UserIndex;
 	// Key_value_database<int> UserIndex;
 	MemoryRiver< for_rollback<int> > UserIndex_rollback;
 	MemoryRiver<int> UserData_rollback;

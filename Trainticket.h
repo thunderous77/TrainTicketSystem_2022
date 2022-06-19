@@ -73,16 +73,11 @@ private:
 	void updateSeatNum(Train_System::Train &train,const int &Lpos,const int &Rpos,const int &num,const int &firday);
 public:
 	MemoryRiver<Train> TrainData;
-	// CBPlusTree<DayTrain,MaxStationName+4,20> DayTrainIndex;
-	// CBPlusTree<StationTrain,MaxStationName,20> StationIndex;
-	// CBPlusTree<int,MaxTrainName,10> TrainIndex;
-	// CBPlusTree<Order,21,20> OrderIndex;
-	// CBPlusTree<Order,MaxTrainName+4,20> QueueIndex;
-	CBPlusTree<int,DayTrain,MaxStationName+4> DayTrainIndex;
-	CBPlusTree<MyStr<MaxTrainName>,StationTrain,MaxStationName> StationIndex;
-	CBPlusTree<int,int,MaxTrainName> TrainIndex;
-	CBPlusTree<int,Order,21> OrderIndex;
-	CBPlusTree<int,Order,MaxTrainName+4> QueueIndex;
+	CBPlusTree<int,DayTrain,MaxStationName+4,45,9> DayTrainIndex;
+	CBPlusTree<MyStr<MaxTrainName>,StationTrain,MaxStationName,45,20> StationIndex;
+	CBPlusTree<int,int,MaxTrainName,70,65> TrainIndex;
+	CBPlusTree<int,Order,21,75,14> OrderIndex;
+	CBPlusTree<int,Order,MaxTrainName+4,60,13> QueueIndex;
 	MemoryRiver< for_rollback<StationTrain> >StationIndex_rollback;
 	MemoryRiver< for_rollback<int> > TrainIndex_rollback;
 	MemoryRiver< for_rollback<DayTrain> > DayTrainIndex_rollback;

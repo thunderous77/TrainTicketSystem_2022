@@ -27,7 +27,7 @@ private:
 	int num,num2,num3;
 	bool Ismemoryrecycling;
 	bool IsRollback;
-
+	bool IsCache;
 	int cacheMax;
     linked_hashmap<int,T> hashmap;
 
@@ -123,10 +123,11 @@ public:
 		if(Ismemoryrecycling)initialise2(FN+"_memory_recycling",ReMake);
 		if(IsRollback)initialise3(FN+"_inside_rollback",ReMake);
     }
-    MemoryRiver(string _FN="",bool _Ismemoryrecycling=0,bool _IsRollback=0,int _cacheMax=100){
+    MemoryRiver(string _FN="",bool _Ismemoryrecycling=0,bool _IsRollback=0,bool _IsCache=1,int _cacheMax=550){
 		// _IsRollback=0;//关闭rollback指令
 		Ismemoryrecycling=_Ismemoryrecycling;
 		IsRollback=_IsRollback;
+		IsCache=_IsCache;
 		cacheMax=_cacheMax;
 		string FN="./Data/"+_FN;
 		if(_FN!="")initialise(FN);
@@ -195,8 +196,10 @@ public:
 		file.write(reinterpret_cast<char*>(&t),sizeofT);
 		file.close();
 
-		hashmap[index]=t;
-		if(hashmap.size()>cacheMax)hashmap.erase(hashmap.begin());
+		if(IsCache){
+			hashmap[index]=t;
+			if(hashmap.size()>cacheMax)hashmap.erase(hashmap.begin());
+		}
 		
 		return index;
     }
@@ -217,16 +220,19 @@ public:
 
 		if(IsRollback)file3_update(0,index,data,0,-1,0);
 		
-
-		hashmap[index]=t;
-		if(hashmap.size()>cacheMax)hashmap.erase(hashmap.begin());
+		if(IsCache){
+			hashmap[index]=t;
+			if(hashmap.size()>cacheMax)hashmap.erase(hashmap.begin());
+		}
     }
 
     //读出位置索引index对应的T对象的值并赋值给t，保证调用的index都是由write函数产生
     void read(T &t, const int index) {
-		if(hashmap.find(index)!=hashmap.end()){
-			t=hashmap[index];
-			return;
+		if(IsCache){
+			if(hashmap.find(index)!=hashmap.end()){
+				t=hashmap[index];
+				return;
+			}
 		}
 		
 		file.open(file_name);
@@ -234,10 +240,10 @@ public:
 		file.read(reinterpret_cast<char*>(&t),sizeofT);
 		file.close();
 
-		hashmap[index]=t;
-		if(hashmap.size()>cacheMax)hashmap.erase(hashmap.begin());
-		
-        /* your code here */
+		if(IsCache){
+			hashmap[index]=t;
+			if(hashmap.size()>cacheMax)hashmap.erase(hashmap.begin());
+		}
     }
 
     //删除位置索引index对应的对象(不涉及空间回收时，可忽略此函数)，保证调用的index都是由write函数产生
@@ -253,8 +259,8 @@ public:
 				num--;
 				file.seekp(0);
 				file.write(reinterpret_cast<char*>(&num),sizeof(int));
-				file.close();
 			}
+			file.close();
 			int pos2=(num2+1)*sizeof(int);
 
 			if(Ismemoryrecycling)write2(index);
@@ -271,14 +277,17 @@ public:
 			file.write(reinterpret_cast<char*>(&num),sizeof(int));
 			file.close();
 		}
-
-		if(hashmap.find(index)!=hashmap.end())hashmap.erase(hashmap.find(index));
+		if(IsCache){
+			if(hashmap.find(index)!=hashmap.end())hashmap.erase(hashmap.find(index));
+		}
     }
 	
 	//清空文件
 	void clean(){
 		initialise(file_name,1);
-		hashmap.clear();
+		if(IsCache){
+			hashmap.clear();
+		}
 	}
 	//找到最后一个数据的位置
 	int Maxpos(){
@@ -288,7 +297,9 @@ public:
 
 	void rollback(){//回滚一次操作(write/delete/update)
 		if(!num3)return;
-		hashmap.clear();
+		if(IsCache){
+			hashmap.clear();
+		}
 		file3.open(file_name3);
 		long long index=sizeof(int)+(long long)(num3-1)*sizeofT3;
 		// (type,pos,data,type2,pos2,data2)  (int,int,T,int,int,int) 

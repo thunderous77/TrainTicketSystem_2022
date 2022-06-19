@@ -56,13 +56,13 @@ void Order_System::AnalysisOrder(string order){
 	if(d_order[2]=="clean"){UserSystem.clean(),TrainSystem.clean();cout<<d_order[1]<<" ";cout<<0<<endl;}
 	if(d_order[2]=="exit"){
 		cout<<d_order[1]<<" ";cout<<"bye"<<endl;
-		cerr<<"query_profile time:"<<Clock7/(double)(1e6)<<endl;
-		cerr<<"query_ticket time:"<<Clock1/(double)(1e6)<<endl;
-		cerr<<"query_transfer time:"<<Clock2/(double)(1e6)<<endl;
-		cerr<<"query_order time:"<<Clock3/(double)(1e6)<<endl;
-		cerr<<"refund_ticket time:"<<Clock4/(double)(1e6)<<endl;
-		cerr<<"buy_ticket time:"<<Clock6/(double)(1e6)<<endl;
-		cerr<<"read_write time:"<<Clock5/(double)(1e6)<<endl;
+		// cerr<<"query_profile time:"<<Clock7/(double)(1e6)<<endl;
+		// cerr<<"query_ticket time:"<<Clock1/(double)(1e6)<<endl;
+		// cerr<<"query_transfer time:"<<Clock2/(double)(1e6)<<endl;
+		// cerr<<"query_order time:"<<Clock3/(double)(1e6)<<endl;
+		// cerr<<"refund_ticket time:"<<Clock4/(double)(1e6)<<endl;
+		// cerr<<"buy_ticket time:"<<Clock6/(double)(1e6)<<endl;
+		// cerr<<"read_write time:"<<Clock5/(double)(1e6)<<endl;
 		exit(0);
 	}
 }

@@ -371,7 +371,7 @@ void Train_System::queueUpdate(const string &trainID,const int Day){
 	//读取数据并排序
 	Vector<Order> AllOrder=QueueIndex.FindAll(trainID_Day);
 	int Num=AllOrder.size();
-	SortOrderTime(AllOrder,0,Num-1,0);
+	// SortOrderTime(AllOrder,0,Num-1,0);
 	Train train=GetTrainFromData(trainID);
 	for(int i=0;i<Num;i++){
 		int Lpos,Rpos;
@@ -676,13 +676,13 @@ void Train_System::query_ticket(){
 	Vector<StationTrain> Alltrain1=StationIndex.FindAll(startStation);
 	Vector<StationTrain> Alltrain2=StationIndex.FindAll(endStation);
 	int Size1=Alltrain1.size(),Size2=Alltrain2.size();
-	SortStationTrain(Alltrain1,0,Size1-1);
-	SortStationTrain(Alltrain2,0,Size2-1);
+	// SortStationTrain(Alltrain1,0,Size1-1);
+	// SortStationTrain(Alltrain2,0,Size2-1);
 	Vector<ansType> res;
 	int Num=0,j=0;
 	for(int i=0;i<Size1;i++){
-		while(j<Size2&&string(Alltrain2[j].trainID)<string(Alltrain1[i].trainID))j++;
-		if(j==Size2||string(Alltrain1[i].trainID)!=string(Alltrain2[j].trainID))continue;
+		while(j<Size2&&strcmp(Alltrain2[j].trainID,Alltrain1[i].trainID)<0)j++;
+		if(j==Size2||strcmp(Alltrain1[i].trainID,Alltrain2[j].trainID)!=0)continue;
 		if(Alltrain1[i].StationIndex>=Alltrain2[j].StationIndex)continue;
 		if(!Is_exist2(Alltrain1[i],startday))continue;
 		int firday=GetTrainStartDay2(Alltrain1[i],startday);
@@ -953,7 +953,8 @@ void Train_System::query_order(){
 	//读取数据并排序
 	Vector<Order> AllOrder=OrderIndex.FindAll(username);
 	int Num=AllOrder.size();
-	SortOrderTime(AllOrder,0,Num-1,1);
+	// SortOrderTime(AllOrder,0,Num-1,1);
+	for(int i=0;i<Num/2;i++)swap(AllOrder[i],AllOrder[Num-i-1]);
 	//输出各个订单信息
 	cout<<d_order[1]<<" ";
 	cout<<Num<<endl;
@@ -1005,7 +1006,8 @@ void Train_System::refund_ticket(){
 	//读取数据并排序，找到第K个订单
 	Vector<Order> AllOrder=OrderIndex.FindAll(username);
 	int Num=AllOrder.size();
-	SortOrderTime(AllOrder,0,Num-1,1);
+	// SortOrderTime(AllOrder,0,Num-1,1);
+	for(int i=0;i<Num/2;i++)swap(AllOrder[i],AllOrder[Num-i-1]);
 	//订单数<k 不合法
 	if(K>Num){Clock4+=clock();throw Order_Kth_Invalid();}
 	Order order=AllOrder[K-1];
