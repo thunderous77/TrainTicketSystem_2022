@@ -4,7 +4,7 @@
 #include "MemoryRiver.hpp"
 // #include "BlockList.hpp"
 #include "CBPlusTree.hpp"
-#include "linked_hashmap.hpp"
+#include "../lib/linked_hashmap.hpp"
 using namespace std;
 template<class T>class for_rollback{
 public:

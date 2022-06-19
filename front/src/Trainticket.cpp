@@ -9,8 +9,8 @@
 #include "Exceptions.hpp"
 #include "User.h"
 #include "Trainticket.h"
-#include "linked_hashmap.hpp"
-#include "vector.hpp"
+#include "../lib/linked_hashmap.hpp"
+#include "../lib/vector.hpp"
 using namespace std;
 using namespace sjtu;
 extern long long Clock1,Clock2,Clock3,Clock4,Clock6;

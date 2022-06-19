@@ -1,7 +1,7 @@
 #ifndef MAIN_CPP_CBPLUSTREE_HPP
 #define MAIN_CPP_CBPLUSTREE_HPP
 
-#include "vector.hpp"
+#include "../lib/vector.hpp"
 #include "MemoryRiver.hpp"
 
 using namespace std;

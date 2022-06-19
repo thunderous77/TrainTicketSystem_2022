@@ -8,7 +8,7 @@
 #include<fstream>
 #include "Exceptions.hpp"
 #include "User.h"
-#include "vector.hpp"
+#include "../lib/vector.hpp"
 using namespace std;
 using namespace sjtu;
 

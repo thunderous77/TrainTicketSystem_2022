@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/code.dir/Order.cpp.o"
-  "CMakeFiles/code.dir/Trainticket.cpp.o"
-  "CMakeFiles/code.dir/User.cpp.o"
-  "CMakeFiles/code.dir/main.cpp.o"
+  "CMakeFiles/code.dir/src/Order.cpp.o"
+  "CMakeFiles/code.dir/src/Trainticket.cpp.o"
+  "CMakeFiles/code.dir/src/User.cpp.o"
+  "CMakeFiles/code.dir/src/main.cpp.o"
   "code"
   "code.pdb"
 )
