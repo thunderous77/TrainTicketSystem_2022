@@ -259,10 +259,7 @@
           <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
             当前用户-c，创建一个账户名为-u，密码为-p，用户真实姓名为-n，用户邮箱为-m，权限为-g的用户
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="add_user_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">当前用户</p>
             <input id="add_user_curusername" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -328,7 +325,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("add_user_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var curusername=document.getElementById("add_user_curusername").value;
       var username=document.getElementById("add_user_username").value;
       var password=document.getElementById("add_user_password").value;
@@ -361,10 +359,7 @@
           <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
             用户-u尝试用-p登录。
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="login_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">用户名</p>
             <input id="login_username" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -414,7 +409,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("login_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var username=document.getElementById("login_username").value;
       var password=document.getElementById("login_password").value;
       var ans="["+timestamp+"] "+"login";
@@ -439,10 +435,7 @@
           <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
             当前用户-c登出
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="logout_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">用户名</p>
             <input id="logout_username" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -489,7 +482,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("logout_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var username=document.getElementById("logout_username").value;
       var ans="["+timestamp+"] "+"logout";
       if(username!="")ans+=" -u "+username;
@@ -512,10 +506,7 @@
           <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
             用户-c查询-u的用户信息。
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="query_profile_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">请求查询用户</p>
             <input id="query_profile_curusername" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -565,7 +556,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("query_profile_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var curusername=document.getElementById("query_profile_curusername").value;
       var username=document.getElementById("query_profile_username").value;
       var ans="["+timestamp+"] "+"query_profile";
@@ -590,10 +582,7 @@
           <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
             用户-c修改-u的用户信息。修改参数同注册参数，且均可以省略。(若是省略空着即可)
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="modify_profile_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">请求修改用户</p>
             <input id="modify_profile_curusername" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -659,7 +648,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("modify_profile_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var curusername=document.getElementById("modify_profile_curusername").value;
       var username=document.getElementById("modify_profile_username").value;
       var password=document.getElementById("modify_profile_password").value;
@@ -839,10 +829,7 @@
           <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
             添加trainID为-i，stationNum为-n，seatNum为-m，stations为-s，prices为-p，startTime为-x，travelTimes为-t，stopoverTimes为-o，saleDate为-d，type为-y的车次。
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="add_train_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">动车ID</p>
             <input id="add_train_trainID" type="text" placeholder="trainID" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -924,7 +911,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("add_train_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var trainID=document.getElementById("add_train_trainID").value;
       var stationNum=document.getElementById("add_train_stationNum").value;
       var seatNum=document.getElementById("add_train_seatNum").value;
@@ -966,10 +954,7 @@
           <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
             删除trainID为-i的车次，删除车次必须保证未发布。
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="delete_train_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">动车ID</p>
             <input id="delete_train_trainID" type="text" placeholder="trainID" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -1015,7 +1000,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("delete_train_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var trainID=document.getElementById("delete_train_trainID").value;
       var ans="["+timestamp+"] "+"delete_train";
       if(trainID!="")ans+=" -i "+trainID;
@@ -1037,10 +1023,7 @@
           <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
             将车次-i发布。发布前的车次，不可发售车票；发布后的车次不可被删除，可发售车票。
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="release_train_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">动车ID</p>
             <input id="release_train_trainID" type="text" placeholder="trainID" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -1086,7 +1069,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("release_train_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var trainID=document.getElementById("release_train_trainID").value;
       var ans="["+timestamp+"] "+"release_train";
       if(trainID!="")ans+=" -i "+trainID;
@@ -1108,10 +1092,7 @@
           <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
             查询在日期-d发车的，车次-i的情况，-d的格式为mm-dd。
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="query_train_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">动车ID</p>
             <input id="query_train_trainID" type="text" placeholder="trainID" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -1160,7 +1141,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("query_train_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var trainID=document.getElementById("query_train_trainID").value;
       var date=document.getElementById("query_train_date").value;
       var ans="["+timestamp+"] "+"query_train";
@@ -1186,10 +1168,7 @@
             <br>
             -p的值为time和cost中的一个，若为time表示输出按照该车次所需时间从小到大排序，否则按照票价从低到高排序。如果按照时间排序车次所需时间相同，则把trainID作为第二关键字进行排序，按照票价排序；同理若出现车次票价相同，则同样把trainID作为第二关键字进行排序。
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="query_ticket_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">起始站</p>
             <input id="query_ticket_startstation" type="text" placeholder="startstation" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -1247,7 +1226,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("query_ticket_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var startstation=document.getElementById("query_ticket_startstation").value;
       var endstation=document.getElementById("query_ticket_endstation").value;
       var date=document.getElementById("query_ticket_date").value;
@@ -1277,10 +1257,7 @@
             <br>
             -p的值为time和cost中的一个，若为time表示输出按照该车次所需时间从小到大排序，否则按照票价从低到高排序。如果按照时间排序车次所需时间相同，则把trainID作为第二关键字进行排序，按照票价排序；同理若出现车次票价相同，则同样把trainID作为第二关键字进行排序。
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="query_transfer_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">起始站</p>
             <input id="query_transfer_startstation" type="text" placeholder="startstation" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -1338,7 +1315,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("query_transfer_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var startstation=document.getElementById("query_transfer_startstation").value;
       var endstation=document.getElementById("query_transfer_endstation").value;
       var date=document.getElementById("query_transfer_date").value;
@@ -1370,10 +1348,7 @@
             <br>
             权限要求：-u已登录，且购买的车次必须已经被release。
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="buy_ticket_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">购票用户</p>
             <input id="buy_ticket_username" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -1443,7 +1418,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("buy_ticket_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var username=document.getElementById("buy_ticket_username").value;
       var trainID=document.getElementById("buy_ticket_trainID").value;
       var startstation=document.getElementById("buy_ticket_startstation").value;
@@ -1480,10 +1456,7 @@
             <br>
             权限要求：-u已登录。
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="query_order_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">被查询用户</p>
             <input id="query_order_username" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -1529,7 +1502,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("query_order_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var username=document.getElementById("query_order_username").value;
       var ans="["+timestamp+"] "+"query_order";
       if(username!="")ans+=" -u "+username;
@@ -1555,10 +1529,7 @@
             <br>
             权限要求：-u已登录。
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="refund_ticket_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <div class="mb-3 pt-0">
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">退单用户</p>
             <input id="refund_ticket_username" type="text" placeholder="username" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
@@ -1608,7 +1579,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("refund_ticket_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var username=document.getElementById("refund_ticket_username").value;
       var kth=document.getElementById("refund_ticket_kth").value;
       var ans="["+timestamp+"] "+"refund_ticket";
@@ -1721,10 +1693,7 @@
             <br>
             请不要和rollback指令同时使用。
           </p>
-          <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="clean_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          
           <button onclick="clean()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
             清空所有数据
           </button>
@@ -1765,7 +1734,8 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("clean_timestamp").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
       var ans="["+timestamp+"] "+"clean";
       xmlhttp.send("text="+ans);
     }
@@ -1785,13 +1755,10 @@
           <h3 class="text-3xl font-semibold">数据回滚</h3>
           <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
             将所有用户下线，并将数据库回滚到时间戳为-t时刻的状态。(务必注意，谨慎使用)
-          </p><div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">指令执行时间戳</p>
-            <input id="rollback_timestamp" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
-          </div>
+          </p>
           <div class="mb-3 pt-0">
-            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">回滚回的时间戳</p>
-            <input id="rollback_timestamp2" type="text" placeholder="timestamp" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+            <p class="mt-4 text-lg leading-relaxed text-blueGray-500">向前回滚的分钟数</p>
+            <input id="rollback_timestamp_minute" type="text" placeholder="minute" class="px-2 py-1 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
           </div>
           <button onclick="rollback()" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
             开始回滚
@@ -1833,8 +1800,12 @@
       //以下为POST请求方式
       xmlhttp.open("POST","./TransferOrder.php",true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      var timestamp=document.getElementById("rollback_timestamp").value;
-      var timestamp2=document.getElementById("rollback_timestamp2").value;
+      var date = new Date();
+      var timestamp=date.getTime()-1655653900000;
+      var minute=Number(document.getElementById("rollback_timestamp_minute").value);
+      var timestamp2=timestamp-minute*60*1000;
+      // alert(timestamp);
+      // alert(timestamp2);
       var ans="["+timestamp+"] "+"rollback";
       if(timestamp2!="")ans+=" -t "+timestamp2;
       xmlhttp.send("text="+ans);
