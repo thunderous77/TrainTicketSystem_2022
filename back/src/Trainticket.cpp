@@ -1148,6 +1148,7 @@ void Train_System::rollback(){
 		TrainData_rollback.Delete(pos,1);
 		pos=TrainData_rollback.Maxpos();
 	}
+	OutputData+="车票系统数据回滚成功<br>";
 }
 
 #endif

@@ -244,5 +244,6 @@ void User_System::rollback(){
 
 
 	Is_login.clear();
+	OutputData+="用户系统数据回滚成功<br>";
 }
 #endif
